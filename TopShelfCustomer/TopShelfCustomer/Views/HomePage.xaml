@@ -1,0 +1,138 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:system="clr-namespace:System;assembly=netstandard" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.HomePage" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:HomeViewModel/>
+    </ContentPage.BindingContext>
+
+    <!-- Content -->
+    <ContentPage.Content>
+        <Grid>
+            <!-- RowDefinitions -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="70" />
+            </Grid.RowDefinitions>
+
+            <!-- Header -->
+            <StackLayout Orientation="Vertical" Grid.Row="0" BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" >
+                <!-- Name and Portrait -->
+                <StackLayout Orientation="Horizontal" Margin="20, 40, 20, 40">
+                    <!-- Welcome Message-->
+                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="White">
+                        <Label.FormattedText>
+                            <FormattedString>
+                                <FormattedString.Spans>
+                                    <Span Text="Welcome, " FontAttributes="Bold" FontSize="Title" />
+                                    <Span Text="{Binding UserName}" FontAttributes="Bold" FontSize="Title" />
+                                </FormattedString.Spans>
+                            </FormattedString>
+                        </Label.FormattedText>
+                    </Label>
+                    <!-- Profile Picture -->
+                    <Frame CornerRadius="42" WidthRequest="48" HeightRequest="48" HasShadow="True" BorderColor="{StaticResource Primary}">
+                        <Image Source="portrait.png" />
+                    </Frame>
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Coupons List -->
+            <ScrollView Grid.Row="1">
+                <StackLayout>
+                    <!-- Test Coupon One -->
+                    <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="200">
+                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="Wheat">
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="Coupon One " FontAttributes="Bold" FontSize="Large"/>
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="Store: " FontAttributes="Bold" FontSize="Header" />
+                                            <Span Text="HEB 111 South Boogie Street" FontSize="Body" />
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="Description: " FontAttributes="Bold" FontSize="Header" />
+                                            <Span Text="You get a free bucket of armadillos. You're guaranteed to get leprose or your money back!" FontSize="Body"/>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Frame>
+                    </ContentView>
+                    <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="200">
+                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="Wheat">
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="Coupon Two " FontAttributes="Bold" FontSize="Large"/>
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="Store: " FontAttributes="Bold" FontSize="Header" />
+                                            <Span Text="HEB 222 South Boogie Street" FontSize="Body" />
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="Description: " FontAttributes="Bold" FontSize="Header" />
+                                            <Span Text="You get a free bucket of armadillos. You're guaranteed to get leprose or your money back!" FontSize="Body"/>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Frame>
+                    </ContentView>
+                    <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="200">
+                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="Wheat">
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="Coupon Three " FontAttributes="Bold" FontSize="Large"/>
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="Store: " FontAttributes="Bold" FontSize="Header" />
+                                            <Span Text="HEB 333 South Boogie Street" FontSize="Body" />
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="Description: " FontAttributes="Bold" FontSize="Header" />
+                                            <Span Text="You get a free bucket of armadillos. You're guaranteed to get leprose or your money back!" FontSize="Body"/>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Frame>
+                    </ContentView>
+                    <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="200">
+                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="Wheat">
+                            <Label>
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="Coupon Four " FontAttributes="Bold" FontSize="Large"/>
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="Store: " FontAttributes="Bold" FontSize="Header" />
+                                            <Span Text="HEB 444 South Boogie Street" FontSize="Body" />
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="Description: " FontAttributes="Bold" FontSize="Header" />
+                                            <Span Text="You get a free bucket of armadillos. You're guaranteed to get leprose or your money back!" FontSize="Body"/>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </Frame>
+                    </ContentView>
+                </StackLayout>
+            </ScrollView>
+
+            <!-- Settings and Account Buttons -->
+            <StackLayout Orientation="Horizontal" Padding="20,10,20,10" Spacing="10" BackgroundColor="{StaticResource Accent}" Grid.Row="2">
+                <Button Text="Stores" BackgroundColor="{StaticResource Primary}" WidthRequest="100" HorizontalOptions="FillAndExpand" TextColor="White" FontAttributes="Bold" FontSize="Body" />
+                <Button Text="Account" BackgroundColor="{StaticResource Primary}" WidthRequest="100" HorizontalOptions="FillAndExpand" TextColor="White" FontAttributes="Bold" FontSize="Body" />
+                <Button Text="Settings" BackgroundColor="{StaticResource Primary}" WidthRequest="100" HorizontalOptions="FillAndExpand" TextColor="White" FontAttributes="Bold" FontSize="Body" />
+            </StackLayout>   
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

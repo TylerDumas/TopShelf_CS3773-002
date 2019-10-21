@@ -122,6 +122,7 @@
     <BundleResource Include="Resources\TopShelfNameLogo.png" />
     <BundleResource Include="Resources\NameLogoWhite.png" />
     <BundleResource Include="Resources\TopShelfLogo.png" />
+    <BundleResource Include="Resources\portrait.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

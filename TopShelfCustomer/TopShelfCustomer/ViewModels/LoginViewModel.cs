@@ -1,6 +1,7 @@
 ﻿using System.Windows.Input;
 using Xamarin.Forms;
 using TopShelfCustomer.Views;
+using TopShelfCustomer.Models;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -29,7 +30,7 @@ namespace TopShelfCustomer.ViewModels {
         /// Calls on the Application static class to change views to the Main Application page
         /// </summary>
         void GoToMainMenu() {
-            Application.Current.MainPage = new MainPage();
+            Application.Current.MainPage = new HomePage();
         }
     }
 }
