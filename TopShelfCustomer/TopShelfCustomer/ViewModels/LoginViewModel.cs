@@ -13,24 +13,32 @@ namespace TopShelfCustomer.ViewModels {
     /// </summary>
     public class LoginViewModel : BaseViewModel {
 
-        public ICommand LoginCommand { get; }
+        #region Properties
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public LoginViewModel() {
-            Title = "Welcome to TopShelf";
+            public ICommand LoginCommand { get; }
 
-            LoginCommand = new Command( GoToMainMenu );
-        }
+        #endregion
 
-        /// <summary>
-        /// GoToMainMenu:
-        ///
-        /// Calls on the Application static class to change views to the Main Application page
-        /// </summary>
-        void GoToMainMenu() {
-            Application.Current.MainPage = new HomePage();
-        }
+        #region Class Methods
+
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            public LoginViewModel() {
+                Title = "Welcome to TopShelf";
+
+                LoginCommand = new Command( GoToMainMenu );
+            }
+
+            /// <summary>
+            /// GoToMainMenu:
+            ///
+            /// Calls on the Application static class to change views to the Main Application page
+            /// </summary>
+            void GoToMainMenu() {
+                Application.Current.MainPage = new HomePage();
+            }
+
+        #endregion
     }
 }

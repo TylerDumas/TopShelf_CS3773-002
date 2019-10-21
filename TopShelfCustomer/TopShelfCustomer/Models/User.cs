@@ -8,5 +8,6 @@ namespace TopShelfCustomer.Models {
     /// </summary>
     public class User {
         public string Name { get; set; }
+        public string UserStoreName { get; set; }
     }
 }

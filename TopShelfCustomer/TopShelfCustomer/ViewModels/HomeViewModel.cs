@@ -13,31 +13,42 @@ namespace TopShelfCustomer.ViewModels {
     /// </summary>
     public class HomeViewModel : BaseViewModel {
 
-        public string UserName { get; private set; }
+        #region Properties
 
-        public ICommand OpenAboutView { get; private set; }
+            public string UserName { get; private set; }
+            public string UserStore { get; set; }
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public HomeViewModel() {
-            Title = "Home";
+            public ICommand OpenAboutView { get; private set; }
 
-            /* Temporary User to test name display */
-            User temp = new User();
-            temp.Name = "Dirk Diggler";
-            UserName = temp.Name;
+        #endregion
 
-            OpenAboutView = new Command( LaunchAboutPage );
-        }
+        #region Class Methods
 
-        /// <summary>
-        /// LaunchAboutPage:
-        ///
-        /// Launches the AboutPage view
-        /// </summary>
-        void LaunchAboutPage() {
-            Application.Current.MainPage = new AboutPage();
-        }
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            public HomeViewModel() {
+                Title = "Home";
+
+                /* Temporary User to test name display */
+                User temp = new User();
+                temp.Name = "Dirk Diggler";
+                temp.UserStoreName = "HEB DeZavala Road, San Antonio, TX, 78249";
+                UserName = temp.Name;
+                UserStore = temp.UserStoreName;
+
+                OpenAboutView = new Command( LaunchAboutPage );
+            }
+
+            /// <summary>
+            /// LaunchAboutPage:
+            ///
+            /// Launches the AboutPage view
+            /// </summary>
+            void LaunchAboutPage() {
+                Application.Current.MainPage = new AboutPage();
+            }
+
+        #endregion
     }
 }

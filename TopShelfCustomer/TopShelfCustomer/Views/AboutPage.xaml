@@ -9,11 +9,12 @@
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
         <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
+            <ImageButton Source="back_orange.png" Command="{Binding OpenHomePage}" HorizontalOptions="Start" VerticalOptions="Start" HeightRequest="32" Margin="10,40,0,0" />
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
-                <ContentView Padding="20,40,0,40" VerticalOptions="FillAndExpand">
+                <ContentView Padding="20,20,0,40" VerticalOptions="FillAndExpand">
                     <Image Source="NameLogoWhite.png" VerticalOptions="Center" HeightRequest="52" />
                 </ContentView>
-                <ContentView Padding="0,0,0,20" VerticalOptions="FillAndExpand">
+                <ContentView Padding="0,0,0,40" VerticalOptions="FillAndExpand">
                     <Image Source="TopShelfLogo.png" VerticalOptions="Center" HeightRequest="120" />
                 </ContentView>
             </StackLayout>

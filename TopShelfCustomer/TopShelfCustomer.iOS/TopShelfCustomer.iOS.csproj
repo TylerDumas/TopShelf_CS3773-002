@@ -76,16 +76,7 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon87.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon80.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon58.png">
       <Visible>false</Visible>
     </ImageAsset>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">
@@ -123,6 +114,14 @@
     <BundleResource Include="Resources\NameLogoWhite.png" />
     <BundleResource Include="Resources\TopShelfLogo.png" />
     <BundleResource Include="Resources\portrait.png" />
+    <BundleResource Include="Resources\back_orange.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon120-1.png" />
+    <BundleResource Include="Resources\AppIcons\AppIcon80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon80.png" />
+    <BundleResource Include="Resources\AppIcons\AppIcon58.png" />
+    <BundleResource Include="Resources\AppIcons\AppIcon87.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon87.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon58.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

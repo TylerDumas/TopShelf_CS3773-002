@@ -17,7 +17,7 @@
             <!-- Header -->
             <StackLayout Orientation="Vertical" Grid.Row="0" BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" >
                 <!-- Name and Portrait -->
-                <StackLayout Orientation="Horizontal" Margin="20, 40, 20, 40">
+                <StackLayout Orientation="Horizontal" Margin="20, 40, 20, 0">
                     <!-- Welcome Message-->
                     <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="White">
                         <Label.FormattedText>
@@ -34,13 +34,24 @@
                         <Image Source="portrait.png" />
                     </Frame>
                 </StackLayout>
+                <!-- User Store -->
+                <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="White" Margin="20, 20, 20, 40" >
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Your Store: " FontAttributes="Bold" FontSize="Large" />
+                                <Span Text="{Binding UserStore}" FontSize="Large" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
             </StackLayout>
 
             <!-- Coupons List -->
             <ScrollView Grid.Row="1">
                 <StackLayout>
                     <!-- Test Coupon One -->
-                    <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="200">
+                    <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="220">
                         <Frame BorderColor="{StaticResource Primary}" BackgroundColor="Wheat">
                             <Label>
                                 <Label.FormattedText>
@@ -52,16 +63,18 @@
                                             <Span Text="Store: " FontAttributes="Bold" FontSize="18" />
                                             <Span Text="HEB 111 South Boogie Street" FontSize="Body" />
                                             <Span Text="{x:Static system:Environment.NewLine}" />
-                                            <Span Text="{x:Static system:Environment.NewLine}" />
                                             <Span Text="Description: " FontAttributes="Bold" FontSize="18" />
                                             <Span Text="You get a free bucket of armadillos. You're guaranteed to get leprose or your money back!" FontSize="Body"/>
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="Directions" FontAttributes="Bold" TextDecorations="Underline" FontSize="18" />
                                         </FormattedString.Spans>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
                         </Frame>
                     </ContentView>
-                    <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="200">
+                    <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="220">
                         <Frame BorderColor="{StaticResource Primary}" BackgroundColor="Wheat">
                             <Label>
                                 <Label.FormattedText>
@@ -73,16 +86,18 @@
                                             <Span Text="Store: " FontAttributes="Bold" FontSize="18" />
                                             <Span Text="HEB 222 South Boogie Street" FontSize="Body" />
                                             <Span Text="{x:Static system:Environment.NewLine}" />
-                                            <Span Text="{x:Static system:Environment.NewLine}" />
                                             <Span Text="Description: " FontAttributes="Bold" FontSize="18" />
-                                            <Span Text="You get a free bucket of armadillos. You're guaranteed to get leprose or your money back!" FontSize="Body"/>
+                                            <Span Text="Enjoy some of our HEB Primo Pick, Prime 1 Baby Meat. Always fresh, never frozen! $0.50 off per pound." FontSize="Body"/>
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="Directions" FontAttributes="Bold" TextDecorations="Underline" FontSize="18" />
                                         </FormattedString.Spans>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
                         </Frame>
                     </ContentView>
-                    <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="200">
+                    <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="220">
                         <Frame BorderColor="{StaticResource Primary}" BackgroundColor="Wheat">
                             <Label>
                                 <Label.FormattedText>
@@ -94,16 +109,18 @@
                                             <Span Text="Store: " FontAttributes="Bold" FontSize="18" />
                                             <Span Text="HEB 333 South Boogie Street" FontSize="Body" />
                                             <Span Text="{x:Static system:Environment.NewLine}" />
-                                            <Span Text="{x:Static system:Environment.NewLine}" />
                                             <Span Text="Description: " FontAttributes="Bold" FontSize="18" />
-                                            <Span Text="You get a free bucket of armadillos. You're guaranteed to get leprose or your money back!" FontSize="Body"/>
+                                            <Span Text="Get a free HEB provolone cheese value pack with your purchase of a human slave!" FontSize="Body"/>
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="Directions" FontAttributes="Bold" TextDecorations="Underline" FontSize="18" />
                                         </FormattedString.Spans>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
                         </Frame>
                     </ContentView>
-                    <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="200">
+                    <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="220">
                         <Frame BorderColor="{StaticResource Primary}" BackgroundColor="Wheat">
                             <Label>
                                 <Label.FormattedText>
@@ -115,9 +132,11 @@
                                             <Span Text="Store: " FontAttributes="Bold" FontSize="18" />
                                             <Span Text="HEB 444 South Boogie Street" FontSize="Body" />
                                             <Span Text="{x:Static system:Environment.NewLine}" />
-                                            <Span Text="{x:Static system:Environment.NewLine}" />
                                             <Span Text="Description: " FontAttributes="Bold" FontSize="18" />
-                                            <Span Text="You get a free bucket of armadillos. You're guaranteed to get leprose or your money back!" FontSize="Body"/>
+                                            <Span Text="Live primates for sale! Visit the outdoor section of your local HEB and pick out an ape today!" FontSize="Body"/>
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="{x:Static system:Environment.NewLine}" />
+                                            <Span Text="Directions" FontAttributes="Bold" TextDecorations="Underline" FontSize="18" />
                                         </FormattedString.Spans>
                                     </FormattedString>
                                 </Label.FormattedText>
