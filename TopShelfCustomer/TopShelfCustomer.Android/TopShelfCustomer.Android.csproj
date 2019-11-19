@@ -96,19 +96,23 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\cart-48.png">
+    <AndroidResource Include="Resources\drawable\cart_48.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\menu-48.png">
+    <AndroidResource Include="Resources\drawable\menu_48.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\news-48.png">
+    <AndroidResource Include="Resources\drawable\news_48.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\secure-letter-48.png">
+    <AndroidResource Include="Resources\drawable\secure_letter_48.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\TopShelfAppLogo_64.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>

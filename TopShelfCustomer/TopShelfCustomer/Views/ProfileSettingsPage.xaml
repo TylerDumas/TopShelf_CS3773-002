@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.ProfileSettingsPage" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:ProfileSettingsViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource AccentLight}" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Profile Info Header -->
+            <ContentView BackgroundColor="{StaticResource Accent}" Padding="0, 30, 0, 30" >
+                <StackLayout>
+                    <ImageButton Source="back_orange.png" Command="{Binding OpenSettingsPageCommand}" Margin="10,10,0,0" HorizontalOptions="Start" HeightRequest="40"/>
+                    <!-- Name and Portrait -->
+                    <StackLayout Orientation="Vertical" Margin="20, 0, 20, 0" Grid.Row="0">
+                        <!-- Profile Picture -->
+                        <Frame HorizontalOptions="Center" CornerRadius="42" WidthRequest="48" HeightRequest="48" HasShadow="True" BorderColor="{StaticResource Primary}">
+                            <Image Source="portrait.png" />
+                        </Frame>
+                        <!-- User Name -->
+                        <Label Text="{Binding UserRealName}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="30" TextColor="White"/>
+                    </StackLayout>
+                </StackLayout>
+            </ContentView>
+            <!-- Profile Settings Scroll View -->
+            <ScrollView Grid.Row="1">
+                <ContentView Padding="0, 10, 0, 0" >
+                    <StackLayout Orientation="Vertical">
+                        <!-- Header Label -->
+                        <Label Text="Profile Settings" FontSize="26" TextColor="White"
+                               HorizontalOptions="Center" VerticalOptions="Fill"
+                               HeightRequest="40" Margin="0, 10, 0, 30"/>
+
+                        <!-- Edit Username Setting -->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,0,0,20" >
+                            <Label Text="Username" FontSize="20" TextColor="White"
+                                   VerticalTextAlignment="Center" HeightRequest="40"
+                                   HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
+                            <Entry Text="{Binding UserName}" IsReadOnly="True" HorizontalOptions="EndAndExpand"
+                                   HeightRequest="40" WidthRequest="240" Margin="10,0,30,0"
+                                   TextColor="White" BackgroundColor="{StaticResource Accent}" />
+                        </StackLayout>
+
+                        <!-- Edit Password Setting -->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,0,0,20">
+                            <Label Text="Password" FontSize="20" TextColor="White"
+                                   VerticalTextAlignment="Center" HeightRequest="40"
+                                   HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
+                            <Entry Text="{Binding UserName}" IsReadOnly="True" IsPassword="True" HorizontalOptions="EndAndExpand"
+                                   HeightRequest="40" WidthRequest="240"
+                                   Margin="10,0,30,0" TextColor="White" BackgroundColor="{StaticResource Accent}" />
+                        </StackLayout>
+
+                        <!-- Edit E-mail Setting -->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,0,0,20">
+                            <Label Text="E-mail" FontSize="20" TextColor="White"
+                                   VerticalTextAlignment="Center" HeightRequest="40"
+                                   HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
+                            <Entry Text="{Binding UserEmail}" IsReadOnly="True" HorizontalOptions="EndAndExpand"
+                                   HeightRequest="40" WidthRequest="240"
+                                   Margin="10,0,30,0" TextColor="White" BackgroundColor="{StaticResource Accent}" />
+                        </StackLayout>
+
+                        <!-- Edit Phone Number Setting -->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="0,0,0,20">
+                            <Label Text="Phone" FontSize="20" TextColor="White"
+                                   VerticalTextAlignment="Center" HeightRequest="40"
+                                   HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
+                            <Entry Text="{Binding PhoneNumber}" IsReadOnly="True" HorizontalOptions="EndAndExpand"
+                                   HeightRequest="40" WidthRequest="240"
+                                   Margin="10,0,30,0" TextColor="White" BackgroundColor="{StaticResource Accent}" />
+                        </StackLayout>
+                    </StackLayout>
+                </ContentView>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

@@ -12,39 +12,73 @@
             </Grid.RowDefinitions>
 
             <!-- Profile Info Header -->
-            <ContentView BackgroundColor="{StaticResource Accent}" Padding="0, 0, 0, 20" Grid.Row="0" >
-                <StackLayout Orientation="Vertical" >
-                    <ImageButton Source="back_orange.png" Command="{Binding OpenHomePageCommand}" HorizontalOptions="Start" Margin="10,30,0,10" HeightRequest="40"/>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="40">
-                        <Label Text="{Binding UserName}" FontSize="26" TextColor="White" VerticalOptions="Center"/>
+            <ContentView BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 30, 0, 30" >
+                <StackLayout>
+                    <ImageButton Source="back_orange.png" Command="{Binding OpenHomePageCommand}" Margin="10,10,0,0" HorizontalOptions="Start" HeightRequest="40"/>
+                    <!-- Name and Portrait -->
+                    <StackLayout Orientation="Vertical" Margin="20, 0, 20, 0">
                         <!-- Profile Picture -->
-                        <Frame CornerRadius="42" WidthRequest="48" HeightRequest="48" HasShadow="True" BorderColor="{StaticResource Primary}">
+                        <Frame HorizontalOptions="Center" CornerRadius="42" WidthRequest="48" HeightRequest="48" HasShadow="True" BorderColor="{StaticResource Primary}">
                             <Image Source="portrait.png" />
                         </Frame>
+                        <!-- Welcome Message-->
+                        <Label Text="{Binding UserRealName}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="30" TextColor="White"/>
                     </StackLayout>
                 </StackLayout>
             </ContentView>
-            <ContentView Padding="0, 10, 0, 20" Grid.Row="1" >
-                <StackLayout Orientation="Vertical">
-                    <!-- Storage Settings -->
-                    <Button Command="{Binding OpenStorageCommand}"
-                        BackgroundColor="{StaticResource Accent}" Text="Storage" BorderWidth="2"
-                        BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
 
-                    <!-- Notification Settings -->
-                    <Button Command="{Binding OpenNotificationsCommand}"
-                        BackgroundColor="{StaticResource Accent}" Text="Notifications" BorderWidth="2"
-                        BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
-                    <!-- About Menu -->
-                    <Button Command="{Binding OpenAboutView}"
-                        BackgroundColor="{StaticResource Accent}" Text="About" BorderWidth="2"
-                        BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
-                    <!-- Logout Button -->
-                    <Button Command="{Binding LogoutUserCommand}"
-                        BackgroundColor="{StaticResource Accent}" Text="Log Out" BorderWidth="3"
-                        BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
-                </StackLayout>
-            </ContentView>
+            <!-- User Settings and Sub-menus -->
+            <ScrollView Grid.Row="1">
+                <ContentView Padding="0, 10, 0, 0" >
+                    <StackLayout Orientation="Vertical">
+                        <!-- Header Label -->
+                        <Label Text="User Settings" FontSize="26" TextColor="White" HorizontalOptions="Center" VerticalOptions="Fill" HeightRequest="40" Margin="0, 10, 0, 30"/>
+
+                        <!-- Reciept Saving Setting -->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="50">
+                            <Label Text="Save receipts to your device?" HorizontalOptions="StartAndExpand" Margin="30,0,0,0" FontSize="17" TextColor="White" VerticalOptions="Center"/>
+                            <Switch IsToggled="True" HorizontalOptions="EndAndExpand" Margin="0,0,40,0"/>
+                        </StackLayout>
+
+                        <!-- External Links Setting -->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="30" Padding="0,20,0,30">
+                            <Label Text="Ask before opening external links?" FontSize="17" TextColor="White" HorizontalOptions="StartAndExpand" Margin="30,0,0,0" VerticalOptions="Center"/>
+                            <Switch IsToggled="{Binding IsLinkSwitchToggled}" HorizontalOptions="EndAndExpand" Margin="0,0,40,0" />
+                        </StackLayout>
+
+                        <!-- Profile Settings -->
+                        <Button Command="{Binding OpenProfileCommand}"
+                            BackgroundColor="{StaticResource Accent}" Text="Profile" BorderWidth="2"
+                            BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
+
+                        <!-- Notification Settings -->
+                        <Button Command="{Binding OpenNotificationsCommand}"
+                            BackgroundColor="{StaticResource Accent}" Text="Notifications" BorderWidth="2"
+                            BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
+
+                        <!-- Support Menu -->
+                        <Button Command="{Binding OpenSupportViewCommand}"
+                            BackgroundColor="{StaticResource Accent}" Text="Support" BorderWidth="2"
+                            BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
+
+                        <!-- User Agreement/License Menu -->
+                        <Button Command="{Binding OpenUserAgreementCommand}"
+                            BackgroundColor="{StaticResource Accent}" Text="User Agreement" BorderWidth="2"
+                            BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
+
+                        <!-- About Menu -->
+                        <Button Command="{Binding OpenAboutViewCommand}"
+                            BackgroundColor="{StaticResource Accent}" Text="About" BorderWidth="2"
+                            BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
+
+                    </StackLayout>
+                </ContentView>
+            </ScrollView>
+
+            <!-- Logout Button -->
+            <Button Command="{Binding LogoutUserCommand}" Grid.Row="2" Margin="20,0,20,20"
+                BackgroundColor="{StaticResource Primary}" Text="Log Out" BorderWidth="3"
+                BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

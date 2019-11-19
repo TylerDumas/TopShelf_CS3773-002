@@ -27,16 +27,7 @@ namespace TopShelfCustomer.ViewModels {
             public LoginViewModel() {
                 Title = "Welcome to TopShelf";
 
-                LoginCommand = new Command( GoToMainMenu );
-            }
-
-            /// <summary>
-            /// GoToMainMenu:
-            ///
-            /// Calls on the Application static class to change views to the Main Application page
-            /// </summary>
-            void GoToMainMenu() {
-                Application.Current.MainPage = new HomePage();
+                LoginCommand = new Command( () => Application.Current.MainPage = new HomePage() );
             }
 
         #endregion

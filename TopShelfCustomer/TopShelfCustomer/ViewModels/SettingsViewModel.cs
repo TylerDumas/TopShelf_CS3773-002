@@ -19,20 +19,37 @@ namespace TopShelfCustomer.ViewModels {
         #region Properties
 
         public User CurrentUser { get; set; }           //The currently logged in User
-        private string userName;
-        public string UserName {
+
+        private string userRealName;            //String to define the User's name. (Bound to Text fields)
+        public string UserRealName {
             get {
-                return this.userName;
+                return userRealName;
             }
             set {
-                userName = value;
-                OnPropertyChanged( "UserName" );
+                userRealName = value;
+                OnPropertyChanged( "UserRealName" );
             }
         }
+
+        private bool isLinkSwitchToggled = true;       //Bool to define whether the "external links" setting is toggled
+        public bool IsLinkSwitchToggled {
+            get {
+                return isLinkSwitchToggled;
+            }
+            set {
+                isLinkSwitchToggled = value;
+                ToggleExternalLinkSetting( isLinkSwitchToggled );
+                OnPropertyChanged( "IsLinkSwitchToggled" );
+            }
+        }
+
+        /* Commands */
         public ICommand OpenHomePageCommand { get; }        //Command to open home page (back button)
-        public ICommand OpenStorageCommand { get; }     //Command to open the Storage settings
+        public ICommand OpenProfileCommand { get; }         //Command to open Profile settings
         public ICommand OpenNotificationsCommand { get; }       //Command to open the Notification settings
-        public ICommand OpenAboutView { get; }     //Command to open the About page
+        public ICommand OpenAboutViewCommand { get; }     //Command to open the About page
+        public ICommand OpenSupportViewCommand { get; }        //Command to open the Support page
+        public ICommand OpenUserAgreementCommand { get; }       //Command to open the End-User agreement
         public ICommand LogoutUserCommand { get; }      //Command to log out the current User
 
         #endregion
@@ -47,31 +64,24 @@ namespace TopShelfCustomer.ViewModels {
                 Name = "Jackson Dumas"
             };
             Title = "Settings";
-            UserName = CurrentUser.Name;
+            UserRealName = CurrentUser.Name;
 
-            OpenHomePageCommand = new Command( LaunchHomePage );
-            OpenStorageCommand = new Command( OpenStorageSettings );
-            OpenAboutView = new Command( LaunchAboutPage );
+            OpenHomePageCommand = new Command( () => Application.Current.MainPage = new HomePage() );
+            OpenProfileCommand = new Command( () => Application.Current.MainPage = new ProfileSettingsPage() );
             OpenNotificationsCommand = new Command( OpenNotificationsSettings );
+            OpenAboutViewCommand = new Command( () => Application.Current.MainPage = new AboutPage() ) ;
+            OpenSupportViewCommand = new Command( () => Device.OpenUri( new Uri( "https://www.youtube.com/watch?v=dQw4w9WgXcQ" ) ) );       //FIXME: Get rid of the Astley
+            OpenUserAgreementCommand = new Command( () => Device.OpenUri( new Uri( "https://www.jacksondumas.dev" ) ) );        //FIXME:    Create License View
             LogoutUserCommand = new Command( LogoutUser );
         }
 
         /// <summary>
-        /// LaunchHomePage:
+        /// OpenProfileSettings:
         ///
-        /// Changes the Applications current page to the Home page
+        /// Opens the Profile Settings within the Settings View
         /// </summary>
-        void LaunchHomePage() {
-            Application.Current.MainPage = new HomePage();
-        }
-
-        /// <summary>
-        /// OpenStorageSettings:
-        ///
-        /// Opens the Storage Settings within the Settings View
-        /// </summary>
-        void OpenStorageSettings() {
-            Debug.WriteLine( "Opening the Storage Settings!" );
+        void OpenProfileSettings() {
+            Debug.WriteLine( "Opening the Profile Settings!" );
             //TODO: Implement Storage Settings
         }
 
@@ -86,23 +96,24 @@ namespace TopShelfCustomer.ViewModels {
         }
 
         /// <summary>
-        /// LaunchAboutPage:
-        ///
-        /// Launches the AboutPage view
-        /// </summary>
-        void LaunchAboutPage() {
-            Application.Current.MainPage = new AboutPage();
-        }
-
-        /// <summary>
         /// LogoutUser:
         ///
         /// Logs out the current User
         /// </summary>
         void LogoutUser() {
-            UserName = "None";
-            Debug.WriteLine( "Logging Out!" );
-            //TODO: Implement Logging out
+            CurrentUser = null;
+            Application.Current.MainPage = new LoginPage();
+        }
+
+        /// <summary>
+        /// ToggleExternalLinkSetting:
+        ///
+        /// Handles the Toggling of the "External Link" setting in the root settings menu
+        /// </summary>
+        /// <param name="isToggled"> if the toggle was activated or deactivated </param>
+        void ToggleExternalLinkSetting( bool isToggled ) {
+            //TODO: Implement Settings to User Profile
+            Debug.WriteLine( $"Toggled the External Link Setting to {isToggled}" );
         }
 
         #endregion

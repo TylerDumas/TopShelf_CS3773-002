@@ -23,7 +23,6 @@
     <Compile Remove="Views\MainPage.xaml.cs" />
     <Compile Remove="Views\MenuPage.xaml.cs" />
     <Compile Remove="Views\NewItemPage.xaml.cs" />
-    <Compile Remove="Models\Item.cs" />
     <Compile Remove="Services\MockDataStore.cs" />
     <Compile Remove="Services\IDataStore.cs" />
     <Compile Remove="Views\ItemsPage.xaml.cs" />

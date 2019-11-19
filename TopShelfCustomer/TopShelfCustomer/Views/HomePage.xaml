@@ -13,46 +13,39 @@
                 <RowDefinition Height="*" />
                 <RowDefinition Height="70" />
             </Grid.RowDefinitions>
-
-            <!-- Header -->
-            <StackLayout Orientation="Vertical" Grid.Row="0" BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" >
+            <!-- Profile Info Header -->
+            <ContentView BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 80, 0, 30" >
                 <!-- Name and Portrait -->
-                <StackLayout Orientation="Horizontal" Margin="20, 40, 20, 0">
+                <StackLayout Orientation="Vertical" Margin="20, 0, 20, 0">
+
+                    <!-- Profile Picture -->
+                    <Frame HorizontalOptions="Center" CornerRadius="42" WidthRequest="48" HeightRequest="48" HasShadow="True" BorderColor="{StaticResource Primary}">
+                        <Image Source="portrait.png" />
+                    </Frame>
+
                     <!-- Welcome Message-->
-                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="White">
+                    <Label Text="{Binding UserRealName}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="30" TextColor="White"/>
+
+                    <!-- User Store -->
+                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="White" Margin="0, 20, 0, 0" >
                         <Label.FormattedText>
                             <FormattedString>
                                 <FormattedString.Spans>
-                                    <Span Text="Welcome, " FontAttributes="Bold" FontSize="Title" />
-                                    <Span Text="{Binding UserName}" FontAttributes="Bold" FontSize="Title" />
+                                    <Span Text="Your Store: " FontAttributes="Bold" FontSize="Large" />
+                                    <Span Text="{Binding UserStoreName}" FontSize="Large" />
                                 </FormattedString.Spans>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
-                    <!-- Profile Picture -->
-                    <Frame CornerRadius="42" WidthRequest="48" HeightRequest="48" HasShadow="True" BorderColor="{StaticResource Primary}">
-                        <Image Source="portrait.png" />
-                    </Frame>
                 </StackLayout>
-                <!-- User Store -->
-                <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="White" Margin="20, 20, 20, 40" >
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="Your Store: " FontAttributes="Bold" FontSize="Large" />
-                                <Span Text="{Binding UserStore}" FontSize="Large" />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-            </StackLayout>
+            </ContentView>
 
             <!-- Coupons List -->
             <ScrollView Grid.Row="1">
                 <StackLayout>
                     <!-- Test Coupon One -->
                     <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="220">
-                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="Wheat">
+                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="White">
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -75,7 +68,7 @@
                         </Frame>
                     </ContentView>
                     <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="220">
-                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="Wheat">
+                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="White">
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -98,7 +91,7 @@
                         </Frame>
                     </ContentView>
                     <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="220">
-                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="Wheat">
+                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="White">
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -121,7 +114,7 @@
                         </Frame>
                     </ContentView>
                     <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="220">
-                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="Wheat">
+                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="White">
                             <Label>
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -151,7 +144,7 @@
                 <Button Command="{Binding OpenCreateOrderView}" Text="New Order" BackgroundColor="{StaticResource Primary}"
                         WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White"
                         FontAttributes="Bold" FontSize="14" />
-                <Button Text="Past Orders" BackgroundColor="{StaticResource Primary}"
+                <Button Text="Order History" BackgroundColor="{StaticResource Primary}"
                         WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White"
                         FontAttributes="Bold" FontSize="14" />
                 <Button Text="Settings" Command="{Binding OpenSettingsView}" BackgroundColor="{StaticResource Primary}"

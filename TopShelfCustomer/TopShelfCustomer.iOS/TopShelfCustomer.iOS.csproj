@@ -106,10 +106,10 @@
     <BundleResource Include="Resources\back_orange.png" />
     <BundleResource Include="Resources\AppIcons\TopShelfAppLogo.png" />
     <BundleResource Include="Resources\TopShelfAppLogo.png" />
-    <BundleResource Include="Resources\cart-48.png" />
-    <BundleResource Include="Resources\menu-48.png" />
-    <BundleResource Include="Resources\news-48.png" />
-    <BundleResource Include="Resources\secure-letter-48.png" />
+    <BundleResource Include="Resources\cart_48.png" />
+    <BundleResource Include="Resources\menu_48.png" />
+    <BundleResource Include="Resources\news_48.png" />
+    <BundleResource Include="Resources\secure_letter_48.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

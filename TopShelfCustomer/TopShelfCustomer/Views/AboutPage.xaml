@@ -12,9 +12,9 @@
         <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                      BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 0, 0, 50" >
             <StackLayout Orientation="Vertical">
-                <ImageButton Source="back_orange.png" Command="{Binding OpenSettingsCommand}" HorizontalOptions="Start" Margin="10,30,0,10" HeightRequest="40"/>
-                <Image Source="TopShelfAppLogo.png" HeightRequest="128"/>
-                <Label Text="TopShelf" FontSize="36" FontFamily="Fira Mono" Margin="0, 20, 0, 0" HorizontalOptions="Center" TextColor="White" />
+                <ImageButton Source="back_orange.png" Command="{Binding OpenSettingsCommand}" HorizontalOptions="Start" Margin="10,40,0,0" HeightRequest="40"/>
+                <Image Source="TopShelfAppLogo.png" HeightRequest="100"/>
+                <Label Text="TopShelf" FontSize="30" FontFamily="Fira Mono" Margin="0, 20, 0, 0" HorizontalOptions="Center" TextColor="White" />
             </StackLayout>
         </ContentView>
         <ScrollView Grid.Row="1">
