@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.CreateOrderPage" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:CreateOrderViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource AccentLight}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+            <ContentView BackgroundColor="{StaticResource Accent}" Grid.Row="0">
+                <StackLayout Orientation="Vertical" >
+                    <ImageButton Source="back_orange.png" Command="{Binding OpenHomePageCommand}" HorizontalOptions="Start" Margin="10,30,0,10" HeightRequest="40"/>
+                    <Label Text="Create New Order" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Margin="0, 20, 0, 40" FontSize="30" TextColor="White" />
+                </StackLayout>
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

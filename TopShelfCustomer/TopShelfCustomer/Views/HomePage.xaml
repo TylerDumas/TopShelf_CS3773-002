@@ -148,7 +148,7 @@
 
             <!-- Settings and Account Buttons -->
             <StackLayout Orientation="Horizontal" Padding="10,10,10,10" Spacing="10" BackgroundColor="{StaticResource Accent}" Grid.Row="2">
-                <Button Text="New Order" BackgroundColor="{StaticResource Primary}"
+                <Button Command="{Binding OpenCreateOrderView}" Text="New Order" BackgroundColor="{StaticResource Primary}"
                         WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White"
                         FontAttributes="Bold" FontSize="14" />
                 <Button Text="Past Orders" BackgroundColor="{StaticResource Primary}"

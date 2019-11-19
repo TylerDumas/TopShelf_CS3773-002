@@ -19,6 +19,7 @@ namespace TopShelfCustomer.ViewModels {
         public string UserStore { get; set; }
 
         public ICommand OpenSettingsView { get; private set; }
+        public ICommand OpenCreateOrderView { get; }
 
         #endregion
 
@@ -38,10 +39,15 @@ namespace TopShelfCustomer.ViewModels {
             UserStore = temp.UserStoreName;
 
             OpenSettingsView = new Command( LaunchSettingsPage );
+            OpenCreateOrderView = new Command( LaunchCreateOrderPage );
         }
 
         void LaunchSettingsPage() {
             Application.Current.MainPage = new SettingsPage();
+        }
+
+        void LaunchCreateOrderPage() {
+            Application.Current.MainPage = new CreateOrderPage();
         }
 
         #endregion
