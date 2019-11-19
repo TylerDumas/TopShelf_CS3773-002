@@ -6,11 +6,9 @@ using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 using TopShelfCustomer.Models;
-using TopShelfCustomer.Services;
 
 namespace TopShelfCustomer.ViewModels {
     public class BaseViewModel : INotifyPropertyChanged {
-        public IDataStore<Item> DataStore => DependencyService.Get<IDataStore<Item>>();
 
         bool isBusy = false;
         public bool IsBusy {

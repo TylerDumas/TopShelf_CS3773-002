@@ -95,17 +95,6 @@
     <BundleResource Include="Resources\xamarin_logo%402x.png" />
     <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
-    <BundleResource Include="Resources\AppIcons\AppIcon1024.png" />
-    <BundleResource Include="Resources\AppIcons\AppIcon120.png" />
-    <BundleResource Include="Resources\AppIcons\AppIcon180.png" />
-    <BundleResource Include="Resources\AppIcons\AppIcon40.png" />
-    <BundleResource Include="Resources\AppIcons\AppIcon512.png" />
-    <BundleResource Include="Resources\AppIcons\AppIcon60.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon40.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon60.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon180.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon120.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon1024.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon1024-1.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon512.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon1024-2.png" />
@@ -115,13 +104,12 @@
     <BundleResource Include="Resources\TopShelfLogo.png" />
     <BundleResource Include="Resources\portrait.png" />
     <BundleResource Include="Resources\back_orange.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon120-1.png" />
-    <BundleResource Include="Resources\AppIcons\AppIcon80.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon80.png" />
-    <BundleResource Include="Resources\AppIcons\AppIcon58.png" />
-    <BundleResource Include="Resources\AppIcons\AppIcon87.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon87.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon58.png" />
+    <BundleResource Include="Resources\AppIcons\TopShelfAppLogo.png" />
+    <BundleResource Include="Resources\TopShelfAppLogo.png" />
+    <BundleResource Include="Resources\cart-48.png" />
+    <BundleResource Include="Resources\menu-48.png" />
+    <BundleResource Include="Resources\news-48.png" />
+    <BundleResource Include="Resources\secure-letter-48.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

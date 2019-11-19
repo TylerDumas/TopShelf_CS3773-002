@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.SettingsPage" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:SettingsViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource AccentLight}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Profile Info Header -->
+            <ContentView BackgroundColor="{StaticResource Accent}" Padding="0, 0, 0, 20" Grid.Row="0" >
+                <StackLayout Orientation="Vertical" >
+                    <ImageButton Source="back_orange.png" Command="{Binding OpenHomePageCommand}" HorizontalOptions="Start" Margin="10,30,0,10" HeightRequest="40"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="40">
+                        <Label Text="{Binding UserName}" FontSize="26" TextColor="White" VerticalOptions="Center"/>
+                        <!-- Profile Picture -->
+                        <Frame CornerRadius="42" WidthRequest="48" HeightRequest="48" HasShadow="True" BorderColor="{StaticResource Primary}">
+                            <Image Source="portrait.png" />
+                        </Frame>
+                    </StackLayout>
+                </StackLayout>
+            </ContentView>
+            <ContentView Padding="0, 10, 0, 20" Grid.Row="1" >
+                <StackLayout Orientation="Vertical">
+                    <!-- Storage Settings -->
+                    <Button Command="{Binding OpenStorageCommand}"
+                        BackgroundColor="{StaticResource Accent}" Text="Storage" BorderWidth="2"
+                        BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
+
+                    <!-- Notification Settings -->
+                    <Button Command="{Binding OpenNotificationsCommand}"
+                        BackgroundColor="{StaticResource Accent}" Text="Notifications" BorderWidth="2"
+                        BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
+                    <!-- About Menu -->
+                    <Button Command="{Binding OpenAboutView}"
+                        BackgroundColor="{StaticResource Accent}" Text="About" BorderWidth="2"
+                        BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
+                    <!-- Logout Button -->
+                    <Button Command="{Binding LogoutUserCommand}"
+                        BackgroundColor="{StaticResource Accent}" Text="Log Out" BorderWidth="3"
+                        BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
+                </StackLayout>
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

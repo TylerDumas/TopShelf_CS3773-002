@@ -8,17 +8,15 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill">
-            <ImageButton Source="back_orange.png" Command="{Binding OpenHomePage}" HorizontalOptions="Start" VerticalOptions="Start" HeightRequest="32" Margin="10,40,0,0" />
-            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
-                <ContentView Padding="20,20,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="NameLogoWhite.png" VerticalOptions="Center" HeightRequest="52" />
-                </ContentView>
-                <ContentView Padding="0,0,0,40" VerticalOptions="FillAndExpand">
-                    <Image Source="TopShelfLogo.png" VerticalOptions="Center" HeightRequest="120" />
-                </ContentView>
+        <!-- Header Icon and Title -->
+        <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                     BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 0, 0, 50" >
+            <StackLayout Orientation="Vertical">
+                <ImageButton Source="back_orange.png" Command="{Binding OpenSettingsCommand}" HorizontalOptions="Start" Margin="10,30,0,10" HeightRequest="40"/>
+                <Image Source="TopShelfAppLogo.png" HeightRequest="128"/>
+                <Label Text="TopShelf" FontSize="36" FontFamily="Fira Mono" Margin="0, 20, 0, 0" HorizontalOptions="Center" TextColor="White" />
             </StackLayout>
-        </StackLayout>
+        </ContentView>
         <ScrollView Grid.Row="1">
             <StackLayout Orientation="Vertical" Padding="16,30,16,10" Spacing="10">
                 <Label FontSize="22">
@@ -82,7 +80,9 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Button Margin="0,10,0,0" Text="Learn more about Xamarin" Command="{Binding OpenWebCommand}" BackgroundColor="{StaticResource Primary}" TextColor="White" FontAttributes="Bold"/>
+                <Button Margin="0,30,0,0" Text="Learn more about Xamarin" WidthRequest="260"
+                        HorizontalOptions="Center" Command="{Binding OpenWebCommand}"
+                        BackgroundColor="{StaticResource Primary}" TextColor="White" FontAttributes="Bold"/>
             </StackLayout>
         </ScrollView>
     </Grid>

@@ -1,7 +1,6 @@
 ﻿using System;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
-using TopShelfCustomer.Services;
 using TopShelfCustomer.Views;
 
 namespace TopShelfCustomer {
@@ -17,7 +16,7 @@ namespace TopShelfCustomer {
         public App() {
             InitializeComponent();
 
-            DependencyService.Register<MockDataStore>();
+            //DependencyService.Register<MockDataStore>();
             MainPage = new NavigationPage( new LoginPage() );
         }
 

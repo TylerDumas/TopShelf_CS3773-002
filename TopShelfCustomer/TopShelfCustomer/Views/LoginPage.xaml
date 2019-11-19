@@ -6,7 +6,7 @@
 
     <ContentPage.Content>
         <ScrollView>
-            <Grid>
+            <Grid BackgroundColor="{StaticResource AccentLight}">
                 <!-- RowDefinitions -->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
@@ -14,31 +14,45 @@
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <!-- Header and Icons -->
-                <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" >
-                    <!-- Icons -->
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
-                        <ContentView Padding="20,60,0,40" VerticalOptions="FillAndExpand">
-                            <Image Source="NameLogoWhite.png" VerticalOptions="Center" HeightRequest="52" />
+                <!-- Header Icon and Title -->
+                <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Padding="0, 60, 0, 60" >
+                    <StackLayout Orientation="Vertical">
+                        <Image Source="TopShelfAppLogo.png" HeightRequest="128"/>
+                        <Label Text="TopShelf" FontSize="36" HorizontalOptions="Center" TextColor="White" />
+                    </StackLayout>
+                </ContentView>
+
+                <!-- Username and Password Entries -->
+                <ContentView HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Padding="0, 60, 0, 20">
+                    <StackLayout Orientation="Vertical" Spacing="30">
+                        <ContentView>
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="news-48.png" HeightRequest="64" />
+                                <Entry Placeholder="Username" TextColor="White" BackgroundColor="{StaticResource Accent}"
+                                       VerticalOptions="CenterAndExpand" HeightRequest="46"
+                                       PlaceholderColor="White" WidthRequest="220"/>
+                            </StackLayout>
                         </ContentView>
-                        <ContentView Padding="0,20,0,40" VerticalOptions="FillAndExpand">
-                            <Image Source="TopShelfLogo.png" VerticalOptions="Center" HeightRequest="120" />
+                        <ContentView>
+                            <StackLayout Orientation="Horizontal">
+                                <Image Source="secure-letter-48.png" HeightRequest="64"  />
+                                <Entry IsPassword="True" Placeholder="Password" TextColor="White" BackgroundColor="{StaticResource Accent}"
+                                       VerticalOptions="CenterAndExpand" HeightRequest="46"
+                                       PlaceholderColor="White" WidthRequest="220"/>
+                            </StackLayout>
                         </ContentView>
                     </StackLayout>
+                </ContentView>
 
-                    <!-- Login Title Label -->
-                    <Label Text="Log In" FontAttributes="Bold"
-                           Grid.Row="1" HorizontalOptions="CenterAndExpand"
-                           FontSize="40"  Margin="0, 0, 0, 40" TextColor="White" />
-
-                </StackLayout>
-
-                <!-- Data Entry Fields -->
-                <StackLayout Orientation="Vertical" Spacing="30" Grid.Row="2" Margin="40,60,40,0" >
-                    <Entry Placeholder="Enter your username" VerticalOptions="Center" HeightRequest="64" />
-                    <Entry Placeholder="Enter your password" VerticalOptions="Center" HeightRequest="64" />
-                    <Button Command="{Binding LoginCommand}" Text="Log In" BackgroundColor="{StaticResource Primary}" TextColor="White" Margin="0, 40, 0, 0" HeightRequest="64"/>
-                </StackLayout>
+                <!-- Login Button and Account Recovery -->
+                <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="2" Padding="0, 60, 0, 0">
+                    <StackLayout Orientation="Vertical" Spacing="10">
+                        <Button Command="{Binding LoginCommand}" BackgroundColor="#f15a22" WidthRequest="200" FontAttributes="Bold"
+                                HeightRequest="50" TextColor="Black"
+                                Text="Log In" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Start"/>
+                        <Label Text="Forgot your password?" HorizontalOptions="Center" FontSize="16" TextColor="White"/>
+                    </StackLayout>
+                </ContentView>
             </Grid>
         </ScrollView>
     </ContentPage.Content>

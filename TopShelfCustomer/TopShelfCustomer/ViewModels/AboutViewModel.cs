@@ -15,31 +15,31 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Properties
 
-            public ICommand OpenWebCommand { get; }
-            public ICommand OpenHomePage { get; }
+        public ICommand OpenWebCommand { get; }
+        public ICommand OpenSettingsCommand { get; }
 
         #endregion
 
         #region Class Methods
 
-            /// <summary>
-            /// Constructor
-            /// </summary>
-            public AboutViewModel() {
-                Title = "About";
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public AboutViewModel() {
+            Title = "About";
 
-                OpenHomePage = new Command( LaunchHomePage );
-                OpenWebCommand = new Command( () => Device.OpenUri( new Uri( "https://xamarin.com/platform" ) ) );
-            }
+            OpenSettingsCommand = new Command( LaunchSettingsPage );
+            OpenWebCommand = new Command( () => Device.OpenUri( new Uri( "https://xamarin.com/platform" ) ) );
+        }
 
-            /// <summary>
-            /// LaunchHomePage:
-            ///
-            /// Changes the Applications current page to the Home page
-            /// </summary>
-            void LaunchHomePage() {
-                Application.Current.MainPage = new HomePage();
-            }
+        /// <summary>
+        /// LaunchSettingsPage:
+        ///
+        /// Changes the Applications current page to the Settings page
+        /// </summary>
+        void LaunchSettingsPage() {
+            Application.Current.MainPage = new SettingsPage();
+        }
 
         #endregion
     }
