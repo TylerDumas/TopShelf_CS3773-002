@@ -1,0 +1,130 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.LicenseView" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:LicenseViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource AccentLight}">
+
+            <!-- Row Definitions -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <!-- Header (Label, App Icon, etc.) -->
+            <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                     BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 0, 0, 50" >
+                <StackLayout Orientation="Vertical">
+                    <ImageButton Source="back_orange.png" Command="{Binding OpenSettingsViewCommand}" HorizontalOptions="Start" Margin="10,40,0,0" HeightRequest="40"/>
+                    <Image Source="TopShelfAppLogo.png" HeightRequest="100"/>
+                    <Label Text="TopShelf" FontSize="30" FontFamily="Fira Mono" Margin="0, 20, 0, 0" HorizontalOptions="Center" TextColor="White" />
+                </StackLayout>
+            </ContentView>
+
+            <ScrollView Grid.Row="2" >
+                <StackLayout Orientation="Vertical">
+                        <!-- Page Title Label -->
+                    <Label Text="License" FontSize="26" TextColor="White" Grid.Row="1" HorizontalOptions="CenterAndExpand" Margin="0, 30, 0, 0"/>
+
+                    <!-- MIT License Text -->
+                    <ContentView x:Name="MIT_License" Padding="20,0,20,0">
+                        <StackLayout Orientation="Vertical" >
+                            <Label FontSize="14" TextColor="White" Margin="0, 20, 0, 0">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="MIT License" FontAttributes="Bold" />
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label FontSize="14" TextColor="White">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="Copyright (c) 2019 " />
+                                            <Span Text="Jackson Dumas, Jacob Damon, Zachary Ellis, Nathaniel Barrett, and Alex Kokkosoulis" FontAttributes="Bold" FontSize="14"/>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label FontSize="12" TextColor="White">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="Permission is hereby granted, free of charge, to any person obtaining a copy "/>
+                                            <Span Text="of this software and associated documentation files (the 'Software'), to deal " />
+                                            <Span Text="in the Software without restriction, including without limitation the rights " />
+                                            <Span Text="to use, copy, modify, merge, publish, distribute, sublicense, and/or sell " />
+                                            <Span Text="copies of the Software, and to permit persons to whom the Software is " />
+                                            <Span Text="furnished to do so, subject to the following conditions: " />
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label FontSize="12" TextColor="White">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="The above copyright notice and this permission notice shall be included in all "/>
+                                            <Span Text="copies or substantial portions of the Software." />
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                            <Label FontSize="12" TextColor="White">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="THE SOFTWARE IS PROVIDED 'AS IS', WITHOUT WARRANTY OF ANY KIND, EXPRESS OR "/>
+                                            <Span Text="IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, " />
+                                            <Span Text="FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE " />
+                                            <Span Text="AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER " />
+                                            <Span Text="LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, " />
+                                            <Span Text="OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE " />
+                                            <Span Text="SOFTWARE. " />
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </ContentView>
+
+                    <!-- Icon Attribution Text and Link -->
+                    <ContentView x:Name="Icon_Attribution">
+                        <StackLayout Orientation="Vertical" >
+                            <ContentView>
+                                <StackLayout Orientation="Horizontal" Margin="20" Spacing="15">
+                                    <Label FontSize="14" TextColor="White">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <FormattedString.Spans>
+                                                    <Span Text="All Icons used in " />
+                                                    <Span Text="TopShelf " FontAttributes="Bold" />
+                                                    <Span Text="were provided by " />
+                                                    <Span Text="www.icons8.com" TextDecorations="Underline">
+                                                        <Span.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding IconLinkCommand}" />
+                                                        </Span.GestureRecognizers>
+                                                    </Span>
+                                                </FormattedString.Spans>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Button Command="{Binding IconLinkCommand}" Text="Visit Icons8"
+                                            FontSize="14" BackgroundColor="{StaticResource Primary}"
+                                            TextColor="Black" Padding="10" HeightRequest="30"/>
+                                </StackLayout>
+                            </ContentView>
+                        </StackLayout>
+                    </ContentView>
+
+
+                </StackLayout>
+            </ScrollView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

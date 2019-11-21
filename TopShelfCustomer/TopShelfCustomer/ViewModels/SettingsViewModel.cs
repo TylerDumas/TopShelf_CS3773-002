@@ -49,7 +49,7 @@ namespace TopShelfCustomer.ViewModels {
         public ICommand OpenNotificationsCommand { get; }       //Command to open the Notification settings
         public ICommand OpenAboutViewCommand { get; }     //Command to open the About page
         public ICommand OpenSupportViewCommand { get; }        //Command to open the Support page
-        public ICommand OpenUserAgreementCommand { get; }       //Command to open the End-User agreement
+        public ICommand OpenLicenseViewCommand { get; }       //Command to open the End-User agreement
         public ICommand LogoutUserCommand { get; }      //Command to log out the current User
 
         #endregion
@@ -71,18 +71,8 @@ namespace TopShelfCustomer.ViewModels {
             OpenNotificationsCommand = new Command( OpenNotificationsSettings );
             OpenAboutViewCommand = new Command( () => Application.Current.MainPage = new AboutPage() ) ;
             OpenSupportViewCommand = new Command( () => Device.OpenUri( new Uri( "https://www.youtube.com/watch?v=dQw4w9WgXcQ" ) ) );       //FIXME: Get rid of the Astley
-            OpenUserAgreementCommand = new Command( () => Device.OpenUri( new Uri( "https://www.jacksondumas.dev" ) ) );        //FIXME:    Create License View
+            OpenLicenseViewCommand = new Command( () => Application.Current.MainPage = new LicenseView() );
             LogoutUserCommand = new Command( LogoutUser );
-        }
-
-        /// <summary>
-        /// OpenProfileSettings:
-        ///
-        /// Opens the Profile Settings within the Settings View
-        /// </summary>
-        void OpenProfileSettings() {
-            Debug.WriteLine( "Opening the Profile Settings!" );
-            //TODO: Implement Storage Settings
         }
 
         /// <summary>

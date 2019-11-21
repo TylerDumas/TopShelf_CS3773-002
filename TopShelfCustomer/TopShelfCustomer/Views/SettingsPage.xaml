@@ -21,7 +21,7 @@
                         <Frame HorizontalOptions="Center" CornerRadius="42" WidthRequest="48" HeightRequest="48" HasShadow="True" BorderColor="{StaticResource Primary}">
                             <Image Source="portrait.png" />
                         </Frame>
-                        <!-- Welcome Message-->
+                        <!-- Welcome Message -->
                         <Label Text="{Binding UserRealName}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="30" TextColor="White"/>
                     </StackLayout>
                 </StackLayout>
@@ -62,8 +62,8 @@
                             BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
 
                         <!-- User Agreement/License Menu -->
-                        <Button Command="{Binding OpenUserAgreementCommand}"
-                            BackgroundColor="{StaticResource Accent}" Text="User Agreement" BorderWidth="2"
+                        <Button Command="{Binding OpenLicenseViewCommand}"
+                            BackgroundColor="{StaticResource Accent}" Text="Licenses" BorderWidth="2"
                             BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
 
                         <!-- About Menu -->
