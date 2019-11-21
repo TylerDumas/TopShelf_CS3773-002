@@ -1,10 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
-using System.Diagnostics;
 using TopShelfCustomer.Views;
-using TopShelfCustomer.Models;
 using Xamarin.Forms;
-using System.ComponentModel;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -12,10 +9,10 @@ namespace TopShelfCustomer.ViewModels {
     /// LicenseViewModel:
     ///
     /// ViewModel for the License View.
-    /// Allows the license to communicate with the model classes.
+    /// Allows the license view to communicate with the model classes.
     /// Also allows binding between XAML properties and code.
     /// </summary>
-    public class LicenseViewModel {
+    public class LicenseViewModel : BaseViewModel{
 
         #region Properties
 
@@ -25,14 +22,19 @@ namespace TopShelfCustomer.ViewModels {
 
         #endregion
 
+        #region Class Methods
+
         /// <summary>
         /// Constructor
         /// </summary>
         public LicenseViewModel() {
+            Title = "License View";
 
             /* Initialize Commands */
             IconLinkCommand = new Command( () => Device.OpenUri( new Uri( "https://www.icons8.com" ) ) );
             OpenSettingsViewCommand = new Command( () => Application.Current.MainPage = new SettingsPage() );
         }
+
+        #endregion
     }
 }

@@ -47,12 +47,12 @@
                         </StackLayout>
 
                         <!-- Profile Settings -->
-                        <Button Command="{Binding OpenProfileCommand}"
+                        <Button Command="{Binding OpenProfileViewCommand}"
                             BackgroundColor="{StaticResource Accent}" Text="Profile" BorderWidth="2"
                             BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
 
                         <!-- Notification Settings -->
-                        <Button Command="{Binding OpenNotificationsCommand}"
+                        <Button Command="{Binding OpenNotificationsViewCommand}"
                             BackgroundColor="{StaticResource Accent}" Text="Notifications" BorderWidth="2"
                             BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
 

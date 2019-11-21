@@ -45,8 +45,8 @@ namespace TopShelfCustomer.ViewModels {
 
         /* Commands */
         public ICommand OpenHomePageCommand { get; }        //Command to open home page (back button)
-        public ICommand OpenProfileCommand { get; }         //Command to open Profile settings
-        public ICommand OpenNotificationsCommand { get; }       //Command to open the Notification settings
+        public ICommand OpenProfileViewCommand { get; }         //Command to open Profile settings
+        public ICommand OpenNotificationsViewCommand { get; }       //Command to open the Notification settings
         public ICommand OpenAboutViewCommand { get; }     //Command to open the About page
         public ICommand OpenSupportViewCommand { get; }        //Command to open the Support page
         public ICommand OpenLicenseViewCommand { get; }       //Command to open the End-User agreement
@@ -67,22 +67,12 @@ namespace TopShelfCustomer.ViewModels {
             UserRealName = CurrentUser.Name;
 
             OpenHomePageCommand = new Command( () => Application.Current.MainPage = new HomePage() );
-            OpenProfileCommand = new Command( () => Application.Current.MainPage = new ProfileSettingsPage() );
-            OpenNotificationsCommand = new Command( OpenNotificationsSettings );
+            OpenProfileViewCommand = new Command( () => Application.Current.MainPage = new ProfileSettingsPage() );
+            OpenNotificationsViewCommand = new Command( () => Application.Current.MainPage = new NotificationsSettingsPage() );
             OpenAboutViewCommand = new Command( () => Application.Current.MainPage = new AboutPage() ) ;
             OpenSupportViewCommand = new Command( () => Device.OpenUri( new Uri( "https://www.youtube.com/watch?v=dQw4w9WgXcQ" ) ) );       //FIXME: Get rid of the Astley
             OpenLicenseViewCommand = new Command( () => Application.Current.MainPage = new LicenseView() );
             LogoutUserCommand = new Command( LogoutUser );
-        }
-
-        /// <summary>
-        /// OpenNotificationsSettings:
-        ///
-        /// Opens the Storage Settings within the Settings View
-        /// </summary>
-        void OpenNotificationsSettings() {
-            Debug.WriteLine( "Opening the Notifications settings!" );
-            //TODO: Implement Notifications Settings
         }
 
         /// <summary>

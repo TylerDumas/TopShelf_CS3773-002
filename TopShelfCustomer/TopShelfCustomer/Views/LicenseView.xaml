@@ -122,7 +122,6 @@
                         </StackLayout>
                     </ContentView>
 
-
                 </StackLayout>
             </ScrollView>
         </Grid>
