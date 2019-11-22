@@ -45,8 +45,8 @@ namespace TopShelfCustomer.ViewModels {
             }
         }
 
-        public ICommand OpenLoginCommand { get; set; }       //Command to go back to the Log in screen
-        public ICommand ConfirmNewAccountCommand { get; set; }      //Command to confirm new account
+        public ICommand NavigateBackCommand { get; }       //Command to go back to the Log in screen
+        public ICommand ConfirmNewAccountCommand { get; }      //Command to confirm new account
 
         #endregion
 
@@ -60,7 +60,7 @@ namespace TopShelfCustomer.ViewModels {
 
             auth = DependencyService.Resolve<IFirebaseAuthenticator>();     //Fetch platform-specific Firebase Authentication implementation
 
-            OpenLoginCommand = new Command( () => App.SetCurrentPage<LoginPage>() );
+            NavigateBackCommand = new Command( () => App.SetNewPage<LoginPage>() );
             ConfirmNewAccountCommand = new Command( ConfirmNewAccount );
         }
 
@@ -74,7 +74,7 @@ namespace TopShelfCustomer.ViewModels {
                 var success = await auth.RegisterWithEmailPassword( EmailInput, PasswordInput );
                 if( success != "" ) {
                     Debug.WriteLine( "Successfully created your account" );
-                    Application.Current.MainPage = new HomePage();
+                    App.SetNewPage<HomePage>();
                 } else {
                     Debug.WriteLine( success );
                     CreationErrorMessage = "Failed to register account with firebase";

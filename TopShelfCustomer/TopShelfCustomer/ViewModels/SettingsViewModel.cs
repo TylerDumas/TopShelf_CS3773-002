@@ -6,6 +6,7 @@ using TopShelfCustomer.Models;
 using Xamarin.Forms;
 using System.ComponentModel;
 using Xamarin.Essentials;
+using TopShelfCustomer.Services;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -18,6 +19,8 @@ namespace TopShelfCustomer.ViewModels {
     public class SettingsViewModel : BaseViewModel, INotifyPropertyChanged {
 
         #region Properties
+
+        readonly IFirebaseAuthenticator auth;        //Firebase Authenticator to be resolved for each platform
 
         public User CurrentUser { get; set; }           //The currently logged in User
 
@@ -73,13 +76,15 @@ namespace TopShelfCustomer.ViewModels {
         /// Constructor
         /// </summary>
         public SettingsViewModel() {
+            Title = "Settings";
             CurrentUser = new User {
                 Name = "Jackson Dumas"
             };
-            Title = "Settings";
             UserRealName = CurrentUser.Name;
 
-            NavigateBackCommand = new Command( () => App.GoToLastPage() );
+            auth = DependencyService.Resolve<IFirebaseAuthenticator>();     //Fetch platform-specific Firebase Authentication implementation
+
+            NavigateBackCommand = new Command( () => App.SetCurrentPage<HomePage>() );
             OpenProfileViewCommand = new Command( () => App.SetCurrentPage<ProfileSettingsPage>() );
             OpenNotificationsViewCommand = new Command( () => App.SetCurrentPage<NotificationsSettingsPage>() );
             OpenAboutViewCommand = new Command( () => App.SetCurrentPage<AboutPage>() ) ;
@@ -95,7 +100,8 @@ namespace TopShelfCustomer.ViewModels {
         /// </summary>
         void LogoutUser() {
             CurrentUser = null;
-            App.SetNewPage<LoginPage>();
+            auth.LogoutCurrentUser();
+            App.ClearPages();
         }
 
         /// <summary>

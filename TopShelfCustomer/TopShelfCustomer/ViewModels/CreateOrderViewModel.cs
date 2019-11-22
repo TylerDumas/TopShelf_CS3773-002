@@ -1,4 +1,5 @@
 ﻿using System.Windows.Input;
+using TopShelfCustomer.Views;
 using Xamarin.Forms;
 
 namespace TopShelfCustomer.ViewModels {
@@ -25,7 +26,7 @@ namespace TopShelfCustomer.ViewModels {
         public CreateOrderViewModel() {
             Title = "Create New Order";
 
-            NavigateBackCommand = new Command( () => App.GoToLastPage() );
+            NavigateBackCommand = new Command( () => App.SetCurrentPage<HomePage>() );
         }
 
         #endregion

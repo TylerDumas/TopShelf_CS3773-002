@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using TopShelfCustomer;
 using TopShelfCustomer.Droid;
 using Firebase.Auth;
 using Xamarin.Forms;
@@ -71,6 +70,25 @@ namespace TopShelfCustomer.Droid {
                 Debug.WriteLine( e.Message );
                 return "";
             }
+        }
+
+        /// <summary>
+        /// LogoutCurrentUser:
+        ///
+        /// Asynchronout method to Logout any current Users.
+        /// </summary>
+        /// <returns> Task object describing the success of the SignOut() call </returns>
+        public async Task<string> LogoutCurrentUser() {
+            if ( FirebaseAuth.Instance.CurrentUser != null ) {
+                try {
+                    FirebaseAuth.Instance.SignOut();
+                    return "Success";
+                } catch ( Exception ex ) {
+                    Debug.WriteLine( ex.Message );
+                    return "";
+                }
+            }
+            return "";
         }
     }
 }

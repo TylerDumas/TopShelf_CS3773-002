@@ -3,6 +3,7 @@ using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 using TopShelfCustomer.Views;
 using TopShelfCustomer.Services;
+using System.Diagnostics;
 
 namespace TopShelfCustomer {
 
@@ -63,13 +64,14 @@ namespace TopShelfCustomer {
         public static void SetNewPage<T>() where T : Page {
             foreach( Page page in PageContainer.Views ) {
                 if( page is T ) {
-                    PageContainer.Views.Remove( page );
-                    Navigation.RemovePage( page );
+                    if( PageContainer.Views.Contains( page ) ) {
+                        PageContainer.Views.Remove( page );
+                    }
                     var freshPage = ( T )Activator.CreateInstance( typeof( T ) );
                     PageContainer.Views.Add( freshPage );
                     Navigation.PushAsync( freshPage );
                     Current.MainPage = freshPage;
-                    return;
+                    break;
                 }
             }
 
@@ -101,12 +103,14 @@ namespace TopShelfCustomer {
         }
 
         /// <summary>
-        /// GoToLastPage:
+        /// ClearPages:
         ///
-        /// Navigates back one page. Acts as a "Back" command
+        /// Clears all Pages from any Application state/dependency containers
         /// </summary>
-        public static void GoToLastPage() {
-            Current.MainPage = Navigation.NavigationStack[Navigation.NavigationStack.Count - 1];
+        public static void ClearPages() {
+            PageContainer.Views.Clear();    //Clear Page dependency container
+            Navigation.PopToRootAsync();    //Clear Navigation Stack
+            Current.MainPage = new LoginPage();     //Change view to blank LoginPage
         }
     }
 }

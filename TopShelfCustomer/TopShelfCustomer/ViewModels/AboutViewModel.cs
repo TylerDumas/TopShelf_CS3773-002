@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Windows.Input;
+using TopShelfCustomer.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -30,7 +31,7 @@ namespace TopShelfCustomer.ViewModels {
             Title = "About";
 
             /* Initialize Commands */
-            NavigateBackCommand = new Command( () => App.GoToLastPage() );
+            NavigateBackCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
             OpenXamarinCommand = new Command( () => Launcher.OpenAsync( new Uri( "https://xamarin.com/platform" ) ) );
         }
 

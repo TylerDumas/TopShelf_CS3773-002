@@ -1,5 +1,4 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace TopShelfCustomer.Services {
 
@@ -13,5 +12,6 @@ namespace TopShelfCustomer.Services {
         Task<string> LoginWithEmailPassword( string email, string password );
         Task<string> RegisterWithEmailPassword( string email, string password );
         Task<string> RequestPasswordReset( string email );
+        Task<string> LogoutCurrentUser();
     }
 }

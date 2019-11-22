@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Threading.Tasks;
-using TopShelfCustomer;
 using TopShelfCustomer.iOS;
 using TopShelfCustomer.Services;
 using Xamarin.Forms;
@@ -67,6 +66,26 @@ namespace TopShelfCustomer.iOS {
                 return "Success";
             }catch( Exception e ) {
                 Debug.WriteLine( e.Message );
+                return "";
+            }
+        }
+
+        /// <summary>
+        /// LogoutCurrentUser:
+        ///
+        /// Asynchronout method to Logout any current Users.
+        /// </summary>
+        /// <returns> Task object describing the success of the SignOut() call </returns>
+        public async Task<string> LogoutCurrentUser() {
+            if( Auth.DefaultInstance.CurrentUser != null ) {
+                try {
+                    Auth.DefaultInstance.SignOut( out Foundation.NSError result );
+                    return "Success";
+                }catch( Exception ex ) {
+                    Debug.WriteLine( ex.Message );
+                    return "";
+                }
+            } else {
                 return "";
             }
         }

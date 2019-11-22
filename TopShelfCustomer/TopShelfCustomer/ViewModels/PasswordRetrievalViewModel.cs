@@ -45,7 +45,7 @@ namespace TopShelfCustomer.ViewModels {
             auth = DependencyService.Resolve<IFirebaseAuthenticator>();     //Fetch platform-specific Firebase Authentication implementation
 
             /* Initialize Commands */
-            NavigateBackCommand = new Command( () => App.GoToLastPage() );
+            NavigateBackCommand = new Command( () => App.SetNewPage<LoginPage>() );
             RequestPasswordResetCommand = new Command( ForgotPasswordClicked );
         }
 

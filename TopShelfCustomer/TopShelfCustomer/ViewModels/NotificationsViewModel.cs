@@ -76,7 +76,7 @@ namespace TopShelfCustomer.ViewModels {
             PhoneNumber = temp.PhoneNumber;
 
             /* Command Initialization */
-            NavigateBackCommand = new Command( () => App.GoToLastPage() );
+            NavigateBackCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
         }
 
         #endregion
