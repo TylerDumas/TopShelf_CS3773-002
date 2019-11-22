@@ -1,8 +1,6 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using System.Diagnostics;
 using TopShelfCustomer.Views;
-using TopShelfCustomer.Models;
 using Xamarin.Forms;
 using System.ComponentModel;
 using TopShelfCustomer.Services;
@@ -21,11 +19,22 @@ namespace TopShelfCustomer.ViewModels {
 
         IFirebaseAuthenticator auth;        //Firebase Authenticator to be resolved for each platform
 
-        public string UsernameInput { get; set; }       //Entry Text Properties
+        public string UserRealNameInput { get; set; }       //Entry Text Properties
         public string EmailInput { get; set; }
+
+        private string creationErrorMessage = "Failed to Create Account";       //Dynamic Error message text
+        public string CreationErrorMessage {
+            get {
+                return creationErrorMessage;
+            }
+            set {
+                creationErrorMessage = value;
+                OnPropertyChanged( "CreationErrorMessage" );
+            }
+        }
         public string PasswordInput { get; set; }
 
-        private bool isErrorOnCreation = false;       //Bool to trigger "invalid input" error message
+        private bool isErrorOnCreation;       //Bool to trigger "invalid input" error message
         public bool IsErrorOnCreation {
             get {
                 return isErrorOnCreation;
@@ -47,6 +56,7 @@ namespace TopShelfCustomer.ViewModels {
         /// Constructor
         /// </summary>
         public CreateNewAccountViewModel() {
+            Title = "Create New Account";
 
             auth = DependencyService.Resolve<IFirebaseAuthenticator>();     //Fetch platform-specific Firebase Authentication implementation
 
@@ -59,13 +69,19 @@ namespace TopShelfCustomer.ViewModels {
         ///
         /// Uses platform-specific implementation of Firebase to create/register a new account
         /// </summary>
-        void ConfirmNewAccount() {
+        async void ConfirmNewAccount() {
             if( EmailInput != "" && PasswordInput != "" ) {     //Check if Email and Password are valid
-                bool success = auth.RegisterWithEmailPassword( EmailInput, PasswordInput );
-                App.SetCurrentPage<HomePage>();
-                //FIXME: Add Registration Verification/Exception handling
+                var success = await auth.RegisterWithEmailPassword( EmailInput, PasswordInput );
+                if( success != "" ) {
+                    Debug.WriteLine( "Successfully created your account" );
+                    Application.Current.MainPage = new HomePage();
+                } else {
+                    Debug.WriteLine( success );
+                    CreationErrorMessage = "Failed to register account with firebase";
+                    IsErrorOnCreation = true;
+                }
             } else {
-                Debug.WriteLine( "Failed to register account" );
+                CreationErrorMessage = "Invalid E-mail or Password";
                 IsErrorOnCreation = true;
             }
             

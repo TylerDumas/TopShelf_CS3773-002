@@ -57,7 +57,7 @@ namespace TopShelfCustomer.ViewModels {
         }
 
         /* Commands */
-        public ICommand OpenHomePageCommand { get; }        //Command to open home page (back button)
+        public ICommand NavigateBackCommand { get; }        //Command for the back button
         public ICommand OpenProfileViewCommand { get; }         //Command to open Profile settings
         public ICommand OpenNotificationsViewCommand { get; }       //Command to open the Notification settings
         public ICommand OpenAboutViewCommand { get; }     //Command to open the About page
@@ -79,7 +79,7 @@ namespace TopShelfCustomer.ViewModels {
             Title = "Settings";
             UserRealName = CurrentUser.Name;
 
-            OpenHomePageCommand = new Command( () => App.GoToLastPage() );
+            NavigateBackCommand = new Command( () => App.GoToLastPage() );
             OpenProfileViewCommand = new Command( () => App.SetCurrentPage<ProfileSettingsPage>() );
             OpenNotificationsViewCommand = new Command( () => App.SetCurrentPage<NotificationsSettingsPage>() );
             OpenAboutViewCommand = new Command( () => App.SetCurrentPage<AboutPage>() ) ;
@@ -95,7 +95,7 @@ namespace TopShelfCustomer.ViewModels {
         /// </summary>
         void LogoutUser() {
             CurrentUser = null;
-            App.SetCurrentPage<LoginPage>();
+            App.SetNewPage<LoginPage>();
         }
 
         /// <summary>

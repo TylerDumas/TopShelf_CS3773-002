@@ -55,12 +55,38 @@ namespace TopShelfCustomer {
         }
 
         /// <summary>
+        /// SetNewPage:
+        ///
+        /// Creates a new Page of type T, removing the old one from the Application state.
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        public static void SetNewPage<T>() where T : Page {
+            foreach( Page page in PageContainer.Views ) {
+                if( page is T ) {
+                    PageContainer.Views.Remove( page );
+                    Navigation.RemovePage( page );
+                    var freshPage = ( T )Activator.CreateInstance( typeof( T ) );
+                    PageContainer.Views.Add( freshPage );
+                    Navigation.PushAsync( freshPage );
+                    Current.MainPage = freshPage;
+                    return;
+                }
+            }
+
+            /* Page didn't exist */
+            var newPage = ( T )Activator.CreateInstance( typeof( T ) );
+            PageContainer.Views.Add( newPage );
+            Navigation.PushAsync( newPage );
+            Current.MainPage = newPage;
+        }
+
+        /// <summary>
         /// SetCurrentPage:
         ///
         /// Pushes the page argument onto the Application Navigation Stack
         /// </summary>
         public static void SetCurrentPage<T>() where T : Page {
-            foreach( Page page in Services.PageContainer.Views ) {      //Check if Page of type T already exists
+            foreach( Page page in PageContainer.Views ) {      //Check if Page of type T already exists
                 if( page is T ) {
                     Current.MainPage = page;
                     return;
@@ -68,8 +94,8 @@ namespace TopShelfCustomer {
             }
 
             /* Page didn't exist */
-            var newPage = ( T )Activator.CreateInstance( typeof( T ) ); 
-            Services.PageContainer.Views.Add( newPage );       //Add passed Page to the PageContainer static class
+            var newPage = ( T )Activator.CreateInstance( typeof( T ) );
+            PageContainer.Views.Add( newPage );       //Add passed Page to the PageContainer static class
             Navigation.PushAsync( newPage );        //Push page onto Navigation stack
             Current.MainPage = newPage;     //Set the current page
         }

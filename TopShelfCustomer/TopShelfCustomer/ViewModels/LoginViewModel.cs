@@ -12,16 +12,16 @@ namespace TopShelfCustomer.ViewModels {
     /// ViewModel for the Login page
     /// Allows the user interface to connect to the model classes directly
     /// </summary>
-    public class LoginViewModel : BaseViewModel, INotifyPropertyChanged {
+    public sealed class LoginViewModel : BaseViewModel, INotifyPropertyChanged {
 
         #region Properties
 
-        IFirebaseAuthenticator auth;        //Firebase Authenticator to be resolved for each platform
+        readonly IFirebaseAuthenticator auth;        //Firebase Authenticator to be resolved for each platform
 
         public string EmailInput { get; set; }      //E-mail and Password String values
         public string PasswordInput { get; set; }
 
-        private bool isErrorVisible = false;        //Bool to define whether the "incorrect username" message should be shown
+        private bool isErrorVisible;        //Bool to define whether the "incorrect username" message should be shown
         public bool IsErrorVisible {
             get {
                 return isErrorVisible;
@@ -33,6 +33,7 @@ namespace TopShelfCustomer.ViewModels {
         }
         public ICommand LoginCommand { get; }       //The Command bound to the Login button
         public ICommand CreateNewAccountCommand { get; }        //Command for create new account link
+        public ICommand ForgotPasswordCommand { get; }      //Command for the "forgot password" link
                 
         #endregion
 
@@ -46,7 +47,8 @@ namespace TopShelfCustomer.ViewModels {
 
             auth = DependencyService.Resolve<IFirebaseAuthenticator>();     //Fetch platform-specific Firebase Authentication implementation
             LoginCommand = new Command( LoginClicked );     //Bind Command to Login Function
-            CreateNewAccountCommand = new Command( () => App.SetCurrentPage<CreateNewAccountView>() );
+            CreateNewAccountCommand = new Command( () => App.SetNewPage<CreateNewAccountView>() ) ;
+            ForgotPasswordCommand = new Command( () => App.SetNewPage<PasswordRetrievalView>() );
         }
 
         /// <summary>

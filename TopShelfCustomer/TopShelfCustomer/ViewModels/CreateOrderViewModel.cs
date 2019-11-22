@@ -1,10 +1,5 @@
-﻿using System;
-using System.Windows.Input;
-using System.Diagnostics;
-using TopShelfCustomer.Views;
-using TopShelfCustomer.Models;
+﻿using System.Windows.Input;
 using Xamarin.Forms;
-using System.ComponentModel;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -16,21 +11,23 @@ namespace TopShelfCustomer.ViewModels {
     /// </summary>
     public class CreateOrderViewModel : BaseViewModel {
 
-        public ICommand OpenHomePageCommand { get; }        //Command to open home page (back button)
+        #region Properties
 
-        public CreateOrderViewModel() {
-            Title = "Create Order";
+        public ICommand NavigateBackCommand { get; }        //Command to open home page (back button)
 
-            OpenHomePageCommand = new Command( LaunchHomePage );
-        }
+        #endregion
+
+        #region Class Methods
 
         /// <summary>
-        /// LaunchHomePage:
-        ///
-        /// Changes the Applications current page to the Home page
+        /// Constructor
         /// </summary>
-        void LaunchHomePage() {
-            Application.Current.MainPage = new HomePage();
+        public CreateOrderViewModel() {
+            Title = "Create New Order";
+
+            NavigateBackCommand = new Command( () => App.GoToLastPage() );
         }
+
+        #endregion
     }
 }

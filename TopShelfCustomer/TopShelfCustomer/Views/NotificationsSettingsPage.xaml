@@ -16,7 +16,7 @@
             <!-- Profile Info Header -->
             <ContentView BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 30, 0, 30" >
                 <StackLayout>
-                    <ImageButton Source="back_orange.png" Command="{Binding OpenSettingsViewCommand}" Margin="10,10,0,0" HorizontalOptions="Start" HeightRequest="40"/>
+                    <ImageButton Source="back_orange.png" Command="{Binding NavigateBackCommand}" Margin="10,10,0,0" HorizontalOptions="Start" HeightRequest="40"/>
                     <!-- Name and Portrait -->
                     <StackLayout Orientation="Vertical" Margin="20, 0, 20, 0">
                         <!-- Profile Picture -->
@@ -24,7 +24,9 @@
                             <Image Source="portrait.png" />
                         </Frame>
                         <!-- Welcome Message -->
-                        <Label Text="{Binding UserRealName}" HorizontalOptions="CenterAndExpand" VerticalOptions="Center" FontSize="30" TextColor="White"/>
+                        <Label Text="{Binding UserRealName}" HorizontalOptions="CenterAndExpand"
+                               VerticalOptions="Center" FontSize="30"
+                               FontFamily="{StaticResource MediumFont}" TextColor="White"/>
                     </StackLayout>
                 </StackLayout>
             </ContentView>
@@ -37,23 +39,26 @@
                         <!-- Header Label -->
                         <Label Text="Notification Settings" FontSize="26" TextColor="White"
                                HorizontalOptions="Center" VerticalOptions="Fill"
-                               HeightRequest="40" Margin="0, 10, 0, 30"/>
+                               HeightRequest="40" Margin="0, 20, 0, 30"  FontFamily="{StaticResource NormalFont}"/>
 
                         <!-- Coupon Settings -->
                         <StackLayout Orientation="Vertical" Margin="0,0,0,30">
                             <!-- Title Label -->
-                            <Label Text="Coupons" FontSize="20" TextColor="White" HorizontalOptions="Center" FontAttributes="Bold"/>
+                            <Label Text="Coupons" FontSize="20" TextColor="White"
+                                   FontFamily="{StaticResource MediumFont}" HorizontalOptions="Center"/>
                             <!-- Title Description Label -->
-                            <Label Text="Should we let you know about new coupons?" FontSize="12"
+                            <Label Text="Should we let you know about new coupons?" FontSize="14" FontFamily="{StaticResource NormalFont}"
                                    TextColor="White" Opacity="0.7" HorizontalTextAlignment="Center" Margin="0,0,0,20"/>
                             <!-- Push Notifications Toggle -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="80" Margin="0,0,0,10">
-                                <Label Text="Push Notifications" HorizontalOptions="CenterAndExpand" FontSize="17" TextColor="White" VerticalOptions="Center"/>
+                                <Label Text="Push Notifications" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource NormalFont}"
+                                       FontSize="17" TextColor="White" VerticalOptions="Center"/>
                                 <Switch IsToggled="True" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                             <!-- Email Notifications Toggle -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="80">
-                                <Label Text="Email Notifications" HorizontalOptions="CenterAndExpand" FontSize="17" TextColor="White" VerticalOptions="Center"/>
+                                <Label Text="Email Notifications" HorizontalOptions="CenterAndExpand"
+                                       FontSize="17" TextColor="White" VerticalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
                                 <Switch IsToggled="True" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </StackLayout>
@@ -61,18 +66,22 @@
                         <!-- Order Settings -->
                         <StackLayout Orientation="Vertical" Margin="0,0,0,30">
                             <!-- Title Label -->
-                            <Label Text="Order" FontSize="20" TextColor="White" HorizontalOptions="Center" FontAttributes="Bold"/>
+                            <Label Text="Order" FontSize="20" TextColor="White"
+                                   HorizontalOptions="Center" FontFamily="{StaticResource MediumFont}"/>
                             <!-- Title Description Label -->
-                            <Label Text="Should we let you know about the status of your orders?" FontSize="12"
-                                   TextColor="White" Opacity="0.7" HorizontalTextAlignment="Center" Margin="0,0,0,20"/>
+                            <Label Text="Should we let you know about the status of your orders?" FontSize="14"
+                                   FontFamily="{StaticResource NormalFont}" TextColor="White" Opacity="0.7"
+                                   HorizontalTextAlignment="Center" Margin="0,0,0,20"/>
                             <!-- Push Notifications Toggle -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="80" Margin="0,0,0,10">
-                                <Label Text="Push Notifications" HorizontalOptions="CenterAndExpand" FontSize="17" TextColor="White" VerticalOptions="Center"/>
+                                <Label Text="Push Notifications" HorizontalOptions="CenterAndExpand"
+                                       FontFamily="{StaticResource NormalFont}" FontSize="17" TextColor="White" VerticalOptions="Center"/>
                                 <Switch IsToggled="True" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                             <!-- Email Notifications Toggle -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="80">
-                                <Label Text="Email Notifications" HorizontalOptions="CenterAndExpand" FontSize="17" TextColor="White" VerticalOptions="Center"/>
+                                <Label Text="Email Notifications" HorizontalOptions="CenterAndExpand"
+                                       FontFamily="{StaticResource NormalFont}" FontSize="17" TextColor="White" VerticalOptions="Center"/>
                                 <Switch IsToggled="True" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </StackLayout>
@@ -80,18 +89,22 @@
                         <!-- Delivery Settings -->
                         <StackLayout Orientation="Vertical" Margin="0,0,0,30">
                             <!-- Title Label -->
-                            <Label Text="Delivery" FontSize="20" TextColor="White" HorizontalOptions="Center" FontAttributes="Bold"/>
+                            <Label Text="Delivery" FontSize="20" TextColor="White"
+                                   FontFamily="{StaticResource MediumFont}" HorizontalOptions="Center" FontAttributes="Bold"/>
                             <!-- Title Description Label -->
-                            <Label Text="Should we tell you the status of your delivery driver?" FontSize="12"
-                                   TextColor="White" Opacity="0.7" HorizontalTextAlignment="Center" Margin="0,0,0,20"/>
+                            <Label Text="Should we tell you the status of your delivery driver?" FontSize="14"
+                                   FontFamily="{StaticResource NormalFont}" TextColor="White"
+                                   Opacity="0.7" HorizontalTextAlignment="Center" Margin="0,0,0,20"/>
                             <!-- Push Notifications Toggle -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="80" Margin="0,0,0,10">
-                                <Label Text="Push Notifications" HorizontalOptions="CenterAndExpand" FontSize="17" TextColor="White" VerticalOptions="Center"/>
+                                <Label Text="Push Notifications" FontFamily="{StaticResource NormalFont}"
+                                       HorizontalOptions="CenterAndExpand" FontSize="17" TextColor="White" VerticalOptions="Center"/>
                                 <Switch IsToggled="True" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                             <!-- Email Notifications Toggle -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="80">
-                                <Label Text="Email Notifications" HorizontalOptions="CenterAndExpand" FontSize="17" TextColor="White" VerticalOptions="Center"/>
+                                <Label Text="Email Notifications" FontFamily="{StaticResource NormalFont}"
+                                       HorizontalOptions="CenterAndExpand" FontSize="17" TextColor="White" VerticalOptions="Center"/>
                                 <Switch IsToggled="True" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </StackLayout>

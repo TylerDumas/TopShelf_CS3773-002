@@ -27,10 +27,11 @@ namespace TopShelfCustomer.ViewModels {
                 OnPropertyChanged( "UserStoreName" );
             }
         }
-        public Store UserStore { get; set; }
+        public Store UserStore { get; set; }        //The current User's favorite Store
 
-        public ICommand OpenSettingsView { get; private set; }
-        public ICommand OpenCreateOrderView { get; }
+        /* Commands */
+        public ICommand OpenSettingsCommand { get; }       //Command to open Settings Menu
+        public ICommand OpenCreateOrderCommand { get; }        //Command to open Order Creation Menu
 
         #endregion
 
@@ -42,16 +43,19 @@ namespace TopShelfCustomer.ViewModels {
         public HomeViewModel() {
             Title = "Home";
 
-            /* Temporary User to test name display */
-            User temp = new User();
-            temp.Name = "Jackson Dumas";
-            temp.UserStore = new Store( "HEB De-Zavala", "DeZavala Road, San Antonio, TX, 78249" );
+            /* FIXME: Temporary User to test name display */
+            User temp = new User() {
+                Name = "Jackson Dumas",
+                UserStore = new Store( "HEB De-Zavala", "DeZavala Road, San Antonio, TX, 78249" ),
+                Email = "tylerdumas3@hotmail.com",
+            };
             UserRealName = temp.Name;
             UserStore = temp.UserStore;
             UserStoreName = UserStore.StoreName;
 
-            OpenSettingsView = new Command( () => App.SetCurrentPage<SettingsPage>() );
-            OpenCreateOrderView = new Command( () => App.SetCurrentPage<CreateOrderPage>() );
+            /* Initialize Commands */
+            OpenSettingsCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
+            OpenCreateOrderCommand = new Command( () => App.SetCurrentPage<CreateOrderPage>() );
         }
 
         #endregion

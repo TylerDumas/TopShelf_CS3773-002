@@ -1,10 +1,7 @@
-﻿using System;
-using System.Windows.Input;
-using System.Diagnostics;
+﻿using System.Windows.Input;
 using TopShelfCustomer.Views;
 using TopShelfCustomer.Models;
 using Xamarin.Forms;
-using System.ComponentModel;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -13,17 +10,6 @@ namespace TopShelfCustomer.ViewModels {
         #region Properties
 
         public User CurrentUser { get; set; }           //The currently logged in User
-
-        private string userName;        //The user's "username"
-        public string UserName {
-            get {
-                return userName;
-            }
-            set {
-                userName = value;
-                OnPropertyChanged( "UserName" );
-            }
-        }
 
         private string userRealName;            //String to define the User's real name. (Bound to Text fields)
         public string UserRealName {
@@ -71,16 +57,14 @@ namespace TopShelfCustomer.ViewModels {
 
             User temp = new User {
                 Name = "Jackson Dumas",
-                Username = "tylerdumas3",
                 Email = "tylerdumas3@hotmail.com",
                 PhoneNumber = "210-699-6969"
             };
             UserRealName = temp.Name;
-            UserName = temp.Username;
             UserEmail = temp.Email;
             PhoneNumber = temp.PhoneNumber;
 
-            OpenSettingsPageCommand = new Command( () => Application.Current.MainPage = new SettingsPage() );
+            OpenSettingsPageCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
 
         }
     }

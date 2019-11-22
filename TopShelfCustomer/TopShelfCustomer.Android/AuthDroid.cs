@@ -5,6 +5,7 @@ using TopShelfCustomer.Droid;
 using Firebase.Auth;
 using Xamarin.Forms;
 using TopShelfCustomer.Services;
+using System.Diagnostics;
 
 [assembly: Dependency( typeof( AuthDroid ) )]
 namespace TopShelfCustomer.Droid {
@@ -26,7 +27,10 @@ namespace TopShelfCustomer.Droid {
                 var token = await user.User.GetIdTokenAsync( false );
                 return token.Token;
             } catch ( FirebaseAuthInvalidUserException e ) {
-                e.PrintStackTrace();
+                Debug.WriteLine( e.Message );
+                return "";
+            } catch( Exception ex ) {
+                Debug.WriteLine( ex.Message );
                 return "";
             }
         }
@@ -39,12 +43,33 @@ namespace TopShelfCustomer.Droid {
         /// <param name="email"> Email Address </param>
         /// <param name="password"> Password </param>
         /// <returns> User ID token </returns>
-        public bool RegisterWithEmailPassword( string email, string password ) {
+        public async Task<string> RegisterWithEmailPassword( string email, string password ) {
             try {
-                var signUpTask = FirebaseAuth.Instance.CreateUserWithEmailAndPassword( email, password );
-                return signUpTask.Result != null;
+                var signUpTask = await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync( email, password );
+                if ( signUpTask != null ) {
+                    return signUpTask.ToString();
+                }
+                return "";
             } catch ( Exception e ) {
-                return false;
+                Debug.WriteLine( e.Message );
+                return "";
+            }
+        }
+
+        /// <summary>
+        /// RequestPasswordReset:
+        ///
+        /// Asynchronous method to send "Password Reset" email to the user.
+        /// </summary>
+        /// <param name="email"> The E-mail to send the request to </param>
+        /// <returns> Task of type string, describing the exit status of the request </returns>
+        public async Task<string> RequestPasswordReset( string email ) {
+            try {
+                await FirebaseAuth.Instance.SendPasswordResetEmailAsync( email );
+                return "success";
+            } catch ( Exception e ) {
+                Debug.WriteLine( e.Message );
+                return "";
             }
         }
     }

@@ -125,6 +125,14 @@
     <BundleResource Include="Resources\AppIcons\app_logo_87.png" />
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_87.png" />
     <BundleResource Include="GoogleService-Info.plist" />
+    <BundleResource Include="Resources\FiraSans-Bold.ttf" />
+    <BundleResource Include="Resources\FiraSans-BoldItalic.ttf" />
+    <BundleResource Include="Resources\FiraSans-Medium.ttf" />
+    <BundleResource Include="Resources\FiraSans-MediumItalic.ttf" />
+    <BundleResource Include="Resources\FiraSans-Regular.ttf" />
+    <BundleResource Include="Resources\FiraSans-SemiBold.ttf" />
+    <BundleResource Include="Resources\FiraSans-SemiBoldItalic.ttf" />
+    <BundleResource Include="Resources\OFL.txt" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

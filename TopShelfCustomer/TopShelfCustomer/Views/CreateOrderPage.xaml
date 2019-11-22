@@ -12,8 +12,9 @@
             </Grid.RowDefinitions>
             <ContentView BackgroundColor="{StaticResource Accent}" Grid.Row="0">
                 <StackLayout Orientation="Vertical" >
-                    <ImageButton Source="back_orange.png" Command="{Binding OpenHomePageCommand}" HorizontalOptions="Start" Margin="10,40,0,10" HeightRequest="40"/>
-                    <Label Text="Create New Order" HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Margin="0, 20, 0, 40" FontSize="30" TextColor="White" />
+                    <ImageButton Source="back_orange.png" Command="{Binding NavigateBackCommand}" HorizontalOptions="Start" Margin="10,40,0,10" HeightRequest="40"/>
+                    <Label Text="Create New Order" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource MediumFont}"
+                           VerticalOptions="FillAndExpand" Margin="0, 20, 0, 40" FontSize="30" TextColor="White" />
                 </StackLayout>
             </ContentView>
         </Grid>

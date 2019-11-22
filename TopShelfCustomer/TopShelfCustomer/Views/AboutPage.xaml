@@ -8,52 +8,54 @@
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
         </Grid.RowDefinitions>
-        <!-- Header Icon and Title -->
+        <!-- Header (Label, App Icon, etc.) -->
         <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                     BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 0, 0, 50" >
+                    BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 0, 0, 40" >
             <StackLayout Orientation="Vertical">
-                <ImageButton Source="back_orange.png" Command="{Binding OpenSettingsCommand}" HorizontalOptions="Start" Margin="10,40,0,0" HeightRequest="40"/>
-                <Image Source="TopShelfAppLogo.png" HeightRequest="100"/>
-                <Label Text="TopShelf" FontSize="30" FontFamily="Fira Mono" Margin="0, 20, 0, 0" HorizontalOptions="Center" TextColor="White" />
+                <ImageButton Source="back_orange.png" Command="{Binding NavigateBackCommand}" HorizontalOptions="Start" Margin="10,40,0,0" HeightRequest="40"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
+                    <Image Source="TopShelfAppLogo.png" HeightRequest="60"/>
+                    <Label Text="TopShelf" FontSize="30" FontFamily="{StaticResource MediumFont}" VerticalTextAlignment="Center" TextColor="White" />
+                </StackLayout>
             </StackLayout>
         </ContentView>
         <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="16,30,16,10" Spacing="10">
-                <Label FontSize="22">
+            <StackLayout Orientation="Vertical" Padding="16,30,16,10" Spacing="10" >
+                <Label FontSize="22" FontFamily="{StaticResource NormalFont}">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="TopShelf" FontAttributes="Bold" FontSize="22" TextColor="{StaticResource Accent}"/>
+                                <Span Text="TopShelf" FontFamily="{StaticResource MediumFont}" FontSize="22" TextColor="{StaticResource Accent}"/>
                                 <Span Text=" " />
                                 <Span Text="0.1a" ForegroundColor="{StaticResource Accent}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label>
+                <Label FontFamily="{StaticResource NormalFont}">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
                                 <Span Text="This app is written in C# and native APIs using the" />
                                 <Span Text=" " />
-                                <Span Text="Xamarin Platform" FontAttributes="Bold" TextColor="{StaticResource Accent}" />
+                                <Span Text="Xamarin Platform" FontFamily="{StaticResource MediumFont}" TextColor="{StaticResource Accent}" />
                                 <Span Text="." />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label>
+                <Label FontFamily="{StaticResource NormalFont}">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
                                 <Span Text="The development of this app was a part of the "/>
-                                <Span Text="CS 3773-002 Software Engineering " FontAttributes="Bold" TextColor="{StaticResource Accent}" />
+                                <Span Text="CS 3773-002 Software Engineering " FontFamily="{StaticResource MediumFont}" TextColor="{StaticResource Accent}" />
                                 <Span Text="course." />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label>
+                <Label FontFamily="{StaticResource NormalFont}">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
@@ -62,27 +64,27 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label Text=" - Jackson Dumas" FontAttributes="Bold" TextColor="{StaticResource Accent}" />
-                <Label Text=" - Zachary Ellis" FontAttributes="Bold" TextColor="{StaticResource Accent}" />
-                <Label Text=" - Jacob Damon" FontAttributes="Bold" TextColor="{StaticResource Accent}" />
-                <Label Text=" - Nathaniel Barrett" FontAttributes="Bold" TextColor="{StaticResource Accent}" />
-                <Label Text=" - Alex Kokkosoulis" FontAttributes="Bold" TextColor="{StaticResource Accent}" />
-                <Label>
+                <Label Text=" - Jackson Dumas" FontAttributes="Bold" TextColor="{StaticResource Accent}" FontFamily="{StaticResource NormalFont}"/>
+                <Label Text=" - Zachary Ellis" FontAttributes="Bold" TextColor="{StaticResource Accent}" FontFamily="{StaticResource NormalFont}"/>
+                <Label Text=" - Jacob Damon" FontAttributes="Bold" TextColor="{StaticResource Accent}" FontFamily="{StaticResource NormalFont}"/>
+                <Label Text=" - Nathaniel Barrett" FontAttributes="Bold" TextColor="{StaticResource Accent}" FontFamily="{StaticResource NormalFont}"/>
+                <Label Text=" - Alex Kokkosoulis" FontAttributes="Bold" TextColor="{StaticResource Accent}" FontFamily="{StaticResource NormalFont}"/>
+                <Label FontFamily="{StaticResource NormalFont}">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
                                 <Span Text="It shares code with its" />
                                 <Span Text=" " />
-                                <Span Text="iOS, Android, and Windows" FontAttributes="Bold" />
+                                <Span Text="iOS and Android" FontFamily="{StaticResource MediumFont}" />
                                 <Span Text=" " />
                                 <Span Text="versions." />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Button Margin="0,30,0,0" Text="Learn more about Xamarin" WidthRequest="260"
-                        HorizontalOptions="Center" Command="{Binding OpenWebCommand}"
-                        BackgroundColor="{StaticResource Primary}" TextColor="White" FontAttributes="Bold"/>
+                <Button Margin="0,30,0,0" Text="Learn more about Xamarin" WidthRequest="260" FontFamily="{StaticResource MediumFont}"
+                        HorizontalOptions="Center" Command="{Binding OpenXamarinCommand}" BorderColor="Black" BorderWidth="2"
+                        BackgroundColor="{StaticResource Primary}" TextColor="White" />
             </StackLayout>
         </ScrollView>
     </Grid>

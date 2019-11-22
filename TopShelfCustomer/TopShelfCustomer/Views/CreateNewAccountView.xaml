@@ -15,11 +15,13 @@
 
             <!-- Header (Label, App Icon, etc.) -->
             <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                     BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 0, 0, 30" >
+                     BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 0, 0, 40" >
                 <StackLayout Orientation="Vertical">
                     <ImageButton Source="back_orange.png" Command="{Binding OpenLoginCommand}" HorizontalOptions="Start" Margin="10,40,0,0" HeightRequest="40"/>
-                    <Image Source="TopShelfAppLogo.png" HeightRequest="80"/>
-                    <Label Text="TopShelf" FontSize="30" FontFamily="Fira Mono" Margin="0, 0, 0, 0" HorizontalOptions="Center" TextColor="White" />
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
+                        <Image Source="TopShelfAppLogo.png" HeightRequest="60"/>
+                        <Label Text="TopShelf" FontSize="30" FontFamily="Fira Mono" VerticalTextAlignment="Center" TextColor="White" />
+                    </StackLayout>
                 </StackLayout>
             </ContentView>
 
@@ -29,13 +31,13 @@
                     <StackLayout Orientation="Vertical">
 
                         <!-- Title Label -->
-                        <Label Text="Create a New Account" FontSize="30"
+                        <Label Text="Create a New Account" FontSize="26"
                                TextColor="White" HorizontalOptions="Center" Margin="0,10,0,40"/>
 
                         <!-- Username -->
                         <StackLayout Orientation="Horizontal" Margin="0,20,0,20" HeightRequest="50">
                             <Image Source="news_48.png" HeightRequest="64" />
-                            <Entry Placeholder="Username" FontSize="16" WidthRequest="260" Text="{Binding UsernameInput, Mode=TwoWay}"
+                            <Entry Placeholder="Full Name" FontSize="16" WidthRequest="260" Text="{Binding UserRealNameInput, Mode=TwoWay}"
                                BackgroundColor="{StaticResource Accent}" PlaceholderColor="Gray"/>
                         </StackLayout>
                         
@@ -54,7 +56,7 @@
                         </StackLayout>
 
                         <!-- Error Message -->
-                        <Label Text="Failed to create account" FontSize="20" TextColor="Red"
+                        <Label Text="{Binding CreationErrorMessage}" FontSize="20" TextColor="Red"
                                IsVisible="{Binding IsErrorOnCreation}" HorizontalOptions="Center" FontAttributes="Bold"/>
                     </StackLayout>
                 </ContentView>

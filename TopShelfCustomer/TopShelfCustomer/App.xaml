@@ -2,7 +2,6 @@
 <Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="TopShelfCustomer.App">
     <Application.Resources>
         <ResourceDictionary>
-            <!--Global Styles-->
 
             <!-- Colors -->
             <Color x:Key="NavigationPrimary">#F15A22</Color>
@@ -16,6 +15,21 @@
                 <Setter Property="BarBackgroundColor" Value="{StaticResource NavigationPrimary}" />
                 <Setter Property="BarTextColor" Value="White" />
             </Style>
+
+            <!-- Font Styles -->
+            <OnPlatform x:TypeArguments="x:String" x:Key="BoldFont">
+                <On Platform="Android" Value="FiraSans-Bold.ttf#FiraSans-Bold" />
+                <On Platform="iOS" Value="FiraSans-Bold" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="NormalFont">
+                <On Platform="Android" Value="FiraSans-Regular.ttf#FiraSans-Regular" />
+                <On Platform="iOS" Value="FiraSans-Regular" />
+            </OnPlatform>
+            <OnPlatform x:TypeArguments="x:String" x:Key="MediumFont">
+                <On Platform="Android" Value="FiraSans-Medium.ttf#FiraSans-Medium" />
+                <On Platform="iOS" Value="FiraSans-Medium" />
+            </OnPlatform>
+
         </ResourceDictionary>
     </Application.Resources>
 </Application>

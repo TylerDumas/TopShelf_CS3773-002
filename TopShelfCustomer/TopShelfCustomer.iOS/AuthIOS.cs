@@ -26,6 +26,7 @@ namespace TopShelfCustomer.iOS {
                 var user = await Auth.DefaultInstance.SignInWithPasswordAsync( email, password );
                 return await user.User.GetIdTokenAsync();
             } catch ( Exception e ) {
+                Debug.WriteLine( e.Message );
                 return "";
             }
         }
@@ -38,12 +39,35 @@ namespace TopShelfCustomer.iOS {
         /// <param name="email"> Email Address </param>
         /// <param name="password"> Password </param>
         /// <returns> User ID token </returns>
-        public bool RegisterWithEmailPassword( string email, string password ) {
+        public async Task<string> RegisterWithEmailPassword( string email, string password ) {
             try {
-                var signUpTask = Auth.DefaultInstance.CreateUserAsync( email, password );
-                return signUpTask.Result != null;
+                var signUpTask = await Auth.DefaultInstance.CreateUserAsync( email, password );
+                var result = await signUpTask.User.GetIdTokenResultAsync();
+                if( result.Token != "" ) {
+                    return result.Token;
+                } else {
+                    return "";
+                }
             } catch ( Exception e ) {
-                return false;
+                Debug.WriteLine( e.Message );
+                return "";
+            }
+        }
+
+        /// <summary>
+        /// RequestPasswordReset:
+        ///
+        /// Asynchronous method to send "Password Reset" email to the user.
+        /// </summary>
+        /// <param name="email"> The E-mail to send the request to </param>
+        /// <returns> Task of type string, describing the exit status of the request </returns>
+        public async Task<string> RequestPasswordReset( string email ) {
+            try {
+                await Auth.DefaultInstance.SendPasswordResetAsync( email );
+                return "Success";
+            }catch( Exception e ) {
+                Debug.WriteLine( e.Message );
+                return "";
             }
         }
     }

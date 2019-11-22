@@ -20,17 +20,6 @@ namespace TopShelfCustomer.ViewModels {
 
         public User CurrentUser { get; set; }           //The currently logged in User
 
-        private string userName;        //The user's "username"
-        public string UserName {
-            get {
-                return userName;
-            }
-            set {
-                userName = value;
-                OnPropertyChanged( "UserName" );
-            }
-        }
-
         private string userRealName;            //String to define the User's real name. (Bound to Text fields)
         public string UserRealName {
             get {
@@ -65,7 +54,7 @@ namespace TopShelfCustomer.ViewModels {
         }
 
         /* Commands */
-        public ICommand OpenSettingsViewCommand { get; set; }
+        public ICommand NavigateBackCommand { get; set; }
 
         #endregion
 
@@ -79,17 +68,15 @@ namespace TopShelfCustomer.ViewModels {
 
             User temp = new User {
                 Name = "Jackson Dumas",
-                Username = "tylerdumas3",
                 Email = "tylerdumas3@hotmail.com",
                 PhoneNumber = "210-699-6969"
             };
             UserRealName = temp.Name;
-            UserName = temp.Username;
             UserEmail = temp.Email;
             PhoneNumber = temp.PhoneNumber;
 
             /* Command Initialization */
-            OpenSettingsViewCommand = new Command( () => Application.Current.MainPage = new SettingsPage() );
+            NavigateBackCommand = new Command( () => App.GoToLastPage() );
         }
 
         #endregion

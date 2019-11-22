@@ -29,11 +29,11 @@ namespace TopShelfCustomer.ViewModels {
         /// Constructor
         /// </summary>
         public LicenseViewModel() {
-            Title = "License View";
+            Title = "Licenses";
 
             /* Initialize Commands */
             IconLinkCommand = new Command( () => Launcher.OpenAsync( new Uri( "https://www.icons8.com" ) ) );
-            OpenSettingsViewCommand = new Command( () => Application.Current.MainPage = new SettingsPage() );
+            OpenSettingsViewCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
         }
 
         #endregion

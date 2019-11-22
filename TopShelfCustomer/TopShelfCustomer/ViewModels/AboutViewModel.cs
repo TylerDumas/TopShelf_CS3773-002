@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Windows.Input;
-using TopShelfCustomer.Views;
 using Xamarin.Essentials;
 using Xamarin.Forms;
 
@@ -16,8 +15,9 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Properties
 
-        public ICommand OpenWebCommand { get; }
-        public ICommand OpenSettingsCommand { get; }
+        /* Commands */
+        public ICommand OpenXamarinCommand { get; }     //Command to open Xamarin framework website
+        public ICommand NavigateBackCommand { get; }        //Command to navigate back to last page
 
         #endregion
 
@@ -29,17 +29,9 @@ namespace TopShelfCustomer.ViewModels {
         public AboutViewModel() {
             Title = "About";
 
-            OpenSettingsCommand = new Command( LaunchSettingsPage );
-            OpenWebCommand = new Command( () => Launcher.OpenAsync( new Uri( "https://xamarin.com/platform" ) ) );
-        }
-
-        /// <summary>
-        /// LaunchSettingsPage:
-        ///
-        /// Changes the Applications current page to the Settings page
-        /// </summary>
-        void LaunchSettingsPage() {
-            Application.Current.MainPage = new SettingsPage();
+            /* Initialize Commands */
+            NavigateBackCommand = new Command( () => App.GoToLastPage() );
+            OpenXamarinCommand = new Command( () => Launcher.OpenAsync( new Uri( "https://xamarin.com/platform" ) ) );
         }
 
         #endregion
