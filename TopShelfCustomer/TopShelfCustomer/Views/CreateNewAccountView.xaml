@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.CreateNewAccountView" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:CreateNewAccountViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <Grid BackgroundColor="{StaticResource AccentLight}">
+
+            <!-- Row Definitions -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Header (Label, App Icon, etc.) -->
+            <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                     BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 0, 0, 30" >
+                <StackLayout Orientation="Vertical">
+                    <ImageButton Source="back_orange.png" Command="{Binding OpenLoginCommand}" HorizontalOptions="Start" Margin="10,40,0,0" HeightRequest="40"/>
+                    <Image Source="TopShelfAppLogo.png" HeightRequest="80"/>
+                    <Label Text="TopShelf" FontSize="30" FontFamily="Fira Mono" Margin="0, 0, 0, 0" HorizontalOptions="Center" TextColor="White" />
+                </StackLayout>
+            </ContentView>
+
+            <!-- Entry Fields -->
+            <ScrollView Grid.Row="1" Margin="40,40,40,20">
+                <ContentView HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical">
+
+                        <!-- Title Label -->
+                        <Label Text="Create a New Account" FontSize="30"
+                               TextColor="White" HorizontalOptions="Center" Margin="0,10,0,40"/>
+
+                        <!-- Username -->
+                        <StackLayout Orientation="Horizontal" Margin="0,20,0,20" HeightRequest="50">
+                            <Image Source="news_48.png" HeightRequest="64" />
+                            <Entry Placeholder="Username" FontSize="16" WidthRequest="260" Text="{Binding UsernameInput, Mode=TwoWay}"
+                               BackgroundColor="{StaticResource Accent}" PlaceholderColor="Gray"/>
+                        </StackLayout>
+                        
+                        <!-- Email -->
+                        <StackLayout Orientation="Horizontal" Margin="0,10,0,20" HeightRequest="50">
+                            <Image Source="news_48.png" HeightRequest="64"  />
+                            <Entry Placeholder="E-mail" FontSize="16" WidthRequest="260" Text="{Binding EmailInput, Mode=TwoWay}"
+                               BackgroundColor="{StaticResource Accent}" PlaceholderColor="Gray"/>
+                        </StackLayout>
+
+                        <!-- Password -->
+                        <StackLayout Orientation="Horizontal" Margin="0,10,0,20" HeightRequest="50">
+                            <Image Source="secure_letter_48.png" HeightRequest="64"  />
+                            <Entry Placeholder="Password" IsPassword="True" WidthRequest="260" Text="{Binding PasswordInput, Mode=TwoWay}"
+                               FontSize="16" BackgroundColor="{StaticResource Accent}" PlaceholderColor="Gray"/>
+                        </StackLayout>
+
+                        <!-- Error Message -->
+                        <Label Text="Failed to create account" FontSize="20" TextColor="Red"
+                               IsVisible="{Binding IsErrorOnCreation}" HorizontalOptions="Center" FontAttributes="Bold"/>
+                    </StackLayout>
+                </ContentView>
+            </ScrollView>
+
+            <!-- Create Account Button -->
+            <ContentView Grid.Row="2">
+                <Button Command="{Binding ConfirmNewAccountCommand}" BackgroundColor="{StaticResource Primary}" Text="Create Account"
+                        FontSize="20" TextColor="Black" HeightRequest="60"
+                        Margin="40,0,40,30" BorderColor="Black" BorderWidth="2"/>
+            </ContentView>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

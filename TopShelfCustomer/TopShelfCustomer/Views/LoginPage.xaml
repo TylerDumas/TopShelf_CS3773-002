@@ -18,19 +18,19 @@
                 <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="0" Padding="0, 60, 0, 60" >
                     <StackLayout Orientation="Vertical">
                         <Image Source="TopShelfAppLogo.png" HeightRequest="128"/>
-                        <Label Text="TopShelf" FontSize="36" HorizontalOptions="Center" TextColor="White" />
                     </StackLayout>
                 </ContentView>
 
                 <!-- Username and Password Entries -->
-                <ContentView HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Padding="0, 60, 0, 20">
+                <ContentView HorizontalOptions="CenterAndExpand" VerticalOptions="FillAndExpand" Grid.Row="1" Padding="0, 30, 0, 20">
                     <StackLayout Orientation="Vertical" Spacing="30">
+                        <Label Text="Log into TopShelf" FontSize="30" HorizontalOptions="Center" TextColor="White" Margin="0,0,0,20"/>
                         <ContentView>
                             <StackLayout Orientation="Horizontal">
                                 <Image Source="news_48.png" HeightRequest="64" />
                                 <Entry Placeholder="Username" TextColor="White" BackgroundColor="{StaticResource Accent}"
                                        VerticalOptions="CenterAndExpand" HeightRequest="46" Text="{Binding EmailInput, Mode=TwoWay}"
-                                       PlaceholderColor="White" WidthRequest="260" Keyboard="Email"/>
+                                       PlaceholderColor="Gray" WidthRequest="260" Keyboard="Email"/>
                             </StackLayout>
                         </ContentView>
                         <ContentView>
@@ -38,19 +38,35 @@
                                 <Image Source="secure_letter_48.png" HeightRequest="64"  />
                                 <Entry IsPassword="True" Placeholder="Password" TextColor="White" BackgroundColor="{StaticResource Accent}"
                                        VerticalOptions="CenterAndExpand" HeightRequest="46" Text="{Binding PasswordInput, Mode=TwoWay}"
-                                       PlaceholderColor="White" WidthRequest="260" Keyboard="Plain"/>
+                                       PlaceholderColor="Gray" WidthRequest="260" Keyboard="Plain"/>
                             </StackLayout>
                         </ContentView>
+
+                        <!-- Error Message -->
+                        <Label Text="Incorrect username or password. Try again" IsVisible="{Binding IsErrorVisible}"
+                               FontAttributes="Bold" FontSize="16" TextColor="Red" HorizontalOptions="Center" />
                     </StackLayout>
                 </ContentView>
 
                 <!-- Login Button and Account Recovery -->
                 <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" Grid.Row="2" Padding="0, 60, 0, 0">
                     <StackLayout Orientation="Vertical" Spacing="10">
-                        <Button Command="{Binding LoginCommand}" BackgroundColor="#f15a22" WidthRequest="200" FontAttributes="Bold"
+                        <Button Command="{Binding LoginCommand}" BackgroundColor="#f15a22" WidthRequest="240" FontAttributes="Bold"
                                 HeightRequest="50" TextColor="Black"
                                 Text="Log In" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Start"/>
-                        <Label Text="Forgot your password?" HorizontalOptions="Center" FontSize="16" TextColor="White"/>
+                        <Label HorizontalOptions="Center">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Create an account" FontSize="18" TextColor="White" TextDecorations="Underline" FontAttributes="Bold">
+                                            <Span.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding CreateNewAccountCommand}" />
+                                            </Span.GestureRecognizers>
+                                        </Span>
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
                     </StackLayout>
                 </ContentView>
             </Grid>

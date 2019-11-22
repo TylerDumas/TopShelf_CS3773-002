@@ -20,5 +20,6 @@ namespace TopShelfCustomer.Services {
     /// </summary>
     public interface IFirebaseAuthenticator {
         Task<string> LoginWithEmailPassword( string email, string password );
+        bool RegisterWithEmailPassword( string email, string password );
     }
 }
