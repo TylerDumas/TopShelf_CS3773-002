@@ -22,7 +22,7 @@ namespace TopShelfCustomer.ViewModels {
         IFirebaseAuthenticator auth;
         public string EmailInput { get; set; }
         public string PasswordInput { get; set; }
-        private bool isErrorVisible;
+        private bool isErrorVisible = false;
         public bool IsErrorVisible {
             get {
                 return isErrorVisible;
@@ -43,7 +43,8 @@ namespace TopShelfCustomer.ViewModels {
         /// </summary>
         public LoginViewModel() {
             Title = "Welcome to TopShelf";
-            IsErrorVisible = false;
+
+            //FIXME:
 
             auth = DependencyService.Resolve<IFirebaseAuthenticator>();
             LoginCommand = new Command( LoginClicked );
@@ -54,12 +55,15 @@ namespace TopShelfCustomer.ViewModels {
             if( token != "" ) {
                 App.SetCurrentPage<HomePage>();
             } else {
+                Debug.WriteLine( $"token: {token}" );
                 ShowError();
             }
+            Debug.WriteLine( $"Email: {EmailInput}" );
+            Debug.WriteLine( $"Password: {PasswordInput}" );
         }
 
         void ShowError() {
-            IsErrorVisible = true;
+            isErrorVisible = true;
         }
 
         #endregion

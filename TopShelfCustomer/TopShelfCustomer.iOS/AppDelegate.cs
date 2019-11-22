@@ -23,9 +23,9 @@ namespace TopShelfCustomer.iOS {
         //
         public override bool FinishedLaunching( UIApplication app, NSDictionary options ) {
             global::Xamarin.Forms.Forms.Init();
+            Firebase.Core.App.Configure();
             LoadApplication( new App() );
 
-            Firebase.Core.App.Configure();
             return base.FinishedLaunching( app, options );
         }
     }
