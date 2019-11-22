@@ -18,7 +18,6 @@ namespace TopShelfCustomer.ViewModels {
         #region Properties
 
         /* Commands */
-        public ICommand IconLinkCommand { get; set; }       //Command for opening link to Icons8.com
         public ICommand OpenSettingsViewCommand { get; set; }           //Command for going back to settings view (back button)
 
         #endregion
@@ -32,7 +31,6 @@ namespace TopShelfCustomer.ViewModels {
             Title = "Licenses";
 
             /* Initialize Commands */
-            IconLinkCommand = new Command( () => Launcher.OpenAsync( new Uri( "https://www.icons8.com" ) ) );
             OpenSettingsViewCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
         }
 

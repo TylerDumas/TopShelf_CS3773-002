@@ -11,7 +11,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="70" />
+                <RowDefinition Height="100" />
             </Grid.RowDefinitions>
             <!-- Profile Info Header -->
             <ContentView BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 50, 0, 30" >
@@ -149,16 +149,16 @@
             </ScrollView>
 
             <!-- Settings and Account Buttons -->
-            <StackLayout Orientation="Horizontal" Padding="10,10,10,10" Spacing="10" BackgroundColor="{StaticResource Accent}" Grid.Row="2">
+            <StackLayout Orientation="Horizontal" Padding="10,10,10,30" Spacing="10" BackgroundColor="{StaticResource Accent}" Grid.Row="2">
                 <Button Command="{Binding OpenCreateOrderCommand}" Text="New Order" BackgroundColor="{StaticResource Primary}"
                         WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White"
-                        BorderColor="Black" BorderWidth="2" FontSize="14" FontFamily="{StaticResource MediumFont}"/>
+                        BorderColor="Black" BorderWidth="2" FontSize="16" FontFamily="{StaticResource MediumFont}"/>
                 <Button Text="Order History" BackgroundColor="{StaticResource Primary}"
                         WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White"
-                        BorderColor="Black" BorderWidth="2" FontSize="14" FontFamily="{StaticResource MediumFont}"/>
+                        BorderColor="Black" BorderWidth="2" FontSize="16" FontFamily="{StaticResource MediumFont}"/>
                 <Button Text="Settings" Command="{Binding OpenSettingsCommand}" BackgroundColor="{StaticResource Primary}"
                         WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White"
-                        BorderColor="Black" BorderWidth="2" FontSize="14" FontFamily="{StaticResource MediumFont}"/>
+                        BorderColor="Black" BorderWidth="2" FontSize="16" FontFamily="{StaticResource MediumFont}"/>
             </StackLayout>   
         </Grid>
     </ContentPage.Content>
