@@ -1,9 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Firebase;
 
 using Foundation;
+using TopShelfCustomer.Services;
 using UIKit;
+using Xamarin.Forms;
 
 namespace TopShelfCustomer.iOS {
     // The UIApplicationDelegate for the application. This class is responsible for launching the 
@@ -22,6 +25,7 @@ namespace TopShelfCustomer.iOS {
             global::Xamarin.Forms.Forms.Init();
             LoadApplication( new App() );
 
+            Firebase.Core.App.Configure();
             return base.FinishedLaunching( app, options );
         }
     }

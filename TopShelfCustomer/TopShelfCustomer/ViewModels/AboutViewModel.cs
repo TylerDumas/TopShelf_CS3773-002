@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using TopShelfCustomer.Views;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace TopShelfCustomer.ViewModels {
@@ -29,7 +30,7 @@ namespace TopShelfCustomer.ViewModels {
             Title = "About";
 
             OpenSettingsCommand = new Command( LaunchSettingsPage );
-            OpenWebCommand = new Command( () => Device.OpenUri( new Uri( "https://xamarin.com/platform" ) ) );
+            OpenWebCommand = new Command( () => Launcher.OpenAsync( new Uri( "https://xamarin.com/platform" ) ) );
         }
 
         /// <summary>

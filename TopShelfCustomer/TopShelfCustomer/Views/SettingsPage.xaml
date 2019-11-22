@@ -37,7 +37,7 @@
                         <!-- Reciept Saving Setting -->
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="50">
                             <Label Text="Save receipts to your device?" HorizontalOptions="StartAndExpand" Margin="30,0,0,0" FontSize="17" TextColor="White" VerticalOptions="Center"/>
-                            <Switch IsToggled="True" HorizontalOptions="EndAndExpand" Margin="0,0,40,0"/>
+                            <Switch IsToggled="{Binding IsReceiptSwitchToggled}" HorizontalOptions="EndAndExpand" Margin="0,0,40,0"/>
                         </StackLayout>
 
                         <!-- External Links Setting -->

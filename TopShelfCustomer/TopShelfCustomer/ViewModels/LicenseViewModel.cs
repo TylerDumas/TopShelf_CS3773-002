@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 using TopShelfCustomer.Views;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace TopShelfCustomer.ViewModels {
@@ -31,7 +32,7 @@ namespace TopShelfCustomer.ViewModels {
             Title = "License View";
 
             /* Initialize Commands */
-            IconLinkCommand = new Command( () => Device.OpenUri( new Uri( "https://www.icons8.com" ) ) );
+            IconLinkCommand = new Command( () => Launcher.OpenAsync( new Uri( "https://www.icons8.com" ) ) );
             OpenSettingsViewCommand = new Command( () => Application.Current.MainPage = new SettingsPage() );
         }
 

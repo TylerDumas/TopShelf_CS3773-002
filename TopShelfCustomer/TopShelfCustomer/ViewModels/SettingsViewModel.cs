@@ -5,6 +5,7 @@ using TopShelfCustomer.Views;
 using TopShelfCustomer.Models;
 using Xamarin.Forms;
 using System.ComponentModel;
+using Xamarin.Essentials;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -31,12 +32,24 @@ namespace TopShelfCustomer.ViewModels {
             }
         }
 
-        private bool isLinkSwitchToggled = true;       //Bool to define whether the "external links" setting is toggled
+        private bool isReceiptSwitchToggled;     //Bool to define whether the "save receipts" setting is toggled
+        public bool IsReceiptSwitchToggled {
+            get {
+                return isReceiptSwitchToggled;
+            }
+            private set {
+                isReceiptSwitchToggled = value;
+                ToggleReceiptSerializationSetting( isReceiptSwitchToggled );
+                OnPropertyChanged( "IsReceiptSwitchToggled" );
+            }
+        }
+
+        private bool isLinkSwitchToggled;       //Bool to define whether the "external links" setting is toggled
         public bool IsLinkSwitchToggled {
             get {
                 return isLinkSwitchToggled;
             }
-            set {
+            private set {
                 isLinkSwitchToggled = value;
                 ToggleExternalLinkSetting( isLinkSwitchToggled );
                 OnPropertyChanged( "IsLinkSwitchToggled" );
@@ -66,12 +79,12 @@ namespace TopShelfCustomer.ViewModels {
             Title = "Settings";
             UserRealName = CurrentUser.Name;
 
-            OpenHomePageCommand = new Command( () => Application.Current.MainPage = new HomePage() );
-            OpenProfileViewCommand = new Command( () => Application.Current.MainPage = new ProfileSettingsPage() );
-            OpenNotificationsViewCommand = new Command( () => Application.Current.MainPage = new NotificationsSettingsPage() );
-            OpenAboutViewCommand = new Command( () => Application.Current.MainPage = new AboutPage() ) ;
-            OpenSupportViewCommand = new Command( () => Device.OpenUri( new Uri( "https://www.youtube.com/watch?v=dQw4w9WgXcQ" ) ) );       //FIXME: Get rid of the Astley
-            OpenLicenseViewCommand = new Command( () => Application.Current.MainPage = new LicenseView() );
+            OpenHomePageCommand = new Command( () => App.GoToLastPage() );
+            OpenProfileViewCommand = new Command( () => App.SetCurrentPage<ProfileSettingsPage>() );
+            OpenNotificationsViewCommand = new Command( () => App.SetCurrentPage<NotificationsSettingsPage>() );
+            OpenAboutViewCommand = new Command( () => App.SetCurrentPage<AboutPage>() ) ;
+            OpenSupportViewCommand = new Command( () => Launcher.OpenAsync( new Uri( "https://www.youtube.com/watch?v=dQw4w9WgXcQ" ) ) );       //FIXME: Get rid of the Astley
+            OpenLicenseViewCommand = new Command( () => App.SetCurrentPage<LicenseView>() );
             LogoutUserCommand = new Command( LogoutUser );
         }
 
@@ -82,7 +95,7 @@ namespace TopShelfCustomer.ViewModels {
         /// </summary>
         void LogoutUser() {
             CurrentUser = null;
-            Application.Current.MainPage = new LoginPage();
+            App.SetCurrentPage<LoginPage>();
         }
 
         /// <summary>
@@ -92,6 +105,17 @@ namespace TopShelfCustomer.ViewModels {
         /// </summary>
         /// <param name="isToggled"> if the toggle was activated or deactivated </param>
         void ToggleExternalLinkSetting( bool isToggled ) {
+            //TODO: Implement Settings to User Profile
+            Debug.WriteLine( $"Toggled the External Link Setting to {isToggled}" );
+        }
+
+        /// <summary>
+        /// ToggleReceiptSerializationSetting:
+        ///
+        /// Handles the Toggling of the "Save Receipts" setting in the root settings menu
+        /// </summary>
+        /// <param name="isToggled"> if the toggle was activated or deactivated </param>
+        void ToggleReceiptSerializationSetting( bool isToggled ) {
             //TODO: Implement Settings to User Profile
             Debug.WriteLine( $"Toggled the External Link Setting to {isToggled}" );
         }

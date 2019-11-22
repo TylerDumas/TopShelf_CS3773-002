@@ -50,16 +50,8 @@ namespace TopShelfCustomer.ViewModels {
             UserStore = temp.UserStore;
             UserStoreName = UserStore.StoreName;
 
-            OpenSettingsView = new Command( LaunchSettingsPage );
-            OpenCreateOrderView = new Command( LaunchCreateOrderPage );
-        }
-
-        void LaunchSettingsPage() {
-            Application.Current.MainPage = new SettingsPage();
-        }
-
-        void LaunchCreateOrderPage() {
-            Application.Current.MainPage = new CreateOrderPage();
+            OpenSettingsView = new Command( () => App.SetCurrentPage<SettingsPage>() );
+            OpenCreateOrderView = new Command( () => App.SetCurrentPage<CreateOrderPage>() );
         }
 
         #endregion
