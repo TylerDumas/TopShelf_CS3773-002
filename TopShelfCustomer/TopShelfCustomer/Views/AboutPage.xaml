@@ -3,6 +3,9 @@
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
+    <ContentPage.BackgroundImageSource>
+        <FileImageSource File="gradient_background.png" />
+    </ContentPage.BackgroundImageSource>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -10,7 +13,7 @@
         </Grid.RowDefinitions>
         <!-- Header (Label, App Icon, etc.) -->
         <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                    BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 0, 0, 40" >
+                    Grid.Row="0" Padding="0, 0, 0, 40" >
             <StackLayout Orientation="Vertical">
                 <ImageButton Source="back_orange.png" Command="{Binding NavigateBackCommand}" HorizontalOptions="Start" Margin="10,40,0,0" HeightRequest="40"/>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">

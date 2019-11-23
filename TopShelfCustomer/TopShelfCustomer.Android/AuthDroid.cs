@@ -24,6 +24,9 @@ namespace TopShelfCustomer.Droid {
             try {
                 var user = await FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync( email, password );
                 var token = await user.User.GetIdTokenAsync( false );
+                if( user == null || token == null ) {
+                    Debug.WriteLine( "Failed to log in" );
+                }
                 return token.Token;
             } catch ( FirebaseAuthInvalidUserException e ) {
                 Debug.WriteLine( e.Message );

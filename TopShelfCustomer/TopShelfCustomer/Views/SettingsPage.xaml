@@ -3,6 +3,9 @@
     <ContentPage.BindingContext>
         <vm:SettingsViewModel/>
     </ContentPage.BindingContext>
+    <ContentPage.BackgroundImageSource>
+        <FileImageSource File="gradient_background.png" />
+    </ContentPage.BackgroundImageSource>
     <ContentPage.Content>
         <Grid BackgroundColor="{StaticResource AccentLight}">
             <Grid.RowDefinitions>
@@ -12,7 +15,7 @@
             </Grid.RowDefinitions>
 
             <!-- Profile Info Header -->
-            <ContentView BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 30, 0, 30" >
+            <ContentView Grid.Row="0" Padding="0, 30, 0, 30" >
                 <StackLayout>
                     <ImageButton Source="back_orange.png" Command="{Binding NavigateBackCommand}" Margin="10,10,0,0" HorizontalOptions="Start" HeightRequest="40"/>
                     <!-- Name and Portrait -->
@@ -82,7 +85,7 @@
 
             <!-- Logout Button -->
             <Button Command="{Binding LogoutUserCommand}" Grid.Row="2" Margin="20,0,20,20" FontFamily="{StaticResource NormalFont}"
-                BackgroundColor="{StaticResource Primary}" Text="Log Out" BorderWidth="3"
+                BackgroundColor="#424C55" Text="Log Out" BorderWidth="3"
                 BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
         </Grid>
     </ContentPage.Content>

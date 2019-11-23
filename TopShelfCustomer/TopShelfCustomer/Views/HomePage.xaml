@@ -3,10 +3,12 @@
     <ContentPage.BindingContext>
         <vm:HomeViewModel/>
     </ContentPage.BindingContext>
-
+    <ContentPage.BackgroundImageSource>
+        <FileImageSource File="gradient_background.png" />
+    </ContentPage.BackgroundImageSource>
     <!-- Content -->
     <ContentPage.Content>
-        <Grid BackgroundColor="{StaticResource AccentLight}">
+        <Grid>
             <!-- RowDefinitions -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
@@ -14,7 +16,7 @@
                 <RowDefinition Height="100" />
             </Grid.RowDefinitions>
             <!-- Profile Info Header -->
-            <ContentView BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 50, 0, 30" >
+            <ContentView Grid.Row="0" Padding="0, 50, 0, 30" >
                 <!-- Name and Portrait -->
                 <StackLayout Orientation="Vertical" Margin="20, 0, 20, 0">
 
@@ -73,7 +75,7 @@
 
                     <!-- Test Coupon Two -->
                     <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="220">
-                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="White">
+                        <Frame BorderColor="{StaticResource Accent}" BackgroundColor="White">
                             <Label FontFamily="{StaticResource NormalFont}">
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -98,7 +100,7 @@
 
                     <!-- Test Coupon Three -->
                     <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="220">
-                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="White">
+                        <Frame BorderColor="{StaticResource Accent}" BackgroundColor="White">
                             <Label FontFamily="{StaticResource NormalFont}">
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -123,7 +125,7 @@
 
                     <!-- Test Coupon Four -->
                     <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="220">
-                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="White">
+                        <Frame BorderColor="{StaticResource Accent}" BackgroundColor="White">
                             <Label FontFamily="{StaticResource NormalFont}">
                                 <Label.FormattedText>
                                     <FormattedString>
@@ -149,14 +151,14 @@
             </ScrollView>
 
             <!-- Settings and Account Buttons -->
-            <StackLayout Orientation="Horizontal" Padding="10,10,10,30" Spacing="10" BackgroundColor="{StaticResource Accent}" Grid.Row="2">
-                <Button Command="{Binding OpenCreateOrderCommand}" Text="New Order" BackgroundColor="{StaticResource Primary}"
+            <StackLayout Orientation="Horizontal" Padding="10,10,10,30" Spacing="10" Grid.Row="2" BackgroundColor="{StaticResource AccentLight}">
+                <Button Command="{Binding OpenCreateOrderCommand}" Text="New Order" BackgroundColor="#424C55"
                         WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White"
                         BorderColor="Black" BorderWidth="2" FontSize="16" FontFamily="{StaticResource MediumFont}"/>
-                <Button Text="Order History" BackgroundColor="{StaticResource Primary}"
+                <Button Text="Order History" BackgroundColor="#424C55"
                         WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White"
                         BorderColor="Black" BorderWidth="2" FontSize="16" FontFamily="{StaticResource MediumFont}"/>
-                <Button Text="Settings" Command="{Binding OpenSettingsCommand}" BackgroundColor="{StaticResource Primary}"
+                <Button Text="Settings" Command="{Binding OpenSettingsCommand}" BackgroundColor="#424C55"
                         WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White"
                         BorderColor="Black" BorderWidth="2" FontSize="16" FontFamily="{StaticResource MediumFont}"/>
             </StackLayout>   

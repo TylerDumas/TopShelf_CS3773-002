@@ -49,7 +49,7 @@ namespace TopShelfCustomer.ViewModels {
                 UserStore = new Store( "HEB De-Zavala", "DeZavala Road, San Antonio, TX, 78249" ),
                 Email = "tylerdumas3@hotmail.com",
             };
-            UserRealName = temp.Name;
+            UserRealName = "Jackson Dumas";
             UserStore = temp.UserStore;
             UserStoreName = UserStore.StoreName;
 

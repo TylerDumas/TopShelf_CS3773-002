@@ -3,6 +3,10 @@
     <ContentPage.BindingContext>
         <vm:ProfileSettingsViewModel/>
     </ContentPage.BindingContext>
+    <ContentPage.BackgroundImageSource>
+        <FileImageSource File="gradient_background.png" />
+    </ContentPage.BackgroundImageSource>
+
     <ContentPage.Content>
         <Grid BackgroundColor="{StaticResource AccentLight}" >
             <Grid.RowDefinitions>
@@ -12,7 +16,7 @@
             </Grid.RowDefinitions>
 
             <!-- Profile Info Header -->
-            <ContentView BackgroundColor="{StaticResource Accent}" Padding="0, 30, 0, 30" >
+            <ContentView Padding="0, 30, 0, 30" >
                 <StackLayout>
                     <ImageButton Source="back_orange.png" Command="{Binding OpenSettingsPageCommand}"
                                  Margin="10,10,0,0" HorizontalOptions="Start" HeightRequest="40"/>

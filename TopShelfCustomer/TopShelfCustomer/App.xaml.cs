@@ -15,11 +15,6 @@ namespace TopShelfCustomer {
     /// </summary>
     public partial class App : Application {
 
-        public static INavigation Navigation {          //Navigation Manager property
-            get;
-            private set;
-        }
-
         /// <summary>
         /// Constructor
         /// </summary>
@@ -27,9 +22,7 @@ namespace TopShelfCustomer {
             InitializeComponent();
 
             /* Register Navigation Manager */
-            var loginPage = new LoginPage();
-            var rootPage = new NavigationPage( loginPage );
-            Navigation = rootPage.Navigation;
+            var rootPage = new LoginPage();
             MainPage = rootPage;
         }
 
@@ -69,7 +62,6 @@ namespace TopShelfCustomer {
                     }
                     var freshPage = ( T )Activator.CreateInstance( typeof( T ) );
                     PageContainer.Views.Add( freshPage );
-                    Navigation.PushAsync( freshPage );
                     Current.MainPage = freshPage;
                     break;
                 }
@@ -78,7 +70,6 @@ namespace TopShelfCustomer {
             /* Page didn't exist */
             var newPage = ( T )Activator.CreateInstance( typeof( T ) );
             PageContainer.Views.Add( newPage );
-            Navigation.PushAsync( newPage );
             Current.MainPage = newPage;
         }
 
@@ -98,7 +89,6 @@ namespace TopShelfCustomer {
             /* Page didn't exist */
             var newPage = ( T )Activator.CreateInstance( typeof( T ) );
             PageContainer.Views.Add( newPage );       //Add passed Page to the PageContainer static class
-            Navigation.PushAsync( newPage );        //Push page onto Navigation stack
             Current.MainPage = newPage;     //Set the current page
         }
 
@@ -109,7 +99,6 @@ namespace TopShelfCustomer {
         /// </summary>
         public static void ClearPages() {
             PageContainer.Views.Clear();    //Clear Page dependency container
-            Navigation.PopToRootAsync();    //Clear Navigation Stack
             Current.MainPage = new LoginPage();     //Change view to blank LoginPage
         }
     }

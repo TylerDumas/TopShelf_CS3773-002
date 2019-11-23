@@ -3,8 +3,11 @@
     <ContentPage.BindingContext>
         <vm:CreateNewAccountViewModel/>
     </ContentPage.BindingContext>
+    <ContentPage.BackgroundImageSource>
+        <FileImageSource File="gradient_background.png" />
+    </ContentPage.BackgroundImageSource>
     <ContentPage.Content>
-        <Grid BackgroundColor="{StaticResource AccentLight}">
+        <Grid>
 
             <!-- Row Definitions -->
             <Grid.RowDefinitions>
@@ -15,7 +18,7 @@
 
             <!-- Header (Label, App Icon, etc.) -->
             <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                     BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 0, 0, 40" >
+                     Grid.Row="0" Padding="0, 0, 0, 40" >
                 <StackLayout Orientation="Vertical">
                     <ImageButton Source="back_orange.png" Command="{Binding NavigateBackCommand}" HorizontalOptions="Start" Margin="10,40,0,0" HeightRequest="40"/>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
@@ -67,7 +70,7 @@
 
             <!-- Create Account Button -->
             <ContentView Grid.Row="2">
-                <Button Command="{Binding ConfirmNewAccountCommand}" BackgroundColor="{StaticResource Primary}" Text="Create Account"
+                <Button Command="{Binding ConfirmNewAccountCommand}" BackgroundColor="{StaticResource SpaceGray}" Text="Create Account"
                         FontSize="20" TextColor="Black" HeightRequest="60" FontFamily="{StaticResource MediumFont}"
                         Margin="40,0,40,30" BorderColor="Black" BorderWidth="2"/>
             </ContentView>

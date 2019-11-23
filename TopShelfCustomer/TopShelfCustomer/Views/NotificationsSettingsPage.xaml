@@ -3,6 +3,9 @@
     <ContentPage.BindingContext>
         <vm:NotificationsViewModel/>
     </ContentPage.BindingContext>
+    <ContentPage.BackgroundImageSource>
+        <FileImageSource File="gradient_background.png" />
+    </ContentPage.BackgroundImageSource>
     <ContentPage.Content>
         <Grid BackgroundColor="{StaticResource AccentLight}" >
             <!-- Row Definitions -->
@@ -14,7 +17,7 @@
             </Grid.RowDefinitions>
 
             <!-- Profile Info Header -->
-            <ContentView BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 30, 0, 30" >
+            <ContentView Grid.Row="0" Padding="0, 30, 0, 30" >
                 <StackLayout>
                     <ImageButton Source="back_orange.png" Command="{Binding NavigateBackCommand}" Margin="10,10,0,0" HorizontalOptions="Start" HeightRequest="40"/>
                     <!-- Name and Portrait -->

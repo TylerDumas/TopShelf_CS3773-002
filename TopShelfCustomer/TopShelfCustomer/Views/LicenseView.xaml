@@ -3,6 +3,9 @@
     <ContentPage.BindingContext>
         <vm:LicenseViewModel/>
     </ContentPage.BindingContext>
+    <ContentPage.BackgroundImageSource>
+        <FileImageSource File="gradient_background.png" />
+    </ContentPage.BackgroundImageSource>
     <ContentPage.Content>
         <Grid BackgroundColor="{StaticResource AccentLight}">
 
@@ -14,7 +17,7 @@
 
             <!-- Header (Label, App Icon, etc.) -->
             <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                     BackgroundColor="{StaticResource Accent}" Grid.Row="0" Padding="0, 0, 0, 40" >
+                     Grid.Row="0" Padding="0, 0, 0, 40" >
                 <StackLayout Orientation="Vertical">
                     <ImageButton Source="back_orange.png" Command="{Binding OpenSettingsViewCommand}" HorizontalOptions="Start" Margin="10,40,0,0" HeightRequest="40"/>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">

@@ -8,6 +8,7 @@
             <Color x:Key="Primary">#F15A22</Color>  <!-- Orange -->
             <Color x:Key="Accent">#0C2340</Color>   <!-- Blue -->
             <Color x:Key="AccentLight">#10325d</Color>
+            <Color x:Key="SpaceGray">#424C55</Color>
             <Color x:Key="LightTextColor">#999999</Color>
 
             <!-- NavigationPage Styles -->

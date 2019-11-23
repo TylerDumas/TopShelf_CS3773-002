@@ -3,14 +3,17 @@
     <ContentPage.BindingContext>
         <vm:CreateOrderViewModel/>
     </ContentPage.BindingContext>
+    <ContentPage.BackgroundImageSource>
+        <FileImageSource File="gradient_background.png" />
+    </ContentPage.BackgroundImageSource>
     <ContentPage.Content>
-        <Grid BackgroundColor="{StaticResource AccentLight}">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <ContentView BackgroundColor="{StaticResource Accent}" Grid.Row="0">
+            <ContentView Grid.Row="0">
                 <StackLayout Orientation="Vertical" >
                     <ImageButton Source="back_orange.png" Command="{Binding NavigateBackCommand}" HorizontalOptions="Start" Margin="10,40,0,10" HeightRequest="40"/>
                     <Label Text="Create New Order" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource MediumFont}"
