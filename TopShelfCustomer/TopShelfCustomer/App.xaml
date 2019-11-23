@@ -4,7 +4,7 @@
         <ResourceDictionary>
 
             <!-- Colors -->
-            <Color x:Key="NavigationPrimary">#F15A22</Color>
+            <Color x:Key="NavigationPrimary">#dadada</Color>
             <Color x:Key="Primary">#F15A22</Color>  <!-- Orange -->
             <Color x:Key="Accent">#0C2340</Color>   <!-- Blue -->
             <Color x:Key="AccentLight">#10325d</Color>
