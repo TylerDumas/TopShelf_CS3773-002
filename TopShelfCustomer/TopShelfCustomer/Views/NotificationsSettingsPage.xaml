@@ -4,7 +4,10 @@
         <vm:NotificationsViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.BackgroundImageSource>
-        <FileImageSource File="gradient_background.png" />
+        <OnPlatform x:TypeArguments="FileImageSource">
+            <On Platform="Android" Value="gradient_background_droid.png" />
+            <On Platform="iOS" Value="gradient_background.png" />
+        </OnPlatform>
     </ContentPage.BackgroundImageSource>
     <ContentPage.Content>
         <Grid BackgroundColor="{StaticResource AccentLight}" >

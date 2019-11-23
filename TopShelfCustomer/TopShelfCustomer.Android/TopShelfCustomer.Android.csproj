@@ -117,11 +117,15 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\TopShelfAppLogo_64.png">
+    <AndroidResource Include="Resources\drawable\gradient_background.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
-    <AndroidResource Include="Resources\drawable\gradient_background.png">
+    <AndroidResource Include="Resources\drawable\gradient_background_droid.png">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
+    <AndroidResource Include="Resources\drawable\TopShelfAppLogo_64.png">
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
