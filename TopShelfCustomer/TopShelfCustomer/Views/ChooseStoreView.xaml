@@ -1,7 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.CreateOrderPage" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.ChooseStoreView"
+             xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}">
     <ContentPage.BindingContext>
-        <vm:CreateOrderViewModel/>
+        <vm:ChooseStoreViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.BackgroundImageSource>
         <OnPlatform x:TypeArguments="FileImageSource">
@@ -9,24 +10,33 @@
             <On Platform="iOS" Value="gradient_background.png" />
         </OnPlatform>
     </ContentPage.BackgroundImageSource>
+
     <ContentPage.Content>
         <Grid>
+            <!-- Row Definitions -->
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
+
+            <!-- Page Content -->
             <ContentView Grid.Row="0">
                 <StackLayout Orientation="Vertical" >
+
+                    <!-- Back Button -->
                     <ImageButton Source="back_orange.png" Command="{Binding NavigateBackCommand}" HorizontalOptions="Start" Margin="10,40,0,10" HeightRequest="40"/>
-                    <Label Text="Create New Order" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource MediumFont}"
+
+                    <!-- Title Label -->
+                    <Label Text="Choose a Default Store" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource MediumFont}"
                            VerticalOptions="FillAndExpand" Margin="0, 20, 0, 40" FontSize="30" TextColor="White" />
 
                     <!-- ListView of Stores -->
-                    <ListView x:Name="StoreList" ItemsSource="{Binding NearbyStores}" BackgroundColor="{StaticResource Accent}">
+                    <ListView x:Name="StoreList" ItemsSource="{Binding NearbyStores}" RowHeight="60" SeparatorColor="Black" SelectionMode="None"
+                              BackgroundColor="{StaticResource AccentLight}" Margin="20, 0, 20, 0">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <ViewCell >
+                                <ViewCell>
                                     <StackLayout Orientation="Horizontal" Spacing="30" VerticalOptions="Center" Padding="30, 0, 30, 0">
                                         <Label Text="{Binding StoreName}" FontFamily="{StaticResource MediumFont}" HorizontalOptions="Start" TextColor="White"/>
                                         <Label Text="{Binding StoreAddress}" FontFamily="{StaticResource NormalFont}" HorizontalOptions="CenterAndExpand" TextColor="White"/>
@@ -36,9 +46,9 @@
                         </ListView.ItemTemplate>
                     </ListView>
 
-                    <!-- Continue with Store Selection Button -->
+                    <!-- Select Store Button -->
                     <ContentView Margin="0, 40, 0, 60">
-                        <Button Command="{Binding LoginCommand}" BackgroundColor="{StaticResource SpaceGray}" WidthRequest="240"
+                        <Button Command="{Binding SelectStoreCommand}" BackgroundColor="{StaticResource SpaceGray}" WidthRequest="240"
                             BorderColor="Black" BorderWidth="2"
                             HeightRequest="50" TextColor="White" FontFamily="{StaticResource MediumFont}"
                             Text="Select Store" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Start" FontSize="22"/>

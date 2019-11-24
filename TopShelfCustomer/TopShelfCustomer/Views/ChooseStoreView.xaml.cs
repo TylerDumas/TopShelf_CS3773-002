@@ -4,8 +4,8 @@ using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace TopShelfCustomer.Views {
-    public partial class CreateOrderPage : ContentPage {
-        public CreateOrderPage() {
+    public partial class ChooseStoreView : ContentPage {
+        public ChooseStoreView() {
             InitializeComponent();
         }
     }

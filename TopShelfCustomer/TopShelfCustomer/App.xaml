@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="TopShelfCustomer.App">
+<Application xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="TopShelfCustomer.App">
     <Application.Resources>
         <ResourceDictionary>
 
             <!-- Colors -->
             <Color x:Key="NavigationPrimary">#dadada</Color>
-            <Color x:Key="Primary">#F15A22</Color>  <!-- Orange -->
+            <Color x:Key="Primary">#406e8e</Color>  <!-- Orange -->
             <Color x:Key="Accent">#0C2340</Color>   <!-- Blue -->
             <Color x:Key="AccentLight">#10325d</Color>
             <Color x:Key="SpaceGray">#424C55</Color>
