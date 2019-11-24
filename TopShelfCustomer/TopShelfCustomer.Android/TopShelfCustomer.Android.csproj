@@ -129,6 +129,10 @@
       <SubType></SubType>
       <Generator></Generator>
     </AndroidResource>
+    <AndroidResource Include="Resources\xml\network_config.xml">
+      <SubType></SubType>
+      <Generator></Generator>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\TopShelfCustomer\TopShelfCustomer.csproj">
@@ -137,7 +141,9 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <GoogleServicesJson Include="google-services.json" />
+    <GoogleServicesJson Include="google-services.json">
+      <IncludeInPackage>false</IncludeInPackage>
+    </GoogleServicesJson>
   </ItemGroup>
   <ItemGroup>
     <AndroidAsset Include="Assets\FiraSans-Bold.ttf" />
@@ -149,6 +155,9 @@
     <AndroidAsset Include="Assets\FiraSans-SemiBold.ttf" />
     <AndroidAsset Include="Assets\FiraSans-SemiBoldItalic.ttf" />
     <AndroidAsset Include="Assets\OFL.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Resources\xml\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
