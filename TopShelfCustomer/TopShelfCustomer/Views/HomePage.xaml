@@ -33,17 +33,22 @@
                            VerticalOptions="Center" FontSize="26" TextColor="White" FontFamily="{StaticResource MediumFont}"/>
 
                     <!-- User Store -->
-                    <Label FontFamily="{StaticResource NormalFont}" HorizontalOptions="CenterAndExpand"
-                           VerticalOptions="Center" TextColor="White" Margin="0, 10, 0, 0" >
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="Your Store: " FontFamily="{StaticResource MediumFont}" FontSize="20" />
-                                    <Span Text="{Binding UserStoreName}" FontSize="20" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+                    <StackLayout Orientation="Horizontal" Margin="0, 10, 0, 0" HorizontalOptions="CenterAndExpand" Spacing="20">
+                        <Label FontFamily="{StaticResource NormalFont}"
+                           VerticalOptions="Center" TextColor="White">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Your Store:   " FontFamily="{StaticResource MediumFont}" FontSize="20" />
+                                        <Span Text="{Binding UserStoreName}" FontSize="20" TextDecorations="Underline"/>
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button Command="{Binding ChangeStoreCommand}" Text="Change" FontFamily="{StaticResource NormalFont}" FontSize="13"
+                                BackgroundColor="{StaticResource SpaceGray}" TextColor="White"
+                                BorderColor="Black" BorderWidth="1" WidthRequest="70" HeightRequest="40"/>
+                    </StackLayout>
                 </StackLayout>
             </ContentView>
 

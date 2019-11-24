@@ -32,6 +32,7 @@ namespace TopShelfCustomer.ViewModels {
         /* Commands */
         public ICommand OpenSettingsCommand { get; }       //Command to open Settings Menu
         public ICommand OpenCreateOrderCommand { get; }        //Command to open Order Creation Menu
+        public ICommand ChangeStoreCommand { get; }     //Command to open "Change Default Store" Menu
 
         #endregion
 
@@ -56,6 +57,7 @@ namespace TopShelfCustomer.ViewModels {
             /* Initialize Commands */
             OpenSettingsCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
             OpenCreateOrderCommand = new Command( () => App.SetCurrentPage<ShopView>() );
+            ChangeStoreCommand = new Command( () => App.SetCurrentPage<ChooseStoreView>() );
         }
 
         #endregion

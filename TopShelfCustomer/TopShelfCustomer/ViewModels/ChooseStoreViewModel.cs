@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Diagnostics;
 using System.Windows.Input;
 using TopShelfCustomer.Models;
@@ -14,15 +15,26 @@ namespace TopShelfCustomer.ViewModels {
     /// ViewModel for Choose Store View.
     /// Handles the selection of a default store for the user.
     /// </summary>
-    public class ChooseStoreViewModel : BaseViewModel {
+    public class ChooseStoreViewModel : BaseViewModel, INotifyPropertyChanged {
 
         #region Properties
 
-        public ObservableCollection<Store> NearbyStores { get; set; }       //Collection of Stores close to the current User
+        public ObservableCollection<StoreDisplay> NearbyStores { get; set; }       //Collection of Stores close to the current User
+
+        private StoreDisplay selectedStore;         //The currently selected Store in the ListView
+        public StoreDisplay SelectedStore {
+            get {
+                return selectedStore;
+            }
+            set {
+                selectedStore = value;
+                OnPropertyChanged( "SelectedStore" );
+            }
+        }
 
         /* Commands */
         public ICommand NavigateBackCommand { get; }        //Command to open home page (back button)
-        public ICommand SelectStoreCommand { get; }
+        public ICommand SelectStoreCommand { get; }         //Command to confirm store selection
 
         #endregion
 
@@ -32,13 +44,15 @@ namespace TopShelfCustomer.ViewModels {
             Title = "Choose your Favorite Store";     //Set Title property of this ContentPage
 
             /* Initialize Collection of Stores */
-            NearbyStores = new ObservableCollection<Store> {
+            NearbyStores = new ObservableCollection<StoreDisplay> {
 
                 //FIXME: Temporary Stores to test the View
-                new Store { StoreName = "HEB DeZavala", StoreAddress = "1111 DeZavala Road" },
-                new Store { StoreName = "HEB 1604 and Blanco", StoreAddress = "2222 Blanco Road" },
-                new Store { StoreName = "HEB 1604 and Bandera", StoreAddress = "2222 Bandera Road" }
-            };       
+                new StoreDisplay { Name = "HEB DeZavala", Address = "1111 DeZavala Road" },
+                new StoreDisplay { Name = "HEB 1604 and Blanco", Address = "2222 Blanco Road" },
+                new StoreDisplay { Name = "HEB Bandera and 1604", Address = "3333 Bandera Road" }
+            };
+            SelectedStore = NearbyStores[0];
+            
 
             /* Initialize Commands */
             NavigateBackCommand = new Command( () => App.SetCurrentPage<HomePage>() );
