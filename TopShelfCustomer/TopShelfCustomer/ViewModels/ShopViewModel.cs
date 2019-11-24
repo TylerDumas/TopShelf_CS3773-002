@@ -1,11 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 using System.Windows.Input;
 using TopShelfCustomer.Models;
 using TopShelfCustomer.Views;
 using Xamarin.Forms;
-using System;
 
 namespace TopShelfCustomer.ViewModels {
 

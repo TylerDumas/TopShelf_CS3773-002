@@ -1,8 +1,8 @@
 ﻿using System;
-using System.Windows.Input;
-using Xamarin.Forms;
-using Xamarin.Essentials;
 using System.ComponentModel;
+using System.Windows.Input;
+using Xamarin.Essentials;
+using Xamarin.Forms;
 
 namespace TopShelfCustomer.Models {
 
