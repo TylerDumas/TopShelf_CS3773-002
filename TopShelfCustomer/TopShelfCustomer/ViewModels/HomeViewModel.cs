@@ -46,7 +46,7 @@ namespace TopShelfCustomer.ViewModels {
             /* FIXME: Temporary User to test name display */
             User temp = new User() {
                 Name = "Jackson Dumas",
-                UserStore = new Store( "HEB De-Zavala", "DeZavala Road, San Antonio, TX, 78249" ),
+                UserStore = new Store { StoreName="HEB DeZavala", StoreAddress="111 DeZavala Road" },
                 Email = "tylerdumas3@hotmail.com",
             };
             UserRealName = "Jackson Dumas";

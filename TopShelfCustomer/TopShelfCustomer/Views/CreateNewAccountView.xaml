@@ -67,16 +67,18 @@
                         <!-- Error Message -->
                         <Label Text="{Binding CreationErrorMessage}" FontSize="20" TextColor="Red" FontFamily="{StaticResource MediumFont}"
                                IsVisible="{Binding IsErrorOnCreation}" HorizontalOptions="Center"/>
+
+                        <!-- Create Account Button -->
+                        <ContentView Margin="0, 40, 0, 0">
+                            <Button Command="{Binding ConfirmNewAccountCommand}" BackgroundColor="{StaticResource SpaceGray}" Text="Create Account"
+                                    FontSize="20" TextColor="White" HeightRequest="60" FontFamily="{StaticResource MediumFont}"
+                                    Margin="40,0,40,30" BorderColor="Black" BorderWidth="2"/>
+                        </ContentView>
                     </StackLayout>
                 </ContentView>
             </ScrollView>
 
-            <!-- Create Account Button -->
-            <ContentView Grid.Row="2">
-                <Button Command="{Binding ConfirmNewAccountCommand}" BackgroundColor="{StaticResource SpaceGray}" Text="Create Account"
-                        FontSize="20" TextColor="Black" HeightRequest="60" FontFamily="{StaticResource MediumFont}"
-                        Margin="40,0,40,30" BorderColor="Black" BorderWidth="2"/>
-            </ContentView>
+            
         </Grid>
     </ContentPage.Content>
 </ContentPage>

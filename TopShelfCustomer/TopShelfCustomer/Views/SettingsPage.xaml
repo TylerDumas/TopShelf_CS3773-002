@@ -24,7 +24,7 @@
                     <!-- Name and Portrait -->
                     <StackLayout Orientation="Vertical" Margin="20, 0, 20, 0">
                         <!-- Profile Picture -->
-                        <Frame HorizontalOptions="Center" CornerRadius="42" WidthRequest="48" HeightRequest="48" HasShadow="True" BorderColor="{StaticResource Primary}">
+                        <Frame HorizontalOptions="Center" CornerRadius="42" WidthRequest="48" HeightRequest="48" HasShadow="True" BorderColor="{StaticResource Accent}">
                             <Image Source="portrait.png" />
                         </Frame>
                         <!-- Welcome Message -->

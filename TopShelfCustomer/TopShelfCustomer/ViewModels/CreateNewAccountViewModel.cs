@@ -74,7 +74,7 @@ namespace TopShelfCustomer.ViewModels {
                 var success = await auth.RegisterWithEmailPassword( EmailInput, PasswordInput );
                 if( success != "" ) {
                     Debug.WriteLine( "Successfully created your account" );
-                    App.SetNewPage<HomePage>();
+                    App.SetNewPage<LoginPage>();
                 } else {
                     Debug.WriteLine( success );
                     CreationErrorMessage = "Failed to register account with firebase";

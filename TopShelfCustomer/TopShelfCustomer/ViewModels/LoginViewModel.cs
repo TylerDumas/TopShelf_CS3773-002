@@ -21,6 +21,16 @@ namespace TopShelfCustomer.ViewModels {
         public string EmailInput { get; set; }      //E-mail and Password String values
         public string PasswordInput { get; set; }
 
+        private bool isIncorrectInfo;        //Bool to define whether the "incorrect username" message should be shown
+        public bool IsIncorrectInfo {
+            get {
+                return isIncorrectInfo;
+            }
+            set {
+                isIncorrectInfo = value;
+                OnPropertyChanged( "IsIncorrectInfo" );
+            }
+        }
         private bool isErrorVisible;        //Bool to define whether the "incorrect username" message should be shown
         public bool IsErrorVisible {
             get {

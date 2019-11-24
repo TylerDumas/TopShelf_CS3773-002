@@ -21,6 +21,28 @@
                     <ImageButton Source="back_orange.png" Command="{Binding NavigateBackCommand}" HorizontalOptions="Start" Margin="10,40,0,10" HeightRequest="40"/>
                     <Label Text="Create New Order" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource MediumFont}"
                            VerticalOptions="FillAndExpand" Margin="0, 20, 0, 40" FontSize="30" TextColor="White" />
+
+                    <!-- ListView of Stores -->
+                    <ListView x:Name="StoreList" ItemsSource="{Binding NearbyStores}" BackgroundColor="{StaticResource Accent}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell >
+                                    <StackLayout Orientation="Horizontal" Spacing="30" VerticalOptions="Center" Padding="30, 0, 30, 0">
+                                        <Label Text="{Binding StoreName}" FontFamily="{StaticResource MediumFont}" HorizontalOptions="Start" TextColor="White"/>
+                                        <Label Text="{Binding StoreAddress}" FontFamily="{StaticResource NormalFont}" HorizontalOptions="CenterAndExpand" TextColor="White"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+
+                    <!-- Continue with Store Selection Button -->
+                    <ContentView Margin="0, 40, 0, 60">
+                        <Button Command="{Binding LoginCommand}" BackgroundColor="{StaticResource SpaceGray}" WidthRequest="240"
+                            BorderColor="Black" BorderWidth="2"
+                            HeightRequest="50" TextColor="White" FontFamily="{StaticResource MediumFont}"
+                            Text="Select Store" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Start" FontSize="22"/>
+                    </ContentView>
                 </StackLayout>
             </ContentView>
         </Grid>

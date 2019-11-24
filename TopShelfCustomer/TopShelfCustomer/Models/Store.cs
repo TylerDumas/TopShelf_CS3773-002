@@ -19,12 +19,8 @@ namespace TopShelfCustomer.Models {
         /// <summary>
         /// Constructor
         /// </summary>
-        /// <param name="storeName"> the name of the Store </param>
-        /// <param name="storeAddress"> the address of the Store </param>
-        public Store( string storeName, string storeAddress ) {
-            this.StoreName = storeName;
-            this.StoreAddress = storeAddress;
-            this.StoreCatalog = new List<Item>();
+        public Store() {
+            StoreCatalog = new List<Item>();
         }
     }
 }
