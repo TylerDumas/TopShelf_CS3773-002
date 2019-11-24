@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.ShopView"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.StoreView"
              xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}">
     <ContentPage.BindingContext>
-        <vm:ShopViewModel/>
+        <vm:StoreViewModel/>
     </ContentPage.BindingContext>
     <ContentPage.BackgroundImageSource>
         <OnPlatform x:TypeArguments="FileImageSource">
@@ -34,7 +34,7 @@
             </ContentView>
 
 
-            <ListView x:Name="StoreList" ItemsSource="{Binding ShopInventory}" RowHeight="60" SeparatorColor="Black" SelectionMode="None"
+            <ListView x:Name="StoreList" ItemsSource="{Binding StoreInventory}" RowHeight="60" SeparatorColor="Black" SelectionMode="None"
                               BackgroundColor="{StaticResource AccentLight}" Margin="20, 30, 20, 30" Grid.Row="1">
                 <ListView.ItemTemplate>
                     <DataTemplate>

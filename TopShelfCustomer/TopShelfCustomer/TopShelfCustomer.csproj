@@ -28,6 +28,7 @@
     <Compile Remove="Services\MockDataStore.cs" />
     <Compile Remove="Services\IDataStore.cs" />
     <Compile Remove="Views\ItemsPage.xaml.cs" />
+    <Compile Remove="Views\ShopView.xaml.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />

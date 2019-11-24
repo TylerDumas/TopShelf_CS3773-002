@@ -2,10 +2,8 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-
-using Xamarin.Forms;
-
 using TopShelfCustomer.Models;
+using Xamarin.Forms;
 
 namespace TopShelfCustomer.ViewModels {
     public class BaseViewModel : INotifyPropertyChanged {

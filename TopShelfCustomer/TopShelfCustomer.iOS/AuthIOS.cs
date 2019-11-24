@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Firebase.Auth;
+using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using TopShelfCustomer.iOS;
 using TopShelfCustomer.Services;
 using Xamarin.Forms;
-using Firebase.Auth;
-using System.Diagnostics;
 
 [assembly: Dependency( typeof( AuthIOS ) )]
 namespace TopShelfCustomer.iOS {

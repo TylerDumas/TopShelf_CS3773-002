@@ -10,19 +10,19 @@ using Xamarin.Forms;
 namespace TopShelfCustomer.ViewModels {
 
     /// <summary>
-    /// ShopViewModel:
+    /// StoreViewModel:
     ///
-    /// ViewModel for Shop View.
+    /// ViewModel for Store View.
     /// Handles the selection of products from the User's default Store.
     /// </summary>
-    public class ShopViewModel : BaseViewModel {
+    public class StoreViewModel : BaseViewModel {
 
         #region Properties
 
         public UriImageSource StoreImage { get; set; }       //The Store's Image(HEB Logo, etc.) FIXME: This is temporary, remove this and its View element if you want
 
         public Store SelectedStore { get; set; }            //The default Store selected by the User
-        public ObservableCollection<Item> ShopInventory { get; set; }       //Collection of this Store's Item inventory. Bound to View
+        public ObservableCollection<Item> StoreInventory { get; set; }       //Collection of this Store's Item inventory. Bound to View
 
         /* Commands */
         public ICommand NavigateBackCommand { get; }            //Command for "back" button
@@ -35,13 +35,13 @@ namespace TopShelfCustomer.ViewModels {
         /// <summary>
         /// Constructor
         /// </summary>
-        public ShopViewModel() {
+        public StoreViewModel() {
 
             StoreImage = new UriImageSource { Uri = new System.Uri( "https://pbs.twimg.com/profile_images/1131606709313712129/H5XKewbN.png" ) };        //FIXME: Remove this if you want
 
             /* Temporary Store and Inventory Instantiation */
             SelectedStore = new Store { StoreName = "HEB DeZavala", StoreAddress = "1111 DeZavala Road" };      //Temporary Store instantiation
-            ShopInventory = new ObservableCollection<Item> {
+            StoreInventory = new ObservableCollection<Item> {
                 new Item{ ItemName = "Cereal", Price = 6.99f, ItemId = 1 },
                 new Item{ ItemName = "Bread", Price = 1.00f, ItemId = 2 },
                 new Item{ ItemName = "Precious Gems", Price = 10.00f, ItemId = 3 },

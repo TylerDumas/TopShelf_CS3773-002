@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Firebase.Auth;
+using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using TopShelfCustomer.Droid;
-using Firebase.Auth;
-using Xamarin.Forms;
 using TopShelfCustomer.Services;
-using System.Diagnostics;
+using Xamarin.Forms;
 
 [assembly: Dependency( typeof( AuthDroid ) )]
 namespace TopShelfCustomer.Droid {

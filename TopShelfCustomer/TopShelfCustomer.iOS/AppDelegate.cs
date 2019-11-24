@@ -1,9 +1,8 @@
-﻿using System;
+﻿using Firebase;
+using Foundation;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using Firebase;
-
-using Foundation;
 using TopShelfCustomer.Services;
 using UIKit;
 using Xamarin.Forms;

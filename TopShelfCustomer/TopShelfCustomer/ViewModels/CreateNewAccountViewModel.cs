@@ -1,9 +1,9 @@
-﻿using System.Windows.Input;
+﻿using System.ComponentModel;
 using System.Diagnostics;
+using System.Windows.Input;
+using TopShelfCustomer.Services;
 using TopShelfCustomer.Views;
 using Xamarin.Forms;
-using System.ComponentModel;
-using TopShelfCustomer.Services;
 
 namespace TopShelfCustomer.ViewModels {
 
