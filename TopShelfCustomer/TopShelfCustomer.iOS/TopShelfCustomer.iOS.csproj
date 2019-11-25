@@ -26,6 +26,8 @@
     <MtouchArch>x86_64</MtouchArch>
     <MtouchLink>None</MtouchLink>
     <MtouchDebug>true</MtouchDebug>
+    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignProvision>iOS Team Provisioning Profile: CS3773-002.TopShelf</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhoneSimulator' ">
     <DebugType>none</DebugType>
@@ -45,9 +47,9 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>Apple Development: tylerdumas3@hotmail.com (LUN8R72W9K)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
-    <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
+    <CodesignProvision>iOS Team Provisioning Profile: CS3773-002.TopShelf</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -65,24 +67,10 @@
     <None Include="Entitlements.plist" />
     <None Include="Info.plist" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="AuthIOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon167.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon152.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon76.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon29.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
     <BundleResource Include="Resources\tab_about.png" />
@@ -95,59 +83,61 @@
     <BundleResource Include="Resources\xamarin_logo%402x.png" />
     <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
-    <BundleResource Include="Resources\AppIcons\AppIcon1024.png" />
-    <BundleResource Include="Resources\AppIcons\AppIcon120.png" />
-    <BundleResource Include="Resources\AppIcons\AppIcon180.png" />
-    <BundleResource Include="Resources\AppIcons\AppIcon40.png" />
-    <BundleResource Include="Resources\AppIcons\AppIcon512.png" />
-    <BundleResource Include="Resources\AppIcons\AppIcon60.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon40.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon60.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon180.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon120.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon1024.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon1024-1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon512.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon1024-2.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon512-1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
     <BundleResource Include="Resources\TopShelfNameLogo.png" />
     <BundleResource Include="Resources\NameLogoWhite.png" />
     <BundleResource Include="Resources\TopShelfLogo.png" />
     <BundleResource Include="Resources\portrait.png" />
     <BundleResource Include="Resources\back_orange.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon120-1.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <BundleResource Include="Resources\AppIcons\AppIcon80.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon80.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <BundleResource Include="Resources\AppIcons\AppIcon58.png" />
-    <BundleResource Include="Resources\AppIcons\AppIcon87.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon87.png">
-      <Visible>false</Visible>
-    </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\AppIcon58.png">
-      <Visible>false</Visible>
-    </ImageAsset>
+    <BundleResource Include="Resources\TopShelfAppLogo.png" />
+    <BundleResource Include="Resources\cart_48.png" />
+    <BundleResource Include="Resources\menu_48.png" />
+    <BundleResource Include="Resources\news_48.png" />
+    <BundleResource Include="Resources\secure_letter_48.png" />
+    <BundleResource Include="GoogleService-Info.plist" />
+    <BundleResource Include="Resources\FiraSans-Bold.ttf" />
+    <BundleResource Include="Resources\FiraSans-BoldItalic.ttf" />
+    <BundleResource Include="Resources\FiraSans-Medium.ttf" />
+    <BundleResource Include="Resources\FiraSans-MediumItalic.ttf" />
+    <BundleResource Include="Resources\FiraSans-Regular.ttf" />
+    <BundleResource Include="Resources\FiraSans-SemiBold.ttf" />
+    <BundleResource Include="Resources\FiraSans-SemiBoldItalic.ttf" />
+    <BundleResource Include="Resources\OFL.txt" />
+    <BundleResource Include="Resources\gradient_background.png" />
+    <BundleResource Include="Resources\AppIcons\app_logo_20.png" />
+    <BundleResource Include="Resources\AppIcons\app_logo_29.png" />
+    <BundleResource Include="Resources\AppIcons\app_logo_40.png" />
+    <BundleResource Include="Resources\AppIcons\app_logo_58.png" />
+    <BundleResource Include="Resources\AppIcons\app_logo_60.png" />
+    <BundleResource Include="Resources\AppIcons\app_logo_76.png" />
+    <BundleResource Include="Resources\AppIcons\app_logo_80.png" />
+    <BundleResource Include="Resources\AppIcons\app_logo_87.png" />
+    <BundleResource Include="Resources\AppIcons\app_logo_120.png" />
+    <BundleResource Include="Resources\AppIcons\app_logo_152.png" />
+    <BundleResource Include="Resources\AppIcons\app_logo_167.png" />
+    <BundleResource Include="Resources\AppIcons\app_logo_180.png" />
+    <BundleResource Include="Resources\AppIcons\app_logo_512.png" />
+    <BundleResource Include="Resources\AppIcons\app_logo_1024.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_1024.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_120.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_152.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_167.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_180.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_20.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_29.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_58.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_80.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_80-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_120-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_40.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_40-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_60.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_58-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_87.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_40-2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_76.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_120-2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_1024-1.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_1024-2.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -158,8 +148,11 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.2.0.848062" />
+    <PackageReference Include="Xamarin.Forms" Version="4.3.0.991211" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
+    <PackageReference Include="Xamarin.Firebase.iOS.Auth">
+      <Version>6.2.1.1</Version>
+    </PackageReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
@@ -172,7 +165,7 @@
     <Folder Include="Resources\AppIcons\" />
   </ItemGroup>
   <ItemGroup>
-    <ITunesArtwork Include="iTunesArtwork" />
     <ITunesArtwork Include="iTunesArtwork%402x" />
+    <ITunesArtwork Include="iTunesArtwork" />
   </ItemGroup>
 </Project>

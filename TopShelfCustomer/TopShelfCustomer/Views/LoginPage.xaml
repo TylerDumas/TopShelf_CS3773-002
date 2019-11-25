@@ -3,41 +3,97 @@
     <ContentPage.BindingContext>
         <vm:LoginViewModel/>
     </ContentPage.BindingContext>
+    <ContentPage.BackgroundImageSource>
+        <OnPlatform x:TypeArguments="FileImageSource">
+            <On Platform="Android" Value="gradient_background_droid.png" />
+            <On Platform="iOS" Value="gradient_background.png" />
+        </OnPlatform>
+    </ContentPage.BackgroundImageSource>
 
     <ContentPage.Content>
         <ScrollView>
             <Grid>
+
                 <!-- RowDefinitions -->
                 <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto" />
                     <RowDefinition Height="Auto" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
 
-                <!-- Header and Icons -->
-                <StackLayout BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" >
-                    <!-- Icons -->
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" VerticalOptions="Center" Spacing="10">
-                        <ContentView Padding="20,60,0,40" VerticalOptions="FillAndExpand">
-                            <Image Source="NameLogoWhite.png" VerticalOptions="Center" HeightRequest="52" />
-                        </ContentView>
-                        <ContentView Padding="0,20,0,40" VerticalOptions="FillAndExpand">
-                            <Image Source="TopShelfLogo.png" VerticalOptions="Center" HeightRequest="120" />
-                        </ContentView>
+                <!-- Header (Label, App Icon, etc.) -->
+                <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                         Grid.Row="0" Padding="0, 40, 0, 40" >
+                    <StackLayout Orientation="Vertical" Spacing="20">
+                        <Image Source="TopShelfAppLogo.png" HeightRequest="100"/>
+                        <Label Text="Log into TopShelf" FontSize="26" HorizontalOptions="Center" TextColor="White" FontFamily="{StaticResource MediumFont}"/>
                     </StackLayout>
+                </ContentView>
 
-                    <!-- Login Title Label -->
-                    <Label Text="Log In" FontAttributes="Bold"
-                           Grid.Row="1" HorizontalOptions="CenterAndExpand"
-                           FontSize="40"  Margin="0, 0, 0, 40" TextColor="White" />
+                <StackLayout Orientation="Vertical" Grid.Row="1" VerticalOptions="StartAndExpand">
+                    <!-- Username and Password Entries -->
+                    <ContentView HorizontalOptions="CenterAndExpand" Grid.Row="1" Padding="0, 60, 0, 20">
+                        <StackLayout Orientation="Vertical" Spacing="30" VerticalOptions="Center">
+                            <ContentView>
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="news_48.png" HeightRequest="64" />
+                                    <Entry Placeholder="E-mail" TextColor="White" BackgroundColor="{StaticResource Accent}"
+                                           VerticalOptions="CenterAndExpand" HeightRequest="46" Text="{Binding EmailInput, Mode=TwoWay}"
+                                           FontFamily="{StaticResource NormalFont}" PlaceholderColor="Gray" WidthRequest="260" Keyboard="Email"/>
+                                </StackLayout>
+                            </ContentView>
+                            <ContentView>
+                                <StackLayout Orientation="Horizontal">
+                                    <Image Source="secure_letter_48.png" HeightRequest="64"  />
+                                    <Entry IsPassword="True" Placeholder="Password" TextColor="White" BackgroundColor="{StaticResource Accent}"
+                                           VerticalOptions="CenterAndExpand" HeightRequest="46" Text="{Binding PasswordInput, Mode=TwoWay}"
+                                           FontFamily="{StaticResource NormalFont}" PlaceholderColor="Gray" WidthRequest="260" Keyboard="Plain"/>
+                                </StackLayout>
+                            </ContentView>
 
-                </StackLayout>
+                            <!-- Error Message -->
+                            <Label Text="Incorrect username or password. Try again" IsVisible="{Binding IsErrorVisible}"
+                                   FontFamily="{StaticResource NormalFont}" FontSize="16" TextColor="Red" HorizontalOptions="Center" />
+                            <Label HorizontalOptions="Center" IsVisible="{Binding IsErrorVisible}" FontFamily="{StaticResource NormalFont}">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="Forgot your password?" FontSize="16" TextColor="Red" TextDecorations="Underline">
+                                                <Span.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding ForgotPasswordCommand}" />
+                                                </Span.GestureRecognizers>
+                                            </Span>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </ContentView>
 
-                <!-- Data Entry Fields -->
-                <StackLayout Orientation="Vertical" Spacing="30" Grid.Row="2" Margin="40,60,40,0" >
-                    <Entry Placeholder="Enter your username" VerticalOptions="Center" HeightRequest="64" />
-                    <Entry Placeholder="Enter your password" VerticalOptions="Center" HeightRequest="64" />
-                    <Button Command="{Binding LoginCommand}" Text="Log In" BackgroundColor="{StaticResource Primary}" TextColor="White" Margin="0, 40, 0, 0" HeightRequest="64"/>
+                    <!-- Login Button and Account Recovery -->
+                    <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="CenterAndExpand" Grid.Row="1" Padding="0, 60, 0, 0">
+                        <StackLayout Orientation="Vertical" Spacing="0">
+                            <Button Command="{Binding LoginCommand}" BackgroundColor="#424C55" WidthRequest="240"
+                                    BorderColor="Black" BorderWidth="2"
+                                    HeightRequest="50" TextColor="White" FontFamily="{StaticResource MediumFont}"
+                                    Text="Log In" Grid.Row="2" HorizontalOptions="Center" VerticalOptions="Start" FontSize="22"/>
+                            <Label Text="New to TopShelf?  " FontSize="18" FontFamily="{StaticResource NormalFont}"
+                                   TextColor="White" Margin="0, 25, 0, 5" HorizontalOptions="Center"/>
+                            <Label HorizontalOptions="Center">
+                                <Label.FormattedText>
+                                    <FormattedString>
+                                        <FormattedString.Spans>
+                                            <Span Text="Create an account" FontSize="18" TextColor="White"
+                                                  TextDecorations="Underline" FontFamily="{StaticResource MediumFont}">
+                                                <Span.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding CreateNewAccountCommand}" />
+                                                </Span.GestureRecognizers>
+                                            </Span>
+                                        </FormattedString.Spans>
+                                    </FormattedString>
+                                </Label.FormattedText>
+                            </Label>
+                        </StackLayout>
+                    </ContentView>
                 </StackLayout>
             </Grid>
         </ScrollView>

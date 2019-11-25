@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.CreateNewAccountView" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:CreateNewAccountViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.BackgroundImageSource>
+        <OnPlatform x:TypeArguments="FileImageSource">
+            <On Platform="Android" Value="gradient_background_droid.png" />
+            <On Platform="iOS" Value="gradient_background.png" />
+        </OnPlatform>
+    </ContentPage.BackgroundImageSource>
+    <ContentPage.Content>
+        <Grid>
+
+            <!-- Row Definitions -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Header (Label, App Icon, etc.) -->
+            <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                     Grid.Row="0" Padding="0, 0, 0, 40" >
+                <StackLayout Orientation="Vertical">
+                    <ImageButton Source="back_orange.png" Command="{Binding NavigateBackCommand}" HorizontalOptions="Start" Margin="10,40,0,0" HeightRequest="40"/>
+                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
+                        <Image Source="TopShelfAppLogo.png" HeightRequest="60"/>
+                        <Label Text="TopShelf" FontSize="30" FontFamily="{StaticResource MediumFont}" VerticalTextAlignment="Center" TextColor="White" />
+                    </StackLayout>
+                </StackLayout>
+            </ContentView>
+
+            <!-- Entry Fields -->
+            <ScrollView Grid.Row="1" Margin="40,40,40,20">
+                <ContentView HorizontalOptions="FillAndExpand">
+                    <StackLayout Orientation="Vertical">
+
+                        <!-- Title Label -->
+                        <Label Text="Create a New Account" FontSize="26" FontFamily="{StaticResource NormalFont}"
+                               TextColor="White" HorizontalOptions="Center" Margin="0,10,0,40"/>
+
+                        <!-- Username -->
+                        <StackLayout Orientation="Horizontal" Margin="0,20,0,20" HeightRequest="50">
+                            <Image Source="news_48.png" HeightRequest="64" />
+                            <Entry Placeholder="Full Name" FontSize="16" WidthRequest="260"
+                                   Text="{Binding UserRealNameInput, Mode=TwoWay}" FontFamily="{StaticResource NormalFont}"
+                               BackgroundColor="{StaticResource Accent}" PlaceholderColor="Gray"/>
+                        </StackLayout>
+                        
+                        <!-- Email -->
+                        <StackLayout Orientation="Horizontal" Margin="0,10,0,20" HeightRequest="50">
+                            <Image Source="news_48.png" HeightRequest="64"  />
+                            <Entry Placeholder="E-mail" FontSize="16" WidthRequest="260"
+                                   Text="{Binding EmailInput, Mode=TwoWay}" FontFamily="{StaticResource NormalFont}"
+                                   BackgroundColor="{StaticResource Accent}" PlaceholderColor="Gray"/>
+                        </StackLayout>
+
+                        <!-- Password -->
+                        <StackLayout Orientation="Horizontal" Margin="0,10,0,20" HeightRequest="50">
+                            <Image Source="secure_letter_48.png" HeightRequest="64"  />
+                            <Entry Placeholder="Password" IsPassword="True" WidthRequest="260"
+                                   Text="{Binding PasswordInput, Mode=TwoWay}" FontFamily="{StaticResource NormalFont}"
+                               FontSize="16" BackgroundColor="{StaticResource Accent}" PlaceholderColor="Gray"/>
+                        </StackLayout>
+
+                        <!-- Error Message -->
+                        <Label Text="{Binding CreationErrorMessage}" FontSize="20" TextColor="Red" FontFamily="{StaticResource MediumFont}"
+                               IsVisible="{Binding IsErrorOnCreation}" HorizontalOptions="Center"/>
+
+                        <!-- Create Account Button -->
+                        <ContentView Margin="0, 40, 0, 0">
+                            <Button Command="{Binding ConfirmNewAccountCommand}" BackgroundColor="{StaticResource SpaceGray}" Text="Create Account"
+                                    FontSize="20" TextColor="White" HeightRequest="60" FontFamily="{StaticResource MediumFont}"
+                                    Margin="40,0,40,30" BorderColor="Black" BorderWidth="2"/>
+                        </ContentView>
+                    </StackLayout>
+                </ContentView>
+            </ScrollView>
+
+            
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

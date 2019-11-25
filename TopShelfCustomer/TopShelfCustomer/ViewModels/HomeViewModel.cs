@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.ComponentModel;
+using System.Windows.Input;
 using TopShelfCustomer.Models;
 using TopShelfCustomer.Views;
 using Xamarin.Forms;
@@ -11,43 +12,53 @@ namespace TopShelfCustomer.ViewModels {
     /// ViewModel for the Home page
     /// Allows the interface to connect to the model classes directly
     /// </summary>
-    public class HomeViewModel : BaseViewModel {
+    public class HomeViewModel : BaseViewModel, INotifyPropertyChanged {
 
         #region Properties
 
-            public string UserName { get; private set; }
-            public string UserStore { get; set; }
+        public string UserRealName { get; private set; }        //The current User's real name
+        private string userStoreName;       //String representation of this User's default Store
+        public string UserStoreName {
+            get {
+                return userStoreName;
+            }
+            set {
+                userStoreName = value;
+                OnPropertyChanged( "UserStoreName" );
+            }
+        }
+        public Store UserStore { get; set; }        //The current User's favorite Store
 
-            public ICommand OpenAboutView { get; private set; }
+        /* Commands */
+        public ICommand OpenSettingsCommand { get; }       //Command to open Settings Menu
+        public ICommand OpenCreateOrderCommand { get; }        //Command to open Order Creation Menu
+        public ICommand ChangeStoreCommand { get; }     //Command to open "Change Default Store" Menu
 
         #endregion
 
         #region Class Methods
 
-            /// <summary>
-            /// Constructor
-            /// </summary>
-            public HomeViewModel() {
-                Title = "Home";
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public HomeViewModel() {
+            Title = "Home";
 
-                /* Temporary User to test name display */
-                User temp = new User();
-                temp.Name = "Dirk Diggler";
-                temp.UserStoreName = "HEB DeZavala Road, San Antonio, TX, 78249";
-                UserName = temp.Name;
-                UserStore = temp.UserStoreName;
+            /* FIXME: Temporary User to test name display */
+            User temp = new User() {
+                Name = "Jackson Dumas",
+                UserStore = new Store { StoreName="HEB DeZavala", StoreAddress="111 DeZavala Road" },
+                Email = "tylerdumas3@hotmail.com",
+            };
+            UserRealName = "Jackson Dumas";
+            UserStore = temp.UserStore;
+            UserStoreName = UserStore.StoreName;
 
-                OpenAboutView = new Command( LaunchAboutPage );
-            }
-
-            /// <summary>
-            /// LaunchAboutPage:
-            ///
-            /// Launches the AboutPage view
-            /// </summary>
-            void LaunchAboutPage() {
-                Application.Current.MainPage = new AboutPage();
-            }
+            /* Initialize Commands */
+            OpenSettingsCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
+            OpenCreateOrderCommand = new Command( () => App.SetCurrentPage<StoreView>() );
+            ChangeStoreCommand = new Command( () => App.SetCurrentPage<ChooseStoreView>() );
+        }
 
         #endregion
     }

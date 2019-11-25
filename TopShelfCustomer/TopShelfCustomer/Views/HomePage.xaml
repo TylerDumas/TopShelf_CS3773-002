@@ -3,7 +3,12 @@
     <ContentPage.BindingContext>
         <vm:HomeViewModel/>
     </ContentPage.BindingContext>
-
+    <ContentPage.BackgroundImageSource>
+        <OnPlatform x:TypeArguments="FileImageSource">
+            <On Platform="Android" Value="gradient_background_droid.png" />
+            <On Platform="iOS" Value="gradient_background.png" />
+        </OnPlatform>
+    </ContentPage.BackgroundImageSource>
     <!-- Content -->
     <ContentPage.Content>
         <Grid>
@@ -11,132 +16,139 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
-                <RowDefinition Height="70" />
+                <RowDefinition Height="100" />
             </Grid.RowDefinitions>
-
-            <!-- Header -->
-            <StackLayout Orientation="Vertical" Grid.Row="0" BackgroundColor="{StaticResource Accent}" VerticalOptions="FillAndExpand" HorizontalOptions="Fill" >
+            <!-- Profile Info Header -->
+            <ContentView Grid.Row="0" Padding="0, 50, 0, 30" >
                 <!-- Name and Portrait -->
-                <StackLayout Orientation="Horizontal" Margin="20, 40, 20, 0">
-                    <!-- Welcome Message-->
-                    <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="White">
-                        <Label.FormattedText>
-                            <FormattedString>
-                                <FormattedString.Spans>
-                                    <Span Text="Welcome, " FontAttributes="Bold" FontSize="Title" />
-                                    <Span Text="{Binding UserName}" FontAttributes="Bold" FontSize="Title" />
-                                </FormattedString.Spans>
-                            </FormattedString>
-                        </Label.FormattedText>
-                    </Label>
+                <StackLayout Orientation="Vertical" Margin="20, 0, 20, 0">
+
                     <!-- Profile Picture -->
-                    <Frame CornerRadius="42" WidthRequest="48" HeightRequest="48" HasShadow="True" BorderColor="{StaticResource Primary}">
+                    <Frame HorizontalOptions="Center" CornerRadius="34" WidthRequest="32" HeightRequest="32" HasShadow="True" BorderColor="{StaticResource Accent}">
                         <Image Source="portrait.png" />
                     </Frame>
+
+                    <!-- Welcome Message-->
+                    <Label Text="{Binding UserRealName}" HorizontalOptions="CenterAndExpand" Margin="0, 10, 0, 0"
+                           VerticalOptions="Center" FontSize="26" TextColor="White" FontFamily="{StaticResource MediumFont}"/>
+
+                    <!-- User Store -->
+                    <StackLayout Orientation="Horizontal" Margin="0, 10, 0, 0" HorizontalOptions="CenterAndExpand" Spacing="20">
+                        <Label FontFamily="{StaticResource NormalFont}"
+                           VerticalOptions="Center" TextColor="White">
+                            <Label.FormattedText>
+                                <FormattedString>
+                                    <FormattedString.Spans>
+                                        <Span Text="Your Store:   " FontFamily="{StaticResource MediumFont}" FontSize="20" />
+                                        <Span Text="{Binding UserStoreName}" FontSize="20" TextDecorations="Underline"/>
+                                    </FormattedString.Spans>
+                                </FormattedString>
+                            </Label.FormattedText>
+                        </Label>
+                        <Button Command="{Binding ChangeStoreCommand}" Text="Change" FontFamily="{StaticResource NormalFont}" FontSize="13"
+                                BackgroundColor="{StaticResource SpaceGray}" TextColor="White"
+                                BorderColor="Black" BorderWidth="1" WidthRequest="70" HeightRequest="40"/>
+                    </StackLayout>
                 </StackLayout>
-                <!-- User Store -->
-                <Label HorizontalOptions="CenterAndExpand" VerticalOptions="Center" TextColor="White" Margin="20, 20, 20, 40" >
-                    <Label.FormattedText>
-                        <FormattedString>
-                            <FormattedString.Spans>
-                                <Span Text="Your Store: " FontAttributes="Bold" FontSize="Large" />
-                                <Span Text="{Binding UserStore}" FontSize="Large" />
-                            </FormattedString.Spans>
-                        </FormattedString>
-                    </Label.FormattedText>
-                </Label>
-            </StackLayout>
+            </ContentView>
 
             <!-- Coupons List -->
             <ScrollView Grid.Row="1">
                 <StackLayout>
+
                     <!-- Test Coupon One -->
                     <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="220">
-                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="Wheat">
-                            <Label>
+                        <Frame BorderColor="{StaticResource SpaceGray}" BackgroundColor="White">
+                            <Label FontFamily="{StaticResource NormalFont}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <FormattedString.Spans>
-                                            <Span Text="Coupon One " FontAttributes="Bold" FontSize="Large"/>
+                                            <Span Text="Coupon One " FontFamily="{StaticResource BoldFont}" FontSize="Large"/>
                                             <Span Text="{x:Static system:Environment.NewLine}" />
                                             <Span Text="{x:Static system:Environment.NewLine}" />
-                                            <Span Text="Store: " FontAttributes="Bold" FontSize="18" />
-                                            <Span Text="HEB 111 South Boogie Street" FontSize="Body" />
+                                            <Span Text="Store: " FontFamily="{StaticResource BoldFont}" FontSize="18" />
+                                            <Span Text="HEB 111 South Boogie Street" FontSize="Body" FontFamily="{StaticResource NormalFont}"/>
                                             <Span Text="{x:Static system:Environment.NewLine}" />
-                                            <Span Text="Description: " FontAttributes="Bold" FontSize="18" />
-                                            <Span Text="You get a free bucket of armadillos. You're guaranteed to get leprose or your money back!" FontSize="Body"/>
+                                            <Span Text="Description: " FontFamily="{StaticResource BoldFont}" FontSize="18" />
+                                            <Span Text="You get a free bucket of armadillos. You're guaranteed to get leprose or your money back!" FontSize="Body" FontFamily="{StaticResource NormalFont}"/>
                                             <Span Text="{x:Static system:Environment.NewLine}" />
                                             <Span Text="{x:Static system:Environment.NewLine}" />
-                                            <Span Text="Directions" FontAttributes="Bold" TextDecorations="Underline" FontSize="18" />
+                                            <Span Text="Directions" FontFamily="{StaticResource BoldFont}" TextDecorations="Underline" FontSize="18" />
                                         </FormattedString.Spans>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
                         </Frame>
                     </ContentView>
+
+                    <!-- Test Coupon Two -->
                     <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="220">
-                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="Wheat">
-                            <Label>
+                        <Frame BorderColor="{StaticResource Accent}" BackgroundColor="White">
+                            <Label FontFamily="{StaticResource NormalFont}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <FormattedString.Spans>
-                                            <Span Text="Coupon Two " FontAttributes="Bold" FontSize="Large"/>
+                                            <Span Text="Coupon Two " FontFamily="{StaticResource BoldFont}" FontSize="Large"/>
                                             <Span Text="{x:Static system:Environment.NewLine}" />
                                             <Span Text="{x:Static system:Environment.NewLine}" />
-                                            <Span Text="Store: " FontAttributes="Bold" FontSize="18" />
-                                            <Span Text="HEB 222 South Boogie Street" FontSize="Body" />
+                                            <Span Text="Store: " FontFamily="{StaticResource BoldFont}" FontSize="18" />
+                                            <Span Text="HEB 222 South Boogie Street" FontSize="Body" FontFamily="{StaticResource NormalFont}"/>
                                             <Span Text="{x:Static system:Environment.NewLine}" />
-                                            <Span Text="Description: " FontAttributes="Bold" FontSize="18" />
-                                            <Span Text="Enjoy some of our HEB Primo Pick, Prime 1 Baby Meat. Always fresh, never frozen! $0.50 off per pound." FontSize="Body"/>
+                                            <Span Text="Description: " FontFamily="{StaticResource BoldFont}" FontSize="18" />
+                                            <Span Text="Enjoy some of our HEB Primo Pick, Prime 1 Baby Meat. Always fresh, never frozen! $0.50 off per pound." FontFamily="{StaticResource NormalFont}" FontSize="Body"/>
                                             <Span Text="{x:Static system:Environment.NewLine}" />
                                             <Span Text="{x:Static system:Environment.NewLine}" />
-                                            <Span Text="Directions" FontAttributes="Bold" TextDecorations="Underline" FontSize="18" />
+                                            <Span Text="Directions" FontFamily="{StaticResource BoldFont}" TextDecorations="Underline" FontSize="18" />
                                         </FormattedString.Spans>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
                         </Frame>
                     </ContentView>
+
+                    <!-- Test Coupon Three -->
                     <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="220">
-                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="Wheat">
-                            <Label>
+                        <Frame BorderColor="{StaticResource Accent}" BackgroundColor="White">
+                            <Label FontFamily="{StaticResource NormalFont}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <FormattedString.Spans>
-                                            <Span Text="Coupon Three " FontAttributes="Bold" FontSize="Large"/>
+                                            <Span Text="Coupon Three " FontFamily="{StaticResource BoldFont}" FontSize="Large"/>
                                             <Span Text="{x:Static system:Environment.NewLine}" />
                                             <Span Text="{x:Static system:Environment.NewLine}" />
-                                            <Span Text="Store: " FontAttributes="Bold" FontSize="18" />
-                                            <Span Text="HEB 333 South Boogie Street" FontSize="Body" />
+                                            <Span Text="Store: " FontFamily="{StaticResource BoldFont}" FontSize="18" />
+                                            <Span Text="HEB 333 South Boogie Street" FontSize="Body" FontFamily="{StaticResource NormalFont}"/>
                                             <Span Text="{x:Static system:Environment.NewLine}" />
-                                            <Span Text="Description: " FontAttributes="Bold" FontSize="18" />
-                                            <Span Text="Get a free HEB provolone cheese value pack with your purchase of a human slave!" FontSize="Body"/>
+                                            <Span Text="Description: " FontFamily="{StaticResource BoldFont}" FontSize="18" />
+                                            <Span Text="Get a free HEB provolone cheese value pack with your purchase of a human slave!" FontSize="Body" FontFamily="{StaticResource NormalFont}"/>
                                             <Span Text="{x:Static system:Environment.NewLine}" />
                                             <Span Text="{x:Static system:Environment.NewLine}" />
-                                            <Span Text="Directions" FontAttributes="Bold" TextDecorations="Underline" FontSize="18" />
+                                            <Span Text="Directions" FontFamily="{StaticResource BoldFont}" TextDecorations="Underline" FontSize="18" />
                                         </FormattedString.Spans>
                                     </FormattedString>
                                 </Label.FormattedText>
                             </Label>
                         </Frame>
                     </ContentView>
+
+                    <!-- Test Coupon Four -->
                     <ContentView VerticalOptions="Start" HorizontalOptions="FillAndExpand" HeightRequest="220">
-                        <Frame BorderColor="{StaticResource Primary}" BackgroundColor="Wheat">
-                            <Label>
+                        <Frame BorderColor="{StaticResource Accent}" BackgroundColor="White">
+                            <Label FontFamily="{StaticResource NormalFont}">
                                 <Label.FormattedText>
                                     <FormattedString>
                                         <FormattedString.Spans>
-                                            <Span Text="Coupon Four " FontAttributes="Bold" FontSize="Large"/>
+                                            <Span Text="Coupon Four " FontFamily="{StaticResource BoldFont}" FontSize="Large"/>
                                             <Span Text="{x:Static system:Environment.NewLine}" />
                                             <Span Text="{x:Static system:Environment.NewLine}" />
-                                            <Span Text="Store: " FontAttributes="Bold" FontSize="18" />
-                                            <Span Text="HEB 444 South Boogie Street" FontSize="Body" />
-                                            <Span Text="{x:Static system:Environment.NewLine}" />
-                                            <Span Text="Description: " FontAttributes="Bold" FontSize="18" />
-                                            <Span Text="Live primates for sale! Visit the outdoor section of your local HEB and pick out an ape today!" FontSize="Body"/>
-                                            <Span Text="{x:Static system:Environment.NewLine}" />
-                                            <Span Text="{x:Static system:Environment.NewLine}" />
-                                            <Span Text="Directions" FontAttributes="Bold" TextDecorations="Underline" FontSize="18" />
+                                            <Span Text="Store: " FontFamily="{StaticResource BoldFont}" FontSize="18" />
+                                            <Span Text="HEB 444 South Boogie Street" FontSize="Body" FontFamily="{StaticResource NormalFont}" />
+                                            <Span Text="{x:Static system:Environment.NewLine}" FontFamily="{StaticResource NormalFont}" />
+                                            <Span Text="Description: " FontFamily="{StaticResource BoldFont}" FontSize="18" />
+                                            <Span Text="Live primates for sale! Visit the outdoor section of your local HEB and pick out an ape today!" FontSize="Body" FontFamily="{StaticResource BoldFont}"/>
+                                            <Span Text="{x:Static system:Environment.NewLine}" FontFamily="{StaticResource NormalFont}"/>
+                                            <Span Text="{x:Static system:Environment.NewLine}" FontFamily="{StaticResource NormalFont}"/>
+                                            <Span Text="Directions" FontFamily="{StaticResource BoldFont}" TextDecorations="Underline" FontSize="18" />
                                         </FormattedString.Spans>
                                     </FormattedString>
                                 </Label.FormattedText>
@@ -147,11 +159,16 @@
             </ScrollView>
 
             <!-- Settings and Account Buttons -->
-            <StackLayout Orientation="Horizontal" Padding="10,10,10,10" Spacing="10" BackgroundColor="{StaticResource Accent}" Grid.Row="2">
-                <Button Text="Stores" BackgroundColor="{StaticResource Primary}" WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White" FontAttributes="Bold" FontSize="14" />
-                <Button Text="Account" BackgroundColor="{StaticResource Primary}" WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White" FontAttributes="Bold" FontSize="14" />
-                <Button Text="Settings" BackgroundColor="{StaticResource Primary}" WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White" FontAttributes="Bold" FontSize="14" />
-                <Button Text="About" Command="{Binding OpenAboutView}" BackgroundColor="{StaticResource Primary}" WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White" FontAttributes="Bold" FontSize="14" />
+            <StackLayout Orientation="Horizontal" Padding="10,10,10,30" Spacing="10" Grid.Row="2">
+                <Button Command="{Binding OpenCreateOrderCommand}" Text="New Order" BackgroundColor="#424C55"
+                        WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White"
+                        BorderColor="Black" BorderWidth="2" FontSize="16" FontFamily="{StaticResource MediumFont}"/>
+                <Button Text="Order History" BackgroundColor="#424C55"
+                        WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White"
+                        BorderColor="Black" BorderWidth="2" FontSize="16" FontFamily="{StaticResource MediumFont}"/>
+                <Button Text="Settings" Command="{Binding OpenSettingsCommand}" BackgroundColor="#424C55"
+                        WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White"
+                        BorderColor="Black" BorderWidth="2" FontSize="16" FontFamily="{StaticResource MediumFont}"/>
             </StackLayout>   
         </Grid>
     </ContentPage.Content>

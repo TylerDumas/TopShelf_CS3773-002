@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "358963778088",
+    "firebase_url": "https://topshelf-6501f.firebaseio.com",
+    "project_id": "topshelf-6501f",
+    "storage_bucket": "topshelf-6501f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:358963778088:android:7fa9a2abc86783b962db1d",
+        "android_client_info": {
+          "package_name": "cs3773_002.topshelf"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "358963778088-rlmbeaf9kp37kvq9h6ef22gvaao6uqcs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBuEo2ZtERLq1ApoLwK0MVnH6jYEhhqfSM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "358963778088-rlmbeaf9kp37kvq9h6ef22gvaao6uqcs.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "358963778088-dc8pia00cnc09kplniq6hiipuk33nmrb.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "CS3773-002.TopShelf"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
