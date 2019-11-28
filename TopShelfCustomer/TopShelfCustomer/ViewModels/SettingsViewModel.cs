@@ -1,14 +1,14 @@
 ﻿using System;
 using System.Windows.Input;
 using System.Diagnostics;
+using System.ComponentModel;
+using System.Reflection;
 using TopShelfCustomer.Views;
 using TopShelfCustomer.Models;
+using TopShelfCustomer.Services;
 using Xamarin.Forms;
-using System.ComponentModel;
 using Xamarin.Essentials;
 using Newtonsoft.Json.Linq;
-using TopShelfCustomer.Services;
-using System.Reflection;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -21,8 +21,6 @@ namespace TopShelfCustomer.ViewModels {
     public class SettingsViewModel : BaseViewModel, INotifyPropertyChanged {
 
         #region Properties
-
-        readonly IFirebaseAuthenticator auth;        //Firebase Authenticator to be resolved for each platform
 
         JObject jsonObject = new JObject();     //Re-usable JSON object
 
@@ -75,8 +73,6 @@ namespace TopShelfCustomer.ViewModels {
             Title = "Settings";         //Set the View title
             userRealName = "Jackson Dumas";     //FIXME: implement a global user class
             InitializeBindableProperties();       //Initialize the properties seen on the UI
-
-            auth = DependencyService.Resolve<IFirebaseAuthenticator>();     //Fetch platform-specific Firebase Authentication implementation
 
             /* Initialize Commands */
             NavigateBackCommand = new Command( () => App.SetCurrentPage<HomePage>() );
