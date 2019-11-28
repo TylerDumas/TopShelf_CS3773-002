@@ -16,18 +16,15 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Properties
 
-        public string UserRealName { get; private set; }        //The current User's real name
+        public string UserRealName { get; }        //The current User's real name
         private string userStoreName;       //String representation of this User's default Store
         public string UserStoreName {
-            get {
-                return userStoreName;
-            }
+            get => userStoreName;
             set {
                 userStoreName = value;
                 OnPropertyChanged( "UserStoreName" );
             }
         }
-        public Store UserStore { get; set; }        //The current User's favorite Store
 
         /* Commands */
         public ICommand OpenSettingsCommand { get; }       //Command to open Settings Menu
@@ -51,11 +48,10 @@ namespace TopShelfCustomer.ViewModels {
                 Email = "tylerdumas3@hotmail.com",
             };
             UserRealName = "Jackson Dumas";
-            UserStore = temp.UserStore;
-            UserStoreName = UserStore.StoreName;
+            UserStoreName = temp.UserStore.StoreName;
 
             /* Initialize Commands */
-            OpenSettingsCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
+             OpenSettingsCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
             OpenCreateOrderCommand = new Command( () => App.SetCurrentPage<ShopView>() );
             ChangeStoreCommand = new Command( () => App.SetCurrentPage<ChooseStoreView>() );
         }

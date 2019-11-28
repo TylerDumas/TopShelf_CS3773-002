@@ -59,13 +59,13 @@
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="80" Margin="0,0,0,10">
                                 <Label Text="Push Notifications" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource NormalFont}"
                                        FontSize="17" TextColor="White" VerticalOptions="Center"/>
-                                <Switch IsToggled="True" HorizontalOptions="EndAndExpand"/>
+                                <Switch IsToggled="{Binding IsCouponPushSwitchToggled}" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                             <!-- Email Notifications Toggle -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="80">
                                 <Label Text="Email Notifications" HorizontalOptions="CenterAndExpand"
                                        FontSize="17" TextColor="White" VerticalOptions="Center" FontFamily="{StaticResource NormalFont}"/>
-                                <Switch IsToggled="True" HorizontalOptions="EndAndExpand"/>
+                                <Switch IsToggled="{Binding IsCouponEmailSwitchToggled}" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </StackLayout>
 
@@ -82,13 +82,13 @@
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="80" Margin="0,0,0,10">
                                 <Label Text="Push Notifications" HorizontalOptions="CenterAndExpand"
                                        FontFamily="{StaticResource NormalFont}" FontSize="17" TextColor="White" VerticalOptions="Center"/>
-                                <Switch IsToggled="True" HorizontalOptions="EndAndExpand"/>
+                                <Switch IsToggled="{Binding IsOrderPushSwitchToggled}" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                             <!-- Email Notifications Toggle -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="80">
                                 <Label Text="Email Notifications" HorizontalOptions="CenterAndExpand"
                                        FontFamily="{StaticResource NormalFont}" FontSize="17" TextColor="White" VerticalOptions="Center"/>
-                                <Switch IsToggled="True" HorizontalOptions="EndAndExpand"/>
+                                <Switch IsToggled="{Binding IsOrderEmailSwitchToggled}" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </StackLayout>
 
@@ -105,13 +105,13 @@
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="80" Margin="0,0,0,10">
                                 <Label Text="Push Notifications" FontFamily="{StaticResource NormalFont}"
                                        HorizontalOptions="CenterAndExpand" FontSize="17" TextColor="White" VerticalOptions="Center"/>
-                                <Switch IsToggled="True" HorizontalOptions="EndAndExpand"/>
+                                <Switch IsToggled="{Binding IsDeliveryPushSwitchToggled}" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                             <!-- Email Notifications Toggle -->
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="80">
                                 <Label Text="Email Notifications" FontFamily="{StaticResource NormalFont}"
                                        HorizontalOptions="CenterAndExpand" FontSize="17" TextColor="White" VerticalOptions="Center"/>
-                                <Switch IsToggled="True" HorizontalOptions="EndAndExpand"/>
+                                <Switch IsToggled="{Binding IsDeliveryEmailSwitchToggled}" HorizontalOptions="EndAndExpand"/>
                             </StackLayout>
                         </StackLayout>
                     </StackLayout>

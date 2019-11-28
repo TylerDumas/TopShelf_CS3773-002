@@ -6,7 +6,9 @@ using TopShelfCustomer.Models;
 using Xamarin.Forms;
 using System.ComponentModel;
 using Xamarin.Essentials;
+using Newtonsoft.Json.Linq;
 using TopShelfCustomer.Services;
+using System.Reflection;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -22,13 +24,11 @@ namespace TopShelfCustomer.ViewModels {
 
         readonly IFirebaseAuthenticator auth;        //Firebase Authenticator to be resolved for each platform
 
-        public User CurrentUser { get; set; }           //The currently logged in User
+        JObject jsonObject = new JObject();     //Re-usable JSON object
 
         private string userRealName;            //String to define the User's name. (Bound to Text fields)
         public string UserRealName {
-            get {
-                return userRealName;
-            }
+            get => userRealName;
             set {
                 userRealName = value;
                 OnPropertyChanged( "UserRealName" );
@@ -37,24 +37,20 @@ namespace TopShelfCustomer.ViewModels {
 
         private bool isReceiptSwitchToggled;     //Bool to define whether the "save receipts" setting is toggled
         public bool IsReceiptSwitchToggled {
-            get {
-                return isReceiptSwitchToggled;
-            }
-            private set {
+            get => isReceiptSwitchToggled;
+            set {
                 isReceiptSwitchToggled = value;
-                ToggleReceiptSerializationSetting( isReceiptSwitchToggled );
+                ToggleSwitchSetting( UserSettings.SettingTypes.SaveReceiptsSetting.ToString(), isReceiptSwitchToggled );
                 OnPropertyChanged( "IsReceiptSwitchToggled" );
             }
         }
 
         private bool isLinkSwitchToggled;       //Bool to define whether the "external links" setting is toggled
         public bool IsLinkSwitchToggled {
-            get {
-                return isLinkSwitchToggled;
-            }
-            private set {
+            get => isLinkSwitchToggled;
+            set {
                 isLinkSwitchToggled = value;
-                ToggleExternalLinkSetting( isLinkSwitchToggled );
+                ToggleSwitchSetting( UserSettings.SettingTypes.AllowExternalLinks.ToString(), isLinkSwitchToggled );
                 OnPropertyChanged( "IsLinkSwitchToggled" );
             }
         }
@@ -76,54 +72,53 @@ namespace TopShelfCustomer.ViewModels {
         /// Constructor
         /// </summary>
         public SettingsViewModel() {
-            Title = "Settings";
-            CurrentUser = new User {
-                Name = "Jackson Dumas"
-            };
-            UserRealName = CurrentUser.Name;
+            Title = "Settings";         //Set the View title
+            userRealName = "Jackson Dumas";     //FIXME: implement a global user class
+            InitializeBindableProperties();       //Initialize the properties seen on the UI
 
             auth = DependencyService.Resolve<IFirebaseAuthenticator>();     //Fetch platform-specific Firebase Authentication implementation
 
+            /* Initialize Commands */
             NavigateBackCommand = new Command( () => App.SetCurrentPage<HomePage>() );
             OpenProfileViewCommand = new Command( () => App.SetCurrentPage<ProfileSettingsPage>() );
             OpenNotificationsViewCommand = new Command( () => App.SetCurrentPage<NotificationsSettingsPage>() );
             OpenAboutViewCommand = new Command( () => App.SetCurrentPage<AboutPage>() ) ;
             OpenSupportViewCommand = new Command( () => Launcher.OpenAsync( new Uri( "https://www.youtube.com/watch?v=dQw4w9WgXcQ" ) ) );       //FIXME: Get rid of the Astley
             OpenLicenseViewCommand = new Command( () => App.SetCurrentPage<LicenseView>() );
-            LogoutUserCommand = new Command( LogoutUser );
+            LogoutUserCommand = new Command( () => App.ClearPages() );
         }
 
         /// <summary>
-        /// LogoutUser:
+        /// ToggleSwitchSetting:
         ///
-        /// Logs out the current User
+        /// Takes the name of a UserSettings property and a value,
+        /// then finds that property by name and sets it to value.
+        /// Then writes the modified userSettings object to settings file as JSON.
         /// </summary>
-        void LogoutUser() {
-            CurrentUser = null;
-            auth.LogoutCurrentUser();
-            App.ClearPages();
+        /// <param name="settingProperty"> The name of the property to set on userSettings </param>
+        /// <param name="value"> The bool value to assign the property </param>
+        void ToggleSwitchSetting( string settingProperty, bool value ) {
+            Type objectType = SettingsContainer.Instance.CurrentUserSettings.GetType();      //Get the Type of both userSettings
+            PropertyInfo objectPropertyInfo = objectType.GetProperty( settingProperty );        //Get the property to set from UserSettings
+
+            if ( objectPropertyInfo != null && objectPropertyInfo.CanWrite ) {
+                objectPropertyInfo.SetValue( SettingsContainer.Instance.CurrentUserSettings, value, null );      //Set the value of userSettings
+                Debug.WriteLine( $"Changed the value of {objectPropertyInfo.ToString()} to {value}" );
+            }
+            jsonObject = JObject.FromObject( SettingsContainer.Instance.CurrentUserSettings );        //Create JSON object from userSettings
+            SerializationHelper.JsonWrite( SettingsContainer.SettingsFilePath, jsonObject.ToString() );       //Write the JSON object to the settings file
         }
 
         /// <summary>
-        /// ToggleExternalLinkSetting:
+        /// InitializeBindableProperties:
         ///
-        /// Handles the Toggling of the "External Link" setting in the root settings menu
+        /// This method is called when this view is initialized.
+        /// It is used to set the values of the bindable properties
+        /// used in the view.
         /// </summary>
-        /// <param name="isToggled"> if the toggle was activated or deactivated </param>
-        void ToggleExternalLinkSetting( bool isToggled ) {
-            //TODO: Implement Settings to User Profile
-            Debug.WriteLine( $"Toggled the External Link Setting to {isToggled}" );
-        }
-
-        /// <summary>
-        /// ToggleReceiptSerializationSetting:
-        ///
-        /// Handles the Toggling of the "Save Receipts" setting in the root settings menu
-        /// </summary>
-        /// <param name="isToggled"> if the toggle was activated or deactivated </param>
-        void ToggleReceiptSerializationSetting( bool isToggled ) {
-            //TODO: Implement Settings to User Profile
-            Debug.WriteLine( $"Toggled the External Link Setting to {isToggled}" );
+        void InitializeBindableProperties() {
+            isReceiptSwitchToggled = SettingsContainer.Instance.CurrentUserSettings.SaveReceiptsSetting;
+            isLinkSwitchToggled = SettingsContainer.Instance.CurrentUserSettings.AllowExternalLinks;
         }
 
         #endregion
