@@ -51,7 +51,10 @@ namespace TopShelfCustomer {
         /// <summary>
         /// SetNewPage:
         ///
-        /// Creates a new Page of type T, removing the old one from the Application state.
+        /// Attempts to find the page (of type T) in the application's state.
+        /// If a page is found, it removes it from the application's state
+        /// and creates a new instance of it. Then it navigates to the newly
+        /// created page.
         /// </summary>
         /// <typeparam name="T"></typeparam>
         public static void SetNewPage<T>() where T : Page {
@@ -76,7 +79,8 @@ namespace TopShelfCustomer {
         /// <summary>
         /// SetCurrentPage:
         ///
-        /// Pushes the page argument onto the Application Navigation Stack
+        /// Attempts to find a page of type T in the application's state.
+        /// If no page is found, it creates a new one and navigates to it.
         /// </summary>
         public static void SetCurrentPage<T>() where T : Page {
             foreach( Page page in PageContainer.Views ) {      //Check if Page of type T already exists

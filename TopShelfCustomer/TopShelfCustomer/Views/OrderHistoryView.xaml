@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.OrderHistoryView"
+             xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}">
+    <ContentPage.BindingContext>
+        <vm:OrderHistoryViewModel/>
+    </ContentPage.BindingContext>
+    <ContentPage.BackgroundImageSource>
+        <OnPlatform x:TypeArguments="FileImageSource">
+            <On Platform="Android" Value="gradient_background_droid.png" />
+            <On Platform="iOS" Value="gradient_background.png" />
+        </OnPlatform>
+    </ContentPage.BackgroundImageSource>
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <StackLayout Orientation="Vertical" Grid.Row="1" Margin="20, 40, 20, 20">
+
+                <!-- Back Button -->
+                    <ImageButton Source="back_orange.png" Command="{Binding NavigateBackCommand}" HorizontalOptions="Start" Margin="10,0,0,10" HeightRequest="40"/>
+
+                <!-- Title Label -->
+                <Label Text="Your Past Orders" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource MediumFont}"
+                       VerticalOptions="CenterAndExpand" Margin="0, 30, 0, 30" FontSize="30" TextColor="White" />
+
+                <!-- Order History List -->
+                <ListView ItemsSource="{Binding ReceiptList}" HasUnevenRows="True"
+                          BackgroundColor="{StaticResource AccentLight}" SeparatorColor="Black">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <ContentView>
+                                    <StackLayout HorizontalOptions="CenterAndExpand" Padding="0, 15, 0, 10">
+                                        <!-- Store Name Text -->
+                                        <Label Text="{Binding OrderStoreName}" FontFamily="{StaticResource MediumFont}"
+                                                TextColor="White" FontSize="16" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                                        <StackLayout Orientation="Horizontal" Padding="10, 5, 10, 5" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
+                                            <!-- Date Text -->
+                                            <Label Text="{Binding OrderDate}" FontFamily="{StaticResource NormalFont}"
+                                                   TextColor="White" FontSize="16" VerticalTextAlignment="Center" />
+                                    
+                                            <!-- Number of Items Text -->
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <Label Text="# Items: " FontFamily="{StaticResource MediumFont}"
+                                                       TextColor="White" FontSize="14" VerticalTextAlignment="Center"/>
+                                                <Label Text="{Binding OrderNumItems}" FontFamily="{StaticResource NormalFont}"
+                                                       TextColor="White" FontSize="16" />
+                                            </StackLayout>
+                                            <!-- Order Total Price Text -->
+                                            <StackLayout Orientation="Horizontal" Spacing="0">
+                                                <Label Text="Total: $" FontFamily="{StaticResource MediumFont}"
+                                                       TextColor="White" FontSize="14" VerticalTextAlignment="Center"/>
+                                                <Label Text="{Binding OrderTotalPrice}" FontFamily="{StaticResource NormalFont}"
+                                                       TextColor="White" FontSize="16" VerticalTextAlignment="Center"/>
+                                            </StackLayout>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </ContentView>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </StackLayout>
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

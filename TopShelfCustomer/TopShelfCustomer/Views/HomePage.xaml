@@ -163,7 +163,7 @@
                 <Button Command="{Binding OpenCreateOrderCommand}" Text="New Order" BackgroundColor="#424C55"
                         WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White"
                         BorderColor="Black" BorderWidth="2" FontSize="16" FontFamily="{StaticResource MediumFont}"/>
-                <Button Text="Order History" BackgroundColor="#424C55"
+                <Button  Command="{Binding OpenOrderHistoryCommand}" Text="Order History" BackgroundColor="#424C55"
                         WidthRequest="80" HorizontalOptions="FillAndExpand" TextColor="White"
                         BorderColor="Black" BorderWidth="2" FontSize="16" FontFamily="{StaticResource MediumFont}"/>
                 <Button Text="Settings" Command="{Binding OpenSettingsCommand}" BackgroundColor="#424C55"
