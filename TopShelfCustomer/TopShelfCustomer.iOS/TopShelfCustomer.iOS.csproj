@@ -117,27 +117,69 @@
     <BundleResource Include="Resources\AppIcons\app_logo_180.png" />
     <BundleResource Include="Resources\AppIcons\app_logo_512.png" />
     <BundleResource Include="Resources\AppIcons\app_logo_1024.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_1024.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_120.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_152.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_167.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_180.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_20.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_29.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_58.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_80.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_80-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_120-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_40.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_40-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_60.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_58-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_87.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_40-2.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_76.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_120-2.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_1024-1.png" />
-    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_1024-2.png" />
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_1024.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_120.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_152.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_167.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_180.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_20.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_29.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_58.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_80.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_80-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_120-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_40.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_40-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_60.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_58-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_87.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_40-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_76.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_120-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_1024-1.png">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_1024-2.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
