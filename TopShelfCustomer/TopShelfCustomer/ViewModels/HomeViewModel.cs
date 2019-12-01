@@ -42,15 +42,6 @@ namespace TopShelfCustomer.ViewModels {
         public HomeViewModel() {
             Title = "Home";
 
-            /* FIXME: Temporary User to test name display */
-            User temp = new User() {
-                Name = "Jackson Dumas",
-                UserStore = new Store { StoreName="HEB DeZavala", StoreAddress="111 DeZavala Road" },
-                Email = "tylerdumas3@hotmail.com",
-            };
-            UserRealName = "Jackson Dumas";
-            UserStoreName = temp.UserStore.StoreName;
-
             /* Initialize Commands */
             OpenSettingsCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
             OpenCreateOrderCommand = new Command( () => App.SetCurrentPage<ShopView>() );

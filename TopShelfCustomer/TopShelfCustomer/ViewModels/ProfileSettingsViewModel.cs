@@ -55,14 +55,9 @@ namespace TopShelfCustomer.ViewModels {
         public ProfileSettingsViewModel() {
             Title = "Profile Settings";
 
-            User temp = new User {
-                Name = "Jackson Dumas",
-                Email = "tylerdumas3@hotmail.com",
-                PhoneNumber = "210-699-6969"
-            };
-            UserRealName = temp.Name;
-            UserEmail = temp.Email;
-            PhoneNumber = temp.PhoneNumber;
+            UserRealName = "Jackson Dumas";
+            UserEmail = "test123@gmail.com";
+            PhoneNumber = "111-111-1111";
 
             OpenSettingsPageCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
 
