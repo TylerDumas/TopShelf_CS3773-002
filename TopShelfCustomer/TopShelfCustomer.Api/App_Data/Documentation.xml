@@ -496,6 +496,58 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:TopShelfCustomer.Api.Controllers.ProductController">
+            <summary>
+            ProductController:
+            
+            Controller for the Product collection.
+            Contains functionality for all RESTful API calls
+            such as: Get, Put, Post, and Delete.
+            </summary>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Controllers.ProductController.Get(System.Int32)">
+            <summary>
+            GetProductById:
+            
+            Overload of the Get method.
+            Fetches a specific Product from the database and returns it
+            to the caller of this API method.
+            Matches based off of the passed Product Id.
+            </summary>
+            <param name="id"> The Id to match </param>
+            <returns> The first Product returned that matches the id argument </returns>
+        </member>
+        <member name="T:TopShelfCustomer.Api.Controllers.StoreController">
+            <summary>
+            StoreController:
+            
+            Controller for the "Store" API endpoint.
+            Manages the data transfer with the database and
+            the callers of this API.
+            </summary>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Controllers.StoreController.Get(System.String)">
+            <summary>
+            GetAllProducts:
+            
+            Overload of the Get request method.
+            Fetches all Products from the database and returns them
+            to the caller of this API method.
+            Matches based off of the passed storeName argument.
+            </summary>
+            <param name="storeName"> The Name of the Store to search </param>
+            <returns> a List of Products from that Store </returns>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Controllers.StoreController.Get(System.Int32)">
+            <summary>
+            GetStoreById:
+            
+            Overload for the Get request method.
+            Returns a Store that matches the id argument.
+            </summary>
+            <param name="id"> The id to match to a Store </param>
+            <returns> A Store with a matching Id property value </returns>
+        </member>
         <member name="T:TopShelfCustomer.Api.Controllers.UserController">
             <summary>
             UserController:
@@ -504,30 +556,6 @@
             Contains functionality for all RESTful API calls
             such as: Get, Put, Post, and Delete.
             </summary>
-        </member>
-        <member name="F:TopShelfCustomer.Api.Controllers.UserController.users">
-            <summary>
-            users: Re-usable list of Users to allow fetching from database.
-            </summary>
-        </member>
-        <member name="F:TopShelfCustomer.Api.Controllers.UserController.user">
-            <summary>
-            user: Re-usable User to allow fetching from database.
-            </summary>
-        </member>
-        <member name="M:TopShelfCustomer.Api.Controllers.UserController.#ctor">
-            <summary>
-            Constructor
-            </summary>
-        </member>
-        <member name="M:TopShelfCustomer.Api.Controllers.UserController.Get">
-            <summary>
-            GetAllUsers:
-            
-            Gets the entire list of Users.
-            FIXME: this will be removed in the future.
-            </summary>
-            <returns> The entire User list </returns>
         </member>
         <member name="M:TopShelfCustomer.Api.Controllers.UserController.Get(System.Int32)">
             <summary>
@@ -583,6 +611,60 @@
             </summary>
             <param name="userId"> The Id value to match </param>
         </member>
+        <member name="T:TopShelfCustomer.Api.Models.Product">
+            <summary>
+            Product:
+            
+            Model class for an item that can
+            be purchased from a store. This class 
+            will be stored in the database.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Product.Id">
+            <summary>
+            Id: The unique identifier for this product.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Product.Name">
+            <summary>
+            Name: The name of this product.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Product.Price">
+            <summary>
+            Price: The cost of this product.
+            </summary>
+        </member>
+        <member name="T:TopShelfCustomer.Api.Models.Store">
+            <summary>
+            Store:
+            
+            Model class for a grocery store.
+            Held in the database with properties
+            to identify the name, location, and list of
+            products.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Store.Id">
+            <summary>
+            Id: the unique identifier for this Store.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Store.Name">
+            <summary>
+            Name: the name of this Store.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Store.Address">
+            <summary>
+            Address: the physical address of this Store.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Store.ImageURL">
+            <summary>
+            ImageURL: the web URL for this Store's logo image.
+            </summary>
+        </member>
         <member name="T:TopShelfCustomer.Api.Models.User">
             <summary>
             User:
@@ -621,6 +703,27 @@
             <summary>
             StoreName: The shortened name of the User's home store.
             </summary>
+        </member>
+        <member name="T:TopShelfCustomer.Api.Services.ProductData">
+            <summary>
+            ProductData:
+            
+            Implementation of the SqlDataAccess class
+            specific to the Product model class.
+            Implements RESTful Api calls to communicate with the database
+            and return the correct Product model objects.
+            </summary>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Services.ProductData.GetProductById(System.Int32)">
+            <summary>
+            GetProductById:
+            
+            
+            Fetches the Property with an Id property that matches
+            the "id" argument.
+            </summary>
+            <param name="id"> the Id property to match </param>
+            <returns> A List of Products with 1 element </returns>
         </member>
         <member name="T:TopShelfCustomer.Api.Services.SqlDataAccess">
             <summary>
@@ -664,6 +767,35 @@
             <param name="storedProcedure"> The SQL procedure to use on the database </param>
             <param name="parameters"> The parameters for the SQL query </param>
             <param name="connectionStringName"> The shortened name of the SQL connection string </param>
+        </member>
+        <member name="T:TopShelfCustomer.Api.Services.StoreData">
+            <summary>
+            StoreData:
+            
+            Implementation of the SqlDataAccess class
+            specific to the Store model class.
+            Implements RESTful Api calls to communicate with the database
+            and return the correct Store model objects.
+            </summary>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Services.StoreData.GetAllProducts">
+            <summary>
+            GetAllProducts:
+            
+            Returns all products in the Products
+            database table.
+            </summary>
+            <returns> A List of all products in the Products table </returns>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Services.StoreData.GetStoreById(System.Int32)">
+            <summary>
+            GetStoreById:
+            
+            Fetches the Store with an Id property that matches
+            the "id" argument.
+            </summary>
+            <param name="id"> the Id property to match </param>
+            <returns> A List of Stores with 1 element </returns>
         </member>
         <member name="T:TopShelfCustomer.Api.Services.UserData">
             <summary>
