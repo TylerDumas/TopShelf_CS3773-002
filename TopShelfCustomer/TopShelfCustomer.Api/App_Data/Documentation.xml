@@ -481,6 +481,21 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="T:TopShelfCustomer.Api.Controllers.HomeController">
+            <summary>
+            HomeController:
+            
+            Default controller generated with ASP.NET project.
+            </summary>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Controllers.HomeController.Index">
+            <summary>
+            Index:
+            
+            Default generated Method.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:TopShelfCustomer.Api.Controllers.UserController">
             <summary>
             UserController:
@@ -488,6 +503,16 @@
             Controller for the User collection.
             Contains functionality for all RESTful API calls
             such as: Get, Put, Post, and Delete.
+            </summary>
+        </member>
+        <member name="F:TopShelfCustomer.Api.Controllers.UserController.users">
+            <summary>
+            users: Re-usable list of Users to allow fetching from database.
+            </summary>
+        </member>
+        <member name="F:TopShelfCustomer.Api.Controllers.UserController.user">
+            <summary>
+            user: Re-usable User to allow fetching from database.
             </summary>
         </member>
         <member name="M:TopShelfCustomer.Api.Controllers.UserController.#ctor">
@@ -509,12 +534,24 @@
             GetUserById:
             
             Overload of the Get request method.
-            Fetches a single user from the API with the
-            matching Id property. Matches based off of the passed
-            id argument.
+            Fetches a single user from the database and returns it
+            to the caller of this API method.
+            Matches based off of the passed userId argument.
             </summary>
-            <param name="userId"> The id of the requested User </param>
+            <param name="userId"> The Id of the requested User </param>
             <returns> a User with a matching Id </returns>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Controllers.UserController.Get(System.String)">
+            <summary>
+            GetUserByEmail:
+            
+            Overload of the Get request method.
+            Fetches a single User from the database and returns it
+            to the caller of this API method. Finds the user by their
+            email address.
+            </summary>
+            <param name="emailAddress"></param>
+            <returns> a User with the matching EmailAddress </returns>
         </member>
         <member name="M:TopShelfCustomer.Api.Controllers.UserController.Post(TopShelfCustomer.Api.Models.User)">
             <summary>
@@ -584,6 +621,79 @@
             <summary>
             StoreName: The shortened name of the User's home store.
             </summary>
+        </member>
+        <member name="T:TopShelfCustomer.Api.Services.SqlDataAccess">
+            <summary>
+            SqlDataAccess:
+            
+            Helper class to allow for access to the TopShelf
+            database. Contains functionality for reading/writing to
+            the database.
+            </summary>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Services.SqlDataAccess.GetConnectionString(System.String)">
+            <summary>
+            GetConnectionString:
+            
+            Helper method to return the value of the connection string,
+            within the configuration manager, at index "name".
+            </summary>
+            <param name="name"> The key for the connection string value </param>
+            <returns> the value of the connection string for "name" </returns>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Services.SqlDataAccess.LoadData``2(System.String,``1,System.String)">
+            <summary>
+            LoadData:
+            
+            Acts as a read method for the database.
+            </summary>
+            <typeparam name="T"> The object type to load from the database </typeparam>
+            <typeparam name="U"> The type of the parameters object to query with </typeparam>
+            <param name="storedProcedure"> The SQL procedure to use on the database </param>
+            <param name="parameters"> The parameters for the SQL query </param>
+            <param name="connectionStringName"> The shortened name of the SQL connection string </param>
+            <returns> A list of Type T objects returned from the database query </returns>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Services.SqlDataAccess.SaveData``1(System.String,``0,System.String)">
+            <summary>
+            SaveData:
+            
+            Acts as a write method for the database.
+            </summary>
+            <typeparam name="T"> The type of the parameters passed to the SQL query </typeparam>
+            <param name="storedProcedure"> The SQL procedure to use on the database </param>
+            <param name="parameters"> The parameters for the SQL query </param>
+            <param name="connectionStringName"> The shortened name of the SQL connection string </param>
+        </member>
+        <member name="T:TopShelfCustomer.Api.Services.UserData">
+            <summary>
+            UserData:
+            
+            Implementation of the SqlDataAccess class
+            specific to the User model class. Responsible for
+            fetching and sending User data to and from the
+            database.
+            </summary>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Services.UserData.GetUserById(System.Int32)">
+            <summary>
+            GetUserById:
+            
+            Fetches Users with Id value of "id"
+            from the database and returns it.
+            </summary>
+            <param name="id"> The Id value to search for </param>
+            <returns> A list of Users with that Id value (1 element) </returns>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Services.UserData.GetUserByEmail(System.String)">
+            <summary>
+            GetUserByEmail:
+            
+            Fetches Users with EmailAddress of "email"
+            from the database and returns it.
+            </summary>
+            <param name="email"></param>
+            <returns> A List of Users with one element </returns>
         </member>
     </members>
 </doc>

@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
+using System.Diagnostics;
 using System.Web.Http;
-using Newtonsoft.Json;
 using TopShelfCustomer.Api.Models;
+using TopShelfCustomer.Api.Services;
 
 namespace TopShelfCustomer.Api.Controllers {
 
@@ -17,65 +14,65 @@ namespace TopShelfCustomer.Api.Controllers {
     /// such as: Get, Put, Post, and Delete.
     /// </summary>
     public class UserController : ApiController {
-        
-        /// <summary>
-        /// users: Re-usable list of Users to allow fetching from database.
-        /// </summary>
-        public List<User> users = new List<User>();
-        /// <summary>
-        /// user: Re-usable User to allow fetching from database.
-        /// </summary>
-        public User user = new User();
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public UserController () {
-            users.Add( new User {
-                Id = 1,
-                FullName = "Jackson Dumas",
-                EmailAddress = "tylerdumas3@hotmail.com", 
-                PhoneNumber = "210-464-3176", 
-                StreetAddress = "6676 UTSA Boulevard", 
-                StoreName = "HEB DeZavala"
-            });
-            users.Add( new User {
-                Id = 2,
-                FullName = "Dylan Dumas",
-                EmailAddress = "dylandumas@gmail.com",
-                PhoneNumber = "210-289-7527",
-                StreetAddress = "6699 YoMomma Avenue",
-                StoreName = "HEB Bulverde and 1604"
-            } );
-        }
-
-        /// <summary>
-        /// GetAllUsers:
-        /// 
-        /// Gets the entire list of Users.
-        /// FIXME: this will be removed in the future.
-        /// </summary>
-        /// <returns> The entire User list </returns>
-        [Route( "api/User/GetAllUsers" )]
-        [HttpGet]
-        public IEnumerable<User> Get() {
-            return users;
-        }
 
         /// <summary>
         /// GetUserById:
         /// 
         /// Overload of the Get request method.
-        /// Fetches a single user from the API with the
-        /// matching Id property. Matches based off of the passed
-        /// id argument.
+        /// Fetches a single user from the database and returns it
+        /// to the caller of this API method.
+        /// Matches based off of the passed userId argument.
         /// </summary>
-        /// <param name="userId"> The id of the requested User </param>
+        /// <param name="userId"> The Id of the requested User </param>
         /// <returns> a User with a matching Id </returns>
         [Route( "api/User/GetUserById/{userId:int}")]
         [HttpGet]
         public User Get( int userId ) {
-            return users.Where( x => x.Id == userId ).FirstOrDefault();
+            UserData data = new UserData();     //Create new UserData object to interact with DB
+
+            var user = data.GetUserById( userId );      //Get user from DB
+
+            try {               //Catch exceptions thrown by null User
+                if ( user[0] == null ) { return new User(); }
+            }catch( ArgumentOutOfRangeException e ) {
+                Debug.WriteLine( e.Message );
+                return new User();
+            }catch( Exception e ) {
+                Debug.WriteLine( e.Message );
+                return new User();
+            }
+            
+            return user[0];
+        }
+
+        /// <summary>
+        /// GetUserByEmail:
+        /// 
+        /// Overload of the Get request method.
+        /// Fetches a single User from the database and returns it
+        /// to the caller of this API method. Finds the user by their
+        /// email address.
+        /// </summary>
+        /// <param name="emailAddress"></param>
+        /// <returns> a User with the matching EmailAddress </returns>
+        [Route( "api/User/GetUserByEmail/{emailAddress}" )]
+        [HttpGet]
+        public User Get( string emailAddress ) {
+            UserData data = new UserData();     //Create new UserData object to interact with DB
+
+            var user = data.GetUserByEmail( emailAddress );      //Get user from DB
+
+            try {               //Catch exceptions thrown by null User
+                if ( user[0] == null ) { return new User(); }
+            } catch ( ArgumentOutOfRangeException e ) {
+                Debug.WriteLine( e.Message );
+                return new User();
+            } catch ( Exception e ) {
+                Debug.WriteLine( e.Message );
+                return new User();
+            }
+
+            return user[0];
         }
 
         /// <summary>
@@ -89,7 +86,7 @@ namespace TopShelfCustomer.Api.Controllers {
         [Route( "api/User/PostUser" )]
         [HttpPost]
         public void Post( [FromBody]User value ) {
-            users.Add( value );
+            Debug.WriteLine( "User POST requested" );
         }
 
         /// <summary>
@@ -104,13 +101,7 @@ namespace TopShelfCustomer.Api.Controllers {
         [Route( "api/User/PutUser" )]
         [HttpPut]
         public void Put( int id, [FromBody]User value ) {
-            User temp = users.Where( x => x.Id == value.Id ).FirstOrDefault();
-            if ( temp != null ) {
-                users.Remove( temp );
-                users.Add( value );
-            } else {
-                users.Add( value );
-            }
+            Debug.WriteLine( "User PUT requested" );
         }
 
         /// <summary>
@@ -123,7 +114,7 @@ namespace TopShelfCustomer.Api.Controllers {
         [Route( "api/User/DeleteUser/{userId:int}" )]
         [HttpDelete]
         public void Delete( int userId ) {
-            users.Remove( users.Where( x => x.Id == userId ).FirstOrDefault() );
+            Debug.WriteLine( "User DELETE requested" );
         }
     }
 }
