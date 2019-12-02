@@ -34,7 +34,8 @@ namespace TopShelfCustomer.Api.Controllers {
         public Product Get ( int id ) {
             ProductData data = new ProductData();
 
-            var product = data.GetProductById( id );
+            var product = data.GetProductById( id );        //Store return value of database fetch
+
             try {               //Catch exceptions thrown by null Products
                 if ( product[0] == null ) { return new Product(); }
             } catch ( ArgumentOutOfRangeException e ) {

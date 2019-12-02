@@ -45,35 +45,6 @@ namespace TopShelfCustomer.Api.Controllers {
             return user[0];
         }
 
-        /// <summary>
-        /// GetUserByEmail:
-        /// 
-        /// Overload of the Get request method.
-        /// Fetches a single User from the database and returns it
-        /// to the caller of this API method. Finds the user by their
-        /// email address.
-        /// </summary>
-        /// <param name="emailAddress"></param>
-        /// <returns> a User with the matching EmailAddress </returns>
-        [Route( "api/User/GetUserByEmail/{emailAddress}" )]
-        [HttpGet]
-        public User Get( string emailAddress ) {
-            UserData data = new UserData();     //Create new UserData object to interact with DB
-
-            var user = data.GetUserByEmail( emailAddress );      //Get user from DB
-
-            try {               //Catch exceptions thrown by null User
-                if ( user[0] == null ) { return new User(); }
-            } catch ( ArgumentOutOfRangeException e ) {
-                Debug.WriteLine( e.Message );
-                return new User();
-            } catch ( Exception e ) {
-                Debug.WriteLine( e.Message );
-                return new User();
-            }
-
-            return user[0];
-        }
 
         /// <summary>
         /// Post:
@@ -86,6 +57,7 @@ namespace TopShelfCustomer.Api.Controllers {
         [Route( "api/User/PostUser" )]
         [HttpPost]
         public void Post( [FromBody]User value ) {
+            //TODO: implement
             Debug.WriteLine( "User POST requested" );
         }
 
@@ -101,6 +73,7 @@ namespace TopShelfCustomer.Api.Controllers {
         [Route( "api/User/PutUser" )]
         [HttpPut]
         public void Put( int id, [FromBody]User value ) {
+            //TODO: implement
             Debug.WriteLine( "User PUT requested" );
         }
 
@@ -114,6 +87,7 @@ namespace TopShelfCustomer.Api.Controllers {
         [Route( "api/User/DeleteUser/{userId:int}" )]
         [HttpDelete]
         public void Delete( int userId ) {
+            //TODO: implement
             Debug.WriteLine( "User DELETE requested" );
         }
     }

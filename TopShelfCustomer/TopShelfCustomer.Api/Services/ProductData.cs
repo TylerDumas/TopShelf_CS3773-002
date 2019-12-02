@@ -28,8 +28,9 @@ namespace TopShelfCustomer.Api.Services {
         public List<Product> GetProductById( int id ) {
             SqlDataAccess sql = new SqlDataAccess();
 
-            var p = new { Id = id };
-            var output = sql.LoadData<Product, dynamic>( "dbo.spGetProductById", p, "TopShelfDbConnection" );
+            var p = new { Id = id };        //Blank object to pass as parameter
+
+            var output = sql.LoadData<Product, dynamic>( "dbo.spGetProductById", p, "TopShelfDbConnection" );           //Store return value of database fetch
             return output;
         }
     }

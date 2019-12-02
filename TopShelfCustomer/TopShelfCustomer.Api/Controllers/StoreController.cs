@@ -33,7 +33,7 @@ namespace TopShelfCustomer.Api.Controllers {
         public IEnumerable<Product> Get () {
             StoreData data = new StoreData();
 
-            var allProducts = data.GetAllProducts();
+            var allProducts = data.GetAllProducts();        //Store return value of database fetch
 
             try {               //Catch exceptions thrown by null Products
                 if ( allProducts[0] == null ) { return new List<Product>(); }
@@ -60,7 +60,7 @@ namespace TopShelfCustomer.Api.Controllers {
         public Store Get( int id ) {
             StoreData data = new StoreData();
 
-            var store = data.GetStoreById( id );
+            var store = data.GetStoreById( id );        //Store return value of database fetch
 
             try {               //Catch exceptions thrown by null Products
                 if ( store[0] == null ) { return new Store(); }
