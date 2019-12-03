@@ -526,7 +526,7 @@
             the callers of this API.
             </summary>
         </member>
-        <member name="M:TopShelfCustomer.Api.Controllers.StoreController.Get(System.String)">
+        <member name="M:TopShelfCustomer.Api.Controllers.StoreController.Get">
             <summary>
             GetAllProducts:
             
@@ -535,8 +535,17 @@
             to the caller of this API method.
             Matches based off of the passed storeName argument.
             </summary>
-            <param name="storeName"> The Name of the Store to search </param>
             <returns> a List of Products from that Store </returns>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Controllers.StoreController.GetStoresByZipCode(System.Int32)">
+            <summary>
+            GetStoresByZipCode:
+            
+            Fetches all Stores with matching ZipCode and returns
+            them to the API caller.
+            </summary>
+            <param name="zipCode"> The Store ZipCode to match </param>
+            <returns> A List of Stores </returns>
         </member>
         <member name="M:TopShelfCustomer.Api.Controllers.StoreController.Get(System.Int32)">
             <summary>
@@ -569,17 +578,15 @@
             <param name="userId"> The Id of the requested User </param>
             <returns> a User with a matching Id </returns>
         </member>
-        <member name="M:TopShelfCustomer.Api.Controllers.UserController.Get(System.String)">
+        <member name="M:TopShelfCustomer.Api.Controllers.UserController.GetUserByEmail(System.String)">
             <summary>
             GetUserByEmail:
             
-            Overload of the Get request method.
-            Fetches a single User from the database and returns it
-            to the caller of this API method. Finds the user by their
-            email address.
+            Fetches a User from the database by their
+            email address (with the domain trimmed).
             </summary>
-            <param name="emailAddress"></param>
-            <returns> a User with the matching EmailAddress </returns>
+            <param name="emailTrimmed"> The email address with no domain </param>
+            <returns> A User with that email address </returns>
         </member>
         <member name="M:TopShelfCustomer.Api.Controllers.UserController.Post(TopShelfCustomer.Api.Models.User)">
             <summary>
@@ -796,6 +803,16 @@
             </summary>
             <param name="id"> the Id property to match </param>
             <returns> A List of Stores with 1 element </returns>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Services.StoreData.GetStoresByZipCode(System.Int32)">
+            <summary>
+            GetStoresByZipCode:
+            
+            Fetches all Stores from the database with a
+            matching ZipCode property.
+            </summary>
+            <param name="zipCode"> The ZipCode to match </param>
+            <returns> A list of Stores </returns>
         </member>
         <member name="T:TopShelfCustomer.Api.Services.UserData">
             <summary>

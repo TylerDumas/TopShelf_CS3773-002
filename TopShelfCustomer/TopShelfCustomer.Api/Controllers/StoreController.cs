@@ -48,6 +48,32 @@ namespace TopShelfCustomer.Api.Controllers {
         }
 
         /// <summary>
+        /// GetStoresByZipCode:
+        /// 
+        /// Fetches all Stores with matching ZipCode and returns
+        /// them to the API caller.
+        /// </summary>
+        /// <param name="zipCode"> The Store ZipCode to match </param>
+        /// <returns> A List of Stores </returns>
+        [Route( "api/Store/GetStoreByZipCode/{zipCode:int}" )]
+        [HttpGet]
+        public IEnumerable<Store> GetStoresByZipCode ( int zipCode ) {
+            StoreData data = new StoreData();
+
+            var stores = data.GetStoresByZipCode( zipCode );
+            try {               //Catch exceptions thrown by null Products
+                if ( stores[0] == null ) { return new List<Store>(); }
+            } catch ( ArgumentOutOfRangeException e ) {
+                Debug.WriteLine( e.Message );
+                return new List<Store>();
+            } catch ( Exception e ) {
+                Debug.WriteLine( e.Message );
+                return new List<Store>();
+            }
+            return stores;
+        }
+
+        /// <summary>
         /// GetStoreById:
         /// 
         /// Overload for the Get request method.

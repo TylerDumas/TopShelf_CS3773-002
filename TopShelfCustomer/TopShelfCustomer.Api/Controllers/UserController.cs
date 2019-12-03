@@ -45,6 +45,34 @@ namespace TopShelfCustomer.Api.Controllers {
             return user[0];
         }
 
+        /// <summary>
+        /// GetUserByEmail:
+        /// 
+        /// Fetches a User from the database by their
+        /// email address (with the domain trimmed).
+        /// </summary>
+        /// <param name="emailTrimmed"> The email address with no domain </param>
+        /// <returns> A User with that email address </returns>
+        [Route( "api/User/GetUserByEmail/{emailTrimmed}" )]
+        [HttpGet]
+        public User GetUserByEmail ( string emailTrimmed ) {
+            UserData data = new UserData();
+
+            var user = data.GetUserByEmail( emailTrimmed, ".com" );
+
+            try {               //Catch exceptions thrown by null User
+                if ( user[0] == null ) { return new User(); }
+            } catch ( ArgumentOutOfRangeException e ) {
+                Debug.WriteLine( e.Message );
+                return new User();
+            } catch ( Exception e ) {
+                Debug.WriteLine( e.Message );
+                return new User();
+            }
+
+            return user[0];
+        }
+
 
         /// <summary>
         /// Post:

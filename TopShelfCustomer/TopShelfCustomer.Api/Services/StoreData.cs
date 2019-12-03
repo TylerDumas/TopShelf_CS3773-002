@@ -46,5 +46,21 @@ namespace TopShelfCustomer.Api.Services {
             var output = sql.LoadData<Store, dynamic>( "dbo.spGetStoreById", p, "TopShelfDbConnection" );
             return output;
         }
+
+        /// <summary>
+        /// GetStoresByZipCode:
+        /// 
+        /// Fetches all Stores from the database with a
+        /// matching ZipCode property.
+        /// </summary>
+        /// <param name="zipCode"> The ZipCode to match </param>
+        /// <returns> A list of Stores </returns>
+        public List<Store> GetStoresByZipCode( int zipCode ) {
+            SqlDataAccess sql = new SqlDataAccess();
+
+            var p = new { ZipCode = zipCode };
+            var output = sql.LoadData<Store, dynamic>( "dbo.spGetStoresByZipCode", p, "TopShelfDbConnection" );
+            return output;
+        }
     }
 }

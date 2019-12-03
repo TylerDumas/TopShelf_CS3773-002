@@ -35,12 +35,13 @@ namespace TopShelfCustomer.Api.Services {
         /// Fetches Users with EmailAddress of "email"
         /// from the database and returns it.
         /// </summary>
-        /// <param name="email"></param>
+        /// <param name="email"> The email address without the extension </param>
+        /// /// <param name="extension"> The email address extension </param>
         /// <returns> A List of Users with one element </returns>
-        public List<User> GetUserByEmail( string email ) {
+        public List<User> GetUserByEmail( string email, string extension ) {
             SqlDataAccess sql = new SqlDataAccess();
 
-            var p = new { Email = email };      //Temporary property object
+            var p = new { Email = email + extension };      //Temporary property object
             var output = sql.LoadData<User, dynamic>( "dbo.spGetUserByEmail", p, "TopShelfDbConnection" );      //Fetch the User(s)
             return output;
         }
