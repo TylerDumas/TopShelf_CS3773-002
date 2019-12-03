@@ -118,15 +118,16 @@ namespace TopShelfCustomer.ViewModels {
         /// <param name="settingProperty"> The name of the property to set on userSettings </param>
         /// <param name="value"> The bool value to assign the property </param>
         void ToggleSwitchSetting( string settingProperty, bool value ) {
-            Type objectType = SettingsContainer.Instance.CurrentUserSettings.GetType();      //Get the Type of both userSettings
+            string currentUserSettingPath = SettingsContainer.SettingsFilePath + UserContainer.CurrentUser.Id;
+            Type objectType = SettingsContainer.CurrentUserSettings.GetType();      //Get the Type of both userSettings
             PropertyInfo objectPropertyInfo = objectType.GetProperty( settingProperty );        //Get the property to set from UserSettings
 
             if ( objectPropertyInfo != null && objectPropertyInfo.CanWrite ) {
-                objectPropertyInfo.SetValue( SettingsContainer.Instance.CurrentUserSettings, value, null );      //Set the value of userSettings
+                objectPropertyInfo.SetValue( SettingsContainer.CurrentUserSettings, value, null );      //Set the value of userSettings
             }
             /* Create and Write the modified Settings to the JSON settings file */
-            jsonObject = JObject.FromObject( SettingsContainer.Instance.CurrentUserSettings );        //Create JSON object from userSettings
-            SerializationHelper.JsonWrite( SettingsContainer.SettingsFilePath, jsonObject.ToString() );       //Write the JSON object to the settings file
+            jsonObject = JObject.FromObject( SettingsContainer.CurrentUserSettings );        //Create JSON object from userSettings
+            SerializationHelper.JsonWrite( currentUserSettingPath, jsonObject.ToString() );       //Write the JSON object to the settings file
         }
 
         /// <summary>
@@ -136,12 +137,12 @@ namespace TopShelfCustomer.ViewModels {
         /// user settings. Used to initialize the values of the settings in this view.
         /// </summary>
         void InitializeBindableProperties() {
-            isCouponPushSwitchToggled = SettingsContainer.Instance.CurrentUserSettings.CouponPushNotifications;
-            isCouponEmailSwitchToggled = SettingsContainer.Instance.CurrentUserSettings.CouponEmailNotifications;
-            isOrderPushSwitchToggled = SettingsContainer.Instance.CurrentUserSettings.OrderPushNotifications;
-            isOrderEmailSwitchToggled = SettingsContainer.Instance.CurrentUserSettings.OrderEmailNotifications;
-            isDeliveryPushSwitchToggled = SettingsContainer.Instance.CurrentUserSettings.DeliveryPushNotifications;
-            isDeliveryEmailSwitchToggled = SettingsContainer.Instance.CurrentUserSettings.DeliveryEmailNotifications;
+            isCouponPushSwitchToggled = SettingsContainer.CurrentUserSettings.CouponPushNotifications;
+            isCouponEmailSwitchToggled = SettingsContainer.CurrentUserSettings.CouponEmailNotifications;
+            isOrderPushSwitchToggled = SettingsContainer.CurrentUserSettings.OrderPushNotifications;
+            isOrderEmailSwitchToggled = SettingsContainer.CurrentUserSettings.OrderEmailNotifications;
+            isDeliveryPushSwitchToggled = SettingsContainer.CurrentUserSettings.DeliveryPushNotifications;
+            isDeliveryEmailSwitchToggled = SettingsContainer.CurrentUserSettings.DeliveryEmailNotifications;
         }
 
         #endregion

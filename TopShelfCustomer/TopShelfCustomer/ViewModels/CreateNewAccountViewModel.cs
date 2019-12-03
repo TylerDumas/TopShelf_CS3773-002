@@ -21,6 +21,8 @@ namespace TopShelfCustomer.ViewModels {
 
         public string UserRealNameInput { get; set; }       //Entry Text Properties
         public string EmailInput { get; set; }
+        public string AddressInput { get; set; }
+        public string PasswordInput { get; set; }
 
         private string creationErrorMessage = "Failed to Create Account";       //Dynamic Error message text
         public string CreationErrorMessage {
@@ -32,8 +34,7 @@ namespace TopShelfCustomer.ViewModels {
                 OnPropertyChanged( "CreationErrorMessage" );
             }
         }
-        public string PasswordInput { get; set; }
-
+        
         private bool isErrorOnCreation;       //Bool to trigger "invalid input" error message
         public bool IsErrorOnCreation {
             get {

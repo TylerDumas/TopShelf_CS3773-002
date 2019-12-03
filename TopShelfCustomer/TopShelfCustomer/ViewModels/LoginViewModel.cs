@@ -74,7 +74,10 @@ namespace TopShelfCustomer.ViewModels {
             string token = await auth.LoginWithEmailPassword( EmailInput, PasswordInput );
             if( token != "" ) {
                 ApiHelper apiHelper = new ApiHelper();
-                User user = await apiHelper.GetAsync<User>( "User/GetUserById/4" );     //FIXME: correct by creating GetUserByUsername endpoint in API
+
+                string sanitizedEmail = EmailInput.Replace( ".", "-" );     //Replace '.' with '-' to allow for correct Get call
+
+                User user = await apiHelper.GetAsync<User>( "User/GetUserByEmail/" + sanitizedEmail );
                 UserContainer.CurrentUser = user;       //Set the global user
                 App.SetCurrentPage<HomePage>();     //Redirect to the Home Page
             } else {

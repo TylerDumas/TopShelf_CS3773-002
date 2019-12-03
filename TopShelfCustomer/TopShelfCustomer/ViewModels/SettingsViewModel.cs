@@ -81,7 +81,7 @@ namespace TopShelfCustomer.ViewModels {
             OpenAboutViewCommand = new Command( () => App.SetCurrentPage<AboutPage>() ) ;
             OpenSupportViewCommand = new Command( () => Launcher.OpenAsync( new Uri( "https://www.youtube.com/watch?v=dQw4w9WgXcQ" ) ) );       //FIXME: Get rid of the Astley
             OpenLicenseViewCommand = new Command( () => App.SetCurrentPage<LicenseView>() );
-            LogoutUserCommand = new Command( () => App.ClearPages() );
+            LogoutUserCommand = new Command( () => App.ClearAppData() );
         }
 
         /// <summary>
@@ -89,20 +89,20 @@ namespace TopShelfCustomer.ViewModels {
         ///
         /// Takes the name of a UserSettings property and a value,
         /// then finds that property by name and sets it to value.
-        /// Then writes the modified userSettings object to settings file as JSON.
+        /// Then writes the modified userSettings object to user settings file as JSON.
         /// </summary>
         /// <param name="settingProperty"> The name of the property to set on userSettings </param>
         /// <param name="value"> The bool value to assign the property </param>
         void ToggleSwitchSetting( string settingProperty, bool value ) {
-            Type objectType = SettingsContainer.Instance.CurrentUserSettings.GetType();      //Get the Type of both userSettings
+            Type objectType = SettingsContainer.CurrentUserSettings.GetType();      //Get the Type of both userSettings
             PropertyInfo objectPropertyInfo = objectType.GetProperty( settingProperty );        //Get the property to set from UserSettings
 
             if ( objectPropertyInfo != null && objectPropertyInfo.CanWrite ) {
-                objectPropertyInfo.SetValue( SettingsContainer.Instance.CurrentUserSettings, value, null );      //Set the value of userSettings
-                Debug.WriteLine( $"Changed the value of {objectPropertyInfo.ToString()} to {value}" );
+                objectPropertyInfo.SetValue( SettingsContainer.CurrentUserSettings, value, null );      //Set the value of userSettings
             }
-            jsonObject = JObject.FromObject( SettingsContainer.Instance.CurrentUserSettings );        //Create JSON object from userSettings
-            SerializationHelper.JsonWrite( SettingsContainer.SettingsFilePath, jsonObject.ToString() );       //Write the JSON object to the settings file
+            string userSettingsPath = SettingsContainer.SettingsFilePath + UserContainer.CurrentUser.Id;        //Modify path to set this User's settings
+            jsonObject = JObject.FromObject( SettingsContainer.CurrentUserSettings );        //Create JSON object from userSettings
+            SerializationHelper.JsonWrite( userSettingsPath, jsonObject.ToString() );       //Write the JSON object to the settings file
         }
 
         /// <summary>
@@ -113,8 +113,8 @@ namespace TopShelfCustomer.ViewModels {
         /// used in the view.
         /// </summary>
         void InitializeBindableProperties() {
-            isReceiptSwitchToggled = SettingsContainer.Instance.CurrentUserSettings.SaveReceiptsSetting;
-            isLinkSwitchToggled = SettingsContainer.Instance.CurrentUserSettings.AllowExternalLinks;
+            isReceiptSwitchToggled = SettingsContainer.CurrentUserSettings.SaveReceiptsSetting;
+            isLinkSwitchToggled = SettingsContainer.CurrentUserSettings.AllowExternalLinks;
         }
 
         #endregion

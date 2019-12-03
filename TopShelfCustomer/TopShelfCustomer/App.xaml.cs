@@ -99,12 +99,13 @@ namespace TopShelfCustomer {
         /// <summary>
         /// ClearPages:
         ///
-        /// Clears all Pages from any Application state/dependency containers
+        /// Clears all Application state/dependency containers
         /// </summary>
-        public static void ClearPages() {
+        public static void ClearAppData() {
             PageContainer.Views.Clear();    //Clear Page dependency container
             Current.MainPage = new LoginPage();     //Change view to blank LoginPage
             UserContainer.CurrentUser = new Models.User();      //Clear the global User instance
+            SettingsContainer.ClearSettings();      //Clear User Settings
         }
     }
 }
