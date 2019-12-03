@@ -583,10 +583,14 @@
             GetUserByEmail:
             
             Fetches a User from the database by their
-            email address (with the domain trimmed).
+            email address.
             </summary>
-            <param name="emailTrimmed"> The email address with no domain </param>
+            <param name="emailAddress"> The email address </param>
             <returns> A User with that email address </returns>
+            <remarks>
+            Endpoints cannot handle the '.' operator. The caller must replace '.' with '-' before fetching
+            User.
+            </remarks>
         </member>
         <member name="M:TopShelfCustomer.Api.Controllers.UserController.Post(TopShelfCustomer.Api.Models.User)">
             <summary>
@@ -670,6 +674,11 @@
         <member name="P:TopShelfCustomer.Api.Models.Store.ImageURL">
             <summary>
             ImageURL: the web URL for this Store's logo image.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Store.ZipCode">
+            <summary>
+            ZipCode: the Zip Code for the Store.
             </summary>
         </member>
         <member name="T:TopShelfCustomer.Api.Models.User">
@@ -841,7 +850,7 @@
             Fetches Users with EmailAddress of "email"
             from the database and returns it.
             </summary>
-            <param name="email"></param>
+            <param name="email"> The email address </param>
             <returns> A List of Users with one element </returns>
         </member>
     </members>

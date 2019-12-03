@@ -48,17 +48,21 @@ namespace TopShelfCustomer.Api.Controllers {
         /// <summary>
         /// GetUserByEmail:
         /// 
-        /// Fetches a User from the database by their
-        /// email address (with the domain trimmed).
+        /// Fetches a User from the UserData database wrapper class
+        /// by their email address.
         /// </summary>
-        /// <param name="emailTrimmed"> The email address with no domain </param>
+        /// <param name="emailAddress"> The email address </param>
         /// <returns> A User with that email address </returns>
-        [Route( "api/User/GetUserByEmail/{emailTrimmed}" )]
+        /// <remarks>
+        /// Endpoints cannot handle the '.' operator. The caller must replace '.' with '-' before fetching
+        /// User.
+        /// </remarks>
+        [Route( "api/User/GetUserByEmail/{emailAddress}" )]
         [HttpGet]
-        public User GetUserByEmail ( string emailTrimmed ) {
+        public User GetUserByEmail ( string emailAddress ) {
             UserData data = new UserData();
-
-            var user = data.GetUserByEmail( emailTrimmed, ".com" );
+            string sanitizedEmail = emailAddress.Replace( "-", "." );
+            var user = data.GetUserByEmail( sanitizedEmail );
 
             try {               //Catch exceptions thrown by null User
                 if ( user[0] == null ) { return new User(); }
