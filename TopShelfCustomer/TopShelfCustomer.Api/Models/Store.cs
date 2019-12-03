@@ -30,5 +30,9 @@ namespace TopShelfCustomer.Api.Models {
         /// ImageURL: the web URL for this Store's logo image.
         /// </summary>
         public string ImageURL { get; set; } = "";
+        /// <summary>
+        /// ZipCode: the Zip Code for the Store.
+        /// </summary>
+        public int ZipCode { get; set; } = 0;
     }
 }
