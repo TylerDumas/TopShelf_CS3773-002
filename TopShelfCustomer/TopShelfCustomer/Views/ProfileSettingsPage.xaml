@@ -45,7 +45,7 @@
                                HorizontalOptions="Center" VerticalOptions="Fill"
                                HeightRequest="40" Margin="0, 10, 0, 30"/>
 
-                        <!-- Edit Username Setting -->
+                        <!-- Edit Full Name Setting -->
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0,0,20" >
                             <Label Text="Full Name" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}"
                                    VerticalTextAlignment="Center" HeightRequest="40"
@@ -55,12 +55,12 @@
                                    TextColor="Gray" BackgroundColor="{StaticResource Accent}" />
                         </StackLayout>
 
-                        <!-- Edit Password Setting -->
+                        <!-- Edit Username Setting -->
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0,0,20">
-                            <Label Text="Password" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}"
+                            <Label Text="Username" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}"
                                    VerticalTextAlignment="Center" HeightRequest="40"
                                    HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
-                            <Entry Text="{Binding UserName}" IsReadOnly="True" IsPassword="True" HorizontalOptions="EndAndExpand"
+                            <Entry Text="{Binding Username}" IsReadOnly="True" HorizontalOptions="EndAndExpand"
                                    HeightRequest="46" WidthRequest="220" FontFamily="{StaticResource NormalFont}" FontSize="15"
                                    Margin="10,0,40,0" TextColor="Gray" BackgroundColor="{StaticResource Accent}" />
                         </StackLayout>

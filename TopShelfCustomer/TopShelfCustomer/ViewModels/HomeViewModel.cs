@@ -1,6 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Windows.Input;
 using TopShelfCustomer.Models;
+using TopShelfCustomer.Services;
 using TopShelfCustomer.Views;
 using Xamarin.Forms;
 
@@ -40,7 +41,9 @@ namespace TopShelfCustomer.ViewModels {
         /// Constructor
         /// </summary>
         public HomeViewModel() {
-            Title = "Home";
+            Title = "Home";     
+            UserRealName = UserContainer.CurrentUser.FullName;      //Get User's name from the global User
+            UserStoreName = UserContainer.CurrentUser.StoreName;        //Get User's store name from the global User
 
             /* Initialize Commands */
             OpenSettingsCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );

@@ -13,24 +13,13 @@ namespace TopShelfCustomer.Models {
 
         #region Properties
 
-        public string OrderName { get; set; }       //The real name of the User that made the purchase
-        public string OrderStoreName { get; set; }       //The store that the User purchased from
-        public float OrderTotalPrice { get; set; }       //The overall total of the purchase
-        public float OrderSubTotalPrice { get; set; }        //The total of the purchase before tax
-        public int OrderNumItems { get; set; }     //The total number of items purchased
-        public string OrderDate { get; set; }
-        public List<Item> PurchasedItems { get; set; }      //The list of all Items purchased
-
-        #endregion
-
-        #region Class Methods
-
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public OrderReceipt() {
-
-        }
+        public string Name { get; set; }       //The real name of the User that made the purchase
+        public string StoreName { get; set; }       //The store that the User purchased from
+        public float Price { get; set; }       //The overall total of the purchase
+        public float SubTotalPrice { get; set; }        //The total of the purchase before tax
+        public int NumItems { get; set; }     //The total number of items purchased
+        public string Date { get; set; }
+        public List<Product> PurchasedItems { get; set; }      //The list of all Items purchased
 
         #endregion
     }

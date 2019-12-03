@@ -3,6 +3,8 @@ using Xamarin.Forms;
 using TopShelfCustomer.Views;
 using TopShelfCustomer.Services;
 using System.ComponentModel;
+using System.Diagnostics;
+using TopShelfCustomer.Models;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -71,7 +73,10 @@ namespace TopShelfCustomer.ViewModels {
         async void LoginClicked() {
             string token = await auth.LoginWithEmailPassword( EmailInput, PasswordInput );
             if( token != "" ) {
-                App.SetCurrentPage<HomePage>();
+                ApiHelper apiHelper = new ApiHelper();
+                User user = await apiHelper.GetAsync<User>( "User/GetUserById/4" );     //FIXME: correct by creating GetUserByUsername endpoint in API
+                UserContainer.CurrentUser = user;       //Set the global user
+                App.SetCurrentPage<HomePage>();     //Redirect to the Home Page
             } else {
                 IsErrorVisible = true;
             }

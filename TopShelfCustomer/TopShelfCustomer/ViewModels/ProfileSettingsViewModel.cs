@@ -2,6 +2,7 @@
 using TopShelfCustomer.Views;
 using TopShelfCustomer.Models;
 using Xamarin.Forms;
+using TopShelfCustomer.Services;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -55,12 +56,13 @@ namespace TopShelfCustomer.ViewModels {
         public ProfileSettingsViewModel() {
             Title = "Profile Settings";
 
-            UserRealName = "Jackson Dumas";
-            UserEmail = "test123@gmail.com";
-            PhoneNumber = "111-111-1111";
+            /* Initialize Bindable Properties from the global User */
+            UserRealName = UserContainer.CurrentUser.FullName;
+            UserEmail = UserContainer.CurrentUser.EmailAddress;
+            PhoneNumber = UserContainer.CurrentUser.PhoneNumber;
 
+            /* Intialize Commands */
             OpenSettingsPageCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
-
         }
     }
 }

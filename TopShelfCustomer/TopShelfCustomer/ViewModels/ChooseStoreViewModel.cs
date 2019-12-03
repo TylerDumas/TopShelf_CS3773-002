@@ -1,8 +1,11 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using TopShelfCustomer.Models;
+using TopShelfCustomer.Services;
 using TopShelfCustomer.Views;
 using Xamarin.Forms;
 
@@ -18,10 +21,10 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Properties
 
-        public ObservableCollection<StoreDisplay> NearbyStores { get; set; }       //Collection of Stores close to the current User
+        public ObservableCollection<Store> NearbyStores { get; set; }       //Collection of Stores close to the current User
 
-        private StoreDisplay selectedStore;         //The currently selected Store in the ListView
-        public StoreDisplay SelectedStore {
+        private Store selectedStore;         //The currently selected Store in the ListView
+        public Store SelectedStore {
             get {
                 return selectedStore;
             }
@@ -40,18 +43,8 @@ namespace TopShelfCustomer.ViewModels {
         #region Class Methods
 
         public ChooseStoreViewModel() {
-            Title = "Choose your Favorite Store";     //Set Title property of this ContentPage
-
-            /* Initialize Collection of Stores */
-            NearbyStores = new ObservableCollection<StoreDisplay> {
-
-                //FIXME: Temporary Stores to test the View
-                new StoreDisplay { Name = "HEB DeZavala", Address = "1111 DeZavala Road" },
-                new StoreDisplay { Name = "HEB 1604 and Blanco", Address = "2222 Blanco Road" },
-                new StoreDisplay { Name = "HEB Bandera and 1604", Address = "3333 Bandera Road" }
-            };
-            SelectedStore = NearbyStores[0];
-            
+            Title = "Choose your Favorite Store";     //Set Title property of this ContentPage            
+            InitializeNearbyStores();
 
             /* Initialize Commands */
             NavigateBackCommand = new Command( () => App.SetCurrentPage<HomePage>() );
@@ -68,6 +61,30 @@ namespace TopShelfCustomer.ViewModels {
             //TODO: Set the selected Store so that the next View can access it.
             Debug.WriteLine( "Selected a new Default Store" );
             App.SetCurrentPage<HomePage>();
+        }
+
+        /// <summary>
+        /// InitializeNearbyStores:
+        ///
+        /// Fetches the stores from the API and sets the
+        /// bindable properties for the ChooseStoreView.
+        /// </summary>
+        public async Task InitializeNearbyStores() {
+            ApiHelper apiHelper = new ApiHelper();
+            NearbyStores = new ObservableCollection<Store>();
+            var stores = await apiHelper.GetAsync<Store>( "Store/GetStoreById/1" );       //Get Stores from API FIXME: add GetByStoreName or something to api
+
+            //foreach( Store store in stores ) {
+            //    NearbyStores.Add( store );
+            //    if( store.Name == UserContainer.CurrentUser.StoreName ) {       //Check if this is the User's preffered Store
+            //        SelectedStore = store;
+            //    }
+            //}
+            
+            NearbyStores.Add( stores );
+            if( SelectedStore == null ) {       //Check if no store was found to be preferred
+                SelectedStore = NearbyStores[0];
+            }
         }
 
         #endregion

@@ -5,7 +5,8 @@ using System.Windows.Input;
 using TopShelfCustomer.Models;
 using TopShelfCustomer.Views;
 using Xamarin.Forms;
-using System;
+using TopShelfCustomer.Services;
+using System.Threading.Tasks;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -19,10 +20,8 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Properties
 
-        public UriImageSource StoreImage { get; set; }       //The Store's Image(HEB Logo, etc.) FIXME: This is temporary, remove this and its View element if you want
-
-        public Store SelectedStore { get; set; }            //The default Store selected by the User
-        public ObservableCollection<Item> ShopInventory { get; set; }       //Collection of this Store's Item inventory. Bound to View
+        public string SelectedStoreName { get; set; } = "";         //The name of the default selected Store
+        public ObservableCollection<Product> ShopInventory { get; set; } = new ObservableCollection<Product>();      //Collection of this Store's Item inventory. Bound to View
 
         /* Commands */
         public ICommand NavigateBackCommand { get; }            //Command for "back" button
@@ -36,18 +35,7 @@ namespace TopShelfCustomer.ViewModels {
         /// Constructor
         /// </summary>
         public ShopViewModel() {
-
-            StoreImage = new UriImageSource { Uri = new System.Uri( "https://pbs.twimg.com/profile_images/1131606709313712129/H5XKewbN.png" ) };        //FIXME: Remove this if you want
-
-            /* Temporary Store and Inventory Instantiation */
-            SelectedStore = new Store { StoreName = "HEB DeZavala", StoreAddress = "1111 DeZavala Road" };      //Temporary Store instantiation
-            ShopInventory = new ObservableCollection<Item> {
-                new Item{ ItemName = "Cereal", Price = 6.99f, ItemId = 1 },
-                new Item{ ItemName = "Bread", Price = 1.00f, ItemId = 2 },
-                new Item{ ItemName = "Precious Gems", Price = 10.00f, ItemId = 3 },
-                new Item{ ItemName = "Gypsy Tears", Price = 0.99f, ItemId = 4 },
-                new Item{ ItemName = "Armadillo Meat", Price = 7.67f, ItemId = 5 }
-            };
+            InitializeStore();      //Initialize the bindable properties
 
             NavigateBackCommand = new Command( () => App.SetCurrentPage<HomePage>() );      //Initialize "Back Button" Command
             CheckoutCommand = new Command( Checkout );      //Initialize the Checkout Command
@@ -61,6 +49,26 @@ namespace TopShelfCustomer.ViewModels {
         private void Checkout() {
             //TODO: Implement Checkout
             Debug.WriteLine( "Pressed the Checkout Button" );
+        }
+
+        /// <summary>
+        /// InitializeStore:
+        ///
+        /// Sets all bindable properties for the ShopView.
+        /// Also calls the API to fetch the store/product data.
+        /// </summary>
+        async Task InitializeStore() {
+            ApiHelper api = new ApiHelper();
+            var store = await api.GetAsync<Store>( "Store/GetStoreById/1" );      //FIXME: correct endpoint
+            var productsList = await api.GetAsync<List<Product>>( "Store/GetAllProducts" );     //FIXME: correct endpoint
+            if( store == null ) {       //Check if the User has a default Store
+                Debug.WriteLine( "Error: could not find default store" );
+                App.SetNewPage<ChooseStoreView>();
+            }
+            SelectedStoreName = UserContainer.CurrentUser.StoreName;        //Set the Header "Store Name" label
+            foreach ( Product product in  productsList ) {       //Add all products in the returned list to the bindable list
+                ShopInventory.Add( product );
+            }
         }
 
         #endregion

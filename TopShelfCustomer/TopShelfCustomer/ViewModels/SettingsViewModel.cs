@@ -71,7 +71,7 @@ namespace TopShelfCustomer.ViewModels {
         /// </summary>
         public SettingsViewModel() {
             Title = "Settings";         //Set the View title
-            userRealName = "Jackson Dumas";     //FIXME: implement a global user class
+            userRealName = UserContainer.CurrentUser.FullName;     //FIXME: implement a global user class
             InitializeBindableProperties();       //Initialize the properties seen on the UI
 
             /* Initialize Commands */

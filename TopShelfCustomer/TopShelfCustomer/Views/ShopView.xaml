@@ -26,21 +26,22 @@
                 <StackLayout Orientation="Vertical">
                     <!-- Back Button -->
                     <ImageButton Source="back_orange.png" Command="{Binding NavigateBackCommand}" HorizontalOptions="Start" Margin="10, 0, 0, 0" HeightRequest="40"/>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
-                        <Image Source="{Binding StoreImage}" HeightRequest="60"/>
-                        <Label Text="{Binding SelectedStore.StoreName}" FontSize="30" FontFamily="{StaticResource MediumFont}" VerticalTextAlignment="Center" TextColor="White" />
-                    </StackLayout>
+                    <!-- Store Name Label -->
+                    <Label Text="{Binding SelectedStoreName}" FontSize="30" HorizontalOptions="Center"
+                           FontFamily="{StaticResource MediumFont}" VerticalTextAlignment="Center" TextColor="White" />
                 </StackLayout>
             </ContentView>
 
-
+            <!-- List of Products -->
             <ListView x:Name="StoreList" ItemsSource="{Binding ShopInventory}" RowHeight="60" SeparatorColor="Black" SelectionMode="None"
                               BackgroundColor="{StaticResource AccentLight}" Margin="20, 30, 20, 30" Grid.Row="1">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
                             <StackLayout Orientation="Horizontal" Spacing="30" VerticalOptions="Center" Padding="10, 0, 10, 0">
-                                <Label Text="{Binding ItemName}" FontFamily="{StaticResource MediumFont}" HorizontalOptions="Start" TextColor="White"/>
+                                <!-- Product Name Label -->
+                                <Label Text="{Binding Name}" FontFamily="{StaticResource MediumFont}" HorizontalOptions="Start" TextColor="White"/>
+                                <!-- Product Price -->
                                 <Label TextColor="White" FontFamily="{StaticResource NormalFont}">
                                     <Label.FormattedText>
                                         <FormattedString>
@@ -53,12 +54,13 @@
                                 </Label>
                                 <ContentView HeightRequest="40" HorizontalOptions="EndAndExpand">
                                     <StackLayout Orientation="Horizontal">
+                                        <!-- Quantity Entry -->
                                         <Entry Placeholder="1" FontFamily="{StaticResource NormalFont}" BackgroundColor="White"
                                                PlaceholderColor="Gray" HorizontalTextAlignment="Center" Keyboard="Numeric"
-                                               Text="{Binding ItemQuantityInput}" WidthRequest="50" TextColor="Black"/>
-                                        <Button Command="{Binding AddItem}" BorderColor="Black" BorderWidth="2"
+                                               Text="0" WidthRequest="50" TextColor="Black"/>
+                                        <!--<Button Command="{Binding AddItem}" BorderColor="Black" BorderWidth="2"
                                                 BackgroundColor="{StaticResource SpaceGray}" Text="Add" WidthRequest="60"
-                                                FontFamily="{StaticResource MediumFont}" TextColor="White"/>
+                                                FontFamily="{StaticResource MediumFont}" TextColor="White"/> -->
                                     </StackLayout>
                                 </ContentView>
                             </StackLayout>

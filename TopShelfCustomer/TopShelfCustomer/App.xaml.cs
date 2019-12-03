@@ -104,6 +104,7 @@ namespace TopShelfCustomer {
         public static void ClearPages() {
             PageContainer.Views.Clear();    //Clear Page dependency container
             Current.MainPage = new LoginPage();     //Change view to blank LoginPage
+            UserContainer.CurrentUser = new Models.User();      //Clear the global User instance
         }
     }
 }

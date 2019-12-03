@@ -38,8 +38,6 @@
                                     <StackLayout Orientation="Vertical" Spacing="20" Padding="0, 10, 0, 10">
                                         <!-- List Item Content -->
                                         <StackLayout Orientation="Vertical" Spacing="10">
-                                            <!-- Store Image -->
-                                            <Image Source="{Binding StoreImage}" HeightRequest="50"/>
                                             <!-- Store Name -->
                                             <Label Text="{Binding Name}" FontFamily="{StaticResource MediumFont}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
                                                    VerticalTextAlignment="Center" TextColor="White" FontSize="20"/>
@@ -47,7 +45,7 @@
                                             <Label Text="{Binding Address}" FontFamily="{StaticResource NormalFont}" FontSize="18" Margin="0, 15, 0, 0"
                                                        HorizontalOptions="CenterAndExpand" TextColor="White"/>
                                             <!-- Directions Button -->
-                                            <Button Text="Directions" BackgroundColor="{StaticResource SpaceGray}" Command="{Binding GetDirectionsCommand}"
+                                            <Button Text="Directions" BackgroundColor="{StaticResource SpaceGray}"
                                                     BorderColor="Black" BorderWidth="1" FontFamily="{StaticResource MediumFont}"
                                                     TextColor="White" WidthRequest="140" HorizontalOptions="Center" HeightRequest="40"/>
                                         </StackLayout>

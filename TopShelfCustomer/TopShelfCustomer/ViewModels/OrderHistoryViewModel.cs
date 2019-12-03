@@ -36,27 +36,8 @@ namespace TopShelfCustomer.ViewModels {
         /// Constructor
         /// </summary>
         public OrderHistoryViewModel() {
-            userRealName = "Jackson Dumas";     //FIXME: temporary name, replace with user profile
-            ReceiptList = new List<OrderReceipt> {
-                new OrderReceipt() {
-                    OrderDate = "11/25/2019",
-                    OrderStoreName = "HEB DeZavala",
-                    OrderNumItems = 25,
-                    OrderTotalPrice = 100.00f,
-                },
-                new OrderReceipt() {
-                    OrderDate = "11/15/2019",
-                    OrderStoreName = "HEB DeZavala",
-                    OrderNumItems = 18,
-                    OrderTotalPrice = 60.10f,
-                },
-                new OrderReceipt() {
-                    OrderDate = "11/01/2019",
-                    OrderStoreName = "HEB 1604 & Blanco",
-                    OrderNumItems = 15,
-                    OrderTotalPrice = 50.60f,
-                }
-            };
+            userRealName = UserContainer.CurrentUser.FullName;     //FIXME: temporary name, replace with user profile
+
             /* Initialize Commands */
             NavigateBackCommand = new Command( () => App.SetCurrentPage<HomePage>() );
         }

@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using Xamarin.Forms;
 
 namespace TopShelfCustomer.Models {
 
@@ -10,16 +12,21 @@ namespace TopShelfCustomer.Models {
     /// a product catalog, a name, etc.
     /// </summary>
     public class Store {
-
-        public string StoreName { get; set; }       //The name of the store
-        public string StoreAddress { get; set; }        //The address of the store
-        public List<Item> StoreCatalog { get; set; }        //This store's list of Items
-
         /// <summary>
-        /// Constructor
+        /// Id: the unique identifier for this Store.
         /// </summary>
-        public Store() {
-            StoreCatalog = new List<Item>();
-        }
+        public int Id { get; set; } = 0;
+        /// <summary>
+        /// Name: the name of this Store.
+        /// </summary>
+        public string Name { get; set; } = "";
+        /// <summary>
+        /// Address: the physical address of this Store.
+        /// </summary>
+        public string Address { get; set; } = "";
+        /// <summary>
+        /// ImageURL: the web URL for this Store's logo image.
+        /// </summary>
+        public string ImageURL { get; set; } = "";
     }
 }

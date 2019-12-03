@@ -100,7 +100,7 @@ namespace TopShelfCustomer.ViewModels {
         /// </summary>
         public NotificationsViewModel() {
             Title = "Notifications View";       //Set the title for this view
-            UserRealName = "Jackson Dumas";
+            UserRealName = UserContainer.CurrentUser.FullName;
              
             InitializeBindableProperties();     //Initialize the properties visible in the UI
 
