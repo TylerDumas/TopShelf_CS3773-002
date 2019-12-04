@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using TopShelfCustomer.Api.Models;
 
 namespace TopShelfCustomer.Api.Services {
 
     /// <summary>
     /// StoreData:
-    /// 
+    ///
     /// Implementation of the SqlDataAccess class
     /// specific to the Store model class.
     /// Implements RESTful Api calls to communicate with the database
@@ -18,7 +15,7 @@ namespace TopShelfCustomer.Api.Services {
 
         /// <summary>
         /// GetAllProducts:
-        /// 
+        ///
         /// Returns all products in the Products
         /// database table.
         /// </summary>
@@ -33,13 +30,13 @@ namespace TopShelfCustomer.Api.Services {
 
         /// <summary>
         /// GetStoreById:
-        /// 
+        ///
         /// Fetches the Store with an Id property that matches
         /// the "id" argument.
         /// </summary>
         /// <param name="id"> the Id property to match </param>
         /// <returns> A List of Stores with 1 element </returns>
-        public List<Store> GetStoreById( int id ) {
+        public List<Store> GetStoreById ( int id ) {
             SqlDataAccess sql = new SqlDataAccess();
 
             var p = new { Id = id };
@@ -49,13 +46,13 @@ namespace TopShelfCustomer.Api.Services {
 
         /// <summary>
         /// GetStoresByZipCode:
-        /// 
+        ///
         /// Fetches all Stores from the database with a
         /// matching ZipCode property.
         /// </summary>
         /// <param name="zipCode"> The ZipCode to match </param>
         /// <returns> A list of Stores </returns>
-        public List<Store> GetStoresByZipCode( int zipCode ) {
+        public List<Store> GetStoresByZipCode ( int zipCode ) {
             SqlDataAccess sql = new SqlDataAccess();
 
             var p = new { ZipCode = zipCode };

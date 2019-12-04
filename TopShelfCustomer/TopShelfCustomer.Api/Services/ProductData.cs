@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using System.Collections.Generic;
 using TopShelfCustomer.Api.Models;
 
 namespace TopShelfCustomer.Api.Services {
 
     /// <summary>
     /// ProductData:
-    /// 
+    ///
     /// Implementation of the SqlDataAccess class
     /// specific to the Product model class.
     /// Implements RESTful Api calls to communicate with the database
@@ -18,14 +15,14 @@ namespace TopShelfCustomer.Api.Services {
 
         /// <summary>
         /// GetProductById:
-        /// 
-        /// 
+        ///
+        ///
         /// Fetches the Property with an Id property that matches
         /// the "id" argument.
         /// </summary>
         /// <param name="id"> the Id property to match </param>
         /// <returns> A List of Products with 1 element </returns>
-        public List<Product> GetProductById( int id ) {
+        public List<Product> GetProductById ( int id ) {
             SqlDataAccess sql = new SqlDataAccess();
 
             var p = new { Id = id };        //Blank object to pass as parameter

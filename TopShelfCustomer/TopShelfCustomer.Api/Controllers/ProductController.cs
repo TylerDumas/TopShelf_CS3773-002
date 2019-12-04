@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using TopShelfCustomer.Api.Models;
 using TopShelfCustomer.Api.Services;
@@ -12,7 +8,7 @@ namespace TopShelfCustomer.Api.Controllers {
 
     /// <summary>
     /// ProductController:
-    /// 
+    ///
     /// Controller for the Product collection.
     /// Contains functionality for all RESTful API calls
     /// such as: Get, Put, Post, and Delete.
@@ -21,7 +17,7 @@ namespace TopShelfCustomer.Api.Controllers {
 
         /// <summary>
         /// GetProductById:
-        /// 
+        ///
         /// Overload of the Get method.
         /// Fetches a specific Product from the database and returns it
         /// to the caller of this API method.

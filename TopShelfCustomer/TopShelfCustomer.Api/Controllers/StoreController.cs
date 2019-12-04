@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
 using System.Web.Http;
 using TopShelfCustomer.Api.Models;
 using TopShelfCustomer.Api.Services;
@@ -12,7 +9,7 @@ namespace TopShelfCustomer.Api.Controllers {
 
     /// <summary>
     /// StoreController:
-    /// 
+    ///
     /// Controller for the "Store" API endpoint.
     /// Manages the data transfer with the database and
     /// the callers of this API.
@@ -21,7 +18,7 @@ namespace TopShelfCustomer.Api.Controllers {
 
         /// <summary>
         /// GetAllProducts:
-        /// 
+        ///
         /// Overload of the Get request method.
         /// Fetches all Products from the database and returns them
         /// to the caller of this API method.
@@ -49,7 +46,7 @@ namespace TopShelfCustomer.Api.Controllers {
 
         /// <summary>
         /// GetStoresByZipCode:
-        /// 
+        ///
         /// Fetches all Stores with matching ZipCode and returns
         /// them to the API caller.
         /// </summary>
@@ -75,7 +72,7 @@ namespace TopShelfCustomer.Api.Controllers {
 
         /// <summary>
         /// GetStoreById:
-        /// 
+        ///
         /// Overload for the Get request method.
         /// Returns a Store that matches the id argument.
         /// </summary>
@@ -83,7 +80,7 @@ namespace TopShelfCustomer.Api.Controllers {
         /// <returns> A Store with a matching Id property value </returns>
         [Route( "api/Store/GetStoreById/{id:int}" )]
         [HttpGet]
-        public Store Get( int id ) {
+        public Store Get ( int id ) {
             StoreData data = new StoreData();
 
             var store = data.GetStoreById( id );        //Store return value of database fetch
