@@ -56,6 +56,14 @@
                                    BackgroundColor="{StaticResource Accent}" PlaceholderColor="Gray"/>
                         </StackLayout>
 
+                        <!-- Address -->
+                        <StackLayout Orientation="Horizontal" Margin="0,10,0,20" HeightRequest="50">
+                            <Image Source="news_48.png" HeightRequest="64"  />
+                            <Entry Placeholder="Street Address" FontSize="16" WidthRequest="260"
+                                   Text="{Binding AddressInput, Mode=TwoWay}" FontFamily="{StaticResource NormalFont}"
+                                   BackgroundColor="{StaticResource Accent}" PlaceholderColor="Gray"/>
+                        </StackLayout>
+
                         <!-- Password -->
                         <StackLayout Orientation="Horizontal" Margin="0,10,0,20" HeightRequest="50">
                             <Image Source="secure_letter_48.png" HeightRequest="64"  />

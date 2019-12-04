@@ -33,6 +33,16 @@ namespace TopShelfCustomer.ViewModels {
                 OnPropertyChanged( "UserEmail" );
             }
         }
+        private string userAddress;       //The User's "Street address"
+        public string UserAddress {
+            get {
+                return userAddress;
+            }
+            set {
+                userAddress = value;
+                OnPropertyChanged( "UserAddress" );
+            }
+        }
 
         private string phoneNumber;       //The User's Phone Number
         public string PhoneNumber {
@@ -60,7 +70,7 @@ namespace TopShelfCustomer.ViewModels {
             UserRealName = UserContainer.CurrentUser.FullName;
             UserEmail = UserContainer.CurrentUser.EmailAddress;
             PhoneNumber = UserContainer.CurrentUser.PhoneNumber;
-
+            UserAddress = UserContainer.CurrentUser.StreetAddress;
             /* Intialize Commands */
             OpenSettingsPageCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
         }
