@@ -52,7 +52,8 @@ namespace TopShelfCustomer.ViewModels {
         /// <summary>
         /// ForgotPasswordClicked:
         ///
-        /// Function to bind to Command delegate. Controls the "Request Email" button in the password retrieval view
+        /// Function to bind to Command delegate.
+        /// Controls the "Request Email" button in the password retrieval view
         /// </summary>
         async void ForgotPasswordClicked() {
             string complete = await auth.RequestPasswordReset( EmailInput );

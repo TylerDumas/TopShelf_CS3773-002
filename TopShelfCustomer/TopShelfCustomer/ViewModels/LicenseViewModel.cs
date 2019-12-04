@@ -18,7 +18,7 @@ namespace TopShelfCustomer.ViewModels {
         #region Properties
 
         /* Commands */
-        public ICommand OpenSettingsViewCommand { get; set; }           //Command for going back to settings view (back button)
+        public ICommand NavigateBackCommand { get; set; }           //Command for going back to settings view (back button)
 
         #endregion
 
@@ -31,7 +31,7 @@ namespace TopShelfCustomer.ViewModels {
             Title = "Licenses";
 
             /* Initialize Commands */
-            OpenSettingsViewCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
+            NavigateBackCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
         }
 
         #endregion

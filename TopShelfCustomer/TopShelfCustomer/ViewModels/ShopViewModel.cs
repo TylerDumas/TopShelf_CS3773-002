@@ -59,9 +59,8 @@ namespace TopShelfCustomer.ViewModels {
         /// </summary>
         async Task InitializeStore() {
             ApiHelper api = new ApiHelper();
-            var store = await api.GetAsync<Store>( "Store/GetStoreById/1" );      //FIXME: correct endpoint
             var productsList = await api.GetAsync<List<Product>>( "Store/GetAllProducts" );     //FIXME: correct endpoint
-            if( store == null ) {       //Check if the User has a default Store
+            if( UserContainer.CurrentUser.StoreName == "" ) {       //Check if the User has a default Store
                 Debug.WriteLine( "Error: could not find default store" );
                 App.SetNewPage<ChooseStoreView>();
             }

@@ -73,26 +73,10 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Contents.json">
       <Visible>false</Visible>
     </ImageAsset>
-    <BundleResource Include="Resources\tab_about.png" />
-    <BundleResource Include="Resources\tab_about%402x.png" />
-    <BundleResource Include="Resources\tab_about%403x.png" />
-    <BundleResource Include="Resources\tab_feed.png" />
-    <BundleResource Include="Resources\tab_feed%402x.png" />
-    <BundleResource Include="Resources\tab_feed%403x.png" />
-    <BundleResource Include="Resources\xamarin_logo.png" />
-    <BundleResource Include="Resources\xamarin_logo%402x.png" />
-    <BundleResource Include="Resources\xamarin_logo%403x.png" />
     <InterfaceDefinition Include="Resources\LaunchScreen.storyboard" />
-    <BundleResource Include="Resources\TopShelfNameLogo.png" />
-    <BundleResource Include="Resources\NameLogoWhite.png" />
-    <BundleResource Include="Resources\TopShelfLogo.png" />
-    <BundleResource Include="Resources\portrait.png" />
     <BundleResource Include="Resources\back_orange.png" />
     <BundleResource Include="Resources\TopShelfAppLogo.png" />
     <BundleResource Include="Resources\cart_48.png" />
-    <BundleResource Include="Resources\menu_48.png" />
-    <BundleResource Include="Resources\news_48.png" />
-    <BundleResource Include="Resources\secure_letter_48.png" />
     <BundleResource Include="GoogleService-Info.plist" />
     <BundleResource Include="Resources\FiraSans-Bold.ttf" />
     <BundleResource Include="Resources\FiraSans-BoldItalic.ttf" />
@@ -101,7 +85,6 @@
     <BundleResource Include="Resources\FiraSans-Regular.ttf" />
     <BundleResource Include="Resources\FiraSans-SemiBold.ttf" />
     <BundleResource Include="Resources\FiraSans-SemiBoldItalic.ttf" />
-    <BundleResource Include="Resources\OFL.txt" />
     <BundleResource Include="Resources\gradient_background.png" />
     <BundleResource Include="Resources\AppIcons\app_logo_20.png" />
     <BundleResource Include="Resources\AppIcons\app_logo_29.png" />
@@ -180,6 +163,25 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\app_logo_1024-2.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <BundleResource Include="Resources\cart_icon.png" />
+    <BundleResource Include="Resources\clock_icon.png" />
+    <BundleResource Include="Resources\delete_icon.png" />
+    <BundleResource Include="Resources\edit_icon.png" />
+    <BundleResource Include="Resources\home_icon.png" />
+    <BundleResource Include="Resources\info_icon.png" />
+    <BundleResource Include="Resources\link_icon.png" />
+    <BundleResource Include="Resources\lock_icon.png" />
+    <BundleResource Include="Resources\news_icon.png" />
+    <BundleResource Include="Resources\plus_icon.png" />
+    <BundleResource Include="Resources\rating_icon.png" />
+    <BundleResource Include="Resources\refresh_icon.png" />
+    <BundleResource Include="Resources\remove_icon.png" />
+    <BundleResource Include="Resources\search_icon.png" />
+    <BundleResource Include="Resources\secure_letter_icon.png" />
+    <BundleResource Include="Resources\settings_icon.png" />
+    <BundleResource Include="Resources\back_icon.png" />
+    <BundleResource Include="Resources\logout_icon.png" />
+    <BundleResource Include="Resources\profile_icon.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -190,7 +192,7 @@
     <Reference Include="System.Numerics.Vectors" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="4.3.0.991211" />
+    <PackageReference Include="Xamarin.Forms" Version="4.3.0.991221" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
     <PackageReference Include="Xamarin.Firebase.iOS.Auth">
       <Version>6.2.1.1</Version>

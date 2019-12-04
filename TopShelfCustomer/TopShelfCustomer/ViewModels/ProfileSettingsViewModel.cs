@@ -55,8 +55,19 @@ namespace TopShelfCustomer.ViewModels {
             }
         }
 
+        private int userZipCode;       //The User's Zip Code
+        public int UserZipCode {
+            get {
+                return userZipCode;
+            }
+            set {
+                userZipCode = value;
+                OnPropertyChanged( "UserZipCode" );
+            }
+        }
+
         /* Commands */
-        public ICommand OpenSettingsPageCommand { get; set; }
+        public ICommand NavigateBackCommand { get; set; }
 
         #endregion
 
@@ -71,8 +82,10 @@ namespace TopShelfCustomer.ViewModels {
             UserEmail = UserContainer.CurrentUser.EmailAddress;
             PhoneNumber = UserContainer.CurrentUser.PhoneNumber;
             UserAddress = UserContainer.CurrentUser.StreetAddress;
+            UserZipCode = UserContainer.CurrentUser.ZipCode;
+
             /* Intialize Commands */
-            OpenSettingsPageCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
+            NavigateBackCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
         }
     }
 }

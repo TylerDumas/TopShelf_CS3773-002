@@ -23,16 +23,6 @@ namespace TopShelfCustomer.ViewModels {
 
         JObject jsonObject = new JObject();     //Reusable JSON object
 
-        private string userRealName;            //String to define the User's real name. (Bound to Text fields)
-        public string UserRealName {
-            get {
-                return userRealName;
-            }
-            set {
-                userRealName = value;
-                OnPropertyChanged( "UserRealName" );
-            }
-        }
         private bool isCouponPushSwitchToggled;     //Bool to define whether the "Coupon Push Notifications" setting is toggled
         public bool IsCouponPushSwitchToggled {
             get => isCouponEmailSwitchToggled;
@@ -100,7 +90,6 @@ namespace TopShelfCustomer.ViewModels {
         /// </summary>
         public NotificationsViewModel() {
             Title = "Notifications View";       //Set the title for this view
-            UserRealName = UserContainer.CurrentUser.FullName;
              
             InitializeBindableProperties();     //Initialize the properties visible in the UI
 

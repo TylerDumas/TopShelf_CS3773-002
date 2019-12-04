@@ -81,7 +81,7 @@ namespace TopShelfCustomer.Droid {
         /// Asynchronout method to Logout any current Users.
         /// </summary>
         /// <returns> Task object describing the success of the SignOut() call </returns>
-        public async Task<string> LogoutCurrentUser() {
+        public string LogoutCurrentUser() {
             if ( FirebaseAuth.Instance.CurrentUser != null ) {
                 try {
                     FirebaseAuth.Instance.SignOut();

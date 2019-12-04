@@ -76,7 +76,7 @@ namespace TopShelfCustomer.iOS {
         /// Asynchronout method to Logout any current Users.
         /// </summary>
         /// <returns> Task object describing the success of the SignOut() call </returns>
-        public async Task<string> LogoutCurrentUser() {
+        public string LogoutCurrentUser() {
             if( Auth.DefaultInstance.CurrentUser != null ) {
                 try {
                     Auth.DefaultInstance.SignOut( out Foundation.NSError result );

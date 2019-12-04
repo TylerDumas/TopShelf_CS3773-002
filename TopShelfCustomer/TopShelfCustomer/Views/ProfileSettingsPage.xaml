@@ -1,17 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.ProfileSettingsPage" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TopShelfCustomer.Views.ProfileSettingsPage" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels"
+             Title="{Binding Title}" BackgroundColor="{StaticResource Medium}">
     <ContentPage.BindingContext>
         <vm:ProfileSettingsViewModel/>
     </ContentPage.BindingContext>
-    <ContentPage.BackgroundImageSource>
-        <OnPlatform x:TypeArguments="FileImageSource">
-            <On Platform="Android" Value="gradient_background_droid.png" />
-            <On Platform="iOS" Value="gradient_background.png" />
-        </OnPlatform>
-    </ContentPage.BackgroundImageSource>
 
     <ContentPage.Content>
-        <Grid BackgroundColor="{StaticResource AccentLight}" >
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="*" />
@@ -19,70 +15,82 @@
             </Grid.RowDefinitions>
 
             <!-- Profile Info Header -->
-            <ContentView Padding="0, 30, 0, 30" >
+            <ContentView Padding="0, 40, 0, 30" >
                 <StackLayout>
-                    <ImageButton Source="back_orange.png" Command="{Binding OpenSettingsPageCommand}"
-                                 Margin="10,10,0,0" HorizontalOptions="Start" HeightRequest="40"/>
+                    <!-- Back Button -->
+                    <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" BackgroundColor="{StaticResource Light}"
+                                 CornerRadius="22" HorizontalOptions="Start" Margin="10,0,0,0" HeightRequest="50"/>
                     <!-- Name and Portrait -->
                     <StackLayout Orientation="Vertical" Margin="20, 0, 20, 0" Grid.Row="0">
                         <!-- Profile Picture -->
-                        <Frame HorizontalOptions="Center" CornerRadius="34" WidthRequest="32" HeightRequest="32" HasShadow="True" BorderColor="{StaticResource Primary}">
-                            <Image Source="portrait.png" />
+                        <Frame HorizontalOptions="Center" CornerRadius="42" WidthRequest="50" HasShadow="True">
+                            <Image Source="profile_icon.png" />
                         </Frame>
                         <!-- User Name -->
                         <Label Text="{Binding UserRealName}"
                                HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource NormalFont}"
-                               VerticalOptions="Center" FontSize="26" TextColor="White"/>
+                               VerticalOptions="Center" FontSize="26" TextColor="{StaticResource LightTextColor}"/>
                     </StackLayout>
                 </StackLayout>
             </ContentView>
+
             <!-- Profile Settings Scroll View -->
             <ScrollView Grid.Row="1">
                 <ContentView Padding="0, 10, 0, 0" >
                     <StackLayout Orientation="Vertical">
                         <!-- Header Label -->
-                        <Label Text="Profile Settings" FontSize="26" TextColor="White" FontFamily="{StaticResource NormalFont}"
+                        <Label Text="Profile Settings" FontSize="28" TextColor="White" FontFamily="{StaticResource NormalFont}"
                                HorizontalOptions="Center" VerticalOptions="Fill"
-                               HeightRequest="40" Margin="0, 10, 0, 30"/>
+                               HeightRequest="40" Margin="0, 10, 0, 40"/>
 
                         <!-- Edit Full Name Setting -->
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0,0,20" >
-                            <Label Text="Full Name" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}"
+                            <Label Text="Name" FontSize="17" TextColor="{StaticResource LightTextColor}" FontFamily="{StaticResource NormalFont}"
                                    VerticalTextAlignment="Center" HeightRequest="40"
                                    HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
                             <Entry Text="{Binding UserRealName}" IsReadOnly="True" HorizontalOptions="EndAndExpand" FontFamily="{StaticResource NormalFont}"
-                                   HeightRequest="46" WidthRequest="220" Margin="10,0,40,0" FontSize="15"
-                                   TextColor="Gray" BackgroundColor="{StaticResource Accent}" />
-                        </StackLayout>
-
-                        <!-- Edit Username Setting -->
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0,0,20">
-                            <Label Text="Street Address" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}"
-                                   VerticalTextAlignment="Center" HeightRequest="40"
-                                   HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
-                            <Entry Text="{Binding UserAddress}" IsReadOnly="True" HorizontalOptions="EndAndExpand"
-                                   HeightRequest="46" WidthRequest="220" FontFamily="{StaticResource NormalFont}" FontSize="15"
-                                   Margin="10,0,40,0" TextColor="Gray" BackgroundColor="{StaticResource Accent}" />
+                                   HeightRequest="46" WidthRequest="200" Margin="10,0,40,0" FontSize="15"
+                                   TextColor="Gray" BackgroundColor="{StaticResource Lightest}" />
                         </StackLayout>
 
                         <!-- Edit E-mail Setting -->
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0,0,20">
-                            <Label Text="E-mail" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}"
+                            <Label Text="E-mail" FontSize="17" TextColor="{StaticResource LightTextColor}" FontFamily="{StaticResource NormalFont}"
                                    VerticalTextAlignment="Center" HeightRequest="40"
                                    HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
                             <Entry Text="{Binding UserEmail}" IsReadOnly="True" HorizontalOptions="EndAndExpand"
-                                   HeightRequest="46" WidthRequest="220" FontFamily="{StaticResource NormalFont}" FontSize="15"
-                                   Margin="10,0,40,0" TextColor="Gray" BackgroundColor="{StaticResource Accent}" />
+                                   HeightRequest="46" WidthRequest="200" FontFamily="{StaticResource NormalFont}" FontSize="15"
+                                   Margin="10,0,40,0" TextColor="Gray" BackgroundColor="{StaticResource Lightest}" />
                         </StackLayout>
 
                         <!-- Edit Phone Number Setting -->
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0,0,20">
-                            <Label Text="Phone" FontSize="16" TextColor="White" FontFamily="{StaticResource NormalFont}"
+                            <Label Text="Phone Number" FontSize="17" TextColor="{StaticResource LightTextColor}" FontFamily="{StaticResource NormalFont}"
                                    VerticalTextAlignment="Center" HeightRequest="40"
                                    HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
-                            <Entry Text="{Binding PhoneNumber}" IsReadOnly="True" HorizontalOptions="EndAndExpand"
-                                   HeightRequest="46" WidthRequest="220" FontFamily="{StaticResource NormalFont}" FontSize="15"
-                                   Margin="10,0,40,0" TextColor="Gray" BackgroundColor="{StaticResource Accent}" />
+                            <Entry Text="{Binding PhoneNumber}" IsReadOnly="True" HorizontalOptions="EndAndExpand" Keyboard="Telephone"
+                                   HeightRequest="46" WidthRequest="200" FontFamily="{StaticResource NormalFont}" FontSize="15"
+                                   Margin="10,0,40,0" TextColor="Gray" BackgroundColor="{StaticResource Lightest}" />
+                        </StackLayout>
+
+                        <!-- Edit Address Setting -->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0,0,20">
+                            <Label Text="Street Address" FontSize="17" TextColor="White" FontFamily="{StaticResource NormalFont}"
+                                   VerticalTextAlignment="Center" HeightRequest="40"
+                                   HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
+                            <Entry Text="{Binding UserAddress}" IsReadOnly="True" HorizontalOptions="EndAndExpand"
+                                   HeightRequest="46" WidthRequest="200" FontFamily="{StaticResource NormalFont}" FontSize="15"
+                                   Margin="10,0,40,0" TextColor="Gray" BackgroundColor="{StaticResource Lightest}" />
+                        </StackLayout>
+
+                        <!-- Edit Zip Code Setting -->
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0,0,20">
+                            <Label Text="Zip Code" FontSize="17" TextColor="{StaticResource LightTextColor}" FontFamily="{StaticResource NormalFont}"
+                                   VerticalTextAlignment="Center" HeightRequest="40"
+                                   HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
+                            <Entry Text="{Binding UserZipCode}" IsReadOnly="True" HorizontalOptions="EndAndExpand" Keyboard="Numeric"
+                                   HeightRequest="46" WidthRequest="160" FontFamily="{StaticResource NormalFont}" FontSize="15"
+                                   Margin="10,0,40,0" TextColor="Gray" BackgroundColor="{StaticResource Lightest}" />
                         </StackLayout>
                     </StackLayout>
                 </ContentView>

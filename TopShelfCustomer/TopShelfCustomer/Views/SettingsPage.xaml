@@ -1,95 +1,90 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.SettingsPage" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TopShelfCustomer.Views.SettingsPage" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels"
+             Title="{Binding Title}" BackgroundColor="{StaticResource Medium}">
     <ContentPage.BindingContext>
         <vm:SettingsViewModel/>
     </ContentPage.BindingContext>
-    <ContentPage.BackgroundImageSource>
-        <OnPlatform x:TypeArguments="FileImageSource">
-            <On Platform="Android" Value="gradient_background_droid.png" />
-            <On Platform="iOS" Value="gradient_background.png" />
-        </OnPlatform>
-    </ContentPage.BackgroundImageSource>
+
     <ContentPage.Content>
-        <Grid BackgroundColor="{StaticResource AccentLight}">
+        <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
 
             <!-- Profile Info Header -->
-            <ContentView Grid.Row="0" Padding="0, 30, 0, 30" >
+            <ContentView Padding="0, 40, 0, 30" >
                 <StackLayout>
-                    <ImageButton Source="back_orange.png" Command="{Binding NavigateBackCommand}" Margin="10,10,0,0" HorizontalOptions="Start" HeightRequest="40"/>
+                    <!-- Back Button -->
+                    <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" BackgroundColor="{StaticResource Light}"
+                                 CornerRadius="22" HorizontalOptions="Start" Margin="10,0,0,0" HeightRequest="50"/>
                     <!-- Name and Portrait -->
-                    <StackLayout Orientation="Vertical" Margin="20, 0, 20, 0">
+                    <StackLayout Orientation="Vertical" Margin="20, 0, 20, 0" Grid.Row="0">
                         <!-- Profile Picture -->
-                        <Frame HorizontalOptions="Center" CornerRadius="42" WidthRequest="48" HeightRequest="48" HasShadow="True" BorderColor="{StaticResource Accent}">
-                            <Image Source="portrait.png" />
+                        <Frame HorizontalOptions="Center" CornerRadius="42" WidthRequest="50" HasShadow="True">
+                            <Image Source="profile_icon.png" Aspect="AspectFit"/>
                         </Frame>
-                        <!-- Welcome Message -->
-                        <Label Text="{Binding UserRealName}" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource NormalFont}"
-                               VerticalOptions="Center" FontSize="30" TextColor="White"/>
+                        <!-- User Name -->
+                        <Label Text="{Binding UserRealName}"
+                               HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource NormalFont}"
+                               VerticalOptions="Center" FontSize="26" TextColor="White"/>
                     </StackLayout>
                 </StackLayout>
             </ContentView>
 
             <!-- User Settings and Sub-menus -->
-            <ScrollView Grid.Row="1">
-                <ContentView Padding="0, 10, 0, 10" >
+            <ContentView Padding="15, 0, 15, 20" Grid.Row="1">
                     <StackLayout Orientation="Vertical">
 
                         <!-- Header Label -->
-                        <Label Text="User Settings" FontSize="26" TextColor="White" FontFamily="{StaticResource NormalFont}"
-                               HorizontalOptions="Center" VerticalOptions="Fill" HeightRequest="40" Margin="0, 10, 0, 30"/>
+                        <Label Text="User Settings" FontSize="28" TextColor="White" FontFamily="{StaticResource NormalFont}"
+                               HorizontalOptions="Center" VerticalOptions="Fill" HeightRequest="40"/>
 
                         <!-- Reciept Saving Setting -->
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="50">
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="30">
                             <Label Text="Save receipts to your device?" HorizontalOptions="StartAndExpand" FontFamily="{StaticResource NormalFont}"
-                                   Margin="30,0,0,0" FontSize="17" TextColor="White" VerticalOptions="Center"/>
-                            <Switch IsToggled="{Binding IsReceiptSwitchToggled}" HorizontalOptions="EndAndExpand" Margin="0,0,40,0"/>
+                                   Margin="30,20,0,0" FontSize="17" TextColor="White" VerticalOptions="Center"/>
+                            <Switch IsToggled="{Binding IsReceiptSwitchToggled}" HorizontalOptions="EndAndExpand"
+                                    Margin="0,20,40,0" OnColor="{StaticResource LightTextColor}" ThumbColor="{StaticResource Darkest}"/>
                         </StackLayout>
 
                         <!-- External Links Setting -->
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="30" Padding="0,20,0,30">
-                            <Label Text="Ask before opening external links?" FontSize="17" FontFamily="{StaticResource NormalFont}"
+                            <Label Text="Open external links?" FontSize="17" FontFamily="{StaticResource NormalFont}"
                                    TextColor="White" HorizontalOptions="StartAndExpand" Margin="30,0,0,0" VerticalOptions="Center"/>
-                            <Switch IsToggled="{Binding IsLinkSwitchToggled}" HorizontalOptions="EndAndExpand" Margin="0,0,40,0" />
+                            <Switch IsToggled="{Binding IsLinkSwitchToggled}" HorizontalOptions="EndAndExpand"
+                                    Margin="0,0,40,0" OnColor="{StaticResource LightTextColor}" ThumbColor="{StaticResource Darkest}"/>
                         </StackLayout>
 
                         <!-- Profile Settings -->
                         <Button Command="{Binding OpenProfileViewCommand}" FontFamily="{StaticResource NormalFont}"
-                            BackgroundColor="{StaticResource Accent}" Text="Profile" BorderWidth="2"
-                            BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
+                            BackgroundColor="{StaticResource Light}" Text="Profile" BorderWidth="2"
+                            BorderColor="Black" FontSize="22" TextColor="{StaticResource Darkest}" HeightRequest="60" />
 
                         <!-- Notification Settings -->
                         <Button Command="{Binding OpenNotificationsViewCommand}" FontFamily="{StaticResource NormalFont}"
-                            BackgroundColor="{StaticResource Accent}" Text="Notifications" BorderWidth="2"
-                            BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
-
-                        <!-- Support Menu -->
-                        <Button Command="{Binding OpenSupportViewCommand}" FontFamily="{StaticResource NormalFont}"
-                            BackgroundColor="{StaticResource Accent}" Text="Support" BorderWidth="2"
-                            BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
+                            BackgroundColor="{StaticResource Light}" Text="Notifications" BorderWidth="2"
+                            BorderColor="Black" FontSize="22" TextColor="{StaticResource Darkest}" HeightRequest="60" />
 
                         <!-- User Agreement/License Menu -->
                         <Button Command="{Binding OpenLicenseViewCommand}" FontFamily="{StaticResource NormalFont}"
-                            BackgroundColor="{StaticResource Accent}" Text="Licenses" BorderWidth="2"
-                            BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
+                            BackgroundColor="{StaticResource Light}" Text="License" BorderWidth="2"
+                            BorderColor="Black" FontSize="22" TextColor="{StaticResource Darkest}" HeightRequest="60" />
 
                         <!-- About Menu -->
                         <Button Command="{Binding OpenAboutViewCommand}" FontFamily="{StaticResource NormalFont}"
-                            BackgroundColor="{StaticResource Accent}" Text="About" BorderWidth="2"
-                            BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
+                            BackgroundColor="{StaticResource Light}" Text="About" BorderWidth="2"
+                            BorderColor="Black" FontSize="22" TextColor="{StaticResource Darkest}" HeightRequest="60" />
 
                     </StackLayout>
                 </ContentView>
-            </ScrollView>
 
             <!-- Logout Button -->
-            <Button Command="{Binding LogoutUserCommand}" Grid.Row="2" Margin="20,0,20,20" FontFamily="{StaticResource NormalFont}"
-                BackgroundColor="#424C55" Text="Log Out" BorderWidth="3"
-                BorderColor="Black" FontSize="20" TextColor="White" HeightRequest="60" />
+            <Button Command="{Binding LogoutUserCommand}" Grid.Row="2" Margin="0,0,0,80" FontFamily="{StaticResource NormalFont}"
+                BackgroundColor="{StaticResource Light}" Text="Log Out" BorderWidth="3" HorizontalOptions="Center"
+                BorderColor="Black" FontSize="20" TextColor="{StaticResource Darkest}" HeightRequest="60" WidthRequest="260"/>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

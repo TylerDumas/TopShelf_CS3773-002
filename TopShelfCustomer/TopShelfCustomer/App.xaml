@@ -6,11 +6,13 @@
 
             <!-- Colors -->
             <Color x:Key="NavigationPrimary">#dadada</Color>
-            <Color x:Key="Primary">#406e8e</Color>  <!-- Orange -->
-            <Color x:Key="Accent">#0C2340</Color>   <!-- Blue -->
-            <Color x:Key="AccentLight">#10325d</Color>
-            <Color x:Key="SpaceGray">#424C55</Color>
-            <Color x:Key="LightTextColor">#999999</Color>
+            <Color x:Key="LightTextColor">#F8E9E9</Color>
+            <Color x:Key="Darkest">#0B132B</Color>
+            <Color x:Key="Dark">#1C2541</Color>
+            <Color x:Key="Medium">#3A506B</Color>
+            <Color x:Key="Light">#BEBBBB</Color>
+            <Color x:Key="Lightest">#F8E9E9</Color>
+            <Color x:Key="Error">#D62839</Color>
 
             <!-- NavigationPage Styles -->
             <Style TargetType="NavigationPage">

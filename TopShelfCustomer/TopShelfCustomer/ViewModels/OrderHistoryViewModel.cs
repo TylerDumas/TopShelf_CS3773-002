@@ -1,10 +1,8 @@
 ﻿using System.Windows.Input;
 using Xamarin.Forms;
 using TopShelfCustomer.Views;
-using TopShelfCustomer.Services;
-using System.ComponentModel;
 using TopShelfCustomer.Models;
-using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -18,15 +16,7 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Properties
 
-        private string userRealName;        //The user's full name
-        public string UserRealName {
-            get => userRealName;
-            set {
-                userRealName = value;
-                OnPropertyChanged( "UserRealName" );
-            }
-        }
-        public List<OrderReceipt> ReceiptList { get; set; }     //The list of receipts to populate the ListView
+        public ObservableCollection<OrderReceipt> ReceiptList { get; set; } = new ObservableCollection<OrderReceipt>();    //The list of receipts to populate the ListView
 
         public ICommand NavigateBackCommand { get; }        //Command for the "Back" button
 
@@ -36,8 +26,6 @@ namespace TopShelfCustomer.ViewModels {
         /// Constructor
         /// </summary>
         public OrderHistoryViewModel() {
-            userRealName = UserContainer.CurrentUser.FullName;     //FIXME: temporary name, replace with user profile
-
             /* Initialize Commands */
             NavigateBackCommand = new Command( () => App.SetCurrentPage<HomePage>() );
         }

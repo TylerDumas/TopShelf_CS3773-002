@@ -14,7 +14,7 @@ namespace TopShelfCustomer.ViewModels {
     /// ViewModel for the Login page
     /// Allows the user interface to connect to the model classes directly
     /// </summary>
-    public sealed class LoginViewModel : BaseViewModel, INotifyPropertyChanged {
+    public sealed class LoginViewModel : BaseViewModel {
 
         #region Properties
 

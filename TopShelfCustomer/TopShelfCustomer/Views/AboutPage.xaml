@@ -1,97 +1,107 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" mc:Ignorable="d" x:Class="TopShelfCustomer.Views.AboutPage" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d" x:Class="TopShelfCustomer.Views.AboutPage" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels"
+             Title="{Binding Title}" BackgroundColor="{StaticResource Medium}">
     <ContentPage.BindingContext>
         <vm:AboutViewModel />
     </ContentPage.BindingContext>
-    <ContentPage.BackgroundImageSource>
-        <OnPlatform x:TypeArguments="FileImageSource">
-            <On Platform="Android" Value="gradient_background_droid.png" />
-            <On Platform="iOS" Value="gradient_background.png" />
-        </OnPlatform>
-    </ContentPage.BackgroundImageSource>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
             <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
         </Grid.RowDefinitions>
         <!-- Header (Label, App Icon, etc.) -->
         <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                    Grid.Row="0" Padding="0, 0, 0, 40" >
+                    Grid.Row="0" Padding="0, 40, 0, 40" >
             <StackLayout Orientation="Vertical">
-                <ImageButton Source="back_orange.png" Command="{Binding NavigateBackCommand}" HorizontalOptions="Start" Margin="10,40,0,0" HeightRequest="40"/>
+
+                <!-- Back Button -->
+                <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" BackgroundColor="{StaticResource Light}"
+                             CornerRadius="22" HorizontalOptions="Start" Margin="10,0,0,0" HeightRequest="50"/>
+
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
                     <Image Source="TopShelfAppLogo.png" HeightRequest="60"/>
-                    <Label Text="TopShelf" FontSize="30" FontFamily="{StaticResource MediumFont}" VerticalTextAlignment="Center" TextColor="White" />
+                    <Label Text="TopShelf" FontSize="30" FontFamily="{StaticResource MediumFont}" VerticalTextAlignment="Center" TextColor="{StaticResource LightTextColor}" />
                 </StackLayout>
             </StackLayout>
         </ContentView>
         <ScrollView Grid.Row="1">
-            <StackLayout Orientation="Vertical" Padding="16,30,16,10" Spacing="10" >
-                <Label FontSize="22" FontFamily="{StaticResource NormalFont}">
+            <StackLayout Orientation="Vertical" Padding="20,30,20,10" Spacing="10" >
+                <Label FontSize="22" FontFamily="{StaticResource NormalFont}" TextColor="{StaticResource LightTextColor}">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="TopShelf" FontFamily="{StaticResource MediumFont}" FontSize="22" TextColor="White" />
+                                <Span Text="TopShelf" FontFamily="{StaticResource MediumFont}" FontSize="24"/>
                                 <Span Text=" " />
-                                <Span Text="0.1a" TextColor="White" />
+                                <Span Text="0.1a" TextColor="{StaticResource LightTextColor}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label FontFamily="{StaticResource NormalFont}">
+                <Label FontFamily="{StaticResource NormalFont}" FontSize="18">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="This app is written in C# and native APIs using the" TextColor="White"/>
+                                <Span Text="This app is written in C# and native APIs using the" TextColor="{StaticResource LightTextColor}"/>
                                 <Span Text=" " />
-                                <Span Text="Xamarin Platform" TextColor="White" FontFamily="{StaticResource MediumFont}" />
+                                <Span Text="Xamarin Platform" TextColor="{StaticResource LightTextColor}" FontFamily="{StaticResource MediumFont}" />
                                 <Span Text="." />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label FontFamily="{StaticResource NormalFont}">
+                <Label FontFamily="{StaticResource NormalFont}" FontSize="18">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="The development of this app was a part of the " TextColor="White"/>
-                                <Span Text="CS 3773-002 Software Engineering " FontFamily="{StaticResource MediumFont}" TextColor="White" />
-                                <Span Text="course." TextColor="White" />
+                                <Span Text="The development of this app was a part of the " TextColor="{StaticResource LightTextColor}"/>
+                                <Span Text="CS 3773-002 Software Engineering " FontFamily="{StaticResource MediumFont}" TextColor="{StaticResource LightTextColor}" />
+                                <Span Text="course." TextColor="{StaticResource LightTextColor}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label FontFamily="{StaticResource NormalFont}">
+                <Label FontFamily="{StaticResource NormalFont}" FontSize="18">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="The team members that contributed to this app were: " TextColor="White" />
+                                <Span Text="The team members that contributed to this app were: " TextColor="{StaticResource LightTextColor}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label Text=" - Jackson Dumas" FontAttributes="Bold" TextColor="White" FontFamily="{StaticResource NormalFont}"/>
-                <Label Text=" - Zachary Ellis" FontAttributes="Bold" TextColor="White" FontFamily="{StaticResource NormalFont}"/>
-                <Label Text=" - Jacob Damon" FontAttributes="Bold" TextColor="White" FontFamily="{StaticResource NormalFont}"/>
-                <Label Text=" - Nathaniel Barrett" FontAttributes="Bold" TextColor="White" FontFamily="{StaticResource NormalFont}"/>
-                <Label Text=" - Alex Kokkosoulis" FontAttributes="Bold" TextColor="White" FontFamily="{StaticResource NormalFont}"/>
-                <Label FontFamily="{StaticResource NormalFont}">
+                <Label Text=" - Jackson Dumas" FontAttributes="Bold" TextColor="{StaticResource LightTextColor}"
+                       FontFamily="{StaticResource NormalFont}" FontSize="18"/>
+                <Label Text=" - Zachary Ellis" FontAttributes="Bold" TextColor="{StaticResource LightTextColor}"
+                       FontFamily="{StaticResource NormalFont}" FontSize="18"/>
+                <Label Text=" - Jacob Damon" FontAttributes="Bold" TextColor="{StaticResource LightTextColor}"
+                       FontFamily="{StaticResource NormalFont}" FontSize="18"/>
+                <Label Text=" - Nathaniel Barrett" FontAttributes="Bold" TextColor="{StaticResource LightTextColor}"
+                    FontFamily="{StaticResource NormalFont}" FontSize="18"/>
+                <Label Text=" - Alex Kokkosoulis" FontAttributes="Bold" TextColor="{StaticResource LightTextColor}"
+                       FontFamily="{StaticResource NormalFont}" FontSize="18"/>
+                <Label FontFamily="{StaticResource NormalFont}" FontSize="18">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="It shares code with its" TextColor="White"/>
+                                <Span Text="It shares code with its" TextColor="{StaticResource LightTextColor}"/>
                                 <Span Text=" " />
-                                <Span Text="iOS and Android" TextColor="White" FontFamily="{StaticResource MediumFont}" />
+                                <Span Text="iOS and Android" TextColor="{StaticResource LightTextColor}" FontFamily="{StaticResource MediumFont}" />
                                 <Span Text=" " />
-                                <Span Text="versions." TextColor="White" />
+                                <Span Text="versions." TextColor="{StaticResource LightTextColor}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Button Margin="0,30,0,0" Text="Learn more about Xamarin" WidthRequest="260" FontFamily="{StaticResource MediumFont}"
-                        HorizontalOptions="Center" Command="{Binding OpenXamarinCommand}" BorderColor="Black" BorderWidth="2"
-                        BackgroundColor="{StaticResource SpaceGray}" TextColor="White" />
+                
             </StackLayout>
         </ScrollView>
+        <Button Margin="0,40,0,80" Text="Learn more about Xamarin" WidthRequest="260" HeightRequest="60"
+                FontFamily="{StaticResource MediumFont}" BorderColor="Black" BorderWidth="2"
+                HorizontalOptions="Center" Command="{Binding OpenXamarinCommand}" FontSize="18"
+                BackgroundColor="{StaticResource Light}" TextColor="{StaticResource Darkest}" Grid.Row="2"/>
     </Grid>
 </ContentPage>

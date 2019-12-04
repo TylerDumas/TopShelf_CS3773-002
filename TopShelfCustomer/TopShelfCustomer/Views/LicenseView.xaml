@@ -1,16 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.LicenseView" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}">
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TopShelfCustomer.Views.LicenseView" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels"
+             Title="{Binding Title}" BackgroundColor="{StaticResource Medium}">
     <ContentPage.BindingContext>
         <vm:LicenseViewModel/>
     </ContentPage.BindingContext>
-    <ContentPage.BackgroundImageSource>
-        <OnPlatform x:TypeArguments="FileImageSource">
-            <On Platform="Android" Value="gradient_background_droid.png" />
-            <On Platform="iOS" Value="gradient_background.png" />
-        </OnPlatform>
-    </ContentPage.BackgroundImageSource>
+
     <ContentPage.Content>
-        <Grid BackgroundColor="{StaticResource AccentLight}">
+        <Grid>
 
             <!-- Row Definitions -->
             <Grid.RowDefinitions>
@@ -19,29 +16,30 @@
             </Grid.RowDefinitions>
 
             <!-- Header (Label, App Icon, etc.) -->
-            <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                     Grid.Row="0" Padding="0, 0, 0, 40" >
-                <StackLayout Orientation="Vertical">
-                    <ImageButton Source="back_orange.png" Command="{Binding OpenSettingsViewCommand}" HorizontalOptions="Start" Margin="10,40,0,0" HeightRequest="40"/>
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
-                        <Image Source="TopShelfAppLogo.png" HeightRequest="60"/>
-                        <Label Text="TopShelf" FontSize="30" FontFamily="{StaticResource MediumFont}" VerticalTextAlignment="Center" TextColor="White" />
-                    </StackLayout>
+            <StackLayout Orientation="Vertical" Grid.Row="0" Padding="0, 40, 0, 40"
+                         HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <!-- Back Button -->
+                <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" BackgroundColor="{StaticResource Light}"
+                                CornerRadius="22" HorizontalOptions="Start" Margin="10,0,0,0" HeightRequest="50"/>
+                <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
+                    <Image Source="TopShelfAppLogo.png" HeightRequest="60"/>
+                    <Label Text="TopShelf" FontSize="30" FontFamily="{StaticResource NormalFont}"
+                            VerticalTextAlignment="Center" TextColor="{StaticResource LightTextColor}" />
                 </StackLayout>
-            </ContentView>
+            </StackLayout>
 
             <!-- Scrollable Section -->
             <ScrollView Grid.Row="1" Margin="20, 0, 20, 30">
                 <StackLayout Orientation="Vertical">
 
                     <!-- Page Title Label -->
-                    <Label Text="License" FontSize="26" TextColor="White"
-                           HorizontalOptions="CenterAndExpand" Margin="0, 30, 0, 0" FontFamily="{StaticResource MediumFont}"/>
+                    <Label Text="License" FontSize="26" TextColor="{StaticResource LightTextColor}"
+                           HorizontalOptions="CenterAndExpand" Margin="0, 30, 0, 0" FontFamily="{StaticResource NormalFont}"/>
 
                     <!-- Web View to Present License -->
                     <WebView Source="https://tylerdumas.github.io/TopShelf_CS3773-002/"
                              HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                             Margin="0, 20, 0, 20" BackgroundColor="{StaticResource AccentLight}"/>
+                             Margin="0, 20, 0, 20" BackgroundColor="{StaticResource Dark}"/>
                 </StackLayout>
             </ScrollView>
         </Grid>

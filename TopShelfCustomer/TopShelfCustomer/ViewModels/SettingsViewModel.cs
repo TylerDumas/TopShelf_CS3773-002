@@ -58,7 +58,6 @@ namespace TopShelfCustomer.ViewModels {
         public ICommand OpenProfileViewCommand { get; }         //Command to open Profile settings
         public ICommand OpenNotificationsViewCommand { get; }       //Command to open the Notification settings
         public ICommand OpenAboutViewCommand { get; }     //Command to open the About page
-        public ICommand OpenSupportViewCommand { get; }        //Command to open the Support page
         public ICommand OpenLicenseViewCommand { get; }       //Command to open the End-User agreement
         public ICommand LogoutUserCommand { get; }      //Command to log out the current User
 
@@ -79,7 +78,6 @@ namespace TopShelfCustomer.ViewModels {
             OpenProfileViewCommand = new Command( () => App.SetCurrentPage<ProfileSettingsPage>() );
             OpenNotificationsViewCommand = new Command( () => App.SetCurrentPage<NotificationsSettingsPage>() );
             OpenAboutViewCommand = new Command( () => App.SetCurrentPage<AboutPage>() ) ;
-            OpenSupportViewCommand = new Command( () => Launcher.OpenAsync( new Uri( "https://www.youtube.com/watch?v=dQw4w9WgXcQ" ) ) );       //FIXME: Get rid of the Astley
             OpenLicenseViewCommand = new Command( () => App.SetCurrentPage<LicenseView>() );
             LogoutUserCommand = new Command( () => App.ClearAppData() );
         }
