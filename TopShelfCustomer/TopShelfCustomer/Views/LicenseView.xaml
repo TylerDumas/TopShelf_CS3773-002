@@ -19,8 +19,11 @@
             <StackLayout Orientation="Vertical" Grid.Row="0" Padding="0, 40, 0, 40"
                          HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
                 <!-- Back Button -->
-                <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" BackgroundColor="{StaticResource Light}"
-                                CornerRadius="22" HorizontalOptions="Start" Margin="10,0,0,0" HeightRequest="50"/>
+                <Frame HorizontalOptions="Start" WidthRequest="50" Padding="0"
+                        Margin="10,0,0,0" CornerRadius="42">
+                    <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" 
+                                    BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit"/>
+                </Frame>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
                     <Image Source="TopShelfAppLogo.png" HeightRequest="60"/>
                     <Label Text="TopShelf" FontSize="30" FontFamily="{StaticResource NormalFont}"

@@ -62,9 +62,10 @@
                 </StackLayout>
 
                 <!-- Login Button and Account Recovery -->
-                <StackLayout Orientation="Vertical" Spacing="5" Grid.Row="3" VerticalOptions="Center" Margin="0, 0, 0, 80">
-                    <Button Command="{Binding LoginCommand}" BackgroundColor="{StaticResource Light}" WidthRequest="240"
-                            BorderColor="Black" BorderWidth="2"
+                <StackLayout Orientation="Vertical" Spacing="5" Grid.Row="3"
+                             VerticalOptions="Start" Margin="0, 0, 0, 80">
+                    <Button Command="{Binding LoginCommand}" BackgroundColor="{StaticResource Light}" 
+                            BorderColor="Black" BorderWidth="2" WidthRequest="240"
                             HeightRequest="50" TextColor="{StaticResource Darkest}" FontFamily="{StaticResource MediumFont}"
                             Text="Log In" Grid.Row="2" HorizontalOptions="Center" FontSize="22"/>
                     <Label Text="New to TopShelf?  " FontSize="18" FontFamily="{StaticResource NormalFont}"

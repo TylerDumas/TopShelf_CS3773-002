@@ -18,8 +18,11 @@
             <ContentView Padding="0, 40, 0, 30" >
                 <StackLayout>
                     <!-- Back Button -->
-                    <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" BackgroundColor="{StaticResource Light}"
-                                 CornerRadius="22" HorizontalOptions="Start" Margin="10,0,0,0" HeightRequest="50"/>
+                    <Frame HorizontalOptions="Start" WidthRequest="50" Padding="0"
+                           Margin="10,0,0,0" CornerRadius="42">
+                        <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" 
+                                     BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit"/>
+                    </Frame>
                     <!-- Name and Portrait -->
                     <StackLayout Orientation="Vertical" Margin="20, 0, 20, 0" Grid.Row="0">
                         <!-- Profile Picture -->

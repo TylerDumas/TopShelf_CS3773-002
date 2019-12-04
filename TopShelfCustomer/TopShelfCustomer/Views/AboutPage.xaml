@@ -19,8 +19,11 @@
             <StackLayout Orientation="Vertical">
 
                 <!-- Back Button -->
-                <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" BackgroundColor="{StaticResource Light}"
-                             CornerRadius="22" HorizontalOptions="Start" Margin="10,0,0,0" HeightRequest="50"/>
+                <Frame HorizontalOptions="Start" WidthRequest="50" Padding="0"
+                        Margin="10,0,0,0" CornerRadius="42">
+                    <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" 
+                                    BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit"/>
+                </Frame>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
                     <Image Source="TopShelfAppLogo.png" HeightRequest="60"/>
@@ -34,14 +37,14 @@
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="TopShelf" FontFamily="{StaticResource MediumFont}" FontSize="24"/>
+                                <Span Text="TopShelf" FontFamily="{StaticResource MediumFont}" FontSize="22"/>
                                 <Span Text=" " />
                                 <Span Text="0.1a" TextColor="{StaticResource LightTextColor}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label FontFamily="{StaticResource NormalFont}" FontSize="18">
+                <Label FontFamily="{StaticResource NormalFont}" FontSize="16">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
@@ -53,7 +56,7 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label FontFamily="{StaticResource NormalFont}" FontSize="18">
+                <Label FontFamily="{StaticResource NormalFont}" FontSize="16">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
@@ -64,7 +67,7 @@
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-                <Label FontFamily="{StaticResource NormalFont}" FontSize="18">
+                <Label FontFamily="{StaticResource NormalFont}" FontSize="16">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
@@ -74,16 +77,16 @@
                     </Label.FormattedText>
                 </Label>
                 <Label Text=" - Jackson Dumas" FontAttributes="Bold" TextColor="{StaticResource LightTextColor}"
-                       FontFamily="{StaticResource NormalFont}" FontSize="18"/>
+                       FontFamily="{StaticResource NormalFont}" FontSize="16"/>
                 <Label Text=" - Zachary Ellis" FontAttributes="Bold" TextColor="{StaticResource LightTextColor}"
-                       FontFamily="{StaticResource NormalFont}" FontSize="18"/>
+                       FontFamily="{StaticResource NormalFont}" FontSize="16"/>
                 <Label Text=" - Jacob Damon" FontAttributes="Bold" TextColor="{StaticResource LightTextColor}"
-                       FontFamily="{StaticResource NormalFont}" FontSize="18"/>
+                       FontFamily="{StaticResource NormalFont}" FontSize="16"/>
                 <Label Text=" - Nathaniel Barrett" FontAttributes="Bold" TextColor="{StaticResource LightTextColor}"
-                    FontFamily="{StaticResource NormalFont}" FontSize="18"/>
+                    FontFamily="{StaticResource NormalFont}" FontSize="16"/>
                 <Label Text=" - Alex Kokkosoulis" FontAttributes="Bold" TextColor="{StaticResource LightTextColor}"
-                       FontFamily="{StaticResource NormalFont}" FontSize="18"/>
-                <Label FontFamily="{StaticResource NormalFont}" FontSize="18">
+                       FontFamily="{StaticResource NormalFont}" FontSize="16"/>
+                <Label FontFamily="{StaticResource NormalFont}" FontSize="16">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>

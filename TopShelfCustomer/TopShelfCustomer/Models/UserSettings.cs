@@ -19,8 +19,6 @@ namespace TopShelfCustomer.Models {
         public bool CouponEmailNotifications { get; set; }      //Get email notifications for coupons
         public bool OrderPushNotifications { get; set; }        //Get push notifications for order status
         public bool OrderEmailNotifications { get; set; }       //Get email notifications for order status
-        public bool DeliveryPushNotifications { get; set; }     //Get push notifications for order status
-        public bool DeliveryEmailNotifications { get; set; }        //Get email notifications for delivery status
 
         /// <summary>
         /// Constructor
@@ -44,9 +42,7 @@ namespace TopShelfCustomer.Models {
             CouponPushNotifications,
             CouponEmailNotifications,
             OrderPushNotifications,
-            OrderEmailNotifications,
-            DeliveryPushNotifications,
-            DeliveryEmailNotifications
+            OrderEmailNotifications
         }
 
         #endregion

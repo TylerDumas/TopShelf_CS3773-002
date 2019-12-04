@@ -18,16 +18,19 @@
             <ContentView Padding="0, 40, 0, 30" >
                 <StackLayout>
                     <!-- Back Button -->
-                    <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" BackgroundColor="{StaticResource Light}"
-                                 CornerRadius="22" HorizontalOptions="Start" Margin="10,0,0,0" HeightRequest="50"/>
+                    <Frame HorizontalOptions="Start" WidthRequest="50" Padding="0"
+                           Margin="10,0,0,0" CornerRadius="42">
+                        <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" 
+                                     BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit"/>
+                    </Frame>
                     <!-- Name and Portrait -->
                     <StackLayout Orientation="Vertical" Margin="20, 0, 20, 0" Grid.Row="0">
                         <!-- Profile Picture -->
-                        <Frame HorizontalOptions="Center" CornerRadius="42" WidthRequest="50" HasShadow="True">
+                        <Frame HorizontalOptions="Center" CornerRadius="37" WidthRequest="60" HasShadow="True" Padding="10">
                             <Image Source="profile_icon.png" Aspect="AspectFit"/>
                         </Frame>
                         <!-- User Name -->
-                        <Label Text="{Binding UserRealName}"
+                        <Label Text="{Binding UserRealName}" Margin="0, 10, 0, 0"
                                HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource NormalFont}"
                                VerticalOptions="Center" FontSize="26" TextColor="White"/>
                     </StackLayout>
@@ -39,7 +42,7 @@
                     <StackLayout Orientation="Vertical">
 
                         <!-- Header Label -->
-                        <Label Text="User Settings" FontSize="28" TextColor="White" FontFamily="{StaticResource NormalFont}"
+                        <Label Text="Settings" FontSize="28" TextColor="White" FontFamily="{StaticResource NormalFont}"
                                HorizontalOptions="Center" VerticalOptions="Fill" HeightRequest="40"/>
 
                         <!-- Reciept Saving Setting -->
@@ -61,22 +64,22 @@
                         <!-- Profile Settings -->
                         <Button Command="{Binding OpenProfileViewCommand}" FontFamily="{StaticResource NormalFont}"
                             BackgroundColor="{StaticResource Light}" Text="Profile" BorderWidth="2"
-                            BorderColor="Black" FontSize="22" TextColor="{StaticResource Darkest}" HeightRequest="60" />
+                            BorderColor="Black" FontSize="22" TextColor="{StaticResource Darkest}" HeightRequest="50" />
 
                         <!-- Notification Settings -->
                         <Button Command="{Binding OpenNotificationsViewCommand}" FontFamily="{StaticResource NormalFont}"
                             BackgroundColor="{StaticResource Light}" Text="Notifications" BorderWidth="2"
-                            BorderColor="Black" FontSize="22" TextColor="{StaticResource Darkest}" HeightRequest="60" />
+                            BorderColor="Black" FontSize="22" TextColor="{StaticResource Darkest}" HeightRequest="50" />
 
                         <!-- User Agreement/License Menu -->
                         <Button Command="{Binding OpenLicenseViewCommand}" FontFamily="{StaticResource NormalFont}"
                             BackgroundColor="{StaticResource Light}" Text="License" BorderWidth="2"
-                            BorderColor="Black" FontSize="22" TextColor="{StaticResource Darkest}" HeightRequest="60" />
+                            BorderColor="Black" FontSize="22" TextColor="{StaticResource Darkest}" HeightRequest="50" />
 
                         <!-- About Menu -->
                         <Button Command="{Binding OpenAboutViewCommand}" FontFamily="{StaticResource NormalFont}"
                             BackgroundColor="{StaticResource Light}" Text="About" BorderWidth="2"
-                            BorderColor="Black" FontSize="22" TextColor="{StaticResource Darkest}" HeightRequest="60" />
+                            BorderColor="Black" FontSize="22" TextColor="{StaticResource Darkest}" HeightRequest="50" />
 
                     </StackLayout>
                 </ContentView>

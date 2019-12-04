@@ -59,24 +59,6 @@ namespace TopShelfCustomer.ViewModels {
                 OnPropertyChanged( "IsOrderEmailSwitchToggled" );
             }
         }
-        private bool isDeliveryPushSwitchToggled;     //Bool to define whether the "Delivery Push Notifications" setting is toggled
-        public bool IsDeliveryPushSwitchToggled {
-            get => isDeliveryPushSwitchToggled;
-            set {
-                isDeliveryPushSwitchToggled = value;
-                ToggleSwitchSetting( UserSettings.SettingTypes.DeliveryPushNotifications.ToString(), isDeliveryPushSwitchToggled );
-                OnPropertyChanged( "IsDeliveryPushSwitchToggled" );
-            }
-        }
-        private bool isDeliveryEmailSwitchToggled;     //Bool to define whether the "Delivery Email Notifications" setting is toggled
-        public bool IsDeliveryEmailSwitchToggled {
-            get => isDeliveryEmailSwitchToggled;
-            set {
-                isDeliveryEmailSwitchToggled = value;
-                ToggleSwitchSetting( UserSettings.SettingTypes.DeliveryEmailNotifications.ToString(), isDeliveryEmailSwitchToggled );
-                OnPropertyChanged( "IsDeliveryEmailSwitchToggled" );
-            }
-        }
 
         /* Commands */
         public ICommand NavigateBackCommand { get; set; }
@@ -130,8 +112,6 @@ namespace TopShelfCustomer.ViewModels {
             isCouponEmailSwitchToggled = SettingsContainer.CurrentUserSettings.CouponEmailNotifications;
             isOrderPushSwitchToggled = SettingsContainer.CurrentUserSettings.OrderPushNotifications;
             isOrderEmailSwitchToggled = SettingsContainer.CurrentUserSettings.OrderEmailNotifications;
-            isDeliveryPushSwitchToggled = SettingsContainer.CurrentUserSettings.DeliveryPushNotifications;
-            isDeliveryEmailSwitchToggled = SettingsContainer.CurrentUserSettings.DeliveryEmailNotifications;
         }
 
         #endregion

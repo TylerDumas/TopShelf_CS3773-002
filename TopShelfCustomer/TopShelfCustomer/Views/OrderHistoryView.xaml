@@ -16,8 +16,11 @@
             <!-- Back Button and Title Label -->
             <StackLayout Orientation="Vertical" Grid.Row="0" Margin="0, 30, 0, 30">
                 <!-- Back Button -->
-                <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" BackgroundColor="{StaticResource Light}"
-                             CornerRadius="22" HorizontalOptions="Start" Margin="10,10,0,0" HeightRequest="50"/>
+                <Frame HorizontalOptions="Start" WidthRequest="50" Padding="0"
+                        Margin="10,0,0,0" CornerRadius="42">
+                    <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" 
+                                    BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit"/>
+                </Frame>
                 <!-- Title Label -->
                 <Label Text="Your Past Orders" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource NormalFont}"
                        VerticalOptions="CenterAndExpand" Margin="0, 30, 0, 10" FontSize="28" TextColor="{StaticResource LightTextColor}" />

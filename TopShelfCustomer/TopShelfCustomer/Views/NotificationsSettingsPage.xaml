@@ -15,14 +15,17 @@
 
             <StackLayout Padding="0, 40, 0, 30">
                 <!-- Back Button -->
-                <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" BackgroundColor="{StaticResource Light}"
-                                CornerRadius="22" HorizontalOptions="Start" Margin="10,0,0,0" HeightRequest="50"/>
+                <Frame HorizontalOptions="Start" WidthRequest="50" Padding="0"
+                       Margin="10,0,0,0" CornerRadius="42" HasShadow="True">
+                    <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}"
+                                    BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit"/>
+                </Frame>
                 <!-- Name and Portrait -->
                 <StackLayout Orientation="Vertical" Margin="20, 0, 20, 0" Grid.Row="0">
                     <!-- Profile Picture -->
-                    <Frame HorizontalOptions="Center" CornerRadius="42" WidthRequest="50"
-                           HasShadow="True" Margin="0, 0, 0, 30">
-                        <Image Source="profile_icon.png" WidthRequest="50"/>
+                    <Frame HorizontalOptions="Center" CornerRadius="36" WidthRequest="70"
+                           HasShadow="True" Margin="0, 0, 0, 30" Padding="3">
+                        <Image Source="profile_icon.png" Aspect="AspectFit"/>
                     </Frame>
                     <!-- User Name -->
                     <Label Text="Notification Settings"
@@ -59,9 +62,9 @@
                 </StackLayout>
 
                 <!-- Order Settings -->
-                <StackLayout Orientation="Vertical" Margin="0,0,0,30">
+                <StackLayout Orientation="Vertical" Margin="10,0,10,20">
                     <!-- Title Label -->
-                    <Label Text="Order" FontSize="20" TextColor="{StaticResource LightTextColor}"
+                    <Label Text="Orders" FontSize="20" TextColor="{StaticResource LightTextColor}"
                            HorizontalOptions="Center" FontFamily="{StaticResource MediumFont}"/>
                     <!-- Title Description Label -->
                     <Label Text="Should we let you know about the status of your orders?" FontSize="14"
@@ -79,31 +82,6 @@
                         <Label Text="Email Notifications" HorizontalOptions="CenterAndExpand"
                                FontFamily="{StaticResource NormalFont}" FontSize="17" TextColor="White" VerticalOptions="Center"/>
                         <Switch IsToggled="{Binding IsOrderEmailSwitchToggled}" HorizontalOptions="EndAndExpand"
-                                OnColor="{StaticResource Lightest}" ThumbColor="{StaticResource Darkest}"/>
-                    </StackLayout>
-                </StackLayout>
-
-                <!-- Delivery Settings -->
-                <StackLayout Orientation="Vertical" Margin="0,0,0,30">
-                    <!-- Title Label -->
-                    <Label Text="Delivery" FontSize="20" TextColor="{StaticResource LightTextColor}"
-                            FontFamily="{StaticResource MediumFont}" HorizontalOptions="Center" FontAttributes="Bold"/>
-                    <!-- Title Description Label -->
-                    <Label Text="Should we tell you the status of your delivery driver?" FontSize="14"
-                            FontFamily="{StaticResource NormalFont}" TextColor="{StaticResource LightTextColor}"
-                            Opacity="0.7" HorizontalTextAlignment="Center" Margin="0,0,0,20"/>
-                    <!-- Push Notifications Toggle -->
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="80" Margin="0,0,0,10">
-                        <Label Text="Push Notifications" FontFamily="{StaticResource NormalFont}"
-                                HorizontalOptions="CenterAndExpand" FontSize="17" TextColor="{StaticResource LightTextColor}" VerticalOptions="Center"/>
-                        <Switch IsToggled="{Binding IsDeliveryPushSwitchToggled}" HorizontalOptions="EndAndExpand"
-                                OnColor="{StaticResource Lightest}" ThumbColor="{StaticResource Darkest}"/>
-                    </StackLayout>
-                    <!-- Email Notifications Toggle -->
-                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand" Spacing="80">
-                        <Label Text="Email Notifications" FontFamily="{StaticResource NormalFont}"
-                                HorizontalOptions="CenterAndExpand" FontSize="17" TextColor="{StaticResource LightTextColor}" VerticalOptions="Center"/>
-                        <Switch IsToggled="{Binding IsDeliveryEmailSwitchToggled}" HorizontalOptions="EndAndExpand"
                                 OnColor="{StaticResource Lightest}" ThumbColor="{StaticResource Darkest}"/>
                     </StackLayout>
                 </StackLayout>
