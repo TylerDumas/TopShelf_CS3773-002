@@ -38,5 +38,10 @@
         /// StoreName: The shortened name of the User's home store.
         /// </summary>
         public string StoreName { get; set; } = "";
+
+        /// <summary>
+        /// ZipCode: The Zip Code of the User.
+        /// </summary>
+        public int ZipCode { get; set; } = 0;
     }
 }

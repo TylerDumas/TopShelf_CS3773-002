@@ -482,140 +482,140 @@
             <param name="documentPath">The physical path to XML document.</param>
         </member>
         <member name="T:TopShelfCustomer.Api.Controllers.CouponController">
-            <summary>
-            CouponController:
+             <summary>
+             CouponController:
             
-            Controller for the Coupon collection.
-            Contains functionality for all RESTful API calls
-            such as: Get, Put, Post, and Delete.
-            </summary>
+             Controller for the Coupon collection.
+             Contains functionality for all RESTful API calls
+             such as: Get, Put, Post, and Delete.
+             </summary>
         </member>
         <member name="M:TopShelfCustomer.Api.Controllers.CouponController.GetCouponsByZipCode(System.Int32)">
-            <summary>
-            GetCouponByZipCode:
+             <summary>
+             GetCouponByZipCode:
             
-            Handler for Http GET calls fetching
-            the coupons for a given Store area (by Zip Code).
-            </summary>
-            <returns></returns>
+             Handler for Http GET calls fetching
+             the coupons for a given Store area (by Zip Code).
+             </summary>
+             <returns></returns>
         </member>
         <member name="T:TopShelfCustomer.Api.Controllers.HomeController">
-            <summary>
-            HomeController:
+             <summary>
+             HomeController:
             
-            Default controller generated with ASP.NET project.
-            </summary>
+             Default controller generated with ASP.NET project.
+             </summary>
         </member>
         <member name="M:TopShelfCustomer.Api.Controllers.HomeController.Index">
-            <summary>
-            Index:
+             <summary>
+             Index:
             
-            Default generated Method.
-            </summary>
-            <returns></returns>
+             Default generated Method.
+             </summary>
+             <returns></returns>
         </member>
         <member name="T:TopShelfCustomer.Api.Controllers.ProductController">
-            <summary>
-            ProductController:
+             <summary>
+             ProductController:
             
-            Controller for the Product collection.
-            Contains functionality for all RESTful API calls
-            such as: Get, Put, Post, and Delete.
-            </summary>
+             Controller for the Product collection.
+             Contains functionality for all RESTful API calls
+             such as: Get, Put, Post, and Delete.
+             </summary>
         </member>
         <member name="M:TopShelfCustomer.Api.Controllers.ProductController.Get(System.Int32)">
-            <summary>
-            GetProductById:
+             <summary>
+             GetProductById:
             
-            Overload of the Get method.
-            Fetches a specific Product from the database and returns it
-            to the caller of this API method.
-            Matches based off of the passed Product Id.
-            </summary>
-            <param name="id"> The Id to match </param>
-            <returns> The first Product returned that matches the id argument </returns>
+             Overload of the Get method.
+             Fetches a specific Product from the database and returns it
+             to the caller of this API method.
+             Matches based off of the passed Product Id.
+             </summary>
+             <param name="id"> The Id to match </param>
+             <returns> The first Product returned that matches the id argument </returns>
         </member>
         <member name="T:TopShelfCustomer.Api.Controllers.StoreController">
-            <summary>
-            StoreController:
+             <summary>
+             StoreController:
             
-            Controller for the "Store" API endpoint.
-            Manages the data transfer with the database and
-            the callers of this API.
-            </summary>
+             Controller for the "Store" API endpoint.
+             Manages the data transfer with the database and
+             the callers of this API.
+             </summary>
         </member>
         <member name="M:TopShelfCustomer.Api.Controllers.StoreController.Get">
-            <summary>
-            GetAllProducts:
+             <summary>
+             GetAllProducts:
             
-            Overload of the Get request method.
-            Fetches all Products from the database and returns them
-            to the caller of this API method.
-            Matches based off of the passed storeName argument.
-            </summary>
-            <returns> a List of Products from that Store </returns>
+             Overload of the Get request method.
+             Fetches all Products from the database and returns them
+             to the caller of this API method.
+             Matches based off of the passed storeName argument.
+             </summary>
+             <returns> a List of Products from that Store </returns>
         </member>
         <member name="M:TopShelfCustomer.Api.Controllers.StoreController.GetStoresByZipCode(System.Int32)">
-            <summary>
-            GetStoresByZipCode:
+             <summary>
+             GetStoresByZipCode:
             
-            Fetches all Stores with matching ZipCode and returns
-            them to the API caller.
-            </summary>
-            <param name="zipCode"> The Store ZipCode to match </param>
-            <returns> A List of Stores </returns>
+             Fetches all Stores with matching ZipCode and returns
+             them to the API caller.
+             </summary>
+             <param name="zipCode"> The Store ZipCode to match </param>
+             <returns> A List of Stores </returns>
         </member>
         <member name="M:TopShelfCustomer.Api.Controllers.StoreController.Get(System.Int32)">
-            <summary>
-            GetStoreById:
+             <summary>
+             GetStoreById:
             
-            Overload for the Get request method.
-            Returns a Store that matches the id argument.
-            </summary>
-            <param name="id"> The id to match to a Store </param>
-            <returns> A Store with a matching Id property value </returns>
+             Overload for the Get request method.
+             Returns a Store that matches the id argument.
+             </summary>
+             <param name="id"> The id to match to a Store </param>
+             <returns> A Store with a matching Id property value </returns>
         </member>
         <member name="T:TopShelfCustomer.Api.Controllers.UserController">
-            <summary>
-            UserController:
+             <summary>
+             UserController:
             
-            Controller for the User collection.
-            Contains functionality for all RESTful API calls
-            such as: Get, Put, Post, and Delete.
-            </summary>
+             Controller for the User collection.
+             Contains functionality for all RESTful API calls
+             such as: Get, Put, Post, and Delete.
+             </summary>
         </member>
         <member name="M:TopShelfCustomer.Api.Controllers.UserController.Get(System.Int32)">
-            <summary>
-            GetUserById:
+             <summary>
+             GetUserById:
             
-            Overload of the Get request method.
-            Fetches a single user from the database and returns it
-            to the caller of this API method.
-            Matches based off of the passed userId argument.
-            </summary>
-            <param name="userId"> The Id of the requested User </param>
-            <returns> a User with a matching Id </returns>
+             Overload of the Get request method.
+             Fetches a single user from the database and returns it
+             to the caller of this API method.
+             Matches based off of the passed userId argument.
+             </summary>
+             <param name="userId"> The Id of the requested User </param>
+             <returns> a User with a matching Id </returns>
         </member>
         <member name="M:TopShelfCustomer.Api.Controllers.UserController.GetUserByEmail(System.String)">
-            <summary>
-            GetUserByEmail:
+             <summary>
+             GetUserByEmail:
             
-            Fetches a User from the UserData database wrapper class
-            by their email address.
-            </summary>
-            <param name="emailAddress"> The email address </param>
-            <returns> A User with that email address </returns>
-            <remarks>
-            Endpoints cannot handle the '.' operator. The caller must replace '.' with '-' before fetching
-            User.
-            </remarks>
+             Fetches a User from the UserData database wrapper class
+             by their email address.
+             </summary>
+             <param name="emailAddress"> The email address </param>
+             <returns> A User with that email address </returns>
+             <remarks>
+             Endpoints cannot handle the '.' operator. The caller must replace '.' with '-' before fetching
+             User.
+             </remarks>
         </member>
         <member name="T:TopShelfCustomer.Api.Models.Coupon">
-            <summary>
-            Coupon:
+             <summary>
+             Coupon:
             
-            Model class for a coupon/advertisement.
-            </summary>
+             Model class for a coupon/advertisement.
+             </summary>
         </member>
         <member name="P:TopShelfCustomer.Api.Models.Coupon.Id">
             <summary>
@@ -648,13 +648,13 @@
             </summary>
         </member>
         <member name="T:TopShelfCustomer.Api.Models.Product">
-            <summary>
-            Product:
+             <summary>
+             Product:
             
-            Model class for an item that can
-            be purchased from a store. This class 
-            will be stored in the database.
-            </summary>
+             Model class for an item that can
+             be purchased from a store. This class
+             will be stored in the database.
+             </summary>
         </member>
         <member name="P:TopShelfCustomer.Api.Models.Product.Id">
             <summary>
@@ -672,11 +672,11 @@
             </summary>
         </member>
         <member name="T:TopShelfCustomer.Api.Models.Store">
-            <summary>
-            Store:
+             <summary>
+             Store:
             
-            Model class for a grocery store.
-            </summary>
+             Model class for a grocery store.
+             </summary>
         </member>
         <member name="P:TopShelfCustomer.Api.Models.Store.Id">
             <summary>
@@ -704,13 +704,13 @@
             </summary>
         </member>
         <member name="T:TopShelfCustomer.Api.Models.User">
-            <summary>
-            User:
+             <summary>
+             User:
             
-            API Model for a user entry in the database.
-            All API requests to the /api/User endpoint 
-            will return this as a JSON string object.
-            </summary>
+             API Model for a user entry in the database.
+             All API requests to the /api/User endpoint
+             will return this as a JSON string object.
+             </summary>
         </member>
         <member name="P:TopShelfCustomer.Api.Models.User.Id">
             <summary>
@@ -742,158 +742,163 @@
             StoreName: The shortened name of the User's home store.
             </summary>
         </member>
-        <member name="T:TopShelfCustomer.Api.Services.CouponData">
+        <member name="P:TopShelfCustomer.Api.Models.User.ZipCode">
             <summary>
-            CouponData:
-            
-            Implementation of the SqlDataAccess class
-            specific to the Coupon model class. Responsible for
-            fetching and sending Coupon data to and from the
-            database.
+            ZipCode: The Zip Code of the User.
             </summary>
+        </member>
+        <member name="T:TopShelfCustomer.Api.Services.CouponData">
+             <summary>
+             CouponData:
+            
+             Implementation of the SqlDataAccess class
+             specific to the Coupon model class. Responsible for
+             fetching and sending Coupon data to and from the
+             database.
+             </summary>
         </member>
         <member name="M:TopShelfCustomer.Api.Services.CouponData.GetCouponsByZipCode(System.Int32)">
-            <summary>
-            GetCouponsByZipCode:
+             <summary>
+             GetCouponsByZipCode:
             
-            Fetches all Coupons from the database with
-            the StoreZipCode value of "zipCode".
-            </summary>
-            <param name="zipCode"> the Zip Code value to query with </param>
-            <returns> A list of applicable Coupons </returns>
+             Fetches all Coupons from the database with
+             the StoreZipCode value of "zipCode".
+             </summary>
+             <param name="zipCode"> the Zip Code value to query with </param>
+             <returns> A list of applicable Coupons </returns>
         </member>
         <member name="T:TopShelfCustomer.Api.Services.ProductData">
-            <summary>
-            ProductData:
+             <summary>
+             ProductData:
             
-            Implementation of the SqlDataAccess class
-            specific to the Product model class.
-            Implements RESTful Api calls to communicate with the database
-            and return the correct Product model objects.
-            </summary>
+             Implementation of the SqlDataAccess class
+             specific to the Product model class.
+             Implements RESTful Api calls to communicate with the database
+             and return the correct Product model objects.
+             </summary>
         </member>
         <member name="M:TopShelfCustomer.Api.Services.ProductData.GetProductById(System.Int32)">
-            <summary>
-            GetProductById:
+             <summary>
+             GetProductById:
             
             
-            Fetches the Property with an Id property that matches
-            the "id" argument.
-            </summary>
-            <param name="id"> the Id property to match </param>
-            <returns> A List of Products with 1 element </returns>
+             Fetches the Property with an Id property that matches
+             the "id" argument.
+             </summary>
+             <param name="id"> the Id property to match </param>
+             <returns> A List of Products with 1 element </returns>
         </member>
         <member name="T:TopShelfCustomer.Api.Services.SqlDataAccess">
-            <summary>
-            SqlDataAccess:
+             <summary>
+             SqlDataAccess:
             
-            Helper class to allow for access to the TopShelf
-            database. Contains functionality for reading/writing to
-            the database.
-            </summary>
+             Helper class to allow for access to the TopShelf
+             database. Contains functionality for reading/writing to
+             the database.
+             </summary>
         </member>
         <member name="M:TopShelfCustomer.Api.Services.SqlDataAccess.GetConnectionString(System.String)">
-            <summary>
-            GetConnectionString:
+             <summary>
+             GetConnectionString:
             
-            Helper method to return the value of the connection string,
-            within the configuration manager, at index "name".
-            </summary>
-            <param name="name"> The key for the connection string value </param>
-            <returns> the value of the connection string for "name" </returns>
+             Helper method to return the value of the connection string,
+             within the configuration manager, at index "name".
+             </summary>
+             <param name="name"> The key for the connection string value </param>
+             <returns> the value of the connection string for "name" </returns>
         </member>
         <member name="M:TopShelfCustomer.Api.Services.SqlDataAccess.LoadData``2(System.String,``1,System.String)">
-            <summary>
-            LoadData:
+             <summary>
+             LoadData:
             
-            Acts as a read method for the database.
-            </summary>
-            <typeparam name="T"> The object type to load from the database </typeparam>
-            <typeparam name="U"> The type of the parameters object to query with </typeparam>
-            <param name="storedProcedure"> The SQL procedure to use on the database </param>
-            <param name="parameters"> The parameters for the SQL query </param>
-            <param name="connectionStringName"> The shortened name of the SQL connection string </param>
-            <returns> A list of Type T objects returned from the database query </returns>
+             Acts as a read method for the database.
+             </summary>
+             <typeparam name="T"> The object type to load from the database </typeparam>
+             <typeparam name="U"> The type of the parameters object to query with </typeparam>
+             <param name="storedProcedure"> The SQL procedure to use on the database </param>
+             <param name="parameters"> The parameters for the SQL query </param>
+             <param name="connectionStringName"> The shortened name of the SQL connection string </param>
+             <returns> A list of Type T objects returned from the database query </returns>
         </member>
         <member name="M:TopShelfCustomer.Api.Services.SqlDataAccess.SaveData``1(System.String,``0,System.String)">
-            <summary>
-            SaveData:
+             <summary>
+             SaveData:
             
-            Acts as a write method for the database.
-            </summary>
-            <typeparam name="T"> The type of the parameters passed to the SQL query </typeparam>
-            <param name="storedProcedure"> The SQL procedure to use on the database </param>
-            <param name="parameters"> The parameters for the SQL query </param>
-            <param name="connectionStringName"> The shortened name of the SQL connection string </param>
+             Acts as a write method for the database.
+             </summary>
+             <typeparam name="T"> The type of the parameters passed to the SQL query </typeparam>
+             <param name="storedProcedure"> The SQL procedure to use on the database </param>
+             <param name="parameters"> The parameters for the SQL query </param>
+             <param name="connectionStringName"> The shortened name of the SQL connection string </param>
         </member>
         <member name="T:TopShelfCustomer.Api.Services.StoreData">
-            <summary>
-            StoreData:
+             <summary>
+             StoreData:
             
-            Implementation of the SqlDataAccess class
-            specific to the Store model class.
-            Implements RESTful Api calls to communicate with the database
-            and return the correct Store model objects.
-            </summary>
+             Implementation of the SqlDataAccess class
+             specific to the Store model class.
+             Implements RESTful Api calls to communicate with the database
+             and return the correct Store model objects.
+             </summary>
         </member>
         <member name="M:TopShelfCustomer.Api.Services.StoreData.GetAllProducts">
-            <summary>
-            GetAllProducts:
+             <summary>
+             GetAllProducts:
             
-            Returns all products in the Products
-            database table.
-            </summary>
-            <returns> A List of all products in the Products table </returns>
+             Returns all products in the Products
+             database table.
+             </summary>
+             <returns> A List of all products in the Products table </returns>
         </member>
         <member name="M:TopShelfCustomer.Api.Services.StoreData.GetStoreById(System.Int32)">
-            <summary>
-            GetStoreById:
+             <summary>
+             GetStoreById:
             
-            Fetches the Store with an Id property that matches
-            the "id" argument.
-            </summary>
-            <param name="id"> the Id property to match </param>
-            <returns> A List of Stores with 1 element </returns>
+             Fetches the Store with an Id property that matches
+             the "id" argument.
+             </summary>
+             <param name="id"> the Id property to match </param>
+             <returns> A List of Stores with 1 element </returns>
         </member>
         <member name="M:TopShelfCustomer.Api.Services.StoreData.GetStoresByZipCode(System.Int32)">
-            <summary>
-            GetStoresByZipCode:
+             <summary>
+             GetStoresByZipCode:
             
-            Fetches all Stores from the database with a
-            matching ZipCode property.
-            </summary>
-            <param name="zipCode"> The ZipCode to match </param>
-            <returns> A list of Stores </returns>
+             Fetches all Stores from the database with a
+             matching ZipCode property.
+             </summary>
+             <param name="zipCode"> The ZipCode to match </param>
+             <returns> A list of Stores </returns>
         </member>
         <member name="T:TopShelfCustomer.Api.Services.UserData">
-            <summary>
-            UserData:
+             <summary>
+             UserData:
             
-            Implementation of the SqlDataAccess class
-            specific to the User model class. Responsible for
-            fetching and sending User data to and from the
-            database.
-            </summary>
+             Implementation of the SqlDataAccess class
+             specific to the User model class. Responsible for
+             fetching and sending User data to and from the
+             database.
+             </summary>
         </member>
         <member name="M:TopShelfCustomer.Api.Services.UserData.GetUserById(System.Int32)">
-            <summary>
-            GetUserById:
+             <summary>
+             GetUserById:
             
-            Fetches Users with Id value of "id"
-            from the database and returns it.
-            </summary>
-            <param name="id"> The Id value to search for </param>
-            <returns> A list of Users with that Id value (1 element) </returns>
+             Fetches Users with Id value of "id"
+             from the database and returns it.
+             </summary>
+             <param name="id"> The Id value to search for </param>
+             <returns> A list of Users with that Id value (1 element) </returns>
         </member>
         <member name="M:TopShelfCustomer.Api.Services.UserData.GetUserByEmail(System.String)">
-            <summary>
-            GetUserByEmail:
+             <summary>
+             GetUserByEmail:
             
-            Fetches Users with EmailAddress of "email"
-            from the database and returns it.
-            </summary>
-            <param name="email"> The email address </param>
-            <returns> A List of Users with one element </returns>
+             Fetches Users with EmailAddress of "email"
+             from the database and returns it.
+             </summary>
+             <param name="email"> The email address </param>
+             <returns> A List of Users with one element </returns>
         </member>
     </members>
 </doc>
