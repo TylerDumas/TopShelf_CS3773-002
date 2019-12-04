@@ -26,8 +26,8 @@
                     <!-- Name and Portrait -->
                     <StackLayout Orientation="Vertical" Margin="20, 0, 20, 0" Grid.Row="0">
                         <!-- Profile Picture -->
-                        <Frame HorizontalOptions="Center" CornerRadius="42" WidthRequest="50" HasShadow="True">
-                            <Image Source="profile_icon.png" />
+                        <Frame HorizontalOptions="Center" CornerRadius="37" WidthRequest="60" HasShadow="True" Padding="10">
+                            <Image Source="profile_icon.png" Aspect="AspectFit"/>
                         </Frame>
                         <!-- User Name -->
                         <Label Text="{Binding UserRealName}"

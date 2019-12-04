@@ -14,70 +14,77 @@
             </Grid.RowDefinitions>
 
             <!-- Name and Portrait -->
-            <StackLayout Orientation="Vertical" Margin="20, 50, 20, 30">
+            <StackLayout Orientation="Vertical" Margin="20, 60, 20, 30">
                 <!-- Profile Picture -->
-                <Frame HorizontalOptions="Center" HasShadow="True" Padding="5" BackgroundColor="{StaticResource Lightest}">
-                    <Image Source="home_icon.png" WidthRequest="60" HeightRequest="60"/>
+                <Frame HorizontalOptions="Center" HasShadow="True" Padding="5"
+                       BackgroundColor="{StaticResource Lightest}" Margin="0, 20, 0, 10">
+                    <Image Source="home_icon.png" WidthRequest="70" HeightRequest="70"/>
                 </Frame>
 
                 <!-- Welcome Message-->
                 <Label Text="{Binding UserRealName}" HorizontalOptions="CenterAndExpand" Margin="0, 20, 0, 0"
-                        VerticalOptions="Center" FontSize="26" TextColor="White" FontFamily="{StaticResource MediumFont}"/>
+                       VerticalOptions="Center" FontSize="28" TextColor="{StaticResource LightTextColor}"
+                       FontFamily="{StaticResource MediumFont}"/>
 
                 <!-- User Store -->
                 <StackLayout Orientation="Horizontal" Margin="0, 10, 0, 0" HorizontalOptions="CenterAndExpand" Spacing="20">
                     <Label FontFamily="{StaticResource NormalFont}"
-                        VerticalOptions="Center" TextColor="GhostWhite">
+                        VerticalOptions="Center" TextColor="{StaticResource LightTextColor}">
                         <Label.FormattedText>
                             <FormattedString>
                                 <FormattedString.Spans>
-                                    <Span Text="Your Store:  " FontFamily="{StaticResource MediumFont}" FontSize="18" />
-                                    <Span Text="{Binding UserStoreName}" FontSize="17" TextDecorations="Underline"/>
+                                    <Span Text="Your Store:  " FontFamily="{StaticResource MediumFont}" FontSize="22" />
+                                    <Span Text="{Binding UserStoreName}" FontSize="20" TextDecorations="Underline"/>
                                 </FormattedString.Spans>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
                     <ImageButton Command="{Binding ChangeStoreCommand}" Source="edit_icon.png"
                                     BackgroundColor="{StaticResource Lightest}" BorderColor="Black" BorderWidth="1" 
-                                    WidthRequest="35" HeightRequest="35"/>
+                                    WidthRequest="40" HeightRequest="40"/>
                 </StackLayout>
             </StackLayout>
 
             <!-- Coupons List -->
-            <ListView HorizontalOptions="FillAndExpand" ItemsSource="{Binding CouponsList}" 
-                      BackgroundColor="{StaticResource Dark}" Margin="20, 0, 20, 0" SeparatorVisibility="None"
-                      VerticalOptions="FillAndExpand" Grid.Row="1" HasUnevenRows="True">
-                <ListView.ItemTemplate>
+            <CarouselView HorizontalOptions="FillAndExpand" ItemsSource="{Binding CouponsList}" 
+                      BackgroundColor="Transparent" Margin="20, 0, 20, 0" IsScrollAnimated="True"
+                      VerticalOptions="FillAndExpand" Grid.Row="1" IsBounceEnabled="True">
+                <CarouselView.ItemsLayout>
+                    <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal"
+                                       SnapPointsType="MandatorySingle" SnapPointsAlignment="Center"/>
+                </CarouselView.ItemsLayout>
+                <CarouselView.ItemTemplate>
                     <DataTemplate>
-                        <ViewCell>
-                            <Frame BackgroundColor="{StaticResource Lightest}" Margin="0, 2, 0, 2">
+                        <Frame BorderColor="{StaticResource Darkest}" CornerRadius="15"
+                               HasShadow="True">
+                            <StackLayout Orientation="Vertical" Margin="2, 0, 2, 0">
+                                <!-- Store Name and Image -->
                                 <StackLayout Orientation="Vertical">
-                                    <!-- Store Name and Image -->
-                                    <StackLayout Orientation="Horizontal">
-                                        <Label Text="{Binding Name}" FontFamily="{StaticResource BoldFont}" FontSize="24" VerticalTextAlignment="Center"/>
-                                        <Image Source="{Binding ImageURL}" WidthRequest="100" HeightRequest="100" HorizontalOptions="Fill"/>
-                                    </StackLayout>
-                                    <!-- Body Text -->
-                                    <Label FontFamily="{StaticResource NormalFont}" TextColor="{StaticResource Darkest}">
-                                        <Label.FormattedText>
-                                            <FormattedString>
-                                                <FormattedString.Spans>
-                                                    <Span Text="{x:Static system:Environment.NewLine}" />
-                                                    <Span Text="Store: " FontFamily="{StaticResource MediumFont}" FontSize="18" />
-                                                    <Span Text="{Binding StoreName}" FontSize="16" FontFamily="{StaticResource NormalFont}" />
-                                                    <Span Text="{x:Static system:Environment.NewLine}" FontFamily="{StaticResource NormalFont}" />
-                                                    <Span Text="{x:Static system:Environment.NewLine}" FontFamily="{StaticResource NormalFont}" />
-                                                    <Span Text="{Binding Description}" FontSize="16" FontFamily="{StaticResource NormalFont}"/>
-                                                </FormattedString.Spans>
-                                            </FormattedString>
-                                        </Label.FormattedText>
-                                    </Label>
+                                    <Label Text="{Binding Name}" FontFamily="{StaticResource BoldFont}" FontSize="25"
+                                           HorizontalTextAlignment="Center" Margin="0, 20, 0, 15"/>
+                                    <Image Source="{Binding ImageURL}" WidthRequest="160" HeightRequest="160" HorizontalOptions="Fill"/>
                                 </StackLayout>
-                            </Frame>
-                        </ViewCell>
+                                <!-- Body Text -->
+                                <Label FontFamily="{StaticResource NormalFont}" TextColor="{StaticResource Darkest}"
+                                       HorizontalTextAlignment="Center" Margin="20, 10, 20, 10">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <FormattedString.Spans>
+                                                <Span Text="{x:Static system:Environment.NewLine}" />
+                                                <Span Text="Store: " FontFamily="{StaticResource MediumFont}" FontSize="22" />
+                                                <Span Text="{Binding StoreName}" FontSize="20" FontFamily="{StaticResource NormalFont}" />
+                                                <Span Text="{x:Static system:Environment.NewLine}" FontFamily="{StaticResource NormalFont}" />
+                                                <Span Text="{x:Static system:Environment.NewLine}" FontFamily="{StaticResource NormalFont}" />
+                                                <Span Text="{Binding Description}" FontSize="18" FontFamily="{StaticResource NormalFont}"/>
+                                            </FormattedString.Spans>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                            </StackLayout>
+                        </Frame>
                     </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
 
             <!-- Settings and Account Buttons -->
             <StackLayout Orientation="Horizontal" Padding="20,20,20,30" Grid.Row="2">

@@ -74,7 +74,7 @@ namespace TopShelfCustomer.ViewModels {
             InitializeBindableProperties();       //Initialize the properties seen on the UI
 
             /* Initialize Commands */
-            NavigateBackCommand = new Command( () => App.SetCurrentPage<HomePage>() );
+            NavigateBackCommand = new Command( () => App.SetNewPage<HomePage>() );
             OpenProfileViewCommand = new Command( () => App.SetCurrentPage<ProfileSettingsPage>() );
             OpenNotificationsViewCommand = new Command( () => App.SetCurrentPage<NotificationsSettingsPage>() );
             OpenAboutViewCommand = new Command( () => App.SetCurrentPage<AboutPage>() ) ;
