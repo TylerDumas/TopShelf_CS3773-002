@@ -9,9 +9,6 @@ namespace TopShelfCustomer.Api.Models {
     /// Store:
     /// 
     /// Model class for a grocery store.
-    /// Held in the database with properties
-    /// to identify the name, location, and list of
-    /// products.
     /// </summary>
     public class Store {
         /// <summary>

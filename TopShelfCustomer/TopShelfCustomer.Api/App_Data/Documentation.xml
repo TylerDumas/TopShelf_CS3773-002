@@ -481,6 +481,24 @@
             </summary>
             <param name="documentPath">The physical path to XML document.</param>
         </member>
+        <member name="T:TopShelfCustomer.Api.Controllers.CouponController">
+            <summary>
+            CouponController:
+            
+            Controller for the Coupon collection.
+            Contains functionality for all RESTful API calls
+            such as: Get, Put, Post, and Delete.
+            </summary>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Controllers.CouponController.GetCouponsByZipCode(System.Int32)">
+            <summary>
+            GetCouponByZipCode:
+            
+            Handler for Http GET calls fetching
+            the coupons for a given Store area (by Zip Code).
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:TopShelfCustomer.Api.Controllers.HomeController">
             <summary>
             HomeController:
@@ -582,8 +600,8 @@
             <summary>
             GetUserByEmail:
             
-            Fetches a User from the database by their
-            email address.
+            Fetches a User from the UserData database wrapper class
+            by their email address.
             </summary>
             <param name="emailAddress"> The email address </param>
             <returns> A User with that email address </returns>
@@ -592,35 +610,42 @@
             User.
             </remarks>
         </member>
-        <member name="M:TopShelfCustomer.Api.Controllers.UserController.Post(TopShelfCustomer.Api.Models.User)">
+        <member name="T:TopShelfCustomer.Api.Models.Coupon">
             <summary>
-            Post:
+            Coupon:
             
-            Takes a User object as an argument and
-            adds it to the List of users. Adds
-            append functionality to the API.
+            Model class for a coupon/advertisement.
             </summary>
-            <param name="value"> The User to add </param>
         </member>
-        <member name="M:TopShelfCustomer.Api.Controllers.UserController.Put(System.Int32,TopShelfCustomer.Api.Models.User)">
+        <member name="P:TopShelfCustomer.Api.Models.Coupon.Id">
             <summary>
-            Put:
-            
-            Takes a User object as an argument and updates an
-            entry if it exists. If not, it appends to the list
-            of Users.
+            Id: The unique identifier for this Coupon.
             </summary>
-            <param name="id"> The Id value of the User object </param>
-            <param name="value"> The User to add </param>
         </member>
-        <member name="M:TopShelfCustomer.Api.Controllers.UserController.Delete(System.Int32)">
+        <member name="P:TopShelfCustomer.Api.Models.Coupon.Name">
             <summary>
-            Delete:
-            
-            Deletes the User entry that matches the passed id.
-            Matches based off of the Id property on the User.
+            Name: The title/headline for this Coupon.
             </summary>
-            <param name="userId"> The Id value to match </param>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Coupon.StoreName">
+            <summary>
+            StoreName: The name of this Coupon's offerer/store franchise.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Coupon.Description">
+            <summary>
+            Description: The description/explanation of this Coupon.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Coupon.StoreZipCode">
+            <summary>
+            StoreZipCode: The area-identifier for this Coupon.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Coupon.ImageURL">
+            <summary>
+            ImageURL: The URL to this Coupon's advertisement image.
+            </summary>
         </member>
         <member name="T:TopShelfCustomer.Api.Models.Product">
             <summary>
@@ -651,9 +676,6 @@
             Store:
             
             Model class for a grocery store.
-            Held in the database with properties
-            to identify the name, location, and list of
-            products.
             </summary>
         </member>
         <member name="P:TopShelfCustomer.Api.Models.Store.Id">
@@ -719,6 +741,26 @@
             <summary>
             StoreName: The shortened name of the User's home store.
             </summary>
+        </member>
+        <member name="T:TopShelfCustomer.Api.Services.CouponData">
+            <summary>
+            CouponData:
+            
+            Implementation of the SqlDataAccess class
+            specific to the Coupon model class. Responsible for
+            fetching and sending Coupon data to and from the
+            database.
+            </summary>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Services.CouponData.GetCouponsByZipCode(System.Int32)">
+            <summary>
+            GetCouponsByZipCode:
+            
+            Fetches all Coupons from the database with
+            the StoreZipCode value of "zipCode".
+            </summary>
+            <param name="zipCode"> the Zip Code value to query with </param>
+            <returns> A list of applicable Coupons </returns>
         </member>
         <member name="T:TopShelfCustomer.Api.Services.ProductData">
             <summary>

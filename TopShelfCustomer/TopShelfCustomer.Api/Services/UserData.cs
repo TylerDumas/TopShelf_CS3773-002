@@ -5,7 +5,7 @@ namespace TopShelfCustomer.Api.Services {
 
     /// <summary>
     /// UserData:
-    /// 
+    ///
     /// Implementation of the SqlDataAccess class
     /// specific to the User model class. Responsible for
     /// fetching and sending User data to and from the
@@ -15,13 +15,13 @@ namespace TopShelfCustomer.Api.Services {
 
         /// <summary>
         /// GetUserById:
-        /// 
+        ///
         /// Fetches Users with Id value of "id"
         /// from the database and returns it.
         /// </summary>
         /// <param name="id"> The Id value to search for </param>
         /// <returns> A list of Users with that Id value (1 element) </returns>
-        public List<User> GetUserById( int id ) {
+        public List<User> GetUserById ( int id ) {
             SqlDataAccess sql = new SqlDataAccess();
 
             var p = new { Id = id };        //Temporary property object
@@ -31,13 +31,13 @@ namespace TopShelfCustomer.Api.Services {
 
         /// <summary>
         /// GetUserByEmail:
-        /// 
+        ///
         /// Fetches Users with EmailAddress of "email"
         /// from the database and returns it.
         /// </summary>
         /// <param name="email"> The email address </param>
         /// <returns> A List of Users with one element </returns>
-        public List<User> GetUserByEmail( string email ) {
+        public List<User> GetUserByEmail ( string email ) {
             SqlDataAccess sql = new SqlDataAccess();
 
             var p = new { Email = email };      //Temporary property object

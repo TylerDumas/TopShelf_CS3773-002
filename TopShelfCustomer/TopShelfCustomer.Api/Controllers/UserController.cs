@@ -8,7 +8,7 @@ namespace TopShelfCustomer.Api.Controllers {
 
     /// <summary>
     /// UserController:
-    /// 
+    ///
     /// Controller for the User collection.
     /// Contains functionality for all RESTful API calls
     /// such as: Get, Put, Post, and Delete.
@@ -17,7 +17,7 @@ namespace TopShelfCustomer.Api.Controllers {
 
         /// <summary>
         /// GetUserById:
-        /// 
+        ///
         /// Overload of the Get request method.
         /// Fetches a single user from the database and returns it
         /// to the caller of this API method.
@@ -25,29 +25,29 @@ namespace TopShelfCustomer.Api.Controllers {
         /// </summary>
         /// <param name="userId"> The Id of the requested User </param>
         /// <returns> a User with a matching Id </returns>
-        [Route( "api/User/GetUserById/{userId:int}")]
+        [Route( "api/User/GetUserById/{userId:int}" )]
         [HttpGet]
-        public User Get( int userId ) {
+        public User Get ( int userId ) {
             UserData data = new UserData();     //Create new UserData object to interact with DB
 
             var user = data.GetUserById( userId );      //Get user from DB
 
             try {               //Catch exceptions thrown by null User
                 if ( user[0] == null ) { return new User(); }
-            }catch( ArgumentOutOfRangeException e ) {
+            } catch ( ArgumentOutOfRangeException e ) {
                 Debug.WriteLine( e.Message );
                 return new User();
-            }catch( Exception e ) {
+            } catch ( Exception e ) {
                 Debug.WriteLine( e.Message );
                 return new User();
             }
-            
+
             return user[0];
         }
 
         /// <summary>
         /// GetUserByEmail:
-        /// 
+        ///
         /// Fetches a User from the UserData database wrapper class
         /// by their email address.
         /// </summary>
@@ -77,10 +77,10 @@ namespace TopShelfCustomer.Api.Controllers {
             return user[0];
         }
 
-
+        /*
         /// <summary>
         /// Post:
-        /// 
+        ///
         /// Takes a User object as an argument and
         /// adds it to the List of users. Adds
         /// append functionality to the API.
@@ -95,7 +95,7 @@ namespace TopShelfCustomer.Api.Controllers {
 
         /// <summary>
         /// Put:
-        /// 
+        ///
         /// Takes a User object as an argument and updates an
         /// entry if it exists. If not, it appends to the list
         /// of Users.
@@ -111,7 +111,7 @@ namespace TopShelfCustomer.Api.Controllers {
 
         /// <summary>
         /// Delete:
-        /// 
+        ///
         /// Deletes the User entry that matches the passed id.
         /// Matches based off of the Id property on the User.
         /// </summary>
@@ -122,5 +122,6 @@ namespace TopShelfCustomer.Api.Controllers {
             //TODO: implement
             Debug.WriteLine( "User DELETE requested" );
         }
+        */
     }
 }
