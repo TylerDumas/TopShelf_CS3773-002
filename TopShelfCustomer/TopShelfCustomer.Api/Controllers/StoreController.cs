@@ -14,7 +14,7 @@ namespace TopShelfCustomer.Api.Controllers {
     /// Manages the data transfer with the database and
     /// the callers of this API.
     /// </summary>
-    public class StoreController : ApiController {
+    public sealed class StoreController : ApiController {
 
         /// <summary>
         /// GetAllProducts:

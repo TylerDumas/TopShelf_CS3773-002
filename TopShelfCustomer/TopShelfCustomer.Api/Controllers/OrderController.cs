@@ -25,6 +25,10 @@ namespace TopShelfCustomer.Api.Controllers {
         /// </summary>
         /// <param name="email"> The email to match </param>
         /// <returns> A list of orders for the account associated with "email" </returns>
+        /// <remarks>
+        /// Endpoints cannot handle the '.' operator. The caller must replace '.' with '-' before fetching
+        /// User.
+        /// </remarks>
         [Route( "api/Order/GetOrdersByEmail/{email}" )]
         [HttpGet]
         public IEnumerable<Order> GetOrdersByEmail ( string email ) {

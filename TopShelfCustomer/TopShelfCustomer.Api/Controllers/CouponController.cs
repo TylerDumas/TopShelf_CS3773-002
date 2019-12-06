@@ -14,7 +14,7 @@ namespace TopShelfCustomer.Api.Controllers {
     /// Contains functionality for all RESTful API calls
     /// such as: Get, Put, Post, and Delete.
     /// </summary>
-    public class CouponController : ApiController {
+    public sealed class CouponController : ApiController {
 
         /// <summary>
         /// GetCouponByZipCode:

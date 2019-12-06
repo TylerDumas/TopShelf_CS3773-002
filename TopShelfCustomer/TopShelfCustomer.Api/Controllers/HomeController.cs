@@ -7,7 +7,7 @@ namespace TopShelfCustomer.Api.Controllers {
     ///
     /// Default controller generated with ASP.NET project.
     /// </summary>
-    public class HomeController : Controller {
+    public sealed class HomeController : Controller {
 
         /// <summary>
         /// Index:
