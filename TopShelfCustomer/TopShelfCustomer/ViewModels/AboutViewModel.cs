@@ -20,14 +20,14 @@ namespace TopShelfCustomer.ViewModels {
         public ICommand OpenXamarinCommand { get; }     //Command to open Xamarin framework website
         public ICommand NavigateBackCommand { get; }        //Command to navigate back to last page
 
-        #endregion
+        #endregion Properties
 
         #region Class Methods
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public AboutViewModel() {
+        public AboutViewModel () {
             Title = "About";
 
             /* Initialize Commands */
@@ -35,6 +35,6 @@ namespace TopShelfCustomer.ViewModels {
             OpenXamarinCommand = new Command( () => Launcher.OpenAsync( new Uri( "https://xamarin.com/platform" ) ) );
         }
 
-        #endregion
+        #endregion Class Methods
     }
 }

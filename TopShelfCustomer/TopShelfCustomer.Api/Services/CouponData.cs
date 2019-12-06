@@ -11,7 +11,7 @@ namespace TopShelfCustomer.Api.Services {
     /// fetching and sending Coupon data to and from the
     /// database.
     /// </summary>
-    public class CouponData {
+    public sealed class CouponData {
 
         /// <summary>
         /// GetCouponsByZipCode:

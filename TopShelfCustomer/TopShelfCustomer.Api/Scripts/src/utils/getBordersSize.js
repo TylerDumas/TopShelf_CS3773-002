@@ -9,11 +9,11 @@
  */
 
 export default function getBordersSize(styles, axis) {
-  const sideA = axis === 'x' ? 'Left' : 'Top';
-  const sideB = sideA === 'Left' ? 'Right' : 'Bottom';
+    const sideA = axis === 'x' ? 'Left' : 'Top';
+    const sideB = sideA === 'Left' ? 'Right' : 'Bottom';
 
-  return (
-    parseFloat(styles[`border${sideA}Width`], 10) +
-    parseFloat(styles[`border${sideB}Width`], 10)
-  );
+    return (
+        parseFloat(styles[`border${sideA}Width`], 10) +
+        parseFloat(styles[`border${sideB}Width`], 10)
+    );
 }

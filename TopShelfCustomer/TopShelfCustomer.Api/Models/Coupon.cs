@@ -5,7 +5,7 @@
     ///
     /// Model class for a coupon/advertisement.
     /// </summary>
-    public class Coupon {
+    public sealed class Coupon {
 
         /// <summary>
         /// Id: The unique identifier for this Coupon.

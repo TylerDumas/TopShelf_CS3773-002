@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.ChooseStoreView"
              xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}" BackgroundColor="{StaticResource Medium}">
     <ContentPage.BindingContext>
-        <vm:ChooseStoreViewModel/>
+        <vm:ChooseStoreViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
@@ -14,19 +14,19 @@
 
             <!-- Page Content -->
             <ContentView Margin="0, 40, 0, 40" VerticalOptions="FillAndExpand">
-                <StackLayout Orientation="Vertical" >
+                <StackLayout Orientation="Vertical">
 
                     <!-- Back Button -->
                     <Frame HorizontalOptions="Start" WidthRequest="50" Padding="0"
                            Margin="10,0,0,0" CornerRadius="42">
-                        <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" 
-                                     BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit"/>
+                        <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}"
+                                     BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit" />
                     </Frame>
 
                     <!-- Title Label -->
                     <Label Text="Choose your Store" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource MediumFont}"
                            VerticalOptions="CenterAndExpand" Margin="0, 30, 0, 30" FontSize="30" TextColor="White" />
-                     
+
                     <!-- ListView of Stores -->
                     <ListView x:Name="StoreList" ItemsSource="{Binding NearbyStores}" SeparatorVisibility="None"
                               SelectedItem="{Binding SelectedStore}" Margin="20, 0, 20, 0" VerticalOptions="FillAndExpand"
@@ -41,14 +41,14 @@
                                             <StackLayout Orientation="Vertical" Spacing="10">
                                                 <!-- Store Name -->
                                                 <Label Text="{Binding Name}" FontFamily="{StaticResource MediumFont}" HorizontalTextAlignment="Center" HorizontalOptions="CenterAndExpand"
-                                                       VerticalTextAlignment="Center" TextColor="{StaticResource Darkest}" FontSize="20"/>
+                                                       VerticalTextAlignment="Center" TextColor="{StaticResource Darkest}" FontSize="20" />
                                                 <!-- Store Address -->
                                                 <Label Text="{Binding Address}" FontFamily="{StaticResource NormalFont}" FontSize="18" Margin="0, 15, 0, 0"
-                                                           HorizontalOptions="CenterAndExpand" TextColor="{StaticResource Darkest}"/>
+                                                           HorizontalOptions="CenterAndExpand" TextColor="{StaticResource Darkest}" />
                                                 <!-- Directions Button -->
                                                 <Button Text="Directions" BackgroundColor="{StaticResource Light}"
                                                         BorderColor="Black" BorderWidth="1" FontFamily="{StaticResource MediumFont}"
-                                                        TextColor="{StaticResource Darkest}" WidthRequest="140" HorizontalOptions="Center" HeightRequest="40"/>
+                                                        TextColor="{StaticResource Darkest}" WidthRequest="140" HorizontalOptions="Center" HeightRequest="40" />
                                             </StackLayout>
                                         </StackLayout>
                                     </Frame>
@@ -60,9 +60,9 @@
                     <!-- Confirm Default Store Button -->
                     <ContentView Margin="0, 30, 0, 60">
                         <Button Command="{Binding SelectStoreCommand}" BackgroundColor="{StaticResource Light}" WidthRequest="240"
-                            BorderColor="Black" BorderWidth="2" TextColor="{StaticResource Darkest}" 
+                            BorderColor="Black" BorderWidth="2" TextColor="{StaticResource Darkest}"
                             HeightRequest="50" FontFamily="{StaticResource MediumFont}" FontSize="22"
-                            Text="Select Store" HorizontalOptions="Center" VerticalOptions="CenterAndExpand"/>
+                            Text="Select Store" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
                     </ContentView>
                 </StackLayout>
             </ContentView>

@@ -11,7 +11,7 @@ namespace TopShelfCustomer.Api.Services {
     /// fetching and sending User data to and from the
     /// database.
     /// </summary>
-    public class UserData {
+    public sealed class UserData {
 
         /// <summary>
         /// GetUserById:

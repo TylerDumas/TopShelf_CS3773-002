@@ -1,9 +1,9 @@
-﻿using System.Text;
+﻿using Newtonsoft.Json;
+using System.IO;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Text;
 using System.Threading.Tasks;
-using System.IO;
-using Newtonsoft.Json;
 
 namespace TopShelfCustomer.Services {
 
@@ -15,15 +15,14 @@ namespace TopShelfCustomer.Services {
     /// JSON payloads to/from the API.
     /// </summary>
     public sealed class ApiHelper {
-
-        readonly string apiUrl = "https://topshelfcustomerapi.azurewebsites.net/api";       //Root URL of the API
+        private readonly string apiUrl = "https://topshelfcustomerapi.azurewebsites.net/api";       //Root URL of the API
 
         public HttpClient ApiClient { get; set; }       //HttpClient to access the API
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public ApiHelper() {
+        public ApiHelper () {
             InitializeClient();
         }
 
@@ -34,7 +33,7 @@ namespace TopShelfCustomer.Services {
         /// Clears and modifies request headers to accept
         /// JSON strings/
         /// </summary>
-        private void InitializeClient() {
+        private void InitializeClient () {
             ApiClient = new HttpClient();       //Instantiate the HttpClient
 
             ApiClient.DefaultRequestHeaders.Accept.Clear();     //Set default request headers to JSON strings
@@ -52,12 +51,11 @@ namespace TopShelfCustomer.Services {
         /// <param name="relativePath"> The endpoint to access </param>
         /// <example> User/GetUserById/1 </example>
         /// <returns> A Task object of type T </returns>
-        public async Task<T> GetAsync<T>( string relativePath ) {
-
+        public async Task<T> GetAsync<T> ( string relativePath ) {
             string path = Path.Combine( apiUrl, relativePath );     //Concatenate the request path
 
             var output = await ApiClient.GetStringAsync( path );        //Get the JSON payload
-               
+
             var returnedObject = JsonConvert.DeserializeObject<T>( output );        //Deserialize the Json
 
             return returnedObject;      //Return the requested object
@@ -74,8 +72,7 @@ namespace TopShelfCustomer.Services {
         /// <param name="relativePath"> The endpoint to access </param>
         /// <param name="objectToPut"> Generic object to write </param>
         /// <returns> A Task of type bool to indicate success or failure </returns>
-        public async Task<bool> PutAsync<T>( string relativePath, T objectToPut ) {
-
+        public async Task<bool> PutAsync<T> ( string relativePath, T objectToPut ) {
             string path = Path.Combine( apiUrl, relativePath );     //Concatenate the request path
             var serializedObject = JsonConvert.SerializeObject( objectToPut );      //Serialize the object to put
 

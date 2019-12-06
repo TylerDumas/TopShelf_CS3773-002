@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.LoginPage"
              xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}" BackgroundColor="{StaticResource Medium}">
     <ContentPage.BindingContext>
-        <vm:LoginViewModel/>
+        <vm:LoginViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
@@ -21,8 +21,8 @@
                 <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
                          Grid.Row="0" Padding="0, 50, 0, 40">
                     <StackLayout Orientation="Vertical" Spacing="20">
-                        <Image Source="TopShelfAppLogo.png" HeightRequest="100" Margin="0, 30, 0, 0"/>
-                        <Label Text="Log into TopShelf" FontSize="26" HorizontalOptions="Center" TextColor="White" FontFamily="{StaticResource MediumFont}"/>
+                        <Image Source="TopShelfAppLogo.png" HeightRequest="100" Margin="0, 30, 0, 0" />
+                        <Label Text="Log into TopShelf" FontSize="26" HorizontalOptions="Center" TextColor="White" FontFamily="{StaticResource MediumFont}" />
                     </StackLayout>
                 </ContentView>
 
@@ -32,17 +32,16 @@
 
                     <Entry Placeholder="E-mail" TextColor="{StaticResource Darkest}" WidthRequest="280" Keyboard="Email"
                            HeightRequest="46" Text="{Binding EmailInput, Mode=TwoWay}"
-                           FontFamily="{StaticResource NormalFont}" PlaceholderColor="Gray" BackgroundColor="{StaticResource LightTextColor}"/>
+                           FontFamily="{StaticResource NormalFont}" PlaceholderColor="Gray" BackgroundColor="{StaticResource LightTextColor}" />
 
                     <Entry IsPassword="True" Placeholder="Password" TextColor="{StaticResource Darkest}" BackgroundColor="{StaticResource LightTextColor}"
-                           HeightRequest="46" Text="{Binding PasswordInput, Mode=TwoWay}" WidthRequest="280" 
-                           FontFamily="{StaticResource NormalFont}" PlaceholderColor="Gray" Keyboard="Plain"/>
-
+                           HeightRequest="46" Text="{Binding PasswordInput, Mode=TwoWay}" WidthRequest="280"
+                           FontFamily="{StaticResource NormalFont}" PlaceholderColor="Gray" Keyboard="Plain" />
                 </StackLayout>
 
                 <!-- Error Message -->
                 <StackLayout Grid.Row="2" VerticalOptions="Center" IsVisible="{Binding IsErrorVisible}">
-                    
+
                     <Label Text="Incorrect username or password. Try again" Grid.Row="2"
                             FontFamily="{StaticResource MediumFont}" FontSize="16" TextColor="{StaticResource Error}" HorizontalOptions="Center" />
 
@@ -64,12 +63,12 @@
                 <!-- Login Button and Account Recovery -->
                 <StackLayout Orientation="Vertical" Spacing="5" Grid.Row="3"
                              VerticalOptions="Start" Margin="0, 0, 0, 80">
-                    <Button Command="{Binding LoginCommand}" BackgroundColor="{StaticResource Light}" 
+                    <Button Command="{Binding LoginCommand}" BackgroundColor="{StaticResource Light}"
                             BorderColor="Black" BorderWidth="2" WidthRequest="240"
                             HeightRequest="50" TextColor="{StaticResource Darkest}" FontFamily="{StaticResource MediumFont}"
-                            Text="Log In" Grid.Row="2" HorizontalOptions="Center" FontSize="22"/>
+                            Text="Log In" Grid.Row="2" HorizontalOptions="Center" FontSize="22" />
                     <Label Text="New to TopShelf?  " FontSize="18" FontFamily="{StaticResource NormalFont}"
-                            TextColor="White" Margin="0, 25, 0, 0" HorizontalOptions="Center"/>
+                            TextColor="White" Margin="0, 25, 0, 0" HorizontalOptions="Center" />
                     <Label HorizontalOptions="Center">
                         <Label.FormattedText>
                             <FormattedString>

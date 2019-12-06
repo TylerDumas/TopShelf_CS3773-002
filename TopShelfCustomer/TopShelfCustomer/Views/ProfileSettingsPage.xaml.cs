@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-
-using Xamarin.Forms;
+﻿using Xamarin.Forms;
 
 namespace TopShelfCustomer.Views {
+
     public partial class ProfileSettingsPage : ContentPage {
-        public ProfileSettingsPage() {
+
+        public ProfileSettingsPage () {
             InitializeComponent();
         }
     }

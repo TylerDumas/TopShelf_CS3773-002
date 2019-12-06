@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Diagnostics;
 using System.IO;
-using Newtonsoft.Json.Linq;
 
 namespace TopShelfCustomer.Services {
 
@@ -18,7 +18,7 @@ namespace TopShelfCustomer.Services {
         public static string FileExtension { get => ".json"; }
         public static string FolderPath { get => Environment.GetFolderPath( Environment.SpecialFolder.MyDocuments ); }
 
-        #endregion
+        #endregion Properties
 
         #region Static Methods
 
@@ -31,7 +31,7 @@ namespace TopShelfCustomer.Services {
         /// <param name="filename"> the name of the file to write to (no extension)</param>
         /// <param name="jsonData"> the JSON string to write </param>
         /// <returns> bool indicating success </returns>
-        public static bool JsonWrite( string filename, string jsonData ) {
+        public static bool JsonWrite ( string filename, string jsonData ) {
             try {
                 var filepath = Path.Combine( FolderPath, filename + FileExtension );        //Create the file path
                 File.WriteAllText( filepath, jsonData );        //Write the passed string to the file
@@ -51,7 +51,7 @@ namespace TopShelfCustomer.Services {
         /// <param name="filename"> The name of the file to read </param>
         /// <param name="fieldname"> The field to read from the returned JSON object </param>
         /// <returns> the field fetched from the JSON file and object (as a string) </returns>
-        public static string JsonReadField( string filename, string fieldname ) {
+        public static string JsonReadField ( string filename, string fieldname ) {
             try {
                 var filepath = Path.Combine( FolderPath, filename + FileExtension );        //Create the file path
                 var content = File.ReadAllText( filepath );     //Read the entire json file
@@ -72,7 +72,7 @@ namespace TopShelfCustomer.Services {
         /// </summary>
         /// <param name="filename"> The name of the file to read </param>
         /// <returns> an object (of type T) created from the fetched JSON </returns>
-        public static object JsonRead<T>( string filename ) {
+        public static object JsonRead<T> ( string filename ) {
             try {
                 var filepath = Path.Combine( FolderPath, filename + FileExtension );        //Create the file path
                 var content = File.ReadAllText( filepath );     //Read the entire json file
@@ -93,7 +93,7 @@ namespace TopShelfCustomer.Services {
         /// </summary>
         /// <param name="filename"> the name of the json file to find (without the extension)</param>
         /// <returns> true if a file is found, false otherwise </returns>
-        public static bool JsonFileExists( string filename ) {
+        public static bool JsonFileExists ( string filename ) {
             var filepath = Path.Combine( FolderPath, filename + FileExtension );        //Create the file path
             if ( !File.Exists( filepath ) ) {       //Check if file exists
                 return false;       //File not found
@@ -101,6 +101,6 @@ namespace TopShelfCustomer.Services {
             return true;        //File found
         }
 
-        #endregion
+        #endregion Static Methods
     }
 }

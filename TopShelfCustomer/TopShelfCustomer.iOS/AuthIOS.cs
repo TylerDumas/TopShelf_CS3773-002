@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Firebase.Auth;
+using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using TopShelfCustomer.iOS;
 using TopShelfCustomer.Services;
 using Xamarin.Forms;
-using Firebase.Auth;
-using System.Diagnostics;
 
 [assembly: Dependency( typeof( AuthIOS ) )]
+
 namespace TopShelfCustomer.iOS {
 
     public class AuthIOS : IFirebaseAuthenticator {
@@ -20,7 +21,7 @@ namespace TopShelfCustomer.iOS {
         /// <param name="email"> Email address </param>
         /// <param name="password"> Password </param>
         /// <returns> User ID token </returns>
-        public async Task<string> LoginWithEmailPassword( string email, string password ) {
+        public async Task<string> LoginWithEmailPassword ( string email, string password ) {
             try {
                 var user = await Auth.DefaultInstance.SignInWithPasswordAsync( email, password );
                 return await user.User.GetIdTokenAsync();
@@ -38,11 +39,11 @@ namespace TopShelfCustomer.iOS {
         /// <param name="email"> Email Address </param>
         /// <param name="password"> Password </param>
         /// <returns> User ID token </returns>
-        public async Task<string> RegisterWithEmailPassword( string email, string password ) {
+        public async Task<string> RegisterWithEmailPassword ( string email, string password ) {
             try {
                 var signUpTask = await Auth.DefaultInstance.CreateUserAsync( email, password );
                 var result = await signUpTask.User.GetIdTokenResultAsync();
-                if( result.Token != "" ) {
+                if ( result.Token != "" ) {
                     return result.Token;
                 } else {
                     return "";
@@ -60,11 +61,11 @@ namespace TopShelfCustomer.iOS {
         /// </summary>
         /// <param name="email"> The E-mail to send the request to </param>
         /// <returns> Task of type string, describing the exit status of the request </returns>
-        public async Task<string> RequestPasswordReset( string email ) {
+        public async Task<string> RequestPasswordReset ( string email ) {
             try {
                 await Auth.DefaultInstance.SendPasswordResetAsync( email );
                 return "Success";
-            }catch( Exception e ) {
+            } catch ( Exception e ) {
                 Debug.WriteLine( e.Message );
                 return "";
             }
@@ -76,12 +77,12 @@ namespace TopShelfCustomer.iOS {
         /// Asynchronout method to Logout any current Users.
         /// </summary>
         /// <returns> Task object describing the success of the SignOut() call </returns>
-        public string LogoutCurrentUser() {
-            if( Auth.DefaultInstance.CurrentUser != null ) {
+        public string LogoutCurrentUser () {
+            if ( Auth.DefaultInstance.CurrentUser != null ) {
                 try {
                     Auth.DefaultInstance.SignOut( out Foundation.NSError result );
                     return "Success";
-                }catch( Exception ex ) {
+                } catch ( Exception ex ) {
                     Debug.WriteLine( ex.Message );
                     return "";
                 }

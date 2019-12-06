@@ -14,7 +14,7 @@ namespace TopShelfCustomer.Api.Services {
     /// database. Contains functionality for reading/writing to
     /// the database.
     /// </summary>
-    public class SqlDataAccess {
+    public sealed class SqlDataAccess {
 
         /// <summary>
         /// GetConnectionString:

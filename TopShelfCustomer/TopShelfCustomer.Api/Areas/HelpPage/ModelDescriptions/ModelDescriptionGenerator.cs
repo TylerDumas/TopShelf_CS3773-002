@@ -1,3 +1,4 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,15 +10,14 @@ using System.Runtime.Serialization;
 using System.Web.Http;
 using System.Web.Http.Description;
 using System.Xml.Serialization;
-using Newtonsoft.Json;
 
-namespace TopShelfCustomer.Api.Areas.HelpPage.ModelDescriptions
-{
+namespace TopShelfCustomer.Api.Areas.HelpPage.ModelDescriptions {
+
     /// <summary>
     /// Generates model descriptions for given types.
     /// </summary>
-    public class ModelDescriptionGenerator
-    {
+    public class ModelDescriptionGenerator {
+
         // Modify this to support more data annotation attributes.
         private readonly IDictionary<Type, Func<object, string>> AnnotationTextGenerator = new Dictionary<Type, Func<object, string>>
         {
@@ -86,46 +86,37 @@ namespace TopShelfCustomer.Api.Areas.HelpPage.ModelDescriptions
 
         private Lazy<IModelDocumentationProvider> _documentationProvider;
 
-        public ModelDescriptionGenerator(HttpConfiguration config)
-        {
-            if (config == null)
-            {
-                throw new ArgumentNullException("config");
+        public ModelDescriptionGenerator ( HttpConfiguration config ) {
+            if ( config == null ) {
+                throw new ArgumentNullException( "config" );
             }
 
-            _documentationProvider = new Lazy<IModelDocumentationProvider>(() => config.Services.GetDocumentationProvider() as IModelDocumentationProvider);
-            GeneratedModels = new Dictionary<string, ModelDescription>(StringComparer.OrdinalIgnoreCase);
+            _documentationProvider = new Lazy<IModelDocumentationProvider>( () => config.Services.GetDocumentationProvider() as IModelDocumentationProvider );
+            GeneratedModels = new Dictionary<string, ModelDescription>( StringComparer.OrdinalIgnoreCase );
         }
 
         public Dictionary<string, ModelDescription> GeneratedModels { get; private set; }
 
-        private IModelDocumentationProvider DocumentationProvider
-        {
-            get
-            {
+        private IModelDocumentationProvider DocumentationProvider {
+            get {
                 return _documentationProvider.Value;
             }
         }
 
-        public ModelDescription GetOrCreateModelDescription(Type modelType)
-        {
-            if (modelType == null)
-            {
-                throw new ArgumentNullException("modelType");
+        public ModelDescription GetOrCreateModelDescription ( Type modelType ) {
+            if ( modelType == null ) {
+                throw new ArgumentNullException( "modelType" );
             }
 
-            Type underlyingType = Nullable.GetUnderlyingType(modelType);
-            if (underlyingType != null)
-            {
+            Type underlyingType = Nullable.GetUnderlyingType( modelType );
+            if ( underlyingType != null ) {
                 modelType = underlyingType;
             }
 
             ModelDescription modelDescription;
-            string modelName = ModelNameHelper.GetModelName(modelType);
-            if (GeneratedModels.TryGetValue(modelName, out modelDescription))
-            {
-                if (modelType != modelDescription.ModelType)
-                {
+            string modelName = ModelNameHelper.GetModelName( modelType );
+            if ( GeneratedModels.TryGetValue( modelName, out modelDescription ) ) {
+                if ( modelType != modelDescription.ModelType ) {
                     throw new InvalidOperationException(
                         String.Format(
                             CultureInfo.CurrentCulture,
@@ -133,88 +124,72 @@ namespace TopShelfCustomer.Api.Areas.HelpPage.ModelDescriptions
                             "Use the [ModelName] attribute to change the model name for at least one of the types so that it has a unique name.",
                             modelName,
                             modelDescription.ModelType.FullName,
-                            modelType.FullName));
+                            modelType.FullName ) );
                 }
 
                 return modelDescription;
             }
 
-            if (DefaultTypeDocumentation.ContainsKey(modelType))
-            {
-                return GenerateSimpleTypeModelDescription(modelType);
+            if ( DefaultTypeDocumentation.ContainsKey( modelType ) ) {
+                return GenerateSimpleTypeModelDescription( modelType );
             }
 
-            if (modelType.IsEnum)
-            {
-                return GenerateEnumTypeModelDescription(modelType);
+            if ( modelType.IsEnum ) {
+                return GenerateEnumTypeModelDescription( modelType );
             }
 
-            if (modelType.IsGenericType)
-            {
+            if ( modelType.IsGenericType ) {
                 Type[] genericArguments = modelType.GetGenericArguments();
 
-                if (genericArguments.Length == 1)
-                {
-                    Type enumerableType = typeof(IEnumerable<>).MakeGenericType(genericArguments);
-                    if (enumerableType.IsAssignableFrom(modelType))
-                    {
-                        return GenerateCollectionModelDescription(modelType, genericArguments[0]);
+                if ( genericArguments.Length == 1 ) {
+                    Type enumerableType = typeof( IEnumerable<> ).MakeGenericType( genericArguments );
+                    if ( enumerableType.IsAssignableFrom( modelType ) ) {
+                        return GenerateCollectionModelDescription( modelType, genericArguments[0] );
                     }
                 }
-                if (genericArguments.Length == 2)
-                {
-                    Type dictionaryType = typeof(IDictionary<,>).MakeGenericType(genericArguments);
-                    if (dictionaryType.IsAssignableFrom(modelType))
-                    {
-                        return GenerateDictionaryModelDescription(modelType, genericArguments[0], genericArguments[1]);
+                if ( genericArguments.Length == 2 ) {
+                    Type dictionaryType = typeof( IDictionary<,> ).MakeGenericType( genericArguments );
+                    if ( dictionaryType.IsAssignableFrom( modelType ) ) {
+                        return GenerateDictionaryModelDescription( modelType, genericArguments[0], genericArguments[1] );
                     }
 
-                    Type keyValuePairType = typeof(KeyValuePair<,>).MakeGenericType(genericArguments);
-                    if (keyValuePairType.IsAssignableFrom(modelType))
-                    {
-                        return GenerateKeyValuePairModelDescription(modelType, genericArguments[0], genericArguments[1]);
+                    Type keyValuePairType = typeof( KeyValuePair<,> ).MakeGenericType( genericArguments );
+                    if ( keyValuePairType.IsAssignableFrom( modelType ) ) {
+                        return GenerateKeyValuePairModelDescription( modelType, genericArguments[0], genericArguments[1] );
                     }
                 }
             }
 
-            if (modelType.IsArray)
-            {
+            if ( modelType.IsArray ) {
                 Type elementType = modelType.GetElementType();
-                return GenerateCollectionModelDescription(modelType, elementType);
+                return GenerateCollectionModelDescription( modelType, elementType );
             }
 
-            if (modelType == typeof(NameValueCollection))
-            {
-                return GenerateDictionaryModelDescription(modelType, typeof(string), typeof(string));
+            if ( modelType == typeof( NameValueCollection ) ) {
+                return GenerateDictionaryModelDescription( modelType, typeof( string ), typeof( string ) );
             }
 
-            if (typeof(IDictionary).IsAssignableFrom(modelType))
-            {
-                return GenerateDictionaryModelDescription(modelType, typeof(object), typeof(object));
+            if ( typeof( IDictionary ).IsAssignableFrom( modelType ) ) {
+                return GenerateDictionaryModelDescription( modelType, typeof( object ), typeof( object ) );
             }
 
-            if (typeof(IEnumerable).IsAssignableFrom(modelType))
-            {
-                return GenerateCollectionModelDescription(modelType, typeof(object));
+            if ( typeof( IEnumerable ).IsAssignableFrom( modelType ) ) {
+                return GenerateCollectionModelDescription( modelType, typeof( object ) );
             }
 
-            return GenerateComplexTypeModelDescription(modelType);
+            return GenerateComplexTypeModelDescription( modelType );
         }
 
         // Change this to provide different name for the member.
-        private static string GetMemberName(MemberInfo member, bool hasDataContractAttribute)
-        {
+        private static string GetMemberName ( MemberInfo member, bool hasDataContractAttribute ) {
             JsonPropertyAttribute jsonProperty = member.GetCustomAttribute<JsonPropertyAttribute>();
-            if (jsonProperty != null && !String.IsNullOrEmpty(jsonProperty.PropertyName))
-            {
+            if ( jsonProperty != null && !String.IsNullOrEmpty( jsonProperty.PropertyName ) ) {
                 return jsonProperty.PropertyName;
             }
 
-            if (hasDataContractAttribute)
-            {
+            if ( hasDataContractAttribute ) {
                 DataMemberAttribute dataMember = member.GetCustomAttribute<DataMemberAttribute>();
-                if (dataMember != null && !String.IsNullOrEmpty(dataMember.Name))
-                {
+                if ( dataMember != null && !String.IsNullOrEmpty( dataMember.Name ) ) {
                     return dataMember.Name;
                 }
             }
@@ -222,8 +197,7 @@ namespace TopShelfCustomer.Api.Areas.HelpPage.ModelDescriptions
             return member.Name;
         }
 
-        private static bool ShouldDisplayMember(MemberInfo member, bool hasDataContractAttribute)
-        {
+        private static bool ShouldDisplayMember ( MemberInfo member, bool hasDataContractAttribute ) {
             JsonIgnoreAttribute jsonIgnore = member.GetCustomAttribute<JsonIgnoreAttribute>();
             XmlIgnoreAttribute xmlIgnore = member.GetCustomAttribute<XmlIgnoreAttribute>();
             IgnoreDataMemberAttribute ignoreDataMember = member.GetCustomAttribute<IgnoreDataMemberAttribute>();
@@ -245,75 +219,61 @@ namespace TopShelfCustomer.Api.Areas.HelpPage.ModelDescriptions
                 xmlIgnore == null &&
                 ignoreDataMember == null &&
                 nonSerialized == null &&
-                (apiExplorerSetting == null || !apiExplorerSetting.IgnoreApi) &&
-                (!hasDataContractAttribute || hasMemberAttribute);
+                ( apiExplorerSetting == null || !apiExplorerSetting.IgnoreApi ) &&
+                ( !hasDataContractAttribute || hasMemberAttribute );
         }
 
-        private string CreateDefaultDocumentation(Type type)
-        {
+        private string CreateDefaultDocumentation ( Type type ) {
             string documentation;
-            if (DefaultTypeDocumentation.TryGetValue(type, out documentation))
-            {
+            if ( DefaultTypeDocumentation.TryGetValue( type, out documentation ) ) {
                 return documentation;
             }
-            if (DocumentationProvider != null)
-            {
-                documentation = DocumentationProvider.GetDocumentation(type);
+            if ( DocumentationProvider != null ) {
+                documentation = DocumentationProvider.GetDocumentation( type );
             }
 
             return documentation;
         }
 
-        private void GenerateAnnotations(MemberInfo property, ParameterDescription propertyModel)
-        {
+        private void GenerateAnnotations ( MemberInfo property, ParameterDescription propertyModel ) {
             List<ParameterAnnotation> annotations = new List<ParameterAnnotation>();
 
             IEnumerable<Attribute> attributes = property.GetCustomAttributes();
-            foreach (Attribute attribute in attributes)
-            {
+            foreach ( Attribute attribute in attributes ) {
                 Func<object, string> textGenerator;
-                if (AnnotationTextGenerator.TryGetValue(attribute.GetType(), out textGenerator))
-                {
+                if ( AnnotationTextGenerator.TryGetValue( attribute.GetType(), out textGenerator ) ) {
                     annotations.Add(
-                        new ParameterAnnotation
-                        {
+                        new ParameterAnnotation {
                             AnnotationAttribute = attribute,
-                            Documentation = textGenerator(attribute)
-                        });
+                            Documentation = textGenerator( attribute )
+                        } );
                 }
             }
 
             // Rearrange the annotations
-            annotations.Sort((x, y) =>
-            {
+            annotations.Sort( ( x, y ) => {
                 // Special-case RequiredAttribute so that it shows up on top
-                if (x.AnnotationAttribute is RequiredAttribute)
-                {
+                if ( x.AnnotationAttribute is RequiredAttribute ) {
                     return -1;
                 }
-                if (y.AnnotationAttribute is RequiredAttribute)
-                {
+                if ( y.AnnotationAttribute is RequiredAttribute ) {
                     return 1;
                 }
 
                 // Sort the rest based on alphabetic order of the documentation
-                return String.Compare(x.Documentation, y.Documentation, StringComparison.OrdinalIgnoreCase);
-            });
+                return String.Compare( x.Documentation, y.Documentation, StringComparison.OrdinalIgnoreCase );
+            } );
 
-            foreach (ParameterAnnotation annotation in annotations)
-            {
-                propertyModel.Annotations.Add(annotation);
+            foreach ( ParameterAnnotation annotation in annotations ) {
+                propertyModel.Annotations.Add( annotation );
             }
         }
 
-        private CollectionModelDescription GenerateCollectionModelDescription(Type modelType, Type elementType)
-        {
-            ModelDescription collectionModelDescription = GetOrCreateModelDescription(elementType);
-            if (collectionModelDescription != null)
-            {
-                return new CollectionModelDescription
-                {
-                    Name = ModelNameHelper.GetModelName(modelType),
+        private CollectionModelDescription GenerateCollectionModelDescription ( Type modelType, Type elementType ) {
+            ModelDescription collectionModelDescription = GetOrCreateModelDescription( elementType );
+            if ( collectionModelDescription != null ) {
+                return new CollectionModelDescription {
+                    Name = ModelNameHelper.GetModelName( modelType ),
                     ModelType = modelType,
                     ElementDescription = collectionModelDescription
                 };
@@ -322,128 +282,106 @@ namespace TopShelfCustomer.Api.Areas.HelpPage.ModelDescriptions
             return null;
         }
 
-        private ModelDescription GenerateComplexTypeModelDescription(Type modelType)
-        {
-            ComplexTypeModelDescription complexModelDescription = new ComplexTypeModelDescription
-            {
-                Name = ModelNameHelper.GetModelName(modelType),
+        private ModelDescription GenerateComplexTypeModelDescription ( Type modelType ) {
+            ComplexTypeModelDescription complexModelDescription = new ComplexTypeModelDescription {
+                Name = ModelNameHelper.GetModelName( modelType ),
                 ModelType = modelType,
-                Documentation = CreateDefaultDocumentation(modelType)
+                Documentation = CreateDefaultDocumentation( modelType )
             };
 
-            GeneratedModels.Add(complexModelDescription.Name, complexModelDescription);
+            GeneratedModels.Add( complexModelDescription.Name, complexModelDescription );
             bool hasDataContractAttribute = modelType.GetCustomAttribute<DataContractAttribute>() != null;
-            PropertyInfo[] properties = modelType.GetProperties(BindingFlags.Public | BindingFlags.Instance);
-            foreach (PropertyInfo property in properties)
-            {
-                if (ShouldDisplayMember(property, hasDataContractAttribute))
-                {
-                    ParameterDescription propertyModel = new ParameterDescription
-                    {
-                        Name = GetMemberName(property, hasDataContractAttribute)
+            PropertyInfo[] properties = modelType.GetProperties( BindingFlags.Public | BindingFlags.Instance );
+            foreach ( PropertyInfo property in properties ) {
+                if ( ShouldDisplayMember( property, hasDataContractAttribute ) ) {
+                    ParameterDescription propertyModel = new ParameterDescription {
+                        Name = GetMemberName( property, hasDataContractAttribute )
                     };
 
-                    if (DocumentationProvider != null)
-                    {
-                        propertyModel.Documentation = DocumentationProvider.GetDocumentation(property);
+                    if ( DocumentationProvider != null ) {
+                        propertyModel.Documentation = DocumentationProvider.GetDocumentation( property );
                     }
 
-                    GenerateAnnotations(property, propertyModel);
-                    complexModelDescription.Properties.Add(propertyModel);
-                    propertyModel.TypeDescription = GetOrCreateModelDescription(property.PropertyType);
+                    GenerateAnnotations( property, propertyModel );
+                    complexModelDescription.Properties.Add( propertyModel );
+                    propertyModel.TypeDescription = GetOrCreateModelDescription( property.PropertyType );
                 }
             }
 
-            FieldInfo[] fields = modelType.GetFields(BindingFlags.Public | BindingFlags.Instance);
-            foreach (FieldInfo field in fields)
-            {
-                if (ShouldDisplayMember(field, hasDataContractAttribute))
-                {
-                    ParameterDescription propertyModel = new ParameterDescription
-                    {
-                        Name = GetMemberName(field, hasDataContractAttribute)
+            FieldInfo[] fields = modelType.GetFields( BindingFlags.Public | BindingFlags.Instance );
+            foreach ( FieldInfo field in fields ) {
+                if ( ShouldDisplayMember( field, hasDataContractAttribute ) ) {
+                    ParameterDescription propertyModel = new ParameterDescription {
+                        Name = GetMemberName( field, hasDataContractAttribute )
                     };
 
-                    if (DocumentationProvider != null)
-                    {
-                        propertyModel.Documentation = DocumentationProvider.GetDocumentation(field);
+                    if ( DocumentationProvider != null ) {
+                        propertyModel.Documentation = DocumentationProvider.GetDocumentation( field );
                     }
 
-                    complexModelDescription.Properties.Add(propertyModel);
-                    propertyModel.TypeDescription = GetOrCreateModelDescription(field.FieldType);
+                    complexModelDescription.Properties.Add( propertyModel );
+                    propertyModel.TypeDescription = GetOrCreateModelDescription( field.FieldType );
                 }
             }
 
             return complexModelDescription;
         }
 
-        private DictionaryModelDescription GenerateDictionaryModelDescription(Type modelType, Type keyType, Type valueType)
-        {
-            ModelDescription keyModelDescription = GetOrCreateModelDescription(keyType);
-            ModelDescription valueModelDescription = GetOrCreateModelDescription(valueType);
+        private DictionaryModelDescription GenerateDictionaryModelDescription ( Type modelType, Type keyType, Type valueType ) {
+            ModelDescription keyModelDescription = GetOrCreateModelDescription( keyType );
+            ModelDescription valueModelDescription = GetOrCreateModelDescription( valueType );
 
-            return new DictionaryModelDescription
-            {
-                Name = ModelNameHelper.GetModelName(modelType),
+            return new DictionaryModelDescription {
+                Name = ModelNameHelper.GetModelName( modelType ),
                 ModelType = modelType,
                 KeyModelDescription = keyModelDescription,
                 ValueModelDescription = valueModelDescription
             };
         }
 
-        private EnumTypeModelDescription GenerateEnumTypeModelDescription(Type modelType)
-        {
-            EnumTypeModelDescription enumDescription = new EnumTypeModelDescription
-            {
-                Name = ModelNameHelper.GetModelName(modelType),
+        private EnumTypeModelDescription GenerateEnumTypeModelDescription ( Type modelType ) {
+            EnumTypeModelDescription enumDescription = new EnumTypeModelDescription {
+                Name = ModelNameHelper.GetModelName( modelType ),
                 ModelType = modelType,
-                Documentation = CreateDefaultDocumentation(modelType)
+                Documentation = CreateDefaultDocumentation( modelType )
             };
             bool hasDataContractAttribute = modelType.GetCustomAttribute<DataContractAttribute>() != null;
-            foreach (FieldInfo field in modelType.GetFields(BindingFlags.Public | BindingFlags.Static))
-            {
-                if (ShouldDisplayMember(field, hasDataContractAttribute))
-                {
-                    EnumValueDescription enumValue = new EnumValueDescription
-                    {
+            foreach ( FieldInfo field in modelType.GetFields( BindingFlags.Public | BindingFlags.Static ) ) {
+                if ( ShouldDisplayMember( field, hasDataContractAttribute ) ) {
+                    EnumValueDescription enumValue = new EnumValueDescription {
                         Name = field.Name,
                         Value = field.GetRawConstantValue().ToString()
                     };
-                    if (DocumentationProvider != null)
-                    {
-                        enumValue.Documentation = DocumentationProvider.GetDocumentation(field);
+                    if ( DocumentationProvider != null ) {
+                        enumValue.Documentation = DocumentationProvider.GetDocumentation( field );
                     }
-                    enumDescription.Values.Add(enumValue);
+                    enumDescription.Values.Add( enumValue );
                 }
             }
-            GeneratedModels.Add(enumDescription.Name, enumDescription);
+            GeneratedModels.Add( enumDescription.Name, enumDescription );
 
             return enumDescription;
         }
 
-        private KeyValuePairModelDescription GenerateKeyValuePairModelDescription(Type modelType, Type keyType, Type valueType)
-        {
-            ModelDescription keyModelDescription = GetOrCreateModelDescription(keyType);
-            ModelDescription valueModelDescription = GetOrCreateModelDescription(valueType);
+        private KeyValuePairModelDescription GenerateKeyValuePairModelDescription ( Type modelType, Type keyType, Type valueType ) {
+            ModelDescription keyModelDescription = GetOrCreateModelDescription( keyType );
+            ModelDescription valueModelDescription = GetOrCreateModelDescription( valueType );
 
-            return new KeyValuePairModelDescription
-            {
-                Name = ModelNameHelper.GetModelName(modelType),
+            return new KeyValuePairModelDescription {
+                Name = ModelNameHelper.GetModelName( modelType ),
                 ModelType = modelType,
                 KeyModelDescription = keyModelDescription,
                 ValueModelDescription = valueModelDescription
             };
         }
 
-        private ModelDescription GenerateSimpleTypeModelDescription(Type modelType)
-        {
-            SimpleTypeModelDescription simpleModelDescription = new SimpleTypeModelDescription
-            {
-                Name = ModelNameHelper.GetModelName(modelType),
+        private ModelDescription GenerateSimpleTypeModelDescription ( Type modelType ) {
+            SimpleTypeModelDescription simpleModelDescription = new SimpleTypeModelDescription {
+                Name = ModelNameHelper.GetModelName( modelType ),
                 ModelType = modelType,
-                Documentation = CreateDefaultDocumentation(modelType)
+                Documentation = CreateDefaultDocumentation( modelType )
             };
-            GeneratedModels.Add(simpleModelDescription.Name, simpleModelDescription);
+            GeneratedModels.Add( simpleModelDescription.Name, simpleModelDescription );
 
             return simpleModelDescription;
         }

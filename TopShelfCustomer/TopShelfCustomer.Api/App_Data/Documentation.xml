@@ -316,7 +316,7 @@
         </member>
         <member name="M:TopShelfCustomer.Api.Areas.HelpPage.HelpPageSampleGenerator.GetSampleObject(System.Type)">
             <summary>
-            Gets the sample object that will be serialized by the formatters. 
+            Gets the sample object that will be serialized by the formatters.
             First, it will look at the <see cref="P:TopShelfCustomer.Api.Areas.HelpPage.HelpPageSampleGenerator.SampleObjects"/>. If no sample object is found, it will try to create
             one using <see cref="M:TopShelfCustomer.Api.Areas.HelpPage.HelpPageSampleGenerator.DefaultSampleObjectFactory(TopShelfCustomer.Api.Areas.HelpPage.HelpPageSampleGenerator,System.Type)"/> (which wraps an <see cref="T:TopShelfCustomer.Api.Areas.HelpPage.ObjectGenerator"/>) and other
             factories in <see cref="P:TopShelfCustomer.Api.Areas.HelpPage.HelpPageSampleGenerator.SampleObjectFactories"/>.
@@ -514,6 +514,26 @@
              </summary>
              <returns></returns>
         </member>
+        <member name="T:TopShelfCustomer.Api.Controllers.OrderController">
+             <summary>
+             OrderController:
+            
+             Controller for the Order API endpoint.
+             Utilizes Service classes to return Orders to
+             the Order API endpoint.
+             </summary>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Controllers.OrderController.GetOrdersByEmail(System.String)">
+             <summary>
+             GetOrdersByEmail:
+            
+             Method responsible for the "GetOrdersByEmail"
+             API endpoint. Uses helper classes to return the
+             correct collection of Orders to the API caller.
+             </summary>
+             <param name="email"> The email to match </param>
+             <returns> A list of orders for the account associated with "email" </returns>
+        </member>
         <member name="T:TopShelfCustomer.Api.Controllers.ProductController">
              <summary>
              ProductController:
@@ -647,6 +667,59 @@
             ImageURL: The URL to this Coupon's advertisement image.
             </summary>
         </member>
+        <member name="T:TopShelfCustomer.Api.Models.Order">
+             <summary>
+             Order:
+            
+             Model class used to represent an order that was placed
+             through TopShelf. These objects are populated through the database.
+             </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Order.Id">
+            <summary>
+            Id: the unique identifier for this Order (used in SQL database).
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Order.OrderNumber">
+            <summary>
+            OrderNumber: the number to identify this Order.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Order.StoreName">
+            <summary>
+            StoreName: the name of the Store that this Order took place.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Order.NumItems">
+            <summary>
+            NumItems: the number of items purchased for this Order.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Order.LastFour">
+            <summary>
+            LastFour: the last four digits of this Order's payment method.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Order.Price">
+            <summary>
+            Price: The total cost of this Order.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Order.EmailAddress">
+            <summary>
+            EmailAddress: The email address associated with this Order's account.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Order.Date">
+            <summary>
+            Date: the Date and Time for this Order.
+            </summary>
+        </member>
+        <member name="P:TopShelfCustomer.Api.Models.Order.DriverName">
+            <summary>
+            DriverName: The name of the delivery driver for this Order.
+            </summary>
+        </member>
         <member name="T:TopShelfCustomer.Api.Models.Product">
              <summary>
              Product:
@@ -766,6 +839,25 @@
              </summary>
              <param name="zipCode"> the Zip Code value to query with </param>
              <returns> A list of applicable Coupons </returns>
+        </member>
+        <member name="T:TopShelfCustomer.Api.Services.OrderData">
+             <summary>
+             OrderData:
+            
+             Utilizes the SqlDataAccess class to fetch
+             Orders from the TopShelf database.
+             </summary>
+        </member>
+        <member name="M:TopShelfCustomer.Api.Services.OrderData.GetOrdersByEmail(System.String)">
+             <summary>
+             GetOrdersByEmail:
+            
+             Wrapper method to allow database access.
+             Fetches all Orders associated with the passed
+             email address.
+             </summary>
+             <param name="email"></param>
+             <returns> A list of orders from the email address argument </returns>
         </member>
         <member name="T:TopShelfCustomer.Api.Services.ProductData">
              <summary>

@@ -1,6 +1,5 @@
-namespace TopShelfCustomer.Api.Areas.HelpPage.ModelDescriptions
-{
-    public class SimpleTypeModelDescription : ModelDescription
-    {
+namespace TopShelfCustomer.Api.Areas.HelpPage.ModelDescriptions {
+
+    public class SimpleTypeModelDescription : ModelDescription {
     }
 }

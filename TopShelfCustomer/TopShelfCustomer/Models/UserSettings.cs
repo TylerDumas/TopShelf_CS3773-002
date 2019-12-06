@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace TopShelfCustomer.Models {
+﻿namespace TopShelfCustomer.Models {
 
     /// <summary>
     /// UserSettings:
@@ -24,7 +22,7 @@ namespace TopShelfCustomer.Models {
         /// Constructor
         /// </summary>
         /// <remarks>This constructor initializes the default values for a new user </remarks>
-        public UserSettings() {
+        public UserSettings () {
             SaveReceiptsSetting = false;
             AllowExternalLinks = false;
         }
@@ -45,6 +43,6 @@ namespace TopShelfCustomer.Models {
             OrderEmailNotifications
         }
 
-        #endregion
+        #endregion Properties
     }
 }

@@ -13,7 +13,7 @@ namespace TopShelfCustomer.Api.Controllers {
     /// Contains functionality for all RESTful API calls
     /// such as: Get, Put, Post, and Delete.
     /// </summary>
-    public class UserController : ApiController {
+    public sealed class UserController : ApiController {
 
         /// <summary>
         /// GetUserById:

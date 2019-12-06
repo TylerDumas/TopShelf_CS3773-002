@@ -1,9 +1,7 @@
 ﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-using TopShelfCustomer.Views;
 using TopShelfCustomer.Services;
-using System.Diagnostics;
+using TopShelfCustomer.Views;
+using Xamarin.Forms;
 
 namespace TopShelfCustomer {
 
@@ -18,7 +16,7 @@ namespace TopShelfCustomer {
         /// <summary>
         /// Constructor
         /// </summary>
-        public App() {
+        public App () {
             InitializeComponent();
 
             /* Register Navigation Manager */
@@ -26,15 +24,15 @@ namespace TopShelfCustomer {
             MainPage = rootPage;
         }
 
-        protected override void OnStart() {
+        protected override void OnStart () {
             // Handle when your app starts
         }
 
-        protected override void OnSleep() {
+        protected override void OnSleep () {
             // Handle when your app sleeps
         }
 
-        protected override void OnResume() {
+        protected override void OnResume () {
             // Handle when your app resumes
         }
 
@@ -44,7 +42,7 @@ namespace TopShelfCustomer {
         /// Returns the Current Main Page of the application
         /// </summary>
         /// <returns> the currently presented View </returns>
-        public static Page GetCurrentPage() {
+        public static Page GetCurrentPage () {
             return Current.MainPage;
         }
 
@@ -57,13 +55,13 @@ namespace TopShelfCustomer {
         /// created page.
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        public static void SetNewPage<T>() where T : Page {
-            foreach( Page page in PageContainer.Views ) {
-                if( page is T ) {
-                    if( PageContainer.Views.Contains( page ) ) {
+        public static void SetNewPage<T> () where T : Page {
+            foreach ( Page page in PageContainer.Views ) {
+                if ( page is T ) {
+                    if ( PageContainer.Views.Contains( page ) ) {
                         PageContainer.Views.Remove( page );
                     }
-                    var freshPage = ( T )Activator.CreateInstance( typeof( T ) );
+                    var freshPage = (T)Activator.CreateInstance( typeof( T ) );
                     PageContainer.Views.Add( freshPage );
                     Current.MainPage = freshPage;
                     break;
@@ -71,7 +69,7 @@ namespace TopShelfCustomer {
             }
 
             /* Page didn't exist */
-            var newPage = ( T )Activator.CreateInstance( typeof( T ) );
+            var newPage = (T)Activator.CreateInstance( typeof( T ) );
             PageContainer.Views.Add( newPage );
             Current.MainPage = newPage;
         }
@@ -82,16 +80,16 @@ namespace TopShelfCustomer {
         /// Attempts to find a page of type T in the application's state.
         /// If no page is found, it creates a new one and navigates to it.
         /// </summary>
-        public static void SetCurrentPage<T>() where T : Page {
-            foreach( Page page in PageContainer.Views ) {      //Check if Page of type T already exists
-                if( page is T ) {
+        public static void SetCurrentPage<T> () where T : Page {
+            foreach ( Page page in PageContainer.Views ) {      //Check if Page of type T already exists
+                if ( page is T ) {
                     Current.MainPage = page;
                     return;
                 }
             }
 
             /* Page didn't exist */
-            var newPage = ( T )Activator.CreateInstance( typeof( T ) );
+            var newPage = (T)Activator.CreateInstance( typeof( T ) );
             PageContainer.Views.Add( newPage );       //Add passed Page to the PageContainer static class
             Current.MainPage = newPage;     //Set the current page
         }
@@ -101,7 +99,7 @@ namespace TopShelfCustomer {
         ///
         /// Clears all Application state/dependency containers
         /// </summary>
-        public static void ClearAppData() {
+        public static void ClearAppData () {
             PageContainer.Views.Clear();    //Clear Page dependency container
             Current.MainPage = new LoginPage();     //Change view to blank LoginPage
             UserContainer.CurrentUser = new Models.User();      //Clear the global User instance

@@ -1,8 +1,8 @@
-﻿using System.Windows.Input;
-using Xamarin.Forms;
-using TopShelfCustomer.Views;
+﻿using System.Collections.ObjectModel;
+using System.Windows.Input;
 using TopShelfCustomer.Models;
-using System.Collections.ObjectModel;
+using TopShelfCustomer.Views;
+using Xamarin.Forms;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -20,12 +20,12 @@ namespace TopShelfCustomer.ViewModels {
 
         public ICommand NavigateBackCommand { get; }        //Command for the "Back" button
 
-        #endregion
+        #endregion Properties
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public OrderHistoryViewModel() {
+        public OrderHistoryViewModel () {
             /* Initialize Commands */
             NavigateBackCommand = new Command( () => App.SetCurrentPage<HomePage>() );
         }

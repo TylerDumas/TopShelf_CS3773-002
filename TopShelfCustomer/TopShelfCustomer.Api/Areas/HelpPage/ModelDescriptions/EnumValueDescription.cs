@@ -1,7 +1,6 @@
-namespace TopShelfCustomer.Api.Areas.HelpPage.ModelDescriptions
-{
-    public class EnumValueDescription
-    {
+namespace TopShelfCustomer.Api.Areas.HelpPage.ModelDescriptions {
+
+    public class EnumValueDescription {
         public string Documentation { get; set; }
 
         public string Name { get; set; }

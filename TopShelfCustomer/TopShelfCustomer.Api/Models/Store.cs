@@ -5,7 +5,7 @@
     ///
     /// Model class for a grocery store.
     /// </summary>
-    public class Store {
+    public sealed class Store {
 
         /// <summary>
         /// Id: the unique identifier for this Store.

@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.OrderHistoryView"
              xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}" BackgroundColor="{StaticResource Medium}">
     <ContentPage.BindingContext>
-        <vm:OrderHistoryViewModel/>
+        <vm:OrderHistoryViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
@@ -18,8 +18,8 @@
                 <!-- Back Button -->
                 <Frame HorizontalOptions="Start" WidthRequest="50" Padding="0"
                         Margin="10,0,0,0" CornerRadius="42">
-                    <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" 
-                                    BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit"/>
+                    <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}"
+                                    BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit" />
                 </Frame>
                 <!-- Title Label -->
                 <Label Text="Your Past Orders" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource NormalFont}"
@@ -38,34 +38,32 @@
                                 <StackLayout HorizontalOptions="CenterAndExpand" Padding="0, 15, 0, 10">
                                     <!-- Store Name Text -->
                                     <Label Text="{Binding StoreName}" FontFamily="{StaticResource MediumFont}"
-                                            TextColor="{StaticResource LightTextColor}" FontSize="16" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
+                                            TextColor="{StaticResource LightTextColor}" FontSize="16" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
                                     <StackLayout Orientation="Horizontal" Padding="10, 5, 10, 5" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
                                         <!-- Date Text -->
                                         <Label Text="{Binding Date}" FontFamily="{StaticResource NormalFont}"
                                                 TextColor="{StaticResource LightTextColor}" FontSize="16" VerticalTextAlignment="Center" />
-                                    
+
                                         <!-- Number of Items Text -->
                                         <StackLayout Orientation="Horizontal" Spacing="0">
                                             <Label Text="# Items: " FontFamily="{StaticResource MediumFont}"
-                                                    TextColor="{StaticResource LightTextColor}" FontSize="14" VerticalTextAlignment="Center"/>
+                                                    TextColor="{StaticResource LightTextColor}" FontSize="14" VerticalTextAlignment="Center" />
                                             <Label Text="{Binding NumItems}" FontFamily="{StaticResource NormalFont}"
                                                     TextColor="White" FontSize="16" />
                                         </StackLayout>
                                         <!-- Order Total Price Text -->
                                         <StackLayout Orientation="Horizontal" Spacing="0">
                                             <Label Text="Total: $" FontFamily="{StaticResource MediumFont}"
-                                                    TextColor="{StaticResource LightTextColor}" FontSize="14" VerticalTextAlignment="Center"/>
+                                                    TextColor="{StaticResource LightTextColor}" FontSize="14" VerticalTextAlignment="Center" />
                                             <Label Text="{Binding Prie}" FontFamily="{StaticResource NormalFont}"
-                                                    TextColor="{StaticResource LightTextColor}" FontSize="16" VerticalTextAlignment="Center"/>
+                                                    TextColor="{StaticResource LightTextColor}" FontSize="16" VerticalTextAlignment="Center" />
                                         </StackLayout>
                                     </StackLayout>
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
-
                 </ListView>
-
             </StackLayout>
         </Grid>
     </ContentPage.Content>

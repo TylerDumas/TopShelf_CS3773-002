@@ -1,12 +1,13 @@
-﻿using System;
+﻿using Firebase.Auth;
+using System;
+using System.Diagnostics;
 using System.Threading.Tasks;
 using TopShelfCustomer.Droid;
-using Firebase.Auth;
-using Xamarin.Forms;
 using TopShelfCustomer.Services;
-using System.Diagnostics;
+using Xamarin.Forms;
 
 [assembly: Dependency( typeof( AuthDroid ) )]
+
 namespace TopShelfCustomer.Droid {
 
     public class AuthDroid : IFirebaseAuthenticator {
@@ -20,18 +21,18 @@ namespace TopShelfCustomer.Droid {
         /// <param name="email"> Email address </param>
         /// <param name="password"> Password </param>
         /// <returns> User ID token </returns>
-        public async Task<string> LoginWithEmailPassword( string email, string password ) {
+        public async Task<string> LoginWithEmailPassword ( string email, string password ) {
             try {
                 var user = await FirebaseAuth.Instance.SignInWithEmailAndPasswordAsync( email, password );
                 var token = await user.User.GetIdTokenAsync( false );
-                if( user == null || token == null ) {
+                if ( user == null || token == null ) {
                     Debug.WriteLine( "Failed to log in" );
                 }
                 return token.Token;
             } catch ( FirebaseAuthInvalidUserException e ) {
                 Debug.WriteLine( e.Message );
                 return "";
-            } catch( Exception ex ) {
+            } catch ( Exception ex ) {
                 Debug.WriteLine( ex.Message );
                 return "";
             }
@@ -45,7 +46,7 @@ namespace TopShelfCustomer.Droid {
         /// <param name="email"> Email Address </param>
         /// <param name="password"> Password </param>
         /// <returns> User ID token </returns>
-        public async Task<string> RegisterWithEmailPassword( string email, string password ) {
+        public async Task<string> RegisterWithEmailPassword ( string email, string password ) {
             try {
                 var signUpTask = await FirebaseAuth.Instance.CreateUserWithEmailAndPasswordAsync( email, password );
                 if ( signUpTask != null ) {
@@ -65,7 +66,7 @@ namespace TopShelfCustomer.Droid {
         /// </summary>
         /// <param name="email"> The E-mail to send the request to </param>
         /// <returns> Task of type string, describing the exit status of the request </returns>
-        public async Task<string> RequestPasswordReset( string email ) {
+        public async Task<string> RequestPasswordReset ( string email ) {
             try {
                 await FirebaseAuth.Instance.SendPasswordResetEmailAsync( email );
                 return "success";
@@ -81,7 +82,7 @@ namespace TopShelfCustomer.Droid {
         /// Asynchronout method to Logout any current Users.
         /// </summary>
         /// <returns> Task object describing the success of the SignOut() call </returns>
-        public string LogoutCurrentUser() {
+        public string LogoutCurrentUser () {
             if ( FirebaseAuth.Instance.CurrentUser != null ) {
                 try {
                     FirebaseAuth.Instance.SignOut();

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:system="clr-namespace:System;assembly=netstandard" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.HomePage" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}">
     <ContentPage.BindingContext>
-        <vm:HomeViewModel/>
+        <vm:HomeViewModel />
     </ContentPage.BindingContext>
     <!-- Content -->
     <ContentPage.Content>
@@ -18,13 +18,13 @@
                 <!-- Profile Picture -->
                 <Frame HorizontalOptions="Center" HasShadow="True" Padding="5"
                        BackgroundColor="{StaticResource Lightest}" Margin="0, 20, 0, 10">
-                    <Image Source="home_icon.png" WidthRequest="70" HeightRequest="70"/>
+                    <Image Source="home_icon.png" WidthRequest="70" HeightRequest="70" />
                 </Frame>
 
                 <!-- Welcome Message-->
                 <Label Text="{Binding UserRealName}" HorizontalOptions="CenterAndExpand" Margin="0, 20, 0, 0"
                        VerticalOptions="Center" FontSize="28" TextColor="{StaticResource LightTextColor}"
-                       FontFamily="{StaticResource MediumFont}"/>
+                       FontFamily="{StaticResource MediumFont}" />
 
                 <!-- User Store -->
                 <StackLayout Orientation="Horizontal" Margin="0, 10, 0, 0" HorizontalOptions="CenterAndExpand" Spacing="20">
@@ -34,24 +34,24 @@
                             <FormattedString>
                                 <FormattedString.Spans>
                                     <Span Text="Your Store:  " FontFamily="{StaticResource MediumFont}" FontSize="22" />
-                                    <Span Text="{Binding UserStoreName}" FontSize="20" TextDecorations="Underline"/>
+                                    <Span Text="{Binding UserStoreName}" FontSize="20" TextDecorations="Underline" />
                                 </FormattedString.Spans>
                             </FormattedString>
                         </Label.FormattedText>
                     </Label>
                     <ImageButton Command="{Binding ChangeStoreCommand}" Source="edit_icon.png"
-                                    BackgroundColor="{StaticResource Lightest}" BorderColor="Black" BorderWidth="1" 
-                                    WidthRequest="40" HeightRequest="40"/>
+                                    BackgroundColor="{StaticResource Lightest}" BorderColor="Black" BorderWidth="1"
+                                    WidthRequest="40" HeightRequest="40" />
                 </StackLayout>
             </StackLayout>
 
             <!-- Coupons List -->
-            <CarouselView HorizontalOptions="FillAndExpand" ItemsSource="{Binding CouponsList}" 
+            <CarouselView HorizontalOptions="FillAndExpand" ItemsSource="{Binding CouponsList}"
                       BackgroundColor="Transparent" Margin="20, 0, 20, 0" IsScrollAnimated="True"
                       VerticalOptions="FillAndExpand" Grid.Row="1" IsBounceEnabled="True">
                 <CarouselView.ItemsLayout>
                     <LinearItemsLayout ItemSpacing="10" Orientation="Horizontal"
-                                       SnapPointsType="MandatorySingle" SnapPointsAlignment="Center"/>
+                                       SnapPointsType="MandatorySingle" SnapPointsAlignment="Center" />
                 </CarouselView.ItemsLayout>
                 <CarouselView.ItemTemplate>
                     <DataTemplate>
@@ -61,8 +61,8 @@
                                 <!-- Store Name and Image -->
                                 <StackLayout Orientation="Vertical">
                                     <Label Text="{Binding Name}" FontFamily="{StaticResource BoldFont}" FontSize="25"
-                                           HorizontalTextAlignment="Center" Margin="0, 20, 0, 15"/>
-                                    <Image Source="{Binding ImageURL}" WidthRequest="160" HeightRequest="160" HorizontalOptions="Fill"/>
+                                           HorizontalTextAlignment="Center" Margin="0, 20, 0, 15" />
+                                    <Image Source="{Binding ImageURL}" WidthRequest="160" HeightRequest="160" HorizontalOptions="Fill" />
                                 </StackLayout>
                                 <!-- Body Text -->
                                 <Label FontFamily="{StaticResource NormalFont}" TextColor="{StaticResource Darkest}"
@@ -75,7 +75,7 @@
                                                 <Span Text="{Binding StoreName}" FontSize="20" FontFamily="{StaticResource NormalFont}" />
                                                 <Span Text="{x:Static system:Environment.NewLine}" FontFamily="{StaticResource NormalFont}" />
                                                 <Span Text="{x:Static system:Environment.NewLine}" FontFamily="{StaticResource NormalFont}" />
-                                                <Span Text="{Binding Description}" FontSize="18" FontFamily="{StaticResource NormalFont}"/>
+                                                <Span Text="{Binding Description}" FontSize="18" FontFamily="{StaticResource NormalFont}" />
                                             </FormattedString.Spans>
                                         </FormattedString>
                                     </Label.FormattedText>
@@ -89,15 +89,15 @@
             <!-- Settings and Account Buttons -->
             <StackLayout Orientation="Horizontal" Padding="20,20,20,30" Grid.Row="2">
                 <ImageButton Source="plus_icon.png" BackgroundColor="{StaticResource Lightest}" WidthRequest="90"
-                             HeightRequest="60" Padding="6" BorderWidth="2" BorderColor="Black" 
-                             Command="{Binding OpenCreateOrderCommand}" HorizontalOptions="Start"/>
+                             HeightRequest="60" Padding="6" BorderWidth="2" BorderColor="Black"
+                             Command="{Binding OpenCreateOrderCommand}" HorizontalOptions="Start" />
                 <ImageButton Source="news_icon.png" BackgroundColor="{StaticResource Lightest}" WidthRequest="90"
-                             HeightRequest="60" Padding="8" BorderWidth="2" BorderColor="Black" 
-                             Command="{Binding OpenOrderHistoryCommand}" HorizontalOptions="CenterAndExpand"/>
+                             HeightRequest="60" Padding="8" BorderWidth="2" BorderColor="Black"
+                             Command="{Binding OpenOrderHistoryCommand}" HorizontalOptions="CenterAndExpand" />
                 <ImageButton Source="settings_icon.png" BackgroundColor="{StaticResource Lightest}" WidthRequest="90"
-                             HeightRequest="60" Padding="5" BorderWidth="2" BorderColor="Black" 
-                             Command="{Binding OpenSettingsCommand}" HorizontalOptions="End"/>
-            </StackLayout>   
+                             HeightRequest="60" Padding="5" BorderWidth="2" BorderColor="Black"
+                             Command="{Binding OpenSettingsCommand}" HorizontalOptions="End" />
+            </StackLayout>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

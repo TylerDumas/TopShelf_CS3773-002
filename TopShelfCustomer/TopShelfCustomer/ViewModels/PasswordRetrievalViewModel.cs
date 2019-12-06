@@ -1,8 +1,8 @@
-﻿using System.Windows.Input;
-using Xamarin.Forms;
-using TopShelfCustomer.Views;
+﻿using System.ComponentModel;
+using System.Windows.Input;
 using TopShelfCustomer.Services;
-using System.ComponentModel;
+using TopShelfCustomer.Views;
+using Xamarin.Forms;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -16,11 +16,12 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Properties
 
-        readonly IFirebaseAuthenticator auth;        //Firebase Authenticator to be resolved for each platform
+        private readonly IFirebaseAuthenticator auth;        //Firebase Authenticator to be resolved for each platform
 
         public string EmailInput { get; set; }      //String value of Email field
 
         private bool isErrorVisible;       //Bool to trigger error message
+
         public bool IsErrorVisible {
             get {
                 return isErrorVisible;
@@ -34,12 +35,12 @@ namespace TopShelfCustomer.ViewModels {
         public ICommand NavigateBackCommand { get; }        //Command for back button
         public ICommand RequestPasswordResetCommand { get; }        //Command for password request button
 
-        #endregion
+        #endregion Properties
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public PasswordRetrievalViewModel() {
+        public PasswordRetrievalViewModel () {
             Title = "Reset Password";
 
             auth = DependencyService.Resolve<IFirebaseAuthenticator>();     //Fetch platform-specific Firebase Authentication implementation
@@ -55,7 +56,7 @@ namespace TopShelfCustomer.ViewModels {
         /// Function to bind to Command delegate.
         /// Controls the "Request Email" button in the password retrieval view
         /// </summary>
-        async void ForgotPasswordClicked() {
+        private async void ForgotPasswordClicked () {
             string complete = await auth.RequestPasswordReset( EmailInput );
             if ( complete != "" ) {
                 App.SetNewPage<LoginPage>();

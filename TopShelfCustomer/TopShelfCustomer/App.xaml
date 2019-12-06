@@ -33,7 +33,6 @@
                 <On Platform="Android" Value="FiraSans-Medium.ttf#FiraSans-Medium" />
                 <On Platform="iOS" Value="FiraSans-Medium" />
             </OnPlatform>
-
         </ResourceDictionary>
     </Application.Resources>
 </Application>

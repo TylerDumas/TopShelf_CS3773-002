@@ -1,12 +1,5 @@
-﻿using System;
-using System.Windows.Input;
-using System.Diagnostics;
-using TopShelfCustomer.Views;
-using TopShelfCustomer.Models;
+﻿using System.Collections.Generic;
 using Xamarin.Forms;
-using System.ComponentModel;
-using Xamarin.Essentials;
-using System.Collections.Generic;
 
 namespace TopShelfCustomer.Services {
 
@@ -21,12 +14,11 @@ namespace TopShelfCustomer.Services {
 
         public static List<Page> Views { get; set; }        //List of Pages
 
-        #endregion
+        #endregion Properties
 
-        static PageContainer() {
-
+        static PageContainer () {
             /* Initialize View list */
-            if( Views == null ) {
+            if ( Views == null ) {
                 Views = new List<Page> {
                     Application.Current.MainPage
                 };

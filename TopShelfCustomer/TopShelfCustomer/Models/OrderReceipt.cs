@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
 namespace TopShelfCustomer.Models {
 
@@ -21,6 +20,6 @@ namespace TopShelfCustomer.Models {
         public string Date { get; set; }
         public List<Product> PurchasedItems { get; set; }      //The list of all Items purchased
 
-        #endregion
+        #endregion Properties
     }
 }

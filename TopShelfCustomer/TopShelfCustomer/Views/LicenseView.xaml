@@ -3,7 +3,7 @@
              x:Class="TopShelfCustomer.Views.LicenseView" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels"
              Title="{Binding Title}" BackgroundColor="{StaticResource Medium}">
     <ContentPage.BindingContext>
-        <vm:LicenseViewModel/>
+        <vm:LicenseViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
@@ -21,11 +21,11 @@
                 <!-- Back Button -->
                 <Frame HorizontalOptions="Start" WidthRequest="50" Padding="0"
                         Margin="10,0,0,0" CornerRadius="42">
-                    <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" 
-                                    BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit"/>
+                    <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}"
+                                    BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit" />
                 </Frame>
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
-                    <Image Source="TopShelfAppLogo.png" HeightRequest="60"/>
+                    <Image Source="TopShelfAppLogo.png" HeightRequest="60" />
                     <Label Text="TopShelf" FontSize="30" FontFamily="{StaticResource NormalFont}"
                             VerticalTextAlignment="Center" TextColor="{StaticResource LightTextColor}" />
                 </StackLayout>
@@ -37,12 +37,12 @@
 
                     <!-- Page Title Label -->
                     <Label Text="License" FontSize="26" TextColor="{StaticResource LightTextColor}"
-                           HorizontalOptions="CenterAndExpand" Margin="0, 30, 0, 0" FontFamily="{StaticResource NormalFont}"/>
+                           HorizontalOptions="CenterAndExpand" Margin="0, 30, 0, 0" FontFamily="{StaticResource NormalFont}" />
 
                     <!-- Web View to Present License -->
                     <WebView Source="https://tylerdumas.github.io/TopShelf_CS3773-002/"
                              HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                             Margin="0, 20, 0, 20" BackgroundColor="{StaticResource Dark}"/>
+                             Margin="0, 20, 0, 20" BackgroundColor="{StaticResource Dark}" />
                 </StackLayout>
             </ScrollView>
         </Grid>

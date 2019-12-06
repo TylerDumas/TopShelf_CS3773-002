@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TopShelfCustomer.Models;
@@ -22,9 +21,9 @@ namespace TopShelfCustomer.ViewModels {
 
         public ObservableCollection<Coupon> CouponsList { get; set; } = new ObservableCollection<Coupon>();     //The list of coupons to populate the view
 
-
         public string UserRealName { get; }        //The current User's real name
         private string userStoreName;       //String representation of this User's default Store
+
         public string UserStoreName {
             get => userStoreName;
             set {
@@ -39,15 +38,15 @@ namespace TopShelfCustomer.ViewModels {
         public ICommand OpenOrderHistoryCommand { get; }        //Command to open the Order History Menu
         public ICommand ChangeStoreCommand { get; }     //Command to open "Change Default Store" Menu
 
-        #endregion
+        #endregion Properties
 
         #region Class Methods
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public HomeViewModel() {
-            Title = "Home";     
+        public HomeViewModel () {
+            Title = "Home";
             UserRealName = UserContainer.CurrentUser.FullName;      //Get User's name from the global User
             UserStoreName = UserContainer.CurrentUser.StoreName;        //Get User's store name from the global User
 
@@ -66,17 +65,18 @@ namespace TopShelfCustomer.ViewModels {
         /// Correctly populates the view with coupons from the
         /// global User's zip code.
         /// </summary>
-        async Task InitializeCoupons() {
+        private async Task InitializeCoupons () {
             ApiHelper api = new ApiHelper();
 
             int zipCode = UserContainer.CurrentUser.ZipCode;        //Get the User's Zip Code
             string couponPath = "Coupon/GetCouponsByZipCode/" + zipCode;    //Get the path to the coupon endpoint
 
             var coupons = await api.GetAsync<List<Coupon>>( couponPath );      //Fetch the list of coupons
-            foreach( Coupon coupon in coupons ) {       //Add all elements of the Coupon list to the observable collection
+            foreach ( Coupon coupon in coupons ) {       //Add all elements of the Coupon list to the observable collection
                 CouponsList.Add( coupon );
             }
         }
-        #endregion
+
+        #endregion Class Methods
     }
 }

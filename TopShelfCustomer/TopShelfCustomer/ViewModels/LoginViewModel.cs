@@ -1,10 +1,8 @@
 ﻿using System.Windows.Input;
-using Xamarin.Forms;
-using TopShelfCustomer.Views;
-using TopShelfCustomer.Services;
-using System.ComponentModel;
-using System.Diagnostics;
 using TopShelfCustomer.Models;
+using TopShelfCustomer.Services;
+using TopShelfCustomer.Views;
+using Xamarin.Forms;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -18,12 +16,13 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Properties
 
-        readonly IFirebaseAuthenticator auth;        //Firebase Authenticator to be resolved for each platform
+        private readonly IFirebaseAuthenticator auth;        //Firebase Authenticator to be resolved for each platform
 
         public string EmailInput { get; set; }      //E-mail and Password String values
         public string PasswordInput { get; set; }
 
         private bool isIncorrectInfo;        //Bool to define whether the "incorrect username" message should be shown
+
         public bool IsIncorrectInfo {
             get {
                 return isIncorrectInfo;
@@ -33,7 +32,9 @@ namespace TopShelfCustomer.ViewModels {
                 OnPropertyChanged( "IsIncorrectInfo" );
             }
         }
+
         private bool isErrorVisible;        //Bool to define whether the "incorrect username" message should be shown
+
         public bool IsErrorVisible {
             get {
                 return isErrorVisible;
@@ -43,23 +44,24 @@ namespace TopShelfCustomer.ViewModels {
                 OnPropertyChanged( "IsErrorVisible" );
             }
         }
+
         public ICommand LoginCommand { get; }       //The Command bound to the Login button
         public ICommand CreateNewAccountCommand { get; }        //Command for create new account link
         public ICommand ForgotPasswordCommand { get; }      //Command for the "forgot password" link
-                
-        #endregion
+
+        #endregion Properties
 
         #region Class Methods
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public LoginViewModel() {
+        public LoginViewModel () {
             Title = "Welcome to TopShelf";
 
             auth = DependencyService.Resolve<IFirebaseAuthenticator>();     //Fetch platform-specific Firebase Authentication implementation
             LoginCommand = new Command( LoginClicked );     //Bind Command to Login Function
-            CreateNewAccountCommand = new Command( () => App.SetNewPage<CreateNewAccountView>() ) ;
+            CreateNewAccountCommand = new Command( () => App.SetNewPage<CreateNewAccountView>() );
             ForgotPasswordCommand = new Command( () => App.SetNewPage<PasswordRetrievalView>() );
         }
 
@@ -70,9 +72,9 @@ namespace TopShelfCustomer.ViewModels {
         /// click event. Calls on Firebase Authentication
         /// to Authenticate the User and log into the Application
         /// </summary>
-        async void LoginClicked() {
+        private async void LoginClicked () {
             string token = await auth.LoginWithEmailPassword( EmailInput, PasswordInput );
-            if( token != "" ) {
+            if ( token != "" ) {
                 ApiHelper apiHelper = new ApiHelper();
 
                 string sanitizedEmail = EmailInput.Replace( ".", "-" );     //Replace '.' with '-' to allow for correct Get call
@@ -85,6 +87,6 @@ namespace TopShelfCustomer.ViewModels {
             }
         }
 
-        #endregion
+        #endregion Class Methods
     }
 }

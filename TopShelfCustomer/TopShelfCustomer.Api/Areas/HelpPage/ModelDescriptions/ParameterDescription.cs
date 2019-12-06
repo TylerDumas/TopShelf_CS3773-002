@@ -1,12 +1,10 @@
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
-namespace TopShelfCustomer.Api.Areas.HelpPage.ModelDescriptions
-{
-    public class ParameterDescription
-    {
-        public ParameterDescription()
-        {
+namespace TopShelfCustomer.Api.Areas.HelpPage.ModelDescriptions {
+
+    public class ParameterDescription {
+
+        public ParameterDescription () {
             Annotations = new Collection<ParameterAnnotation>();
         }
 

@@ -3,28 +3,26 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Net.Http.Headers;
 
-namespace TopShelfCustomer.Api.Areas.HelpPage
-{
+namespace TopShelfCustomer.Api.Areas.HelpPage {
+
     /// <summary>
     /// This is used to identify the place where the sample should be applied.
     /// </summary>
-    public class HelpPageSampleKey
-    {
+    public class HelpPageSampleKey {
+
         /// <summary>
         /// Creates a new <see cref="HelpPageSampleKey"/> based on media type.
         /// </summary>
         /// <param name="mediaType">The media type.</param>
-        public HelpPageSampleKey(MediaTypeHeaderValue mediaType)
-        {
-            if (mediaType == null)
-            {
-                throw new ArgumentNullException("mediaType");
+        public HelpPageSampleKey ( MediaTypeHeaderValue mediaType ) {
+            if ( mediaType == null ) {
+                throw new ArgumentNullException( "mediaType" );
             }
 
             ActionName = String.Empty;
             ControllerName = String.Empty;
             MediaType = mediaType;
-            ParameterNames = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            ParameterNames = new HashSet<string>( StringComparer.OrdinalIgnoreCase );
         }
 
         /// <summary>
@@ -32,12 +30,10 @@ namespace TopShelfCustomer.Api.Areas.HelpPage
         /// </summary>
         /// <param name="mediaType">The media type.</param>
         /// <param name="type">The CLR type.</param>
-        public HelpPageSampleKey(MediaTypeHeaderValue mediaType, Type type)
-            : this(mediaType)
-        {
-            if (type == null)
-            {
-                throw new ArgumentNullException("type");
+        public HelpPageSampleKey ( MediaTypeHeaderValue mediaType, Type type )
+            : this( mediaType ) {
+            if ( type == null ) {
+                throw new ArgumentNullException( "type" );
             }
 
             ParameterType = type;
@@ -50,28 +46,23 @@ namespace TopShelfCustomer.Api.Areas.HelpPage
         /// <param name="controllerName">Name of the controller.</param>
         /// <param name="actionName">Name of the action.</param>
         /// <param name="parameterNames">The parameter names.</param>
-        public HelpPageSampleKey(SampleDirection sampleDirection, string controllerName, string actionName, IEnumerable<string> parameterNames)
-        {
-            if (!Enum.IsDefined(typeof(SampleDirection), sampleDirection))
-            {
-                throw new InvalidEnumArgumentException("sampleDirection", (int)sampleDirection, typeof(SampleDirection));
+        public HelpPageSampleKey ( SampleDirection sampleDirection, string controllerName, string actionName, IEnumerable<string> parameterNames ) {
+            if ( !Enum.IsDefined( typeof( SampleDirection ), sampleDirection ) ) {
+                throw new InvalidEnumArgumentException( "sampleDirection", (int)sampleDirection, typeof( SampleDirection ) );
             }
-            if (controllerName == null)
-            {
-                throw new ArgumentNullException("controllerName");
+            if ( controllerName == null ) {
+                throw new ArgumentNullException( "controllerName" );
             }
-            if (actionName == null)
-            {
-                throw new ArgumentNullException("actionName");
+            if ( actionName == null ) {
+                throw new ArgumentNullException( "actionName" );
             }
-            if (parameterNames == null)
-            {
-                throw new ArgumentNullException("parameterNames");
+            if ( parameterNames == null ) {
+                throw new ArgumentNullException( "parameterNames" );
             }
 
             ControllerName = controllerName;
             ActionName = actionName;
-            ParameterNames = new HashSet<string>(parameterNames, StringComparer.OrdinalIgnoreCase);
+            ParameterNames = new HashSet<string>( parameterNames, StringComparer.OrdinalIgnoreCase );
             SampleDirection = sampleDirection;
         }
 
@@ -83,12 +74,10 @@ namespace TopShelfCustomer.Api.Areas.HelpPage
         /// <param name="controllerName">Name of the controller.</param>
         /// <param name="actionName">Name of the action.</param>
         /// <param name="parameterNames">The parameter names.</param>
-        public HelpPageSampleKey(MediaTypeHeaderValue mediaType, SampleDirection sampleDirection, string controllerName, string actionName, IEnumerable<string> parameterNames)
-            : this(sampleDirection, controllerName, actionName, parameterNames)
-        {
-            if (mediaType == null)
-            {
-                throw new ArgumentNullException("mediaType");
+        public HelpPageSampleKey ( MediaTypeHeaderValue mediaType, SampleDirection sampleDirection, string controllerName, string actionName, IEnumerable<string> parameterNames )
+            : this( sampleDirection, controllerName, actionName, parameterNames ) {
+            if ( mediaType == null ) {
+                throw new ArgumentNullException( "mediaType" );
             }
 
             MediaType = mediaType;
@@ -130,39 +119,32 @@ namespace TopShelfCustomer.Api.Areas.HelpPage
         /// </summary>
         public SampleDirection? SampleDirection { get; private set; }
 
-        public override bool Equals(object obj)
-        {
+        public override bool Equals ( object obj ) {
             HelpPageSampleKey otherKey = obj as HelpPageSampleKey;
-            if (otherKey == null)
-            {
+            if ( otherKey == null ) {
                 return false;
             }
 
-            return String.Equals(ControllerName, otherKey.ControllerName, StringComparison.OrdinalIgnoreCase) &&
-                String.Equals(ActionName, otherKey.ActionName, StringComparison.OrdinalIgnoreCase) &&
-                (MediaType == otherKey.MediaType || (MediaType != null && MediaType.Equals(otherKey.MediaType))) &&
+            return String.Equals( ControllerName, otherKey.ControllerName, StringComparison.OrdinalIgnoreCase ) &&
+                String.Equals( ActionName, otherKey.ActionName, StringComparison.OrdinalIgnoreCase ) &&
+                ( MediaType == otherKey.MediaType || ( MediaType != null && MediaType.Equals( otherKey.MediaType ) ) ) &&
                 ParameterType == otherKey.ParameterType &&
                 SampleDirection == otherKey.SampleDirection &&
-                ParameterNames.SetEquals(otherKey.ParameterNames);
+                ParameterNames.SetEquals( otherKey.ParameterNames );
         }
 
-        public override int GetHashCode()
-        {
+        public override int GetHashCode () {
             int hashCode = ControllerName.ToUpperInvariant().GetHashCode() ^ ActionName.ToUpperInvariant().GetHashCode();
-            if (MediaType != null)
-            {
+            if ( MediaType != null ) {
                 hashCode ^= MediaType.GetHashCode();
             }
-            if (SampleDirection != null)
-            {
+            if ( SampleDirection != null ) {
                 hashCode ^= SampleDirection.GetHashCode();
             }
-            if (ParameterType != null)
-            {
+            if ( ParameterType != null ) {
                 hashCode ^= ParameterType.GetHashCode();
             }
-            foreach (string parameterName in ParameterNames)
-            {
+            foreach ( string parameterName in ParameterNames ) {
                 hashCode ^= parameterName.ToUpperInvariant().GetHashCode();
             }
 

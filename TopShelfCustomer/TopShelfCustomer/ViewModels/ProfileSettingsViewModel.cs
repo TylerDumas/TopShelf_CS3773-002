@@ -1,8 +1,8 @@
 ﻿using System.Windows.Input;
-using TopShelfCustomer.Views;
 using TopShelfCustomer.Models;
-using Xamarin.Forms;
 using TopShelfCustomer.Services;
+using TopShelfCustomer.Views;
+using Xamarin.Forms;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -13,6 +13,7 @@ namespace TopShelfCustomer.ViewModels {
         public User CurrentUser { get; set; }           //The currently logged in User
 
         private string userRealName;            //String to define the User's real name. (Bound to Text fields)
+
         public string UserRealName {
             get {
                 return userRealName;
@@ -24,6 +25,7 @@ namespace TopShelfCustomer.ViewModels {
         }
 
         private string userEmail;       //The User's "Email address"
+
         public string UserEmail {
             get {
                 return userEmail;
@@ -33,7 +35,9 @@ namespace TopShelfCustomer.ViewModels {
                 OnPropertyChanged( "UserEmail" );
             }
         }
+
         private string userAddress;       //The User's "Street address"
+
         public string UserAddress {
             get {
                 return userAddress;
@@ -45,6 +49,7 @@ namespace TopShelfCustomer.ViewModels {
         }
 
         private string phoneNumber;       //The User's Phone Number
+
         public string PhoneNumber {
             get {
                 return phoneNumber;
@@ -56,6 +61,7 @@ namespace TopShelfCustomer.ViewModels {
         }
 
         private int userZipCode;       //The User's Zip Code
+
         public int UserZipCode {
             get {
                 return userZipCode;
@@ -69,12 +75,12 @@ namespace TopShelfCustomer.ViewModels {
         /* Commands */
         public ICommand NavigateBackCommand { get; set; }
 
-        #endregion
+        #endregion Properties
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public ProfileSettingsViewModel() {
+        public ProfileSettingsViewModel () {
             Title = "Profile Settings";
 
             /* Initialize Bindable Properties from the global User */

@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Threading.Tasks;
 using System.Windows.Input;
 using TopShelfCustomer.Models;
+using TopShelfCustomer.Services;
 using TopShelfCustomer.Views;
 using Xamarin.Forms;
-using TopShelfCustomer.Services;
-using System.Threading.Tasks;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -27,14 +27,16 @@ namespace TopShelfCustomer.ViewModels {
         public ICommand NavigateBackCommand { get; }            //Command for "back" button
         public ICommand CheckoutCommand { get; }        //Command for the "Checkout" Button
 
-        #endregion      
+        #endregion Properties
+
+
 
         #region Class Methods
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public ShopViewModel() {
+        public ShopViewModel () {
             InitializeStore();      //Initialize the bindable properties
 
             NavigateBackCommand = new Command( () => App.SetCurrentPage<HomePage>() );      //Initialize "Back Button" Command
@@ -46,7 +48,7 @@ namespace TopShelfCustomer.ViewModels {
         ///
         /// Handles all logic to be executed when the "Checkout" button is clicked
         /// </summary>
-        private void Checkout() {
+        private void Checkout () {
             //TODO: Implement Checkout
             Debug.WriteLine( "Pressed the Checkout Button" );
         }
@@ -57,19 +59,19 @@ namespace TopShelfCustomer.ViewModels {
         /// Sets all bindable properties for the ShopView.
         /// Also calls the API to fetch the store/product data.
         /// </summary>
-        async Task InitializeStore() {
+        private async Task InitializeStore () {
             ApiHelper api = new ApiHelper();
             var productsList = await api.GetAsync<List<Product>>( "Store/GetAllProducts" );     //FIXME: correct endpoint
-            if( UserContainer.CurrentUser.StoreName == "" ) {       //Check if the User has a default Store
+            if ( UserContainer.CurrentUser.StoreName == "" ) {       //Check if the User has a default Store
                 Debug.WriteLine( "Error: could not find default store" );
                 App.SetNewPage<ChooseStoreView>();
             }
             SelectedStoreName = UserContainer.CurrentUser.StoreName;        //Set the Header "Store Name" label
-            foreach ( Product product in  productsList ) {       //Add all products in the returned list to the bindable list
+            foreach ( Product product in productsList ) {       //Add all products in the returned list to the bindable list
                 ShopInventory.Add( product );
             }
         }
 
-        #endregion
+        #endregion Class Methods
     }
 }

@@ -11,7 +11,7 @@ namespace TopShelfCustomer.Api.Services {
     /// Implements RESTful Api calls to communicate with the database
     /// and return the correct Product model objects.
     /// </summary>
-    public class ProductData {
+    public sealed class ProductData {
 
         /// <summary>
         /// GetProductById:

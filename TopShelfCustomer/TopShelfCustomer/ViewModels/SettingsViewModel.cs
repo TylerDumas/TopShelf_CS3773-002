@@ -1,14 +1,12 @@
-﻿using System;
-using System.Windows.Input;
-using System.Diagnostics;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.ComponentModel;
 using System.Reflection;
-using TopShelfCustomer.Views;
+using System.Windows.Input;
 using TopShelfCustomer.Models;
 using TopShelfCustomer.Services;
+using TopShelfCustomer.Views;
 using Xamarin.Forms;
-using Xamarin.Essentials;
-using Newtonsoft.Json.Linq;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -22,9 +20,10 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Properties
 
-        JObject jsonObject = new JObject();     //Re-usable JSON object
+        private JObject jsonObject = new JObject();     //Re-usable JSON object
 
         private string userRealName;            //String to define the User's name. (Bound to Text fields)
+
         public string UserRealName {
             get => userRealName;
             set {
@@ -34,6 +33,7 @@ namespace TopShelfCustomer.ViewModels {
         }
 
         private bool isReceiptSwitchToggled;     //Bool to define whether the "save receipts" setting is toggled
+
         public bool IsReceiptSwitchToggled {
             get => isReceiptSwitchToggled;
             set {
@@ -44,6 +44,7 @@ namespace TopShelfCustomer.ViewModels {
         }
 
         private bool isLinkSwitchToggled;       //Bool to define whether the "external links" setting is toggled
+
         public bool IsLinkSwitchToggled {
             get => isLinkSwitchToggled;
             set {
@@ -61,14 +62,14 @@ namespace TopShelfCustomer.ViewModels {
         public ICommand OpenLicenseViewCommand { get; }       //Command to open the End-User agreement
         public ICommand LogoutUserCommand { get; }      //Command to log out the current User
 
-        #endregion
+        #endregion Properties
 
         #region Class Methods
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public SettingsViewModel() {
+        public SettingsViewModel () {
             Title = "Settings";         //Set the View title
             userRealName = UserContainer.CurrentUser.FullName;     //FIXME: implement a global user class
             InitializeBindableProperties();       //Initialize the properties seen on the UI
@@ -77,7 +78,7 @@ namespace TopShelfCustomer.ViewModels {
             NavigateBackCommand = new Command( () => App.SetNewPage<HomePage>() );
             OpenProfileViewCommand = new Command( () => App.SetCurrentPage<ProfileSettingsPage>() );
             OpenNotificationsViewCommand = new Command( () => App.SetCurrentPage<NotificationsSettingsPage>() );
-            OpenAboutViewCommand = new Command( () => App.SetCurrentPage<AboutPage>() ) ;
+            OpenAboutViewCommand = new Command( () => App.SetCurrentPage<AboutPage>() );
             OpenLicenseViewCommand = new Command( () => App.SetCurrentPage<LicenseView>() );
             LogoutUserCommand = new Command( () => App.ClearAppData() );
         }
@@ -91,7 +92,7 @@ namespace TopShelfCustomer.ViewModels {
         /// </summary>
         /// <param name="settingProperty"> The name of the property to set on userSettings </param>
         /// <param name="value"> The bool value to assign the property </param>
-        void ToggleSwitchSetting( string settingProperty, bool value ) {
+        private void ToggleSwitchSetting ( string settingProperty, bool value ) {
             Type objectType = SettingsContainer.CurrentUserSettings.GetType();      //Get the Type of both userSettings
             PropertyInfo objectPropertyInfo = objectType.GetProperty( settingProperty );        //Get the property to set from UserSettings
 
@@ -110,11 +111,11 @@ namespace TopShelfCustomer.ViewModels {
         /// It is used to set the values of the bindable properties
         /// used in the view.
         /// </summary>
-        void InitializeBindableProperties() {
+        private void InitializeBindableProperties () {
             isReceiptSwitchToggled = SettingsContainer.CurrentUserSettings.SaveReceiptsSetting;
             isLinkSwitchToggled = SettingsContainer.CurrentUserSettings.AllowExternalLinks;
         }
 
-        #endregion
+        #endregion Class Methods
     }
 }

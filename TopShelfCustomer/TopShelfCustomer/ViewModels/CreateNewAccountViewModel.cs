@@ -1,9 +1,9 @@
-﻿using System.Windows.Input;
+﻿using System.ComponentModel;
 using System.Diagnostics;
+using System.Windows.Input;
+using TopShelfCustomer.Services;
 using TopShelfCustomer.Views;
 using Xamarin.Forms;
-using System.ComponentModel;
-using TopShelfCustomer.Services;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -17,7 +17,7 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Properties
 
-        IFirebaseAuthenticator auth;        //Firebase Authenticator to be resolved for each platform
+        private IFirebaseAuthenticator auth;        //Firebase Authenticator to be resolved for each platform
 
         public string UserRealNameInput { get; set; }       //Entry Text Properties
         public string EmailInput { get; set; }
@@ -25,6 +25,7 @@ namespace TopShelfCustomer.ViewModels {
         public string PasswordInput { get; set; }
 
         private string creationErrorMessage = "Failed to Create Account";       //Dynamic Error message text
+
         public string CreationErrorMessage {
             get {
                 return creationErrorMessage;
@@ -34,8 +35,9 @@ namespace TopShelfCustomer.ViewModels {
                 OnPropertyChanged( "CreationErrorMessage" );
             }
         }
-        
+
         private bool isErrorOnCreation;       //Bool to trigger "invalid input" error message
+
         public bool IsErrorOnCreation {
             get {
                 return isErrorOnCreation;
@@ -49,14 +51,14 @@ namespace TopShelfCustomer.ViewModels {
         public ICommand NavigateBackCommand { get; }       //Command to go back to the Log in screen
         public ICommand ConfirmNewAccountCommand { get; }      //Command to confirm new account
 
-        #endregion
+        #endregion Properties
 
         #region Class Methods
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public CreateNewAccountViewModel() {
+        public CreateNewAccountViewModel () {
             Title = "Create New Account";
 
             auth = DependencyService.Resolve<IFirebaseAuthenticator>();     //Fetch platform-specific Firebase Authentication implementation
@@ -70,10 +72,10 @@ namespace TopShelfCustomer.ViewModels {
         ///
         /// Uses platform-specific implementation of Firebase to create/register a new account
         /// </summary>
-        async void ConfirmNewAccount() {
-            if( EmailInput != "" && PasswordInput != "" ) {     //Check if Email and Password are valid
+        private async void ConfirmNewAccount () {
+            if ( EmailInput != "" && PasswordInput != "" ) {     //Check if Email and Password are valid
                 var success = await auth.RegisterWithEmailPassword( EmailInput, PasswordInput );
-                if( success != "" ) {
+                if ( success != "" ) {
                     Debug.WriteLine( "Successfully created your account" );
                     App.SetNewPage<LoginPage>();
                 } else {
@@ -85,9 +87,8 @@ namespace TopShelfCustomer.ViewModels {
                 CreationErrorMessage = "Invalid E-mail or Password";
                 IsErrorOnCreation = true;
             }
-            
         }
 
-        #endregion
+        #endregion Class Methods
     }
 }

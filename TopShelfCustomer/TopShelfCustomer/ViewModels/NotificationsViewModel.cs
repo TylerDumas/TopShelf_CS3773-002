@@ -1,13 +1,11 @@
-﻿using System;
-using System.Windows.Input;
-using System.Diagnostics;
-using TopShelfCustomer.Views;
-using TopShelfCustomer.Models;
-using Xamarin.Forms;
-using System.ComponentModel;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Reflection;
+using System.Windows.Input;
+using TopShelfCustomer.Models;
 using TopShelfCustomer.Services;
-using Newtonsoft.Json.Linq;
+using TopShelfCustomer.Views;
+using Xamarin.Forms;
 
 namespace TopShelfCustomer.ViewModels {
 
@@ -21,9 +19,10 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Properties
 
-        JObject jsonObject = new JObject();     //Reusable JSON object
+        private JObject jsonObject = new JObject();     //Reusable JSON object
 
         private bool isCouponPushSwitchToggled;     //Bool to define whether the "Coupon Push Notifications" setting is toggled
+
         public bool IsCouponPushSwitchToggled {
             get => isCouponEmailSwitchToggled;
             set {
@@ -32,7 +31,9 @@ namespace TopShelfCustomer.ViewModels {
                 OnPropertyChanged( "IsCouponPushSwitchToggled" );
             }
         }
+
         private bool isCouponEmailSwitchToggled;     //Bool to define whether the "Coupon Email Notifications" setting is toggled
+
         public bool IsCouponEmailSwitchToggled {
             get => isCouponEmailSwitchToggled;
             set {
@@ -41,7 +42,9 @@ namespace TopShelfCustomer.ViewModels {
                 OnPropertyChanged( "IsCouponEmailSwitchToggled" );
             }
         }
+
         private bool isOrderPushSwitchToggled;     //Bool to define whether the "Order Push Notifications" setting is toggled
+
         public bool IsOrderPushSwitchToggled {
             get => isOrderPushSwitchToggled;
             set {
@@ -50,7 +53,9 @@ namespace TopShelfCustomer.ViewModels {
                 OnPropertyChanged( "IsOrderPushSwitchToggled" );
             }
         }
+
         private bool isOrderEmailSwitchToggled;     //Bool to define whether the "Order Email Notifications" setting is toggled
+
         public bool IsOrderEmailSwitchToggled {
             get => isCouponEmailSwitchToggled;
             set {
@@ -63,16 +68,16 @@ namespace TopShelfCustomer.ViewModels {
         /* Commands */
         public ICommand NavigateBackCommand { get; set; }
 
-        #endregion
+        #endregion Properties
 
         #region Class Methods
 
         /// <summary>
         /// Constructor
         /// </summary>
-        public NotificationsViewModel() {
+        public NotificationsViewModel () {
             Title = "Notifications View";       //Set the title for this view
-             
+
             InitializeBindableProperties();     //Initialize the properties visible in the UI
 
             /* Command Initialization */
@@ -88,7 +93,7 @@ namespace TopShelfCustomer.ViewModels {
         /// </summary>
         /// <param name="settingProperty"> The name of the property to set on userSettings </param>
         /// <param name="value"> The bool value to assign the property </param>
-        void ToggleSwitchSetting( string settingProperty, bool value ) {
+        private void ToggleSwitchSetting ( string settingProperty, bool value ) {
             string currentUserSettingPath = SettingsContainer.SettingsFilePath + UserContainer.CurrentUser.Id;
             Type objectType = SettingsContainer.CurrentUserSettings.GetType();      //Get the Type of both userSettings
             PropertyInfo objectPropertyInfo = objectType.GetProperty( settingProperty );        //Get the property to set from UserSettings
@@ -107,13 +112,13 @@ namespace TopShelfCustomer.ViewModels {
         /// Sets the bindable properties in this view to the global
         /// user settings. Used to initialize the values of the settings in this view.
         /// </summary>
-        void InitializeBindableProperties() {
+        private void InitializeBindableProperties () {
             isCouponPushSwitchToggled = SettingsContainer.CurrentUserSettings.CouponPushNotifications;
             isCouponEmailSwitchToggled = SettingsContainer.CurrentUserSettings.CouponEmailNotifications;
             isOrderPushSwitchToggled = SettingsContainer.CurrentUserSettings.OrderPushNotifications;
             isOrderEmailSwitchToggled = SettingsContainer.CurrentUserSettings.OrderEmailNotifications;
         }
 
-        #endregion
+        #endregion Class Methods
     }
 }

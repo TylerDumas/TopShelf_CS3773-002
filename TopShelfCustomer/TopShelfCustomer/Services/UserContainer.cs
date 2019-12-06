@@ -1,5 +1,4 @@
-﻿using System;
-using TopShelfCustomer.Models;
+﻿using TopShelfCustomer.Models;
 
 namespace TopShelfCustomer.Services {
 
@@ -11,8 +10,6 @@ namespace TopShelfCustomer.Services {
     /// User.
     /// </summary>
     public static class UserContainer {
-
         public static User CurrentUser { get; set; }        //Global User property
-
     }
 }

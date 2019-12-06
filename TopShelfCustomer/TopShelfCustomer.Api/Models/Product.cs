@@ -7,7 +7,7 @@
     /// be purchased from a store. This class
     /// will be stored in the database.
     /// </summary>
-    public class Product {
+    public sealed class Product {
 
         /// <summary>
         /// Id: The unique identifier for this product.

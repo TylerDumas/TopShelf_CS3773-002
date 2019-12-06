@@ -7,7 +7,7 @@
     /// All API requests to the /api/User endpoint
     /// will return this as a JSON string object.
     /// </summary>
-    public class User {
+    public sealed class User {
 
         /// <summary>
         /// Id: The unique id number for the User.

@@ -3,7 +3,7 @@
              x:Class="TopShelfCustomer.Views.ProfileSettingsPage" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels"
              Title="{Binding Title}" BackgroundColor="{StaticResource Medium}">
     <ContentPage.BindingContext>
-        <vm:ProfileSettingsViewModel/>
+        <vm:ProfileSettingsViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
@@ -15,42 +15,42 @@
             </Grid.RowDefinitions>
 
             <!-- Profile Info Header -->
-            <ContentView Padding="0, 40, 0, 30" >
+            <ContentView Padding="0, 40, 0, 30">
                 <StackLayout>
                     <!-- Back Button -->
                     <Frame HorizontalOptions="Start" WidthRequest="50" Padding="0"
                            Margin="10,0,0,0" CornerRadius="42">
-                        <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" 
-                                     BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit"/>
+                        <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}"
+                                     BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit" />
                     </Frame>
                     <!-- Name and Portrait -->
                     <StackLayout Orientation="Vertical" Margin="20, 0, 20, 0" Grid.Row="0">
                         <!-- Profile Picture -->
                         <Frame HorizontalOptions="Center" CornerRadius="37" WidthRequest="60" HasShadow="True" Padding="10">
-                            <Image Source="profile_icon.png" Aspect="AspectFit"/>
+                            <Image Source="profile_icon.png" Aspect="AspectFit" />
                         </Frame>
                         <!-- User Name -->
                         <Label Text="{Binding UserRealName}"
                                HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource NormalFont}"
-                               VerticalOptions="Center" FontSize="26" TextColor="{StaticResource LightTextColor}"/>
+                               VerticalOptions="Center" FontSize="26" TextColor="{StaticResource LightTextColor}" />
                     </StackLayout>
                 </StackLayout>
             </ContentView>
 
             <!-- Profile Settings Scroll View -->
             <ScrollView Grid.Row="1">
-                <ContentView Padding="0, 10, 0, 0" >
+                <ContentView Padding="0, 10, 0, 0">
                     <StackLayout Orientation="Vertical">
                         <!-- Header Label -->
                         <Label Text="Profile Settings" FontSize="28" TextColor="White" FontFamily="{StaticResource NormalFont}"
                                HorizontalOptions="Center" VerticalOptions="Fill"
-                               HeightRequest="40" Margin="0, 10, 0, 40"/>
+                               HeightRequest="40" Margin="0, 10, 0, 40" />
 
                         <!-- Edit Full Name Setting -->
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0,0,20" >
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0,0,20">
                             <Label Text="Name" FontSize="17" TextColor="{StaticResource LightTextColor}" FontFamily="{StaticResource NormalFont}"
                                    VerticalTextAlignment="Center" HeightRequest="40"
-                                   HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
+                                   HorizontalOptions="StartAndExpand" Margin="20,0,0,0" />
                             <Entry Text="{Binding UserRealName}" IsReadOnly="True" HorizontalOptions="EndAndExpand" FontFamily="{StaticResource NormalFont}"
                                    HeightRequest="46" WidthRequest="200" Margin="10,0,40,0" FontSize="15"
                                    TextColor="Gray" BackgroundColor="{StaticResource Lightest}" />
@@ -60,7 +60,7 @@
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0,0,20">
                             <Label Text="E-mail" FontSize="17" TextColor="{StaticResource LightTextColor}" FontFamily="{StaticResource NormalFont}"
                                    VerticalTextAlignment="Center" HeightRequest="40"
-                                   HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
+                                   HorizontalOptions="StartAndExpand" Margin="20,0,0,0" />
                             <Entry Text="{Binding UserEmail}" IsReadOnly="True" HorizontalOptions="EndAndExpand"
                                    HeightRequest="46" WidthRequest="200" FontFamily="{StaticResource NormalFont}" FontSize="15"
                                    Margin="10,0,40,0" TextColor="Gray" BackgroundColor="{StaticResource Lightest}" />
@@ -70,7 +70,7 @@
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0,0,20">
                             <Label Text="Phone Number" FontSize="17" TextColor="{StaticResource LightTextColor}" FontFamily="{StaticResource NormalFont}"
                                    VerticalTextAlignment="Center" HeightRequest="40"
-                                   HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
+                                   HorizontalOptions="StartAndExpand" Margin="20,0,0,0" />
                             <Entry Text="{Binding PhoneNumber}" IsReadOnly="True" HorizontalOptions="EndAndExpand" Keyboard="Telephone"
                                    HeightRequest="46" WidthRequest="200" FontFamily="{StaticResource NormalFont}" FontSize="15"
                                    Margin="10,0,40,0" TextColor="Gray" BackgroundColor="{StaticResource Lightest}" />
@@ -80,7 +80,7 @@
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0,0,20">
                             <Label Text="Street Address" FontSize="17" TextColor="White" FontFamily="{StaticResource NormalFont}"
                                    VerticalTextAlignment="Center" HeightRequest="40"
-                                   HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
+                                   HorizontalOptions="StartAndExpand" Margin="20,0,0,0" />
                             <Entry Text="{Binding UserAddress}" IsReadOnly="True" HorizontalOptions="EndAndExpand"
                                    HeightRequest="46" WidthRequest="200" FontFamily="{StaticResource NormalFont}" FontSize="15"
                                    Margin="10,0,40,0" TextColor="Gray" BackgroundColor="{StaticResource Lightest}" />
@@ -90,7 +90,7 @@
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Margin="20,0,0,20">
                             <Label Text="Zip Code" FontSize="17" TextColor="{StaticResource LightTextColor}" FontFamily="{StaticResource NormalFont}"
                                    VerticalTextAlignment="Center" HeightRequest="40"
-                                   HorizontalOptions="StartAndExpand" Margin="20,0,0,0"/>
+                                   HorizontalOptions="StartAndExpand" Margin="20,0,0,0" />
                             <Entry Text="{Binding UserZipCode}" IsReadOnly="True" HorizontalOptions="EndAndExpand" Keyboard="Numeric"
                                    HeightRequest="46" WidthRequest="160" FontFamily="{StaticResource NormalFont}" FontSize="15"
                                    Margin="10,0,40,0" TextColor="Gray" BackgroundColor="{StaticResource Lightest}" />

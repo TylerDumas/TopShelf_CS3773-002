@@ -3,7 +3,7 @@
              x:Class="TopShelfCustomer.Views.CreateNewAccountView" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels"
              Title="{Binding Title}" BackgroundColor="{StaticResource Medium}">
     <ContentPage.BindingContext>
-        <vm:CreateNewAccountViewModel/>
+        <vm:CreateNewAccountViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
@@ -18,16 +18,16 @@
 
             <!-- Header (Label, App Icon, etc.) -->
             <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                     Grid.Row="0" Padding="0, 40, 0, 40" >
+                     Grid.Row="0" Padding="0, 40, 0, 40">
                 <StackLayout Orientation="Vertical">
                     <!-- Back Button -->
                     <Frame HorizontalOptions="Start" WidthRequest="50" Padding="0"
                            Margin="10,0,0,0" CornerRadius="42">
                         <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}"
-                                     BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit"/>
+                                     BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit" />
                     </Frame>
                     <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
-                        <Image Source="TopShelfAppLogo.png" HeightRequest="60"/>
+                        <Image Source="TopShelfAppLogo.png" HeightRequest="60" />
                         <Label Text="TopShelf" FontSize="30" FontFamily="{StaticResource MediumFont}" VerticalTextAlignment="Center" TextColor="White" />
                     </StackLayout>
                 </StackLayout>
@@ -37,54 +37,52 @@
 
                 <!-- Title Label -->
                 <Label Text="Create a New Account" FontSize="26" FontFamily="{StaticResource NormalFont}"
-                        TextColor="White" HorizontalOptions="Center" Margin="0, 0, 0, 10"/>                     
-                        
+                        TextColor="White" HorizontalOptions="Center" Margin="0, 0, 0, 10" />
+
                 <!-- Email -->
                 <Entry Placeholder="E-mail" FontSize="16" HeightRequest="40"
                        Margin="60, 0, 60, 0" IsTabStop="True"
                        Text="{Binding EmailInput, Mode=TwoWay}" FontFamily="{StaticResource NormalFont}"
-                       BackgroundColor="{StaticResource Lightest}" PlaceholderColor="Gray"/>
+                       BackgroundColor="{StaticResource Lightest}" PlaceholderColor="Gray" />
 
                 <!-- Password -->
                 <Entry Placeholder="Password" IsPassword="True" WidthRequest="260"
                        HeightRequest="40" Margin="60, 0, 60, 10"
                        Text="{Binding PasswordInput, Mode=TwoWay}" FontFamily="{StaticResource NormalFont}"
-                       FontSize="16" BackgroundColor="{StaticResource Lightest}" PlaceholderColor="Gray"/>
+                       FontSize="16" BackgroundColor="{StaticResource Lightest}" PlaceholderColor="Gray" />
 
                 <!-- Personal Info Label -->
                 <Label Text="Personal Information" FontSize="18" FontFamily="{StaticResource NormalFont}"
-                        TextColor="White" HorizontalOptions="Center"/>
+                        TextColor="White" HorizontalOptions="Center" />
 
                 <!-- Full Name -->
                 <Entry Placeholder="Full Name" FontSize="16" HeightRequest="40"
                        Margin="60, 0, 60, 0" IsTabStop="True"
                        Text="{Binding UserRealNameInput, Mode=TwoWay}" FontFamily="{StaticResource NormalFont}"
-                       BackgroundColor="{StaticResource Lightest}" PlaceholderColor="Gray"/>
+                       BackgroundColor="{StaticResource Lightest}" PlaceholderColor="Gray" />
 
                 <!-- Address -->
                 <Entry Placeholder="Street Address" FontSize="16" HeightRequest="40"
                        Margin="60, 0, 60, 0" IsTabStop="True" FontFamily="{StaticResource NormalFont}"
                        Text="{Binding AddressInput, Mode=TwoWay}" PlaceholderColor="Gray"
-                       BackgroundColor="{StaticResource Lightest}"/>
+                       BackgroundColor="{StaticResource Lightest}" />
 
                 <!-- Zip Code -->
                 <Entry Placeholder="Zip Code" FontSize="16" WidthRequest="220" Keyboard="Numeric"
                        Margin="100, 0, 100, 0" IsTabStop="True"
                        Text="{Binding AddressInput, Mode=TwoWay}" FontFamily="{StaticResource NormalFont}"
-                       BackgroundColor="{StaticResource Lightest}" PlaceholderColor="Gray" HeightRequest="40"/>
+                       BackgroundColor="{StaticResource Lightest}" PlaceholderColor="Gray" HeightRequest="40" />
 
                 <!-- Error Message -->
                 <Label Text="{Binding CreationErrorMessage}" FontSize="20" TextColor="Red" FontFamily="{StaticResource MediumFont}"
-                       IsVisible="{Binding IsErrorOnCreation}" HorizontalOptions="Center"/>
-
-                        
+                       IsVisible="{Binding IsErrorOnCreation}" HorizontalOptions="Center" />
             </StackLayout>
 
             <!-- Create Account Button -->
             <ContentView Margin="0, 0, 0, 40" Grid.Row="2">
                 <Button Command="{Binding ConfirmNewAccountCommand}" BackgroundColor="{StaticResource Light}" Text="Create Account"
                         FontSize="20" TextColor="{StaticResource Darkest}" HeightRequest="60" FontFamily="{StaticResource MediumFont}"
-                        Margin="40,0,40,30" BorderColor="Black" BorderWidth="2"/>
+                        Margin="40,0,40,30" BorderColor="Black" BorderWidth="2" />
             </ContentView>
         </Grid>
     </ContentPage.Content>

@@ -3,7 +3,7 @@
              x:Class="TopShelfCustomer.Views.SettingsPage" xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels"
              Title="{Binding Title}" BackgroundColor="{StaticResource Medium}">
     <ContentPage.BindingContext>
-        <vm:SettingsViewModel/>
+        <vm:SettingsViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
@@ -15,24 +15,24 @@
             </Grid.RowDefinitions>
 
             <!-- Profile Info Header -->
-            <ContentView Padding="0, 40, 0, 30" >
+            <ContentView Padding="0, 40, 0, 30">
                 <StackLayout>
                     <!-- Back Button -->
                     <Frame HorizontalOptions="Start" WidthRequest="50" Padding="0"
                            Margin="10,0,0,0" CornerRadius="42">
-                        <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" 
-                                     BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit"/>
+                        <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}"
+                                     BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit" />
                     </Frame>
                     <!-- Name and Portrait -->
                     <StackLayout Orientation="Vertical" Margin="20, 0, 20, 0" Grid.Row="0">
                         <!-- Profile Picture -->
                         <Frame HorizontalOptions="Center" CornerRadius="37" WidthRequest="60" HasShadow="True" Padding="10">
-                            <Image Source="profile_icon.png" Aspect="AspectFit"/>
+                            <Image Source="profile_icon.png" Aspect="AspectFit" />
                         </Frame>
                         <!-- User Name -->
                         <Label Text="{Binding UserRealName}" Margin="0, 10, 0, 0"
                                HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource NormalFont}"
-                               VerticalOptions="Center" FontSize="26" TextColor="White"/>
+                               VerticalOptions="Center" FontSize="26" TextColor="White" />
                     </StackLayout>
                 </StackLayout>
             </ContentView>
@@ -43,22 +43,22 @@
 
                         <!-- Header Label -->
                         <Label Text="Settings" FontSize="28" TextColor="White" FontFamily="{StaticResource NormalFont}"
-                               HorizontalOptions="Center" VerticalOptions="Fill" HeightRequest="40"/>
+                               HorizontalOptions="Center" VerticalOptions="Fill" HeightRequest="40" />
 
                         <!-- Reciept Saving Setting -->
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="30">
                             <Label Text="Save receipts to your device?" HorizontalOptions="StartAndExpand" FontFamily="{StaticResource NormalFont}"
-                                   Margin="30,20,0,0" FontSize="17" TextColor="White" VerticalOptions="Center"/>
+                                   Margin="30,20,0,0" FontSize="17" TextColor="White" VerticalOptions="Center" />
                             <Switch IsToggled="{Binding IsReceiptSwitchToggled}" HorizontalOptions="EndAndExpand"
-                                    Margin="0,20,40,0" OnColor="{StaticResource LightTextColor}" ThumbColor="{StaticResource Darkest}"/>
+                                    Margin="0,20,40,0" OnColor="{StaticResource LightTextColor}" ThumbColor="{StaticResource Darkest}" />
                         </StackLayout>
 
                         <!-- External Links Setting -->
                         <StackLayout Orientation="Horizontal" HorizontalOptions="FillAndExpand" Spacing="30" Padding="0,20,0,30">
                             <Label Text="Open external links?" FontSize="17" FontFamily="{StaticResource NormalFont}"
-                                   TextColor="White" HorizontalOptions="StartAndExpand" Margin="30,0,0,0" VerticalOptions="Center"/>
+                                   TextColor="White" HorizontalOptions="StartAndExpand" Margin="30,0,0,0" VerticalOptions="Center" />
                             <Switch IsToggled="{Binding IsLinkSwitchToggled}" HorizontalOptions="EndAndExpand"
-                                    Margin="0,0,40,0" OnColor="{StaticResource LightTextColor}" ThumbColor="{StaticResource Darkest}"/>
+                                    Margin="0,0,40,0" OnColor="{StaticResource LightTextColor}" ThumbColor="{StaticResource Darkest}" />
                         </StackLayout>
 
                         <!-- Profile Settings -->
@@ -80,14 +80,13 @@
                         <Button Command="{Binding OpenAboutViewCommand}" FontFamily="{StaticResource NormalFont}"
                             BackgroundColor="{StaticResource Light}" Text="About" BorderWidth="2"
                             BorderColor="Black" FontSize="22" TextColor="{StaticResource Darkest}" HeightRequest="50" />
-
                     </StackLayout>
                 </ContentView>
 
             <!-- Logout Button -->
             <Button Command="{Binding LogoutUserCommand}" Grid.Row="2" Margin="0,0,0,80" FontFamily="{StaticResource NormalFont}"
                 BackgroundColor="{StaticResource Light}" Text="Log Out" BorderWidth="3" HorizontalOptions="Center"
-                BorderColor="Black" FontSize="20" TextColor="{StaticResource Darkest}" HeightRequest="60" WidthRequest="260"/>
+                BorderColor="Black" FontSize="20" TextColor="{StaticResource Darkest}" HeightRequest="60" WidthRequest="260" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>
