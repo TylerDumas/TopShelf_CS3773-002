@@ -2,15 +2,14 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" x:Class="TopShelfCustomer.Views.OrderHistoryView"
              xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels" Title="{Binding Title}" BackgroundColor="{StaticResource Medium}">
     <ContentPage.BindingContext>
-        <vm:OrderHistoryViewModel />
+        <vm:OrderHistoryViewModel/>
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
-                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
 
             <!-- Back Button and Title Label -->
@@ -18,53 +17,73 @@
                 <!-- Back Button -->
                 <Frame HorizontalOptions="Start" WidthRequest="50" Padding="0"
                         Margin="10,0,0,0" CornerRadius="42">
-                    <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}"
-                                    BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit" />
+                    <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}" 
+                                    BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit"/>
                 </Frame>
                 <!-- Title Label -->
                 <Label Text="Your Past Orders" HorizontalOptions="CenterAndExpand" FontFamily="{StaticResource NormalFont}"
                        VerticalOptions="CenterAndExpand" Margin="0, 30, 0, 10" FontSize="28" TextColor="{StaticResource LightTextColor}" />
             </StackLayout>
 
-            <!-- Order Receipt List -->
-            <StackLayout Orientation="Vertical" Grid.Row="1" Margin="20, 0, 20, 20">
-                <!-- Order History List -->
-                <ListView ItemsSource="{Binding ReceiptList}" HasUnevenRows="True"
-                          BackgroundColor="{StaticResource Dark}" SeparatorVisibility="None">
+            <!-- Order History List -->
+            <ListView ItemsSource="{Binding ReceiptList}" HasUnevenRows="True" Grid.Row="1" Margin="20, 0, 20, 20"
+                        BackgroundColor="{StaticResource Dark}" SeparatorVisibility="None">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame BorderColor="{StaticResource Darkest}" HasShadow="True"
+                                    Margin="2, 5, 2, 0" BackgroundColor="{StaticResource Lightest}">
+                                <StackLayout>
 
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout HorizontalOptions="CenterAndExpand" Padding="0, 15, 0, 10">
                                     <!-- Store Name Text -->
                                     <Label Text="{Binding StoreName}" FontFamily="{StaticResource MediumFont}"
-                                            TextColor="{StaticResource LightTextColor}" FontSize="16" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
-                                    <StackLayout Orientation="Horizontal" Padding="10, 5, 10, 5" Spacing="20" HorizontalOptions="Center" VerticalOptions="Center">
-                                        <!-- Date Text -->
-                                        <Label Text="{Binding Date}" FontFamily="{StaticResource NormalFont}"
-                                                TextColor="{StaticResource LightTextColor}" FontSize="16" VerticalTextAlignment="Center" />
+                                            TextColor="{StaticResource Darkest}" FontSize="16" VerticalTextAlignment="Center" HorizontalTextAlignment="Center"/>
 
+                                    <!-- Date Text -->
+                                    <Label Text="{Binding Date}" FontFamily="{StaticResource NormalFont}" HorizontalTextAlignment="Center"
+                                            TextColor="{StaticResource Darkest}" FontSize="16" VerticalTextAlignment="Center" />
+
+                                    <StackLayout Orientation="Horizontal" Padding="10, 5, 10, 5" Spacing="10" HorizontalOptions="CenterAndExpand" VerticalOptions="Center">
+                                    
                                         <!-- Number of Items Text -->
                                         <StackLayout Orientation="Horizontal" Spacing="0">
-                                            <Label Text="# Items: " FontFamily="{StaticResource MediumFont}"
-                                                    TextColor="{StaticResource LightTextColor}" FontSize="14" VerticalTextAlignment="Center" />
-                                            <Label Text="{Binding NumItems}" FontFamily="{StaticResource NormalFont}"
-                                                    TextColor="White" FontSize="16" />
+                                            <Label Text="{Binding NumItems}" FontFamily="{StaticResource MediumFont}"
+                                                    TextColor="{StaticResource Darkest}" FontSize="16" />
+                                            <Label Text=" items" FontFamily="{StaticResource NormalFont}"
+                                                    TextColor="{StaticResource Darkest}" FontSize="14" VerticalTextAlignment="Center"/>
                                         </StackLayout>
-                                        <!-- Order Total Price Text -->
+
+                                        <!-- Order Price Text -->
                                         <StackLayout Orientation="Horizontal" Spacing="0">
                                             <Label Text="Total: $" FontFamily="{StaticResource MediumFont}"
-                                                    TextColor="{StaticResource LightTextColor}" FontSize="14" VerticalTextAlignment="Center" />
-                                            <Label Text="{Binding Prie}" FontFamily="{StaticResource NormalFont}"
-                                                    TextColor="{StaticResource LightTextColor}" FontSize="16" VerticalTextAlignment="Center" />
+                                                    TextColor="{StaticResource Darkest}" FontSize="14" VerticalTextAlignment="Center"/>
+                                            <Label Text="{Binding Price}" FontFamily="{StaticResource NormalFont}"
+                                                    TextColor="{StaticResource Darkest}" FontSize="16" VerticalTextAlignment="Center"/>
+                                        </StackLayout>
+
+                                        <!-- Payment Method Text -->
+                                        <StackLayout Orientation="Horizontal" Spacing="0">
+                                            <Label Text="Payment: ***" FontFamily="{StaticResource MediumFont}"
+                                                    TextColor="{StaticResource Darkest}" FontSize="14" VerticalTextAlignment="Center"/>
+                                            <Label Text="{Binding LastFour}" FontFamily="{StaticResource NormalFont}"
+                                                    TextColor="{StaticResource Darkest}" FontSize="16" VerticalTextAlignment="Center"/>
                                         </StackLayout>
                                     </StackLayout>
+
+                                    <!-- Driver Name Text -->
+                                    <StackLayout Orientation="Horizontal" Spacing="0" HorizontalOptions="Center">
+                                        <Label Text="Delivered By: " FontFamily="{StaticResource MediumFont}"
+                                                TextColor="{StaticResource Darkest}" FontSize="14" VerticalTextAlignment="Center" />
+                                        <Label Text="{Binding DriverName}" FontFamily="{StaticResource NormalFont}"
+                                                TextColor="{StaticResource Darkest}" FontSize="16" VerticalTextAlignment="Center" />
+                                    </StackLayout>
                                 </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>
