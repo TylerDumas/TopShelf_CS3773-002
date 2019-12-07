@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Threading.Tasks;
@@ -44,7 +45,7 @@ namespace TopShelfCustomer.ViewModels {
 
         public ChooseStoreViewModel () {
             Title = "Choose your Favorite Store";     //Set Title property of this ContentPage
-            InitializeNearbyStores();
+            InitializeNearbyStores( UserContainer.CurrentUser.ZipCode );
 
             /* Initialize Commands */
             NavigateBackCommand = new Command( () => App.SetCurrentPage<HomePage>() );
@@ -69,10 +70,10 @@ namespace TopShelfCustomer.ViewModels {
         /// Fetches the stores from the API and sets the
         /// bindable properties for the ChooseStoreView.
         /// </summary>
-        public async Task InitializeNearbyStores () {
+        private async Task InitializeNearbyStores ( int zipCode ) {
             ApiHelper apiHelper = new ApiHelper();
             NearbyStores = new ObservableCollection<Store>();
-            var stores = await apiHelper.GetAsync<Store>( "Store/GetStoreById/1" );       //Get Stores from API FIXME: add GetByStoreName or something to api
+            var stores = await apiHelper.GetAsync<List<Store>>( "Store/GetStoreByZipCode/" + zipCode );       //Get Stores from API FIXME: add GetByStoreName or something to api
 
             //foreach( Store store in stores ) {
             //    NearbyStores.Add( store );
@@ -81,7 +82,9 @@ namespace TopShelfCustomer.ViewModels {
             //    }
             //}
 
-            NearbyStores.Add( stores );
+            foreach( Store store in stores ) {
+                NearbyStores.Add( store );
+            }
             if ( SelectedStore == null ) {       //Check if no store was found to be preferred
                 SelectedStore = NearbyStores[0];
             }
