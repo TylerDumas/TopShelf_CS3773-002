@@ -533,6 +533,10 @@
              </summary>
              <param name="email"> The email to match </param>
              <returns> A list of orders for the account associated with "email" </returns>
+             <remarks>
+             Endpoints cannot handle the '.' operator. The caller must replace '.' with '-' before fetching
+             User.
+             </remarks>
         </member>
         <member name="T:TopShelfCustomer.Api.Controllers.ProductController">
              <summary>
