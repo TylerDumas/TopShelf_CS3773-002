@@ -20,16 +20,18 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Properties
 
+        public Cart Cart { get; set; } = new Cart();        //The user's shopping cart
+
         public string SelectedStoreName { get; set; } = "";         //The name of the default selected Store
-        public ObservableCollection<Product> ShopInventory { get; set; } = new ObservableCollection<Product>();      //Collection of this Store's Item inventory. Bound to View
+
+        public ObservableCollection<Product> ShopInventory
+            { get; set; } = new ObservableCollection<Product>();      //Collection of this Store's Item inventory. Bound to View
 
         /* Commands */
         public ICommand NavigateBackCommand { get; }            //Command for "back" button
         public ICommand CheckoutCommand { get; }        //Command for the "Checkout" Button
 
         #endregion Properties
-
-
 
         #region Class Methods
 
@@ -49,8 +51,19 @@ namespace TopShelfCustomer.ViewModels {
         /// Handles all logic to be executed when the "Checkout" button is clicked
         /// </summary>
         private void Checkout () {
-            //TODO: Implement Checkout
-            Debug.WriteLine( "Pressed the Checkout Button" );
+            /* Instantiate View and ViewModel */
+            CheckoutView checkout = new CheckoutView();
+            CheckoutViewModel checkoutViewModel = new CheckoutViewModel();
+
+            /* Populate new View and Viewmodel */
+            checkout.BindingContext = checkoutViewModel;
+            checkoutViewModel.Cart = Cart;
+            checkoutViewModel.Price = Cart.Price;
+            foreach( Product product in Cart.Items ) {
+                checkoutViewModel.ItemsList.Add( product );
+            }
+            /* Set the current page to the new View */
+            App.SetPopulatedPage( checkout );
         }
 
         /// <summary>

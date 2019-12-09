@@ -9,7 +9,7 @@ namespace TopShelfCustomer.ViewModels {
     /// <summary>
     /// LoginViewModel:
     ///
-    /// ViewModel for the Login page
+    /// ViewModel for the Login page.
     /// Allows the user interface to connect to the model classes directly
     /// </summary>
     public sealed class LoginViewModel : BaseViewModel {
@@ -22,11 +22,8 @@ namespace TopShelfCustomer.ViewModels {
         public string PasswordInput { get; set; }
 
         private bool isIncorrectInfo;        //Bool to define whether the "incorrect username" message should be shown
-
         public bool IsIncorrectInfo {
-            get {
-                return isIncorrectInfo;
-            }
+            get => isIncorrectInfo;
             set {
                 isIncorrectInfo = value;
                 OnPropertyChanged( "IsIncorrectInfo" );
@@ -34,14 +31,20 @@ namespace TopShelfCustomer.ViewModels {
         }
 
         private bool isErrorVisible;        //Bool to define whether the "incorrect username" message should be shown
-
         public bool IsErrorVisible {
-            get {
-                return isErrorVisible;
-            }
+            get => isErrorVisible;
             set {
                 isErrorVisible = value;
                 OnPropertyChanged( "IsErrorVisible" );
+            }
+        }
+
+        private bool isLoading;     //Is the loading indicator visible?
+        public bool IsLoading {
+            get => isLoading;
+            set {
+                isLoading = value;
+                OnPropertyChanged( "IsLoading" );
             }
         }
 
@@ -78,7 +81,7 @@ namespace TopShelfCustomer.ViewModels {
                 ApiHelper apiHelper = new ApiHelper();
 
                 string sanitizedEmail = EmailInput.Replace( ".", "-" );     //Replace '.' with '-' to allow for correct Get call
-
+                IsLoading = true;
                 User user = await apiHelper.GetAsync<User>( "User/GetUserByEmail/" + sanitizedEmail );
                 UserContainer.CurrentUser = user;       //Set the global user
                 App.SetCurrentPage<HomePage>();     //Redirect to the Home Page

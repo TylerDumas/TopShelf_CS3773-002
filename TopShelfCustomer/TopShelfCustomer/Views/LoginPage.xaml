@@ -19,12 +19,19 @@
 
                 <!-- Header (Label, App Icon, etc.) -->
                 <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
-                         Grid.Row="0" Padding="0, 50, 0, 40">
+                         Grid.Row="0" Padding="0, 50, 0, 20">
                     <StackLayout Orientation="Vertical" Spacing="20">
-                        <Image Source="TopShelfAppLogo.png" HeightRequest="100" Margin="0, 60, 0, 0"/>
-                        <Label Text="Log into TopShelf" FontSize="26" HorizontalOptions="Center" TextColor="White" FontFamily="{StaticResource MediumFont}"/>
+                        <!-- Logo Image -->
+                        <Image Source="TopShelfAppLogo.png" HeightRequest="100" Margin="0, 40, 0, 0"/>
+                        <!-- Title Label -->
+                        <Label Text="Log into TopShelf" FontSize="26" HorizontalOptions="Center"
+                               TextColor="White" FontFamily="{StaticResource MediumFont}"/>
                     </StackLayout>
                 </ContentView>
+
+                <!-- Loading Indicator -->
+                <ActivityIndicator Color="{StaticResource Darkest}" Grid.RowSpan="2"
+                                   IsRunning="{Binding IsLoading}" Scale="2" Margin="0, 60, 0, 0"/>
 
                 <!-- Username and Password Entries -->
                 <StackLayout Orientation="Vertical" Grid.Row="1" VerticalOptions="CenterAndExpand"
@@ -39,7 +46,7 @@
                            FontFamily="{StaticResource NormalFont}" PlaceholderColor="Gray" Keyboard="Plain"/>
 
                 </StackLayout>
-
+                
                 <!-- Error Message -->
                 <StackLayout Grid.Row="2" VerticalOptions="Center" IsVisible="{Binding IsErrorVisible}">
                     

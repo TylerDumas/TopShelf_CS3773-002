@@ -43,9 +43,13 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Class Methods
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
         public ChooseStoreViewModel () {
             Title = "Choose your Favorite Store";     //Set Title property of this ContentPage
-            InitializeNearbyStores( UserContainer.CurrentUser.ZipCode );
+
+            InitializeNearbyStores( UserContainer.CurrentUser.ZipCode );        //Populate the Store list
 
             /* Initialize Commands */
             NavigateBackCommand = new Command( () => App.SetCurrentPage<HomePage>() );
@@ -82,7 +86,7 @@ namespace TopShelfCustomer.ViewModels {
             //    }
             //}
 
-            foreach( Store store in stores ) {
+            foreach( Store store in stores ) {      //Add the fetched Stores to the observable list.
                 NearbyStores.Add( store );
             }
             if ( SelectedStore == null ) {       //Check if no store was found to be preferred

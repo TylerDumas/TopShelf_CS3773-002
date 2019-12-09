@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TopShelfCustomer.Views.PaymentView"
+             xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource Medium}">
+    <ContentPage.BindingContext>
+        <vm:PaymentViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid>
+            <!-- Row Definitions -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+
+            <!-- Header (Label, App Icon, etc.) -->
+            <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                        Grid.Row="0" Margin="0, 40, 0, 0">
+                <StackLayout Orientation="Vertical">
+
+                    <!-- Back Button -->
+                    <Frame HorizontalOptions="Start" WidthRequest="50" Padding="0"
+                           Margin="10,0,0,0" CornerRadius="42">
+                        <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}"
+                                     BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit" />
+                    </Frame>
+                    <!-- Store Name Label -->
+                    <Label Text="Payment" FontSize="30" HorizontalOptions="Center"
+                           FontFamily="{StaticResource MediumFont}" VerticalTextAlignment="Center"
+                           TextColor="{StaticResource LightTextColor}" />
+                </StackLayout>
+            </ContentView>
+
+            <!-- Payment Info Entries -->
+
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

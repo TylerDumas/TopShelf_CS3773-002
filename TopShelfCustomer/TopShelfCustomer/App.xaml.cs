@@ -95,6 +95,26 @@ namespace TopShelfCustomer {
         }
 
         /// <summary>
+        /// SetPopulatedPage:
+        ///
+        /// Takes an instance of a Page and replaces the
+        /// existing instance of that Page. Then navigates
+        /// to it. Allows passing values to new pages.
+        /// </summary>
+        /// <param name="page"> The populated Page object to view </param>
+        public static void SetPopulatedPage( Page page ) {
+            /* Check if Page already exists. If so, replace it */
+            foreach( Page existingPage in PageContainer.Views ) {
+                if( page.GetType() == existingPage.GetType() ) {
+                    PageContainer.Views.Remove( existingPage );
+                }
+            }
+            /* Add Page to static Container and then view it */
+            PageContainer.Views.Add( page );
+            Current.MainPage = page;
+        }
+
+        /// <summary>
         /// ClearPages:
         ///
         /// Clears all Application state/dependency containers

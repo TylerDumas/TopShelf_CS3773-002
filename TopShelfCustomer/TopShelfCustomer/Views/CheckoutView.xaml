@@ -1,0 +1,102 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TopShelfCustomer.Views.CheckoutView"
+             xmlns:vm="clr-namespace:TopShelfCustomer.ViewModels"
+             Title="{Binding Title}"
+             BackgroundColor="{StaticResource Medium}">
+
+    <ContentPage.BindingContext>
+        <vm:CheckoutViewModel/>
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid>
+            <!-- RowDefinitions -->
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Header (Label, App Icon, etc.) -->
+            <ContentView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                        Grid.Row="0" Margin="0, 40, 0, 0">
+                <StackLayout Orientation="Vertical">
+
+                    <!-- Back Button -->
+                    <Frame HorizontalOptions="Start" WidthRequest="50" Padding="0"
+                           Margin="10,0,0,0" CornerRadius="42">
+                        <ImageButton Source="back_icon.png" Command="{Binding NavigateBackCommand}"
+                                     BackgroundColor="{StaticResource Light}" CornerRadius="22" Aspect="AspectFit" />
+                    </Frame>
+                    <!-- Store Name Label -->
+                    <Label Text="Checkout" FontSize="30" HorizontalOptions="Center"
+                           FontFamily="{StaticResource MediumFont}" VerticalTextAlignment="Center"
+                           TextColor="{StaticResource LightTextColor}" />
+                </StackLayout>
+            </ContentView>
+
+            <!-- Order Details -->
+            <StackLayout Grid.Row="1" Orientation="Vertical"
+                         Margin="0, 20, 0, 20" HorizontalOptions="CenterAndExpand">
+
+                <Label FontFamily="{StaticResource NormalFont}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="# Items" FontFamily="{StaticResource MediumFont}" />
+                                <Span Text="{Binding NumItems}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+
+            </StackLayout>
+
+            <!-- List of Items -->
+            <ListView Grid.Row="2" BackgroundColor="{StaticResource Dark}"
+                      ItemsSource="{Binding ItemsList}"
+                      HasUnevenRows="True">
+                <ListView.HeaderTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Label Text="Your Items" BackgroundColor="{StaticResource Lightest}"
+                               FontFamily="{StaticResource MediumFont}"
+                               TextColor="{StaticResource Darkest}" LineHeight="1.5"
+                               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
+                               FontSize="20"/>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.HeaderTemplate>
+                
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame BorderColor="{StaticResource Darkest}"
+                                   BackgroundColor="{StaticResource Lightest}">
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center"
+                                             VerticalOptions="Center">
+                                    <Label Text="{Binding Name}" FontFamily="{StaticResource NormalFont}"
+                                           FontSize="16" TextColor="{StaticResource Darkest}" />
+                                    <Label Text="{Binding Price}" FontSize="16"
+                                           FontFamily="{StaticResource NormalFont}" TextColor="{StaticResource Darkest}"/>
+                                </StackLayout>
+
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+
+            <!-- Payment Button -->
+            <Button Command="{Binding PaymentCommand}" Margin="0, 40, 0, 60"
+                    BackgroundColor="{StaticResource Light}" WidthRequest="260"
+                    BorderColor="Black" BorderWidth="2" FontSize="22"
+                    HeightRequest="60" TextColor="{StaticResource Darkest}"
+                    FontFamily="{StaticResource MediumFont}"
+                    Text="Proceed to Payment" Grid.Row="3" HorizontalOptions="Center" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>
