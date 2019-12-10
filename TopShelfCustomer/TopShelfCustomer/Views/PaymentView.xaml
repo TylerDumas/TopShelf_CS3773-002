@@ -15,6 +15,7 @@
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="*"/>
+                <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
             <!-- Header (Label, App Icon, etc.) -->
@@ -36,7 +37,52 @@
             </ContentView>
 
             <!-- Payment Info Entries -->
+            <StackLayout Grid.Row="1" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand">
+                <Label Text="Payment Information" TextColor="{StaticResource LightTextColor}" HorizontalTextAlignment="Center"
+                       FontSize="22" FontFamily="{StaticResource NormalFont}" Margin="0, 0, 0, 30"/>
+                <!-- Card Number -->
+                <Entry Placeholder="Card Number" FontSize="16" HeightRequest="40"
+                       IsTabStop="True" Margin="0, 0, 0, 10" TextColor="{StaticResource Darkest}"
+                       Text="{Binding CardNumber, Mode=TwoWay}" FontFamily="{StaticResource NormalFont}"
+                       BackgroundColor="{StaticResource Lightest}" PlaceholderColor="Gray" />
+                <!-- Exp. Date -->
+                <Entry Placeholder="Expiration Date" FontSize="16" HeightRequest="40"
+                       Margin="60, 0, 60, 10" IsTabStop="True" TextColor="{StaticResource Darkest}"
+                       Text="{Binding ExpirationDate, Mode=TwoWay}" FontFamily="{StaticResource NormalFont}"
+                       BackgroundColor="{StaticResource Lightest}" PlaceholderColor="Gray" />
+                <!-- CVV -->
+                <Entry Placeholder="CVV" FontSize="16" HeightRequest="40" TextColor="{StaticResource Darkest}"
+                       Margin="80, 0, 80, 0" IsTabStop="True" Keyboard="Numeric"
+                       Text="{Binding EmailInput, Mode=TwoWay}" FontFamily="{StaticResource NormalFont}"
+                       BackgroundColor="{StaticResource Lightest}" PlaceholderColor="Gray" />
 
+                <Label Text="Address Information" TextColor="{StaticResource LightTextColor}" HorizontalTextAlignment="Center"
+                       FontSize="22" FontFamily="{StaticResource NormalFont}" Margin="0, 50, 0, 30"/>
+                <!-- Street Address -->
+                <Entry Placeholder="StreetAddress" FontSize="16" HeightRequest="40"
+                       Margin="0, 0, 0, 10" IsTabStop="True" TextColor="{StaticResource Darkest}"
+                       Text="{Binding StreetAddress, Mode=TwoWay}" FontFamily="{StaticResource NormalFont}"
+                       BackgroundColor="{StaticResource Lightest}" PlaceholderColor="Gray" />
+                <!-- Exp. Date -->
+                <Entry Placeholder="Zip Code" FontSize="16" HeightRequest="40" TextColor="{StaticResource Darkest}"
+                       Margin="40, 0, 40, 10" IsTabStop="True" Keyboard="Numeric"
+                       Text="{Binding ZipCode, Mode=TwoWay}" FontFamily="{StaticResource NormalFont}"
+                       BackgroundColor="{StaticResource Lightest}" PlaceholderColor="Gray" />
+                <!-- CVV -->
+                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"
+                             Spacing="15">
+                    <TimePicker Time="{Binding StartTime, Mode=TwoWay}"/>
+                    <TimePicker Time="{Binding EndTime, Mode=TwoWay}"/>
+                </StackLayout>
+            </StackLayout>
+
+            <!-- Place  Button -->
+            <ContentView Margin="0, 40, 0, 60" Grid.Row="2">
+                <Button Command="{Binding PlaceOrderCommand}" BackgroundColor="{StaticResource Light}" WidthRequest="260"
+                    BorderColor="Black" BorderWidth="2" FontSize="22"
+                    HeightRequest="60" TextColor="{StaticResource Darkest}" FontFamily="{StaticResource MediumFont}"
+                    Text="Place Order" Grid.Row="2" HorizontalOptions="Center" />
+            </ContentView>
         </Grid>
     </ContentPage.Content>
 </ContentPage>

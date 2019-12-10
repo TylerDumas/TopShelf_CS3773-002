@@ -46,7 +46,7 @@
                             <Frame BackgroundColor="{StaticResource Lightest}" Margin="2" VerticalOptions="Center">
                                 <StackLayout Orientation="Horizontal" Spacing="15" VerticalOptions="Center" Padding="5, 0, 5, 0">
                                     <!-- Product Name Label -->
-                                    <Label Text="{Binding Name}" FontFamily="{StaticResource MediumFont}"
+                                    <Label Text="{Binding Item.Name}" FontFamily="{StaticResource MediumFont}"
                                            HorizontalOptions="StartAndExpand" TextColor="{StaticResource Darkest}"
                                            FontSize="14" />
                                     <!-- Product Price -->
@@ -65,8 +65,8 @@
                                         <!-- Quantity Entry -->
                                         <Entry Placeholder="1" FontFamily="{StaticResource NormalFont}" BackgroundColor="{StaticResource Lightest}"
                                                PlaceholderColor="Gray" HorizontalTextAlignment="Center" Keyboard="Numeric"
-                                               Text="0" TextColor="{StaticResource Darkest}" HeightRequest="38" IsReadOnly="True" />
-                                        <Stepper HeightRequest="50" Minimum="0" Maximum="99" />
+                                               Text="{Binding Quantity}" TextColor="{StaticResource Darkest}" HeightRequest="38" IsReadOnly="True" />
+                                        <Stepper Value="{Binding Quantity, Mode=TwoWay}" HeightRequest="50" Minimum="0" Maximum="99" />
                                     </StackLayout>
                                 </StackLayout>
                             </Frame>

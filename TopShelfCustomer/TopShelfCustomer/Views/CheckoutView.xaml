@@ -42,12 +42,22 @@
             <StackLayout Grid.Row="1" Orientation="Vertical"
                          Margin="0, 20, 0, 20" HorizontalOptions="CenterAndExpand">
 
-                <Label FontFamily="{StaticResource NormalFont}">
+                <Label FontFamily="{StaticResource NormalFont}" TextColor="{StaticResource LightTextColor}">
                     <Label.FormattedText>
                         <FormattedString>
                             <FormattedString.Spans>
-                                <Span Text="# Items" FontFamily="{StaticResource MediumFont}" />
+                                <Span Text="# Items: " FontFamily="{StaticResource MediumFont}" />
                                 <Span Text="{Binding NumItems}" />
+                            </FormattedString.Spans>
+                        </FormattedString>
+                    </Label.FormattedText>
+                </Label>
+                <Label FontFamily="{StaticResource NormalFont}" TextColor="{StaticResource LightTextColor}">
+                    <Label.FormattedText>
+                        <FormattedString>
+                            <FormattedString.Spans>
+                                <Span Text="Total : $" FontFamily="{StaticResource MediumFont}" />
+                                <Span Text="{Binding Price}" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
@@ -59,28 +69,18 @@
             <ListView Grid.Row="2" BackgroundColor="{StaticResource Dark}"
                       ItemsSource="{Binding ItemsList}"
                       HasUnevenRows="True">
-                <ListView.HeaderTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <Label Text="Your Items" BackgroundColor="{StaticResource Lightest}"
-                               FontFamily="{StaticResource MediumFont}"
-                               TextColor="{StaticResource Darkest}" LineHeight="1.5"
-                               HorizontalTextAlignment="Center" VerticalTextAlignment="Center"
-                               FontSize="20"/>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.HeaderTemplate>
-                
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <Frame BorderColor="{StaticResource Darkest}"
+                            <Frame BorderColor="{StaticResource Darkest}" Margin="2, 5, 2, 0"
                                    BackgroundColor="{StaticResource Lightest}">
-                                <StackLayout Orientation="Horizontal" HorizontalOptions="Center"
+                                <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"
                                              VerticalOptions="Center">
-                                    <Label Text="{Binding Name}" FontFamily="{StaticResource NormalFont}"
+                                    <Label Text="{Binding Item.Name}" FontFamily="{StaticResource NormalFont}"
                                            FontSize="16" TextColor="{StaticResource Darkest}" />
                                     <Label Text="{Binding Price}" FontSize="16"
+                                           FontFamily="{StaticResource NormalFont}" TextColor="{StaticResource Darkest}"/>
+                                    <Label Text="{Binding Quantity}" FontSize="16"
                                            FontFamily="{StaticResource NormalFont}" TextColor="{StaticResource Darkest}"/>
                                 </StackLayout>
 

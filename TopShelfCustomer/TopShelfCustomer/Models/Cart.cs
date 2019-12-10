@@ -12,8 +12,16 @@ namespace TopShelfCustomer.Models {
     /// </summary>
     public class Cart {
 
-        public List<Product> Items { get; set; } = new List<Product>();     //The current List of Products selected
+        public List<ShopItem> Items { get; set; } = new List<ShopItem>();     //The current List of Products selected
         public float Price { get; set; } = 0.0f;        //The total cost of this Cart
 
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        public Cart() {
+            foreach( ShopItem item in Items ) {
+                Price += item.Price;
+            }
+        }
     }
 }

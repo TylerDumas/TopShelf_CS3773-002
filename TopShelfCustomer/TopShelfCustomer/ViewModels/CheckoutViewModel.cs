@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.ObjectModel;
+using System.Diagnostics;
 using System.Windows.Input;
 using TopShelfCustomer.Models;
+using TopShelfCustomer.Services;
 using TopShelfCustomer.Views;
 using Xamarin.Forms;
 
@@ -15,8 +17,6 @@ namespace TopShelfCustomer.ViewModels {
     /// </summary>
     public class CheckoutViewModel : BaseViewModel {
 
-        public Cart Cart { get; set; } = new Cart();     //The user's current Cart of items
-
         private float price;        //The total cost of the order
         public float Price {
             get => price;
@@ -25,8 +25,8 @@ namespace TopShelfCustomer.ViewModels {
                 OnPropertyChanged( "Price" );
             }
         }
-        public ObservableCollection<Product> ItemsList { get; set; }    //The visible list of Products
-            = new ObservableCollection<Product>();     
+        public ObservableCollection<ShopItem> ItemsList { get; set; }    //The visible list of Products
+            = new ObservableCollection<ShopItem>();     
 
         private int numItems;       //The number of items selected
         public int NumItems {
@@ -39,20 +39,24 @@ namespace TopShelfCustomer.ViewModels {
 
         /* Commands */
         public ICommand PaymentCommand { get; }
+        public ICommand NavigateBackCommand { get; }
 
         /// <summary>
         /// Constructor
         /// </summary>
         public CheckoutViewModel() {
-
-            //TODO: Get Cart from previous View
-
-            /* Set the UI Properties */
-            Price = Cart.Price;
-            NumItems = Cart.Items.Count;
+            /* Set the UI Properties */            
+            foreach( ShopItem product in UserContainer.UserCart.Items ) {       //Add cart items to bindable list
+                if( product.Quantity > 0 && !ItemsList.Contains( product ) ) {
+                    ItemsList.Add( product );
+                }
+            }
+            Price = UserContainer.UserCart.Price;       //Get total Cart cost
+            NumItems = ItemsList.Count;     //Get total Cart # different Products
 
             /* Initialize Commands */
             PaymentCommand = new Command( () => App.SetCurrentPage<PaymentView>() );
+            NavigateBackCommand = new Command( () => App.SetCurrentPage<ShopView>() );
         }
     }
 }

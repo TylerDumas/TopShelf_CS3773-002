@@ -44,6 +44,9 @@ namespace TopShelfCustomer.ViewModels {
             foreach( OrderReceipt order in orders ) {       //Add orders to bindable collection
                 ReceiptList.Add( order );
             }
+            foreach( OrderReceipt order in UserContainer.Orders ) {
+                ReceiptList.Add( order );
+            }
         }
     }
 }

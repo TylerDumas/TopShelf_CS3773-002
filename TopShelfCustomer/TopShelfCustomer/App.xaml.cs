@@ -103,12 +103,6 @@ namespace TopShelfCustomer {
         /// </summary>
         /// <param name="page"> The populated Page object to view </param>
         public static void SetPopulatedPage( Page page ) {
-            /* Check if Page already exists. If so, replace it */
-            foreach( Page existingPage in PageContainer.Views ) {
-                if( page.GetType() == existingPage.GetType() ) {
-                    PageContainer.Views.Remove( existingPage );
-                }
-            }
             /* Add Page to static Container and then view it */
             PageContainer.Views.Add( page );
             Current.MainPage = page;

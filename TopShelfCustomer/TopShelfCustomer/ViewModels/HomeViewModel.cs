@@ -54,7 +54,7 @@ namespace TopShelfCustomer.ViewModels {
 
             /* Initialize Commands */
             OpenSettingsCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
-            OpenCreateOrderCommand = new Command( () => App.SetCurrentPage<ShopView>() );
+            OpenCreateOrderCommand = new Command( () => App.SetNewPage<ShopView>() );
             OpenOrderHistoryCommand = new Command( () => App.SetCurrentPage<OrderHistoryView>() );
             ChangeStoreCommand = new Command( () => App.SetCurrentPage<ChooseStoreView>() );
         }
