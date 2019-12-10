@@ -7,7 +7,7 @@ namespace TopShelfCustomer.Api {
     /// <summary>
     ///  WebAPIUnitTest:
     ///  
-    /// Unit Test for the servies contained inside the Api Project folder.
+    /// Unit Test for the services contained inside the Api Project folder.
     /// Each function tests the extent of a single classes functionality.
     /// </summary>
     public class WebAPIUnitTest {
