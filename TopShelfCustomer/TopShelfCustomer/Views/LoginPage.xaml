@@ -30,7 +30,7 @@
                 </ContentView>
 
                 <!-- Loading Indicator -->
-                <ActivityIndicator Color="{StaticResource Darkest}" Grid.RowSpan="2"
+                <ActivityIndicator Color="{StaticResource Darkest}" Grid.RowSpan="3"
                                    IsRunning="{Binding IsLoading}" Scale="2" Margin="0, 60, 0, 0"/>
 
                 <!-- Username and Password Entries -->

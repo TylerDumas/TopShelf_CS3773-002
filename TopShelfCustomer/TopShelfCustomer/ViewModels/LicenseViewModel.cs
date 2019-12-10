@@ -15,22 +15,22 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Properties
 
-        /* Commands */
-        public ICommand NavigateBackCommand { get; set; }           //Command for going back to settings view (back button)
+            /* Commands */
+            public ICommand NavigateBackCommand { get; set; }           //Command for going back to settings view (back button)
 
         #endregion Properties
 
         #region Class Methods
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public LicenseViewModel () {
-            Title = "Licenses";
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            public LicenseViewModel () {
+                Title = "Licenses";
 
-            /* Initialize Commands */
-            NavigateBackCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
-        }
+                /* Initialize Commands */
+                NavigateBackCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
+            }
 
         #endregion Class Methods
     }

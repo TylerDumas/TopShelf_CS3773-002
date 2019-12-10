@@ -16,24 +16,24 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Properties
 
-        /* Commands */
-        public ICommand OpenXamarinCommand { get; }     //Command to open Xamarin framework website
-        public ICommand NavigateBackCommand { get; }        //Command to navigate back to last page
+            /* Commands */
+            public ICommand OpenXamarinCommand { get; }     //Command to open Xamarin framework website
+            public ICommand NavigateBackCommand { get; }        //Command to navigate back to last page
 
         #endregion Properties
 
         #region Class Methods
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public AboutViewModel () {
-            Title = "About";
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            public AboutViewModel () {
+                Title = "About";
 
-            /* Initialize Commands */
-            NavigateBackCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
-            OpenXamarinCommand = new Command( () => Launcher.OpenAsync( new Uri( "https://xamarin.com/platform" ) ) );
-        }
+                /* Initialize Commands */
+                NavigateBackCommand = new Command( () => App.SetCurrentPage<SettingsPage>() );
+                OpenXamarinCommand = new Command( () => Launcher.OpenAsync( new Uri( "https://xamarin.com/platform" ) ) );
+            }
 
         #endregion Class Methods
     }

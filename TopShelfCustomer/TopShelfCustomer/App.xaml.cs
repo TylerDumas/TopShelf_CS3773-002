@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TopShelfCustomer.Services;
 using TopShelfCustomer.Views;
 using Xamarin.Forms;
@@ -117,6 +118,8 @@ namespace TopShelfCustomer {
             PageContainer.Views.Clear();    //Clear Page dependency container
             Current.MainPage = new LoginPage();     //Change view to blank LoginPage
             UserContainer.CurrentUser = new Models.User();      //Clear the global User instance
+            UserContainer.Orders = new List<Models.OrderReceipt>();
+            UserContainer.UserCart = new Models.Cart();
             SettingsContainer.ClearSettings();      //Clear User Settings
         }
     }

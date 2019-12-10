@@ -1,7 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using TopShelfCustomer.Models;
@@ -21,78 +20,68 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Properties
 
-        public ObservableCollection<Store> NearbyStores { get; set; }       //Collection of Stores close to the current User
+            public ObservableCollection<Store> NearbyStores { get; set; }       //Collection of Stores close to the current User
 
-        private Store selectedStore;         //The currently selected Store in the ListView
+            private Store selectedStore;         //The currently selected Store in the ListView
 
-        public Store SelectedStore {
-            get {
-                return selectedStore;
+            public Store SelectedStore {
+                get {
+                    return selectedStore;
+                }
+                set {
+                    selectedStore = value;
+                    OnPropertyChanged( "SelectedStore" );
+                }
             }
-            set {
-                selectedStore = value;
-                OnPropertyChanged( "SelectedStore" );
-            }
-        }
 
-        /* Commands */
-        public ICommand NavigateBackCommand { get; }        //Command to open home page (back button)
-        public ICommand SelectStoreCommand { get; }         //Command to confirm store selection
+            /* Commands */
+            public ICommand NavigateBackCommand { get; }        //Command to open home page (back button)
+            public ICommand SelectStoreCommand { get; }         //Command to confirm store selection
 
         #endregion Properties
 
         #region Class Methods
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public ChooseStoreViewModel () {
-            Title = "Choose your Favorite Store";     //Set Title property of this ContentPage
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            public ChooseStoreViewModel () {
+                Title = "Choose your Favorite Store";     //Set Title property of this ContentPage
 
-            InitializeNearbyStores( UserContainer.CurrentUser.ZipCode );        //Populate the Store list
+                InitializeNearbyStores( UserContainer.CurrentUser.ZipCode );        //Populate the Store list
 
-            /* Initialize Commands */
-            NavigateBackCommand = new Command( () => App.SetCurrentPage<HomePage>() );
-            SelectStoreCommand = new Command( SelectStoreClicked );
-        }
-
-        /// <summary>
-        /// SelectStoreClicked:
-        ///
-        /// Handler for the "Select Store" Button in the SelectStoreView.
-        /// FIXME: Include details about how this works
-        /// </summary>
-        public void SelectStoreClicked () {
-            //TODO: Set the selected Store so that the next View can access it.
-            Debug.WriteLine( "Selected a new Default Store" );
-            App.SetCurrentPage<HomePage>();
-        }
-
-        /// <summary>
-        /// InitializeNearbyStores:
-        ///
-        /// Fetches the stores from the API and sets the
-        /// bindable properties for the ChooseStoreView.
-        /// </summary>
-        private async Task InitializeNearbyStores ( int zipCode ) {
-            ApiHelper apiHelper = new ApiHelper();
-            NearbyStores = new ObservableCollection<Store>();
-            var stores = await apiHelper.GetAsync<List<Store>>( "Store/GetStoreByZipCode/" + zipCode );       //Get Stores from API FIXME: add GetByStoreName or something to api
-
-            //foreach( Store store in stores ) {
-            //    NearbyStores.Add( store );
-            //    if( store.Name == UserContainer.CurrentUser.StoreName ) {       //Check if this is the User's preffered Store
-            //        SelectedStore = store;
-            //    }
-            //}
-
-            foreach( Store store in stores ) {      //Add the fetched Stores to the observable list.
-                NearbyStores.Add( store );
+                /* Initialize Commands */
+                NavigateBackCommand = new Command( () => App.SetCurrentPage<HomePage>() );
+                SelectStoreCommand = new Command( SelectStoreClicked );
             }
-            if ( SelectedStore == null ) {       //Check if no store was found to be preferred
-                SelectedStore = NearbyStores[0];
+
+            /// <summary>
+            /// SelectStoreClicked:
+            ///
+            /// Handler for the "Select Store" Button in the SelectStoreView.
+            /// </summary>
+            public void SelectStoreClicked () {
+                App.SetCurrentPage<HomePage>();
             }
-        }
+
+            /// <summary>
+            /// InitializeNearbyStores:
+            ///
+            /// Fetches the stores from the API and sets the
+            /// bindable properties for the ChooseStoreView.
+            /// </summary>
+            private async Task InitializeNearbyStores ( int zipCode ) {
+                ApiHelper apiHelper = new ApiHelper();
+                NearbyStores = new ObservableCollection<Store>();
+                var stores = await apiHelper.GetAsync<List<Store>>( "Store/GetStoreByZipCode/" + zipCode );       //Get Stores from API
+
+                foreach( Store store in stores ) {      //Add the fetched Stores to the observable list.
+                    NearbyStores.Add( store );
+                }
+                if ( SelectedStore == null ) {       //Check if no store was found to be preferred
+                    SelectedStore = NearbyStores[0];
+                }
+            }
 
         #endregion Class Methods
     }

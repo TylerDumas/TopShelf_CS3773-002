@@ -12,7 +12,7 @@ namespace TopShelfCustomer.Services {
     /// </summary>
     public static class UserContainer {
         public static User CurrentUser { get; set; }        //Global User property
-        public static Cart UserCart { get; set; } = new Cart();
-        public static List<OrderReceipt> Orders { get; set; } = new List<OrderReceipt>();
+        public static Cart UserCart { get; set; } = new Cart();     //The User's current cart
+        public static List<OrderReceipt> Orders { get; set; } = new List<OrderReceipt>();       //The User's Order receipts
     }
 }

@@ -61,7 +61,7 @@
                                             </FormattedString>
                                         </Label.FormattedText>
                                     </Label>
-                                    <StackLayout Orientation="Horizontal" HorizontalOptions="End">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="End" VerticalOptions="Center">
                                         <!-- Quantity Entry -->
                                         <Entry Placeholder="1" FontFamily="{StaticResource NormalFont}" BackgroundColor="{StaticResource Lightest}"
                                                PlaceholderColor="Gray" HorizontalTextAlignment="Center" Keyboard="Numeric"

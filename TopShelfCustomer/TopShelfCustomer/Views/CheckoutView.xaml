@@ -75,7 +75,7 @@
                             <Frame BorderColor="{StaticResource Darkest}" Margin="2, 5, 2, 0"
                                    BackgroundColor="{StaticResource Lightest}">
                                 <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand"
-                                             VerticalOptions="Center">
+                                             VerticalOptions="Center" Spacing="25">
                                     <Label Text="{Binding Item.Name}" FontFamily="{StaticResource NormalFont}"
                                            FontSize="16" TextColor="{StaticResource Darkest}" />
                                     <Label Text="{Binding Price}" FontSize="16"

@@ -18,35 +18,43 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Properties
 
-        public ObservableCollection<OrderReceipt> ReceiptList { get; set; } = new ObservableCollection<OrderReceipt>();    //The list of receipts to populate the ListView
+            public ObservableCollection<OrderReceipt> ReceiptList { get; set; } = new ObservableCollection<OrderReceipt>();    //The list of receipts to populate the ListView
 
-        public ICommand NavigateBackCommand { get; }        //Command for the "Back" button
+            public ICommand NavigateBackCommand { get; }        //Command for the "Back" button
 
         #endregion Properties
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public OrderHistoryViewModel () {
+        #region Class Methods
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            public OrderHistoryViewModel () {
 
-            InitializeReceipts( UserContainer.CurrentUser.EmailAddress );       //Initialize ReceiptsList
+                InitializeReceipts( UserContainer.CurrentUser.EmailAddress );       //Initialize ReceiptsList
 
-            /* Initialize Commands */
-            NavigateBackCommand = new Command( () => App.SetCurrentPage<HomePage>() );
-        }
-
-        private async void InitializeReceipts( string email ) {
-            ApiHelper api = new ApiHelper();
-            string sanitizedEmail = email.Replace( ".", "-" );      //Make endpoint url-friendly
-            string apiEndpoint = "Order/GetOrdersByEmail/" + sanitizedEmail;
-
-            List<OrderReceipt> orders = await api.GetAsync<List<OrderReceipt>>( apiEndpoint );      //Fetch orders from API
-            foreach( OrderReceipt order in orders ) {       //Add orders to bindable collection
-                ReceiptList.Add( order );
+                /* Initialize Commands */
+                NavigateBackCommand = new Command( () => App.SetNewPage<HomePage>() );
             }
-            foreach( OrderReceipt order in UserContainer.Orders ) {
-                ReceiptList.Add( order );
+
+            /// <summary>
+            /// InitializeReceipts:
+            ///
+            /// Populates the receipt list from the API
+            /// and the global User instance.
+            /// </summary>
+            /// <param name="email"> The User's email to search by </param>
+            private async void InitializeReceipts( string email ) {
+                ApiHelper api = new ApiHelper();
+                string sanitizedEmail = email.Replace( ".", "-" );      //Make endpoint url-friendly
+                string apiEndpoint = "Order/GetOrdersByEmail/" + sanitizedEmail;
+                foreach ( OrderReceipt order in UserContainer.Orders ) {        //Fetch orders from global User
+                    ReceiptList.Add( order );
+                }
+                List<OrderReceipt> orders = await api.GetAsync<List<OrderReceipt>>( apiEndpoint );      //Fetch orders from API
+                foreach( OrderReceipt order in orders ) {       //Add orders to bindable collection
+                    ReceiptList.Add( order );
+                }
             }
-        }
+        #endregion
     }
 }

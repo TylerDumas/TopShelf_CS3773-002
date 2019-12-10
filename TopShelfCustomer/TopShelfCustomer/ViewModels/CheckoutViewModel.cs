@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 using TopShelfCustomer.Models;
 using TopShelfCustomer.Services;
@@ -53,7 +51,10 @@ namespace TopShelfCustomer.ViewModels {
             }
             Price = UserContainer.UserCart.Price;       //Get total Cart cost
             NumItems = ItemsList.Count;     //Get total Cart # different Products
-
+            UserContainer.UserCart.Items.Clear();
+            foreach( ShopItem item in ItemsList ) {
+                UserContainer.UserCart.Items.Add( item );
+            }
             /* Initialize Commands */
             PaymentCommand = new Command( () => App.SetCurrentPage<PaymentView>() );
             NavigateBackCommand = new Command( () => App.SetCurrentPage<ShopView>() );

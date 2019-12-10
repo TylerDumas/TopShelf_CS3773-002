@@ -16,53 +16,55 @@ namespace TopShelfCustomer.ViewModels {
 
         #region Properties
 
-        private readonly IFirebaseAuthenticator auth;        //Firebase Authenticator to be resolved for each platform
+            private readonly IFirebaseAuthenticator auth;        //Firebase Authenticator to be resolved for each platform
 
-        public string EmailInput { get; set; }      //String value of Email field
+            public string EmailInput { get; set; }      //String value of Email field
 
-        private bool isErrorVisible;       //Bool to trigger error message
-
-        public bool IsErrorVisible {
-            get {
-                return isErrorVisible;
+            private bool isErrorVisible;       //Bool to trigger error message
+            public bool IsErrorVisible {
+                get {
+                    return isErrorVisible;
+                }
+                set {
+                    isErrorVisible = value;
+                    OnPropertyChanged( "IsErrorVisible" );
+                }
             }
-            set {
-                isErrorVisible = value;
-                OnPropertyChanged( "IsErrorVisible" );
-            }
-        }
 
-        public ICommand NavigateBackCommand { get; }        //Command for back button
-        public ICommand RequestPasswordResetCommand { get; }        //Command for password request button
+            public ICommand NavigateBackCommand { get; }        //Command for back button
+            public ICommand RequestPasswordResetCommand { get; }        //Command for password request button
 
         #endregion Properties
 
-        /// <summary>
-        /// Constructor
-        /// </summary>
-        public PasswordRetrievalViewModel () {
-            Title = "Reset Password";
+        #region Class Methods
 
-            auth = DependencyService.Resolve<IFirebaseAuthenticator>();     //Fetch platform-specific Firebase Authentication implementation
+            /// <summary>
+            /// Constructor
+            /// </summary>
+            public PasswordRetrievalViewModel () {
+                Title = "Reset Password";
 
-            /* Initialize Commands */
-            NavigateBackCommand = new Command( () => App.SetNewPage<LoginPage>() );
-            RequestPasswordResetCommand = new Command( ForgotPasswordClicked );
-        }
+                auth = DependencyService.Resolve<IFirebaseAuthenticator>();     //Fetch platform-specific Firebase Authentication implementation
 
-        /// <summary>
-        /// ForgotPasswordClicked:
-        ///
-        /// Function to bind to Command delegate.
-        /// Controls the "Request Email" button in the password retrieval view
-        /// </summary>
-        private async void ForgotPasswordClicked () {
-            string complete = await auth.RequestPasswordReset( EmailInput );
-            if ( complete != "" ) {
-                App.SetNewPage<LoginPage>();
-            } else {
-                IsErrorVisible = true;
+                /* Initialize Commands */
+                NavigateBackCommand = new Command( () => App.SetNewPage<LoginPage>() );
+                RequestPasswordResetCommand = new Command( ForgotPasswordClicked );
             }
-        }
+
+            /// <summary>
+            /// ForgotPasswordClicked:
+            ///
+            /// Function to bind to Command delegate.
+            /// Controls the "Request Email" button in the password retrieval view
+            /// </summary>
+            private async void ForgotPasswordClicked () {
+                string complete = await auth.RequestPasswordReset( EmailInput );
+                if ( complete != "" ) {
+                    App.SetNewPage<LoginPage>();
+                } else {
+                    IsErrorVisible = true;
+                }
+            }
+        #endregion
     }
 }
